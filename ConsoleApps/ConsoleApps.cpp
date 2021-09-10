@@ -7,11 +7,11 @@
    
    Maintenance Log:
    began project 9/7/2021
-   added code to the program 9/7/2021
+   added new code to the program 9/7/2021
    purposefully created an error in code 9/7/2021
    fixed error in code 9/7/2021
    pushed to GitHub 9/7/2021
-   added code to the program 9/8/2021
+   added new code to the program 9/8/2021
    pushed to GitHub 9/8/2021
    updated pseudocode 9/10/2021
    pushed to GitHub 9/10/2021
