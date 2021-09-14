@@ -3,16 +3,44 @@
    Project Name: Variables and Constants
    File Name: VariablesAndConstants.cpp
    Purpose: Output variables and constants
-   Pseudocode: English explanation of code
+   Pseudocode:
    Maintenance Log:
-   Began project 9/13/21
+   9/13/21
+   Began project
+   9/14/21
+   Added code
 */
+// NOTE FOR ME: 13 variables and 5 constants. 1 bool, 3 int, 3 char, 3 string, and 3 double variables.
 
 #include <iostream>
+#include <conio.h>
+#include <stdio.h>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    printf("Hello World\n");    // first output to the screen
+    int a = 0;
+    const float b = 10.0;
+    char c = 'q';
+    printf("a = %i\n", a); 
+    printf("b = %f\n", b);
+    printf("c = %c\n", c);
+
+    // some additional code
+    a = 14;
+    c = 'x';
+    printf("a = %i\n", a);
+    printf("b = %f\n", b);
+    printf("c = %c\n", c);
+    // additional code end
+
+    printf("Press any key to continue.\n");
+    _getch();
+    return 0;
+    /*
+    const float c = 3.0e8;      // speed of light in m/s
+    const float c = 9.8;        // acceleration due to gravity in m/s^2
+    */
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
