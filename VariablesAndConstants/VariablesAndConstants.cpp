@@ -1,14 +1,18 @@
 // VariablesAndConstants.cpp : This file contains the 'main' function. Program execution begins and ends there.
 /* Author: Halle Carlson
+*  Problem:
    Project Name: Variables and Constants
    File Name: VariablesAndConstants.cpp
-   Purpose: Output variables and constants
    Pseudocode:
    Maintenance Log:
-   9/13/21
-   Began project
-   9/14/21
-   Added code
+   Date: 9/13/21    Done:
+                    Began project
+
+   Date: 9/14/21    Done:
+                    Added code
+                    Created an error on purpose
+                    Ran the code to test for errors
+                    Fixed several errors in the code
 */
 // NOTE FOR ME: 13 variables and 5 constants. 1 bool, 3 int, 3 char, 3 string, and 3 double variables.
 
@@ -18,38 +22,28 @@
 
 int main()
 {
-    printf("Hello World\n");    // first output to the screen
+    printf("Hello World!\n");    // first output to the screen
     int a = 0;
     const float b = 10.0;
-    char c = 'q';
+    char d = 'q';               // CHANGE THIS CONSTANT to something from math or science
+    const float c = 3.0e8;      // speed of light in m/s
+    const float g = 9.8;        // acceleration due to gravity in m/s^2
     printf("a = %i\n", a); 
     printf("b = %f\n", b);
-    printf("c = %c\n", c);
+    printf("d = %c\n", d);
+    printf("c = %f\n", c);
+    printf("g = %f\n", g);
 
-    // some additional code
     a = 14;
-    c = 'x';
+    d = 'x';
     printf("a = %i\n", a);
     printf("b = %f\n", b);
-    printf("c = %c\n", c);
-    // additional code end
+    printf("d = %c\n", d);
+    printf("c = %f\n", c);
+    printf("g = %f\n", g);
 
     printf("Press any key to continue.\n");
     _getch();
     return 0;
-    /*
-    const float c = 3.0e8;      // speed of light in m/s
-    const float c = 9.8;        // acceleration due to gravity in m/s^2
-    */
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
