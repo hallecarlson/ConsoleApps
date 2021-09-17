@@ -26,6 +26,12 @@
                     Pulled from GitHub
                     Added 1 bool and 3 doubles
                     Renamed variables and constants to more interesting names
+    
+    Date: 9/17/21   Done:
+                    Edited code for boolean until it worked
+                    Edited code for double variables until it worked
+                    Formatted outputs
+                    Pushed to GitHub
 */
 // NOTE FOR ME: 13 variables and 5 constants. 1 bool, 3 int, 3 char, 3 string, and 3 double variables.
 
@@ -56,9 +62,9 @@ int main()
     printf("u = %s\n\t", u.c_str());
     printf("lastName = %s\n", lastName.c_str());
     
-    printf("Boolean Variable\n\t");
+    printf("Boolean Variable\n\t");                 // outputs label "Boolean Variable" above boolean output
     bool quebec = true;
-    printf("%b\n", quebec);
+    printf("quebec = %i\n", quebec);
     
     printf("Integer Variables\n\t");                // outputs label "Integer Variables" above integer outputs
     int xray = 0;
@@ -89,12 +95,12 @@ int main()
     printf("hotel = %c\n", hotel);
     
     printf("Double Variables\n\t");
-    double november = 65536;
-    printf("%d\n\t", november);
-    double oscar = 32768;
-    printf("%d\n\t", oscar);
-    double papa = 16384;
-    printf("%d\n", papa);
+    double november = 65536;        
+    printf("november = %lf\n\t", november);     
+    double oscar = 32768;           
+    printf("oscar = %lf\n\t", oscar);
+    double papa = 16384;            
+    printf("papa = %lf\n", papa);
     
     printf("Floating Constants\n\t");               // outputs label "Floating Constants" above floating constant outputs
     const float euler = 2.7182818;                  // Euler's number (e)        
