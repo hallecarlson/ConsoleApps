@@ -1,9 +1,15 @@
 // VariablesAndConstants.cpp : This file contains the 'main' function. Program execution begins and ends there.
 /* Author: Halle Carlson
-*  Problem:
+*  Problem: Output a series of variables and constants including 3 integer variables, 1 boolean variable, 
+            3 string variables, 3 double variables, and 5 floating constants.
    Project Name: Variables and Constants
    File Name: VariablesAndConstants.cpp
-   Pseudocode:
+   
+   Pseudocode: The program outputs a series of variables and constants. Before each type of value is listed in the 
+               output window, The program outputs a label. Below each label, the corresponding values are outputted 
+               with a tab inserted in front of each so that the information in the output window is easier for 
+               the user to read. 
+
    Maintenance Log:
    Date: 9/13/21    Done:
                     Began project
@@ -32,10 +38,14 @@
                     Edited code for double variables until it worked
                     Formatted outputs
                     Pushed to GitHub
+                    Pulled from GitHub
+                    Updated pseudocode
+                    Added code to assign new values to the string variables, boolean variable, and double variables
+                    Fixed several errors caused by my attempt to assign new values to some of the variables
+                    Pushed to GitHub
 */
-// NOTE FOR ME: 13 variables and 5 constants. 1 bool, 3 int, 3 char, 3 string, and 3 double variables.
 
-#include <iostream>
+#include <iostream> 
 #include <conio.h>
 #include <stdio.h>
 #include <string>
@@ -60,12 +70,27 @@ int main()
     u = "uniform";
     const string lastName = "Carlson";
     printf("u = %s\n\t", u.c_str());
+    printf("lastName = %s\n\t", lastName.c_str());
+                                                
+    s = "arreis";
+    printf("s = %s\n\t", s.c_str());
+    printf("firstName = %s\n\t", firstName.c_str());
+
+    t = "ognat";
+    printf("t = %s\n\t", t.c_str());
+    printf("middleName = %s\n\t", middleName.c_str());
+
+    u = "mrofinu";
+    printf("u = %s\n\t", u.c_str());
     printf("lastName = %s\n", lastName.c_str());
-    
+     
     printf("Boolean Variable\n\t");                 // outputs label "Boolean Variable" above boolean output
     bool quebec = true;
-    printf("quebec = %i\n", quebec);
+    printf("quebec = %i\n\t", quebec);
     
+    quebec = false;
+    printf("quebec = %i\n", quebec);
+
     printf("Integer Variables\n\t");                // outputs label "Integer Variables" above integer outputs
     int xray = 0;
     int yankee = 5;
@@ -100,6 +125,13 @@ int main()
     double oscar = 32768;           
     printf("oscar = %lf\n\t", oscar);
     double papa = 16384;            
+    printf("papa = %lf\n\t", papa);
+
+    november = 32768;
+    printf("november = %lf\n\t", november);
+    oscar = 16384;
+    printf("oscar = %lf\n\t", oscar);
+    papa = 8192;
     printf("papa = %lf\n", papa);
     
     printf("Floating Constants\n\t");               // outputs label "Floating Constants" above floating constant outputs
