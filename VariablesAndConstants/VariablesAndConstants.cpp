@@ -1,14 +1,18 @@
 // VariablesAndConstants.cpp : This file contains the 'main' function. Program execution begins and ends there.
 /* Author: Halle Carlson
-*  Problem: Output a series of variables and constants including 3 integer variables, 1 boolean variable, 
-            3 string variables, 3 double variables, and 5 floating constants.
+*  Problem: Declare, initialize, and output a series of variables and constants including 3 integer variables, 
+            1 boolean variable, 3 string variables, 3 double variables, and 5 floating constants.
    Project Name: Variables and Constants
    File Name: VariablesAndConstants.cpp
    
-   Pseudocode: The program outputs a series of variables and constants. Before each type of value is listed in the 
-               output window, The program outputs a label. Below each label, the corresponding values are outputted 
-               with a tab inserted in front of each so that the information in the output window is easier for 
-               the user to read. 
+   Pseudocode: The program declares, initializes, and outputs a series of variables and constants including 3 
+               integer variables, 1 boolean variable, 3 string variables, 3 double variables, and 5 floating 
+               constants. Before each type of data is listed in the output window, the program outputs a label 
+               for that data type. Below each label, the corresponding values are outputted with a tab inserted 
+               in front of each so that the information in the output window is easier for the user to read. 
+               Each variable and constant is outputted and then variables are assigned new values and outputted 
+               again. The values of the floating constants come from math and science and the names of most other 
+               variables and constants come from the NATO Phonetic Alphabet.
 
    Maintenance Log:
    Date: 9/13/21    Done:
@@ -42,6 +46,8 @@
                     Updated pseudocode
                     Added code to assign new values to the string variables, boolean variable, and double variables
                     Fixed several errors caused by my attempt to assign new values to some of the variables
+                    Pushed to GitHub
+                    Updated Pseudocode
                     Pushed to GitHub
 */
 
