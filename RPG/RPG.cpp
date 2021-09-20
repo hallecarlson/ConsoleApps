@@ -2,10 +2,24 @@
 //
 
 #include <iostream>
+#include <stdio.h>
+#include <conio.h>
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "Welcome to Nightmareland!\n";
+    printf("[c] ---> open your inventory\n");
+    printf("[x] ---> observe/interact with something in your sight / learn more about an item in your inventory\n");
+    printf("[c] ---> stop observing/interacting with something in your sight / unselect an item in your inventory\n");
+    printf("[spacebar] ---> scroll through text\n");
+    printf("[number keys] ---> select specified commands\n\n");
+
+    printf("you find yourself in a mysterious, greyscale landscape\n");
+    printf("you are unsure whether you are dreaming or youare awake\n");
+    printf("what do you want to do? (player inputs a command)\n");
+    printf("[option 1] you take a look around. there is no color in this world. you don't recognize any of your surroundings, yet they feel so familiar.\n");
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
