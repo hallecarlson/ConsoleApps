@@ -27,6 +27,7 @@
    Date: 9/15/21    Done:
                     Added 3 const floats, 2 ints, 2 charas, 1 string
                     Added code to print the new constants and variables
+
                     Added placeholer pseudocode for 1 bool and 3 double variables
                     Updated pseudocode
                     Fixed several errors
