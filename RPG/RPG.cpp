@@ -1,5 +1,26 @@
 // RPG.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/* Author: Halle Carlson
+   Projet Name: RPG Instructions
+   File Name: RPG.cpp
+   Purpose: Output a series of insructions for my RPG.
+   Pseudocode: The code outputs a series of text including instructions and commands for my RPG, notes about 
+   what has and hasn't ben added to the code, and narration that sets the scene for the beginning of the story.
+   Maintenance Log:
+   Date: 9/20/21    Done:
+                    Began project
+                    Added code to output text
+                    Pushed to GitHub
+
+   Date: 9/21/21    Done:
+                    Added code to output text
+                    Added code to format text so that it prints more neatly in the debug window and so that the 
+                    player can press a key to print parts of dialogue one at a time
+                    Tested the program as I added code to fix errors as they came
+                    Pushed to GitHub
+
+   Date: 9/22/21    Done:
+                    Added pseudocode and comments
+*/
 
 #include <iostream>
 #include <stdio.h>
