@@ -20,6 +20,11 @@
 
    Date: 9/22/21    Done:
                     Added pseudocode and comments
+                    Pushed to GitHub
+
+   Date: 9/24/21    Done:
+                    Updated pseudodoce and comments
+                    Pushed to GitHub
 */
 
 #include <iostream>
