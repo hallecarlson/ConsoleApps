@@ -1,10 +1,16 @@
 // OneVariable1-10.cpp : This file contains the 'main' function. Program execution begins and ends there.
 /*
-    Author: Halle Carlson
-    Problem:
-    Project Name: 
-    File Name:
-    Pseudocode:
+    Author:         Halle Carlson
+    Problem:        Write a program that outputs 1-10 with one integer variable.
+    Project Name:   Output 1-10 with one variable
+    File Name:      OneVariable1-10.cpp
+    
+    Pseudocode:     The program outputs the numbers 1-10 with a single integer variable. Integer 'c' is assigned
+                    the value of 1. The program outputs the value of c and then assigns it a new value of 2 using  
+                    the c++ function. The program repeats this process until the numbers 1-10 are outputted, using  
+                    format specifiers to print the numbers 1-9 so that they line up with the second digit of the 
+                    number 10 instead of the first digit.
+
     Maintenance Log:
     Date: 9/22/21   Done:
                     Began project
@@ -22,6 +28,9 @@
                     Fixed errors
                     Added code to format the output
                     Pushed to GitHub
+                    Pulled from GitHub
+                    Updated pseudocode and comments
+                    Pushed to GitHub
 
 */
 
@@ -30,11 +39,9 @@
 #include <conio.h>
 #include <string>
 using namespace std;
-using std::right;
 
 int main()
 {
-    //std::cout << "Hello World!\n";
     int c = 1;
     printf("%*i\n", 2,  c);
     c++;
