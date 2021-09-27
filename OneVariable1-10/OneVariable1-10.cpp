@@ -14,34 +14,46 @@
     Date: 9/24/21   Done:
                     Added code to print numbers 1-10 with one int variable
                     Added pseudocode and comments
+                    Pushed to GitHub    
+
+    Date: 9/27/21   Done: 
+                    Edited code to change variable type to int from char
+                    Added code to print numbers
+                    Fixed errors
+                    Added code to format the output
                     Pushed to GitHub
+
 */
 
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
+#include <string>
 using namespace std;
+using std::right;
 
 int main()
 {
     //std::cout << "Hello World!\n";
-    char c = '1',
-    printf("%c\n", c);
+    int c = 1;
+    printf("%*i\n", 2,  c);
     c++;
-    printf("%c\n", c);
+    printf("%*i\n", 2, c);
     c++;
-    printf("%c\n", c);
+    printf("%*i\n", 2, c);
     c++;
-    printf("%c\n", c);
+    printf("%*i\n", 2, c);
     c++;
-    printf("%c\n", c);
+    printf("%*i\n", 2, c);
     c++;
-    printf("%c\n", c);
+    printf("%*i\n", 2, c);
     c++;
-    printf("%c\n", c);
+    printf("%*i\n", 2, c);
     c++;
-    printf("%c\n", c);
+    printf("%*i\n", 2, c);
     c++;
-    printf("%c\n", c);
+    printf("%*i\n", 2, c);
+    c++;
+    printf("%i\n", c);
 }
 
