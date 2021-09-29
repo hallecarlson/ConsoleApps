@@ -31,6 +31,11 @@
 					Fixed errors
 					Added pseudocode and comments
 					Pushed to GitHub
+
+	Date: 9/29/21	Done:
+					Pulled from GitHub
+					Cleaned up code and comments
+					Pushed to GitHub
 */
 
 #include <iostream>
@@ -106,40 +111,5 @@ int main()
 	z = y / (float)b;
 	printf("y / b = % f\n", z);				// float division into float variable
 	_getch();
-	/*
-	printf(“Division problems.\n\n”);	// output message to the screen
-	int a = 3;
-	int b = 4;
-	int c;
-	float x = 3.3;
-	float y = 4.4;
-	float z;
-
-	c = a / b;
-	printf(“a / b = % d\n”, c);	// int division
-	z = x / y;
-	printf(“x / y = % f\n”, z);	// float division
-	c = x / y;
-	printf(“x / y = % d\n”, c);	// float division into int variable
-	z = a / b;
-	printf(“a / b = % f\n”, z);	// int division into float variable
-	c = a / y;
-	printf(“a / y = % d\n”, c);	// mixed division into int variable
-	z = x / b;
-	printf(“x / b = % f\n”, z);	// mixed division into float variable
-	c = a / (int)y;
-	printf(“a / y = % d\n”, c);	// int division into int variable
-	z = x / (float)b;
-	printf(“x / b = % f\n”, z);	// float division into float variable
-
-	c = a / b;
-	printf(“a / b = % d\n”, c);	// int division
-	int d = a % b;
-	printf(“a % %b = % d\n”, d);	// modulus (remainder)
-
-	printf(“Press the any key to continue.\n”);
-	//_getch();	// Uncomment this line if your code runs but does not stay on the screen when finished.
-	return 0;
-	*/
 }
 
