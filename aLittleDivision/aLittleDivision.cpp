@@ -1,11 +1,19 @@
 // aLittleDivision.cpp : This file contains the 'main' function. Program execution begins and ends there.
 /*
-	Author:
-	Problem:
-	Project Name:
-	File Name:
+	Author:			Halle Carlson
+	Problem:		Write a program that outputs 2 addition, 2 subtraction, 2 multiplication, and 6 division 
+					problems using int and float variables.
+	Project Name:	A Little Division
+	File Name:		aLittleDivision.cpp
 
-	Pseudocode:
+	Pseudocode:		The program outputs a series of math problems involving integer and floating variables. In all,
+					there are 2 addition, 2 subtraction, 2 multiplication, and 8 (12 including remainders) division
+					operations, for a total of 14 (18 including remainders) operations. The code uses 7 variables. 
+					There are 2 int and 2 float with values declared in the beginning of the code. There is 1 int
+					and 1 float with values redefined after each operation using that type of variable which 
+					represent the answer of the operation. There is 1 int with a value redefined after each 
+					operation using int variables which represents the remainder of the operation. Each operation
+					is outputted under a label that describes the type of operation and variable.
 
 	Maintenance Log:	
 	Date: 9/28/21	Done:
@@ -21,7 +29,8 @@
 					Added code to calculate and output remainders for division problems
 					Added code to format the output
 					Fixed errors
-					
+					Added pseudocode and comments
+					Pushed to GitHub
 */
 
 #include <iostream>
@@ -60,7 +69,7 @@ int main()
 	printf("y - x = % f\n\n", z);
 	_getch();
 
-	printf("Multiplication Problems\n");
+	printf("Multiplication Problems\n");	
 	printf("Int Variables:\t");
 	printf("Float Variables:\n");
 	c = a * b;
@@ -74,28 +83,28 @@ int main()
 	printf("Float Variables:\n");
 	c = b / a;
 	intRemainder = b % a;
-	printf("b / a = % d\n", c);
-	printf("b % %a = % d\t", intRemainder);
+	printf("b / a = % d\n", c);				// int division
+	printf("b % %a = % d\t", intRemainder);	// remainder
 	z = x / y;
-	printf("x / y = % f\n", z);
+	printf("x / y = % f\n", z);				// float division
 	c = y / x;
 	intRemainder = (int)y % (int)x;
-	printf("y / x = % d\n", c);
-	printf("y % %x = % d\t", intRemainder);
+	printf("y / x = % d\n", c);				// float division into int variable
+	printf("y % %x = % d\t", intRemainder);	// remainder
 	z = a / b;
-	printf("a / b = % f\n", z);
+	printf("a / b = % f\n", z);				// int division into float variable
 	c = a / y;
-	intRemainder = a % (int)y;
-	printf("a / y = % d\n", c);
-	printf("a % %y = % d\t", intRemainder);
+	intRemainder = a % (int)y;	
+	printf("a / y = % d\n", c);				// mixed division into int variable
+	printf("a % %y = % d\t", intRemainder);	// remainder
 	z = x / b;
-	printf("x / b = % f\n", z);
+	printf("x / b = % f\n", z);				// mixed division into float variable
 	c = a / (int)x;
 	intRemainder = a % (int)x;
-	printf("a / x = % d\n", c);
-	printf("a % %x = % d\t", intRemainder);
+	printf("a / x = % d\n", c);				// int division into int variable
+	printf("a % %x = % d\t", intRemainder);	// remainder
 	z = y / (float)b;
-	printf("y / b = % f\n", z);
+	printf("y / b = % f\n", z);				// float division into float variable
 	_getch();
 	/*
 	printf(“Division problems.\n\n”);	// output message to the screen
