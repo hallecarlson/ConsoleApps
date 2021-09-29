@@ -31,7 +31,6 @@
                     Pulled from GitHub
                     Updated pseudocode and comments
                     Pushed to GitHub
-
 */
 
 #include <iostream>
