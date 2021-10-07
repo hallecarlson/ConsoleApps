@@ -29,6 +29,10 @@
                     Pulled from GitHub
                     Updated comments and pseudocode
                     Pushed to GitHub
+                    Added code to output the number of people being transported in busses and vans
+                    Added code to format output
+                    Updated comments
+                    Pushed to GitHub
 */
 
 #include <iostream>
@@ -39,8 +43,9 @@ using namespace std;
 
 int main()
 {
-    printf("Hello, you've got Carslon Transportation on the phone. We charter busses and vans for tours.\n");
+    printf("Hello, you've got Carslon Transportation Service on the phone. We charter busses and vans for tours.\n");
     printf("Our busses are filled to capacity and the remainder of passengers are transported in vans.\n\n");
+    _getch();
     printf("Who's calling (no spaces)?:\n");
 
     string name;
@@ -57,19 +62,28 @@ int main()
     const int van_capacity = 7;
     int busses;
     int remainder_busses;
+    int people_busses;
     int vans;
     int remainder_vans;
 
     busses = number / bus_capacity;
     remainder_busses = number % bus_capacity;
+    people_busses = number - remainder_busses;
+
     vans = remainder_busses / van_capacity;
     remainder_vans = remainder_busses % van_capacity;
     if (remainder_vans != 0)
     {
         vans = remainder_busses / van_capacity + 1;       
-    }
-    printf("%d\n", busses);
-    printf("%d\n", vans);
+    }   
 
+    printf("We'll dispatch %d busses to transport %d people.\n", busses, people_busses);
+    _getch();
+    printf("There are %d people we'll need to transport in vans.\n", remainder_busses);
+    _getch();
+    printf("We'll dispatch %d to transport %d people.\n", vans, remainder_busses);
+    _getch();
+    printf("Thank you for using Carlson Transportation Service.");
+    _getch();
 }
 
