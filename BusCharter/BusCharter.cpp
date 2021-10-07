@@ -1,11 +1,20 @@
 // BusCharter.cpp : This file contains the 'main' function. Program execution begins and ends there.
 /*
-    Author: Halle Carlson
-    Problem: 
-    Project name: GS02-05 (Bus Charter)
-    File name: BusCharter.cpp
+    Author:         Halle Carlson
+    Problem:        Create a program that allows the user to input their name and an amount of people going on a 
+                    tour, and then calculates how many 60-passenger busses and 7-passenger vans are needed to
+                    transport the people, with the busses being filled to capacity and the vans being filled with the
+                    remainder of the people.
+    Project name:   GS02-05 (Bus Charter)
+    File name:      BusCharter.cpp
 
-    Pseudocode:
+    Pseudocode:     The program calculates the amount of 60-passenger busses and 7-passenger vans are needed to 
+                    transport an amount of people that the user inputs. First, a short introduction is printed, then,
+                    the program asks the user for their name. After the user inputs their name, the program asks them
+                    how many people they need to transport on a tour. After the user specifies the number of people, 
+                    the program divides that by 60 to calculate the number of busses needed, then divides the remainder
+                    of people by 7 to calculate the number of vans needed, then adds one van if there are any people 
+                    left over. The number of busses and vans needed are printed in the output window.
 
     Maintenance log:
     Date: 10/5/21   Done: 
@@ -17,6 +26,9 @@
                     Updated comments
                     Pushed to GitHub
                     
+                    Pulled from GitHub
+                    Updated comments and pseudocode
+                    Pushed to GitHub
 */
 
 #include <iostream>
