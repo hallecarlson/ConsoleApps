@@ -33,6 +33,13 @@
                     Added code to format output
                     Updated comments
                     Pushed to GitHub
+
+    Date: 10/11/21  Done:
+                    Pulled from GitHub
+                    Ran program to check for problems
+                    Fixed problems in code
+                    Updated comments
+                    Pushed to GitHub
 */
 
 #include <iostream>
@@ -52,7 +59,6 @@ int main()
     cin >> name;
     fseek(stdin, 0, SEEK_END);
     printf("Hello, %s, how many people need transport (no spaces)?:\n", name.c_str());
-    printf("Okay, %s, ", name.c_str());
 
     int number;
     scanf_s("%d", &number);
@@ -77,6 +83,7 @@ int main()
         vans = remainder_busses / van_capacity + 1;       
     }   
 
+    printf("Okay, %s.\n", name.c_str());
     printf("We'll dispatch %d busses to transport %d people.\n", busses, people_busses);
     _getch();
     printf("There are %d people we'll need to transport in vans.\n", remainder_busses);

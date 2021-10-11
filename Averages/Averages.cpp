@@ -8,14 +8,17 @@
     Pseudocode:
 
     Maintenance log:
-    Date:           Done:
+    Date: 10/5/21   Done:
+                    Created project
+                    Pushed to GitHub
 
+    Date:
 */
 
 #include <iostream>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    
 }
 
