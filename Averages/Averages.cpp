@@ -18,6 +18,12 @@
                     Fixed errors
                     Added comments
                     Pushed to GitHub
+
+    Date: 10/13/21  Done:
+                    Added code
+                    Added comments
+                    Fixed errors
+                    Pushed to GitHub
 */
 
 #include <iostream>
@@ -49,14 +55,19 @@ int main()
     scanf_s("%d", &gallons);
     fseek(stdin, 0, SEEK_END);
 
-    printf("Let me make sure I heard you corrctly, %s...\n", name.c_str());
+    printf("Here's what I heard, %s...\n", name.c_str());
     printf("You...\n");
     _getch();
     printf("Traveled:     %d miles\n", miles);
     printf("Traveled for: %d hours\n", hours);
     printf("Used:         %d gallons\n", gallons);
-    printf("Is this information correct, %s?\n", name.c_str());
+    
+    //avg speed to the nearest mile (mph)
+    //avg fuel consumption to the nearest tenth of a mile (mpg)
+    int avgspeed;
+    int avgfuel;
 
-    //if/else statement for if user needs to change their inputs
+    avgspeed = miles / hours;
+    
 }
 
