@@ -24,6 +24,10 @@
                     Added comments
                     Fixed errors
                     Pushed to GitHub
+
+    Date: 10/15/21  Done:
+                    Added code to calculate and output values
+                    Pushed to GitHub
 */
 
 #include <iostream>
@@ -65,9 +69,18 @@ int main()
     //avg speed to the nearest mile (mph)
     //avg fuel consumption to the nearest tenth of a mile (mpg)
     int avgspeed;
-    int avgfuel;
+    float avgfuel;
+    int remainder_avgspeed;
 
     avgspeed = miles / hours;
+    remainder_avgspeed = miles % hours;
+
+    avgfuel = miles / gallons;
+
+    printf("%s, your:\n", name.c_str());
+    printf("Average speed: %d mph\n");
+    printf("Average fuel consumption: %.1f\n");
+    printf("%d", remainder_avgspeed);
     
 }
 
