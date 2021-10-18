@@ -28,12 +28,19 @@
     Date: 10/15/21  Done:
                     Added code to calculate and output values
                     Pushed to GitHub
+
+    Date: 10/18/21  Done:
+                    Fixed an error in division code
+                    Added comments
+                    Added code
+                    Pushed to GitHub
 */
 
 #include <iostream>
 #include <conio.h>
 #include <stdio.h>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 int main()
@@ -44,7 +51,7 @@ int main()
     cin >> name;
     fseek(stdin, 0, SEEK_END);
 
-    printf("How many miles did you travel, %s?\n", name.c_str());
+    printf("\nHow many miles did you travel, %s?\n", name.c_str());
     int miles;
     scanf_s("%d", &miles);
     fseek(stdin, 0, SEEK_END);
@@ -59,12 +66,12 @@ int main()
     scanf_s("%d", &gallons);
     fseek(stdin, 0, SEEK_END);
 
-    printf("Here's what I heard, %s...\n", name.c_str());
+    printf("\nHere's what I heard, %s...\n\n", name.c_str());
     printf("You...\n");
     _getch();
     printf("Traveled:     %d miles\n", miles);
     printf("Traveled for: %d hours\n", hours);
-    printf("Used:         %d gallons\n", gallons);
+    printf("Used:         %d gallons\n\n", gallons);
     
     //avg speed to the nearest mile (mph)
     //avg fuel consumption to the nearest tenth of a mile (mpg)
@@ -72,15 +79,20 @@ int main()
     float avgfuel;
     int remainder_avgspeed;
 
-    avgspeed = miles / hours;
-    remainder_avgspeed = miles % hours;
+    //avgspeed = (float)miles / (float)hours;
 
-    avgfuel = miles / gallons;
+    avgspeed = miles / hours;
+    //remainder_avgspeed = miles % hours;
+
+
+    avgfuel = (float)miles / (float)gallons;
 
     printf("%s, your:\n", name.c_str());
-    printf("Average speed: %d mph\n");
-    printf("Average fuel consumption: %.1f\n");
-    printf("%d", remainder_avgspeed);
+    printf("Average speed: %d mph\n", avgspeed);
+    printf("Average fuel consumption: %.1f\n", avgfuel);
+    //printf("%d", remainder_avgspeed);
+    _getch();
     
+    return 0; 
 }
 
