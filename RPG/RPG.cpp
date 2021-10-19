@@ -30,10 +30,12 @@
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
+#include <string>
 using namespace std;
 
 int main()
 {
+    /*
     std::cout << "Welcome to Nightmareland!\n";
     printf("an RPG (in progress) created by Halle Carlson\n\n");
     printf("the following commands are placeholders and have not been added to the code yet.\n\n");
@@ -46,9 +48,6 @@ int main()
     printf("the are a few instances in this code where the player is prompted to enter a command, including using the spacebar to scroll through text. ");
     printf("these are placeholders and you can press any key to move on. in instances where there are multiple options for commands, all options will print out ");
     printf("in the debug window in order.\n\n");
-    _getch();
-
-    printf("please enter your name\n\n");
     _getch();
     
     printf("> you find yourself in a mysterious, greyscale landscape.\n");
@@ -88,6 +87,13 @@ int main()
     _getch();
     printf("it seems you have no choice but to find a way past the mountains.\n");
     _getch();
+    */
+
+    string player_name;
+
+
+    int 
+
     return 0;
 }
 
