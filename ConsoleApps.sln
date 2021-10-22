@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BusCharter", "BusCharter\Bu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Averages", "Averages\Averages.vcxproj", "{4E5D6B7E-F22B-49FC-B2F8-B10FB3968E68}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Science Quiz Using If", "Science Quiz Using If\Science Quiz Using If.vcxproj", "{3B713909-18D0-4DBD-B7DF-34945B575DEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -121,6 +123,14 @@ Global
 		{4E5D6B7E-F22B-49FC-B2F8-B10FB3968E68}.Release|x64.Build.0 = Release|x64
 		{4E5D6B7E-F22B-49FC-B2F8-B10FB3968E68}.Release|x86.ActiveCfg = Release|Win32
 		{4E5D6B7E-F22B-49FC-B2F8-B10FB3968E68}.Release|x86.Build.0 = Release|Win32
+		{3B713909-18D0-4DBD-B7DF-34945B575DEF}.Debug|x64.ActiveCfg = Debug|x64
+		{3B713909-18D0-4DBD-B7DF-34945B575DEF}.Debug|x64.Build.0 = Debug|x64
+		{3B713909-18D0-4DBD-B7DF-34945B575DEF}.Debug|x86.ActiveCfg = Debug|Win32
+		{3B713909-18D0-4DBD-B7DF-34945B575DEF}.Debug|x86.Build.0 = Debug|Win32
+		{3B713909-18D0-4DBD-B7DF-34945B575DEF}.Release|x64.ActiveCfg = Release|x64
+		{3B713909-18D0-4DBD-B7DF-34945B575DEF}.Release|x64.Build.0 = Release|x64
+		{3B713909-18D0-4DBD-B7DF-34945B575DEF}.Release|x86.ActiveCfg = Release|Win32
+		{3B713909-18D0-4DBD-B7DF-34945B575DEF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
