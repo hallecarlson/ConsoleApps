@@ -52,22 +52,22 @@ int main()
 {
     printf("Science Quiz\nCreated By: Halle Carlson\n\n");
 
-    printf("Please enter your name:\n");
+    printf("Please enter your name:\nPlayer:");
     string name;
     cin >> name;
     fseek(stdin, 0, SEEK_END);
 
-    printf("Hi, %s!\n", name.c_str());
+    printf("\nHi, %s!\n", name.c_str());
     _getch();
     printf("You will be asked 3 multiple choice questions related to science.\n");
     _getch();
-    printf("Points are scored as follows:\n")
+    printf("Points are scored as follows:\n");
     _getch();
     printf("\tCorrect answer: +4 points\n");
-    printf("\tIncorrect answer: -1 point\n");
-    _getch(); 
-    printf("\tUnlisted answer: no change\n");
-    printf("\tGood luck!\n\n");
+    printf("\tIncorrect answer: -1 point\n");     
+    printf("\tUnlisted answer: no change\n\n");
+    _getch();
+    printf("Good luck!\n\n");
     _getch();
 
     int score;
@@ -87,7 +87,7 @@ int main()
     if (q1 == 'b')
     {
         printf("correct\n\n");
-        score + 4;
+        score = score + 4;
     }
     else if (q1 == 'a' || q1 == 'c' || q1 == 'd')
     {
@@ -115,7 +115,7 @@ int main()
     if (q2 == 'd')
     {
         printf("correct\n\n");
-        score + 4;
+        score = score + 4;
     }
     else if (q2 == 'a' || q2 == 'b' || q2 == 'c')
     {
@@ -143,7 +143,7 @@ int main()
     if (q3 == 'b')
     {
         printf("correct\n\n");
-        score + 4;
+        score = score + 4;
     }
     else if (q3 == 'a' || q3 == 'c' || q3 == 'd')
     {
@@ -159,9 +159,10 @@ int main()
 
     printf("Congradulations, %s, you finished the quiz!\n\n", name.c_str());
     _getch();
-    
+    printf("-------------------------------------------------------\n");
+    printf("\tThis game");
     printf("\tPlayer: %s\n", name.c_str());
-    printf("\tScore: %i\n\n", score);
+    printf("\tScore:  %i\n\n", score);
 
     printf("Thanks for playing!");
     _getch();
