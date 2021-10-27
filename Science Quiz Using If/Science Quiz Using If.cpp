@@ -3,9 +3,15 @@
     Author:         Halle Carlson
     Project Name:   Problem GS03-02 (Science Quiz using if)
     File Name:      Science Quiz Using If.cpp
-    Purpose:        
+    Purpose:        Write a program that gives a student a multiple choice science quiz. The program should use if to determine 
+                    whether the player's answers are correct or not, and add 4 points for correct answers, subtract 1 point for
+                    incorrect answers, and not change points for answers that are not listed.
 
-    Pseudocode:
+    Pseudocode:     The program prompts the player to input their name. Then, instructions are given to explain how the quiz works. 
+                    The questions and multiple choice answers are outputted to the screen and the player is prompted to input either 
+                    a, b, c, or d. The program outputs a message telling the player whether their answer was correct or incorrect, 
+                    and then proceeds to the next question. Once the player has answered all 3 questions, the program outputs   
+                    their name and score.
 
     Maintenance Log:
     Date: 10/22/21  Done: 
@@ -25,6 +31,13 @@
                     Added comments
                     Formatted
                     Pushed to GitHub
+                    Pulled from GitHub
+                    Added code to output instructions 
+                    Added code to output the player's name and score after they finish the quiz
+                    Updated code and comments
+                    Formatted code and comments
+                    Added pseudocode
+                    Pushed to GitHub
 */
 
 #include <iostream>
@@ -39,14 +52,23 @@ int main()
 {
     printf("Science Quiz\nCreated By: Halle Carlson\n\n");
 
-    printf("Please enter your name:");
+    printf("Please enter your name:\n");
     string name;
     cin >> name;
     fseek(stdin, 0, SEEK_END);
 
     printf("Hi, %s!\n", name.c_str());
-    //instructions here
-    printf("Good luck!\n\n");
+    _getch();
+    printf("You will be asked 3 multiple choice questions related to science.\n");
+    _getch();
+    printf("Points are scored as follows:\n")
+    _getch();
+    printf("\tCorrect answer: +4 points\n");
+    printf("\tIncorrect answer: -1 point\n");
+    _getch(); 
+    printf("\tUnlisted answer: no change\n");
+    printf("\tGood luck!\n\n");
+    _getch();
 
     int score;
     score = 0;
@@ -69,15 +91,14 @@ int main()
     }
     else if (q1 == 'a' || q1 == 'c' || q1 == 'd')
     {
-        printf("incorrect\n\n");
+        printf("incorrect\n");
         score--;
-        //print correct answer
+        printf("correct answer: b\n\n");
     }
     else if (q1 != 'a' || q1 != 'b' || q1 != 'c' || q1 != 'd')
     {
-        printf("invalid input\n\n");
-        score--;
-        //print correct answer
+        printf("invalid input\n");
+        printf("correct answer: b\n\n");
     }
 
     printf("Question 2:\n");
@@ -98,15 +119,14 @@ int main()
     }
     else if (q2 == 'a' || q2 == 'b' || q2 == 'c')
     {
-        printf("incorrect\n\n");
+        printf("incorrect\n");
         score--;
-        //print correct answer
+        printf("correct answer: d\n\n");
     }
     else if (q2 != 'a' || q2 != 'b' || q2 != 'c' || q2 != 'd')
     {
-        printf("invalid input\n\n");
-        score--;
-        //print correct answer
+        printf("invalid input\n");
+        printf("correct answer: d\n\n");
     }
     
     printf("Question 3:\n");
@@ -127,36 +147,26 @@ int main()
     }
     else if (q3 == 'a' || q3 == 'c' || q3 == 'd')
     {
-        printf("incorrect\n\n");
+        printf("incorrect\n");
         score--;
-        //print correct answer
+        printf("correct answer: b\n\n");
     }
     else if (q3 != 'a' || q3 != 'b' || q3 != 'c' || q3 != 'd')
     {
-        printf("invalid input\n\n");
-        score--;
-        //print correct answer
+        printf("invalid input\n");
+        printf("correct answer: b\n\n");
     }
-    /*
-    Questions:
-    1.  What, in layman's terms, is the role of vacuoles in animal cells?
-        a. adjust cell size
-        b. maintain water balance
-        c. waste management                     //correct answer   
-        d. protein production
 
-    2. Which of the following is NOT a nitrogenous base present in RNA nucleotides?
-        a. adenine (A)
-        b. guanine (G)
-        c. cytosine (C)
-        d. thymine (T)                          //correct answer
+    printf("Congradulations, %s, you finished the quiz!\n\n", name.c_str());
+    _getch();
+    
+    printf("\tPlayer: %s\n", name.c_str());
+    printf("\tScore: %i\n\n", score);
 
-    3. What signifies that certain elements on the periodic table have the same valence electron configuration?
-        a. the elements are in the same period
-        b. the elements are in the same group   //correct answer
-        c. the elements are in the same subcategory
-        d. elements cannot have the same valence electron configurations
-    */
+    printf("Thanks for playing!");
+    _getch();
+
+    return 0;
 }
 
 
