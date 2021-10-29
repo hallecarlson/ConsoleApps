@@ -38,6 +38,11 @@
                     Formatted code and comments
                     Added pseudocode
                     Pushed to GitHub
+
+    Date: 10/29/21  Done:
+                    Tested code for problems
+                    Formatted code and output
+                    Pushed to GitHub
 */
 
 #include <iostream>
@@ -50,9 +55,9 @@ using namespace std;
 
 int main()
 {
-    printf("Science Quiz\nCreated By: Halle Carlson\n\n");
-
-    printf("Please enter your name:\nPlayer:");
+    printf("Science Quiz\nCreated By: Halle Carlson\n");
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("Please enter your name:\n\tPlayer:");
     string name;
     cin >> name;
     fseek(stdin, 0, SEEK_END);
@@ -67,7 +72,8 @@ int main()
     printf("\tIncorrect answer: -1 point\n");     
     printf("\tUnlisted answer: no change\n\n");
     _getch();
-    printf("Good luck!\n\n");
+    printf("Good luck!\n");
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     _getch();
 
     int score;
@@ -79,92 +85,95 @@ int main()
     printf("\tb. maintain water balance\n");    //correct answer
     printf("\tc. waste management\n");
     printf("\td. protein production\n\n");
-
+    
+    printf("\tAnswer:");
     char q1;
     scanf_s("%c", &q1);
     fseek(stdin, 0, SEEK_END);
 
     if (q1 == 'b')
     {
-        printf("correct\n\n");
+        printf("\tcorrect\n");
         score = score + 4;
     }
     else if (q1 == 'a' || q1 == 'c' || q1 == 'd')
     {
-        printf("incorrect\n");
+        printf("\tincorrect\n");
         score--;
-        printf("correct answer: b\n\n");
+        printf("\tcorrect answer: b\n");
     }
     else if (q1 != 'a' || q1 != 'b' || q1 != 'c' || q1 != 'd')
     {
-        printf("invalid input\n");
-        printf("correct answer: b\n\n");
+        printf("\tinvalid input\n");
+        printf("\tcorrect answer: b\n");
     }
-
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("Question 2:\n");
     printf("%s, which of the following is NOT a nitrogenous base present in RNA nucleotides ?\n", name.c_str());
-    printf("\ta.adenine(A)");
-    printf("\tb.guanine(G)");
-    printf("\tc.cytosine(C)");
-    printf("\td.thymine(T)");   //correct answer
+    printf("\ta.adenine(A)\n");
+    printf("\tb.guanine(G)\n");
+    printf("\tc.cytosine(C)\n");
+    printf("\td.thymine(T)\n\n");   //correct answer
 
+    printf("\tAnswer:");
     char q2;
     scanf_s("%c", &q2);
     fseek(stdin, 0, SEEK_END);
 
     if (q2 == 'd')
     {
-        printf("correct\n\n");
+        printf("\tcorrect\n");
         score = score + 4;
     }
     else if (q2 == 'a' || q2 == 'b' || q2 == 'c')
     {
-        printf("incorrect\n");
+        printf("\tincorrect\n");
         score--;
-        printf("correct answer: d\n\n");
+        printf("\tcorrect answer: d\n");
     }
     else if (q2 != 'a' || q2 != 'b' || q2 != 'c' || q2 != 'd')
     {
-        printf("invalid input\n");
-        printf("correct answer: d\n\n");
+        printf("\tinvalid input\n");
+        printf("\tcorrect answer: d\n");
     }
-    
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("Question 3:\n");
     printf("%s, what signifies that certain elements on the periodic table have the same valence electron configuration ?\n", name.c_str());
     printf("\ta.the elements are in the same period\n");
     printf("\tb.the elements are in the same group\n");     //correct answer
     printf("\tc.the elements are in the same subcategory\n");
-    printf("\td.elements cannot have the same valence electron configurations\n");
+    printf("\td.elements cannot have the same valence electron configurations\n\n");
     
+    printf("\tAnswer:");
     char q3;
     scanf_s("%c", &q3);
     fseek(stdin, 0, SEEK_END);
 
     if (q3 == 'b')
     {
-        printf("correct\n\n");
+        printf("\tcorrect\n");
         score = score + 4;
     }
     else if (q3 == 'a' || q3 == 'c' || q3 == 'd')
     {
-        printf("incorrect\n");
+        printf("\tincorrect\n");
         score--;
-        printf("correct answer: b\n\n");
+        printf("\tcorrect answer: b\n");
     }
     else if (q3 != 'a' || q3 != 'b' || q3 != 'c' || q3 != 'd')
     {
-        printf("invalid input\n");
-        printf("correct answer: b\n\n");
+        printf("\tinvalid input\n");
+        printf("\tcorrect answer: b\n");
     }
-
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("Congradulations, %s, you finished the quiz!\n\n", name.c_str());
     _getch();
-    printf("-------------------------------------------------------\n");
-    printf("\tThis game");
+    printf("\tThis game\n");
     printf("\tPlayer: %s\n", name.c_str());
     printf("\tScore:  %i\n\n", score);
 
-    printf("Thanks for playing!");
+    printf("Thanks for playing!\n");
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     _getch();
 
     return 0;
