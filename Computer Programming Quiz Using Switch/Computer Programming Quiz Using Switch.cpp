@@ -17,10 +17,16 @@
     Date: 11/1/21   Done:
                     Created project
                     Added code for player name input
-                    Added code for introduction'
+                    Added code for introduction
                     Added code for questions
                     Added comments
-                    Pushed GitHub
+                    Pushed to GitHub
+
+                    Pulled from GitHub
+                    Added code
+                    Formatted code
+                    Added comments
+                    Pushed to GitHub
 */
 
 #include <iostream>
@@ -88,11 +94,11 @@ int main()
 
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("Question 2:\n");
-    printf("%s, \n", name.c_str());
-    printf("\ta. \n");
-    printf("\tb.\n");
-    printf("\tc.\n");
-    printf("\td.\n\n"); 
+    printf("%s, what data type can be used for switch branching ?\n", name.c_str());
+    printf("\ta. int\n");   //correct answer
+    printf("\tb. float\n");
+    printf("\tc. string\n");
+    printf("\td. all of the above\n\n"); 
 
     printf("\tAnswer:");
     char q2;
@@ -101,28 +107,28 @@ int main()
 
     switch (q2)
     {
-    case '': case '':
+    case 'a': case 'A':
         printf("\tcorrect\n");
         score = score + 4;
         break;
-    case '': case '': case '': case '': case '': case '':
+    case 'b': case 'B': case 'c': case 'C': case 'd': case 'D':
         printf("\tincorrect\n");
         score = score - 1;
-        printf("\tcorrect answer: \n");
+        printf("\tcorrect answer: a\n");
         break;
     default:
         printf("\tinvalid input\n");
-        printf("\tcorrect answer: \n");
+        printf("\tcorrect answer: a\n");
         break;
     }
 
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("Question 3:\n");
-    printf("%s, \n", name.c_str());
-    printf("\ta.\n");
-    printf("\tb.\n");    
-    printf("\tc.\n");
-    printf("\td.\n\n");
+    printf("%s, what does ASCII stand for\n", name.c_str());
+    printf("\ta. Assembled Standard Formatting International Index\n");
+    printf("\tb. Actuated Sanctioning Frame for Implicit Inboxing\n");    
+    printf("\tc. Arrayed Subliminal Code for Imaginative Illustrations\n");
+    printf("\td. American Standard Code for Information Interchange\n\n");
 
     printf("\tAnswer:");
     char q3;
@@ -131,18 +137,18 @@ int main()
 
     switch (q3)
     {
-    case '': case '':
+    case 'd': case 'D':
         printf("\tcorrect\n");
         score = score + 4;
         break;
-    case '': case '': case '': case '': case '': case '':
+    case 'a': case 'A': case 'b': case 'B': case 'c': case 'C':
         printf("\tincorrect\n");
         score = score - 1;
-        printf("\tcorrect answer: \n");
+        printf("\tcorrect answer: d\n");
         break;
     default:
         printf("\tinvalid input\n");
-        printf("\tcorrect answer: \n");
+        printf("\tcorrect answer: d\n");
         break;
     }
 
