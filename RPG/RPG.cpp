@@ -3,7 +3,7 @@
     Author:         Halle Carlson
     Projet Name:    RPG Instructions
     File Name:      RPG.cpp
-    Purpose:        Output a series of insructions for my RPG.
+    Purpose:        Output a series of insructions for my RPG. Generate random starting hp and assign damage range for the player.
     
     Pseudocode:     The code outputs a series of text including instructions and commands for my RPG, notes about 
                     what has and hasn't been added to the code, and narration that sets the scene for the beginning of the story.
@@ -52,6 +52,8 @@
     Date: 11/1/21   Done:
                     Fixed errors
                     Fixed output formatting
+                    Updated comments
+                    Pushed to GitHub
 */
 
 #include <iostream>
