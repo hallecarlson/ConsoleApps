@@ -48,6 +48,10 @@
                     Changed output message grammar
                     Formatted code and comments
                     Updated comments and pseudocode
+
+    Date: 11/1/21   Done:
+                    Fixed errors
+                    Fixed output formatting
 */
 
 #include <iostream>
@@ -74,13 +78,21 @@ int main()
     printf("[hp] ------------> current hit points\n");
     printf("[dp] ------------> damage points dealt per hit\n\n");
     _getch();
-
     
     printf("the are a few instances in this code where the player is prompted to enter a command, including using the spacebar to scroll through text. ");
     printf("these are placeholders and you can press any key to move on. in instances where there are multiple options for commands, all options will print out ");
     printf("in the debug window in order.\n\n");
     _getch();
+
+    printf("who are you? (input player name)");
+    string player_name;
+    cin >> player_name;
+    fseek(stdin, 0, SEEK_END);
     
+    printf("> %s... ", player_name.c_str());
+    _getch();
+    printf("that's right\n\n");
+    _getch();
 
     int player_hp_max = 30;
     int player_hp_min = 20;
@@ -90,25 +102,13 @@ int main()
     int player_dp_min = 0;
     int player_dp;
 
-    printf("who are you? (input player name)");
-    string player_name;
-    cin >> player_name; 
-    fseek(stdin, 0, SEEK_END);
-    
-    printf("> %s... ", player_name.c_str());
-    _getch();
-    printf("that's right\n\n");
-    _getch();
-
     player_hp = player_hp_min + rand() % (player_hp_max - player_hp_min + 1);   //player hit points [20, 30] / 30 max
 
     printf("[player] --> %s\n", player_name.c_str());
     printf("[hp] ------> %i / %i\n", player_hp, player_hp_max);                 //starting hp / 30 max
     printf("[dp] ------> %i - %i\n", player_dp_min, player_dp_max);             //0-10 dp
-
-
-    
-    printf("> %s found themself in a mysterious, greyscale landscape.\n");
+ 
+    printf("> %s found themself in a mysterious, greyscale landscape.\n", player_name.c_str());
     printf("> they were unsure whether they were dreaming or awake.\n");
     printf("> what will %s do now?\n\n", player_name.c_str());
     _getch();
@@ -119,7 +119,6 @@ int main()
     printf("> there was no color in this world. the landscape was painted in every shade of grey imaginable.\n");
     printf("perhaps color once belonged here, %s thought... or will belong here.\n", player_name.c_str());
     _getch();
-    _getch();
     printf("> it looked almost as if the scenery was imcomplete, like everything was in progess; stuck between existing and not existing.\n");
     _getch();
     printf("> %s didn't see any black or white...\n", player_name.c_str());
@@ -128,7 +127,7 @@ int main()
     _getch();
     printf("> %s didn't recognize any of their surroundings, yet this all felt so familiar to them...\n\n", player_name.c_str());
     _getch();
-    printf("%s pressed x key\n", player_name.c_str());
+    printf("[%s pressed x key]\n", player_name.c_str());
     printf("> %s took a closer look.\n\n", player_name.c_str());
     printf("> %s stood in a vast valley.\n", player_name.c_str());
     _getch();
