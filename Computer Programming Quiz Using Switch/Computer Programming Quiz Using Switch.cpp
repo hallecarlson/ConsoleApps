@@ -11,7 +11,11 @@
                     The questions and multiple choice answers are outputted to the screen and the player is prompted to input either
                     a, b, c, or d. The program outputs a message telling the player whether their answer was correct or incorrect, 
                     determined through switch, and then proceeds to the next question. Once the player has answered all 3 questions, 
-                    the program outputs their name and score.
+                    the program outputs their name and score. Since the program uses switch, the the program first calculates the score
+                    as an int variable. The actual point values for correct and incorrect answers are +1 and -0.25, respectively, but since int
+                    variables can't have decimal values, the program uses the same scoring as with the Science Quiz: +4 for correct and -1 for 
+                    incorrect. After the player answers all 3 questions, the program typecasts the score as a float and divides it by 4.0 to 
+                    calculate the actual score.
 
     Maintenance Log:
     Date: 11/1/21   Done:
@@ -25,6 +29,13 @@
                     Pulled from GitHub
                     Added code
                     Formatted code
+                    Added comments
+                    Pushed to GitHub
+
+    Date: 11/2/21   Done:
+                    Tested code
+                    Fixed error in code regarding score calculation
+                    Updated pseudocode
                     Added comments
                     Pushed to GitHub
 */
@@ -61,7 +72,7 @@ int main()
     _getch();
 
     int score;
-    score = 0;  //REMEMBER TO TURN INTO FLOAT AT END AND DIVIDE BY 4
+    score = 0; 
 
     printf("Question 1:\n");
     printf("%s, what is the binary value for the decimal number 8 ?\n", name.c_str());
@@ -79,7 +90,7 @@ int main()
     {
         case 'c': case 'C':
             printf("\tcorrect\n");
-            score = score + 4;
+            score = score + 4;  //score is first calculated as an int, and then typecasted as a float and divided by 4.0 at the end of the quiz
             break;
         case 'a': case 'A': case 'b': case 'B': case 'd': case 'D':
             printf("\tincorrect\n");
@@ -128,7 +139,7 @@ int main()
     printf("\ta. Assembled Standard Formatting International Index\n");
     printf("\tb. Actuated Sanctioning Frame for Implicit Inboxing\n");    
     printf("\tc. Arrayed Subliminal Code for Imaginative Illustrations\n");
-    printf("\td. American Standard Code for Information Interchange\n\n");
+    printf("\td. American Standard Code for Information Interchange\n\n");  //correct answer
 
     printf("\tAnswer:");
     char q3;
@@ -152,8 +163,8 @@ int main()
         break;
     }
 
-    char final_score;
-    final_score = (float)score / 4;
+    float final_score;
+    final_score = (float)score / 4.0;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("Congradulations, %s, you finished the quiz!\n\n", name.c_str());
     _getch();
