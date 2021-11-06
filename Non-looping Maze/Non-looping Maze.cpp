@@ -17,8 +17,13 @@
                     Added code for intro, narration, and branching
                     Pushed to GitHub
 
-    Date: 11/3/21   DoneS
-                    A
+    Date: 11/3/21   Done
+                    Added comments to outline project
+                    Added comments to map possible paths through the maze
+                    Added code to outline project
+                    Formatted code
+                    Updated code
+                    Pushed to GitHub
 
     
     Date: 11/5/21   Done:
@@ -28,12 +33,23 @@
                     Added code to format output
                     Formatted code and comments
                     Pushed to GitHub
+                    
+                    Pulled from GitHub
+                    Fixed unfinished maintenance log for 11/3 due to keyboard issue
+                    Added code
+                    Updated code
+                    Added ASCII art for end messages
+                    Formatted code and comments
+                    Fixed errors
+                    Pushed to GitHub
 */
 
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
 #include <string>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 int main()
@@ -76,7 +92,7 @@ int main()
 
     if (choice1 == 2) //(1/2 == locked, 2/3 == open, 2/5 == open)
     {        
-        printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+        printf("\n------------------------------------------------------------------------------------------------------------------------\n");
         printf("[Room 2]");
         _getch();
         printf("\n%s went through the door between 1 & 2.\n");
@@ -93,16 +109,23 @@ int main()
 
         if (choice2 == 3) //dead end (2/3 == locked)
         {
-            printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+            printf("\n------------------------------------------------------------------------------------------------------------------------\n");
             printf("[Room 3]\n");
             printf("\n%s went through the door between 2 & 3.\n");
             printf("The door locked behind %s.\n\n", name.c_str());
             printf("There are no other doors in Room 3.\n\n");
             _getch();
-            printf("You have reached a dead end.\n\n");
+            printf("You have reached a dead end.\n");
             printf("------------------------------------------------------------------------------------------------------------------------\n\n");
             _getch();            
-            printf("\t\t\tGAME OVER\n");    //ASCII GAME OVER         
+            printf("       GGGGGGGGGGG      AAA      M         M  EEEEEEEEEEE    OOOOOOOOOOO  V          V  EEEEEEEEEEE  RRRRRRRRRRR\n");
+            printf("       G         G     A   A     MM       MM  E              O         O  V          V  E            R         R\n");
+            printf("       G              A     A    M M     M M  E              O         O  V          V  E            R         R\n");
+            printf("       G             A       A   M  M   M  M  EEEEEEEEEEE    O         O   V       V    EEEEEEEEEEE  R         R\n");
+            printf("       G    GGGGGG  AAAAAAAAAAA  M   M M   M  E              O         O    V     V     E            RRRRRRRRRRR\n");
+            printf("       G         G  A         A  M    M    M  E              O         O     V   V      E            R       R\n");
+            printf("       G         G  A         A  M         M  E              O         O      V V       E            R        R\n");
+            printf("       GGGGGGGGGGG  A         A  M         M  EEEEEEEEEEE    OOOOOOOOOOO       V        EEEEEEEEEEE  R         R\n");
         }
 
         else if (choice2 == 5)
@@ -122,18 +145,49 @@ int main()
             scanf_s("%i", &choice5);
             fseek(stdin, 0, SEEK_END);           
 
-            if (choice5 = 4)
+            if (choice5 = 4) //UNFINISHED
             {
-                printf("------------------------------------------------------------------------------------------------------------------------\n\n");
-                printf("[Room 4]\n");
+                printf("\n------------------------------------------------------------------------------------------------------------------------\n");
+                printf("[Room 4]\n"); //must go to 7 (4/5 == locked, 4/7 == open)
                 _getch();
                 printf("\n%s went through the door between 5 & 4.\n");
                 printf("The door locked behind %s.\n\n", name.c_str());
+                _getch();                
+                printf("The door to 7 is open. It looks like this is the only way %s can go.", name.c_str());
                 _getch();
-                //must go to 7 (4/5 == locked, 4/7 == open)
-                //must go to 8 (4/7 == locked, 7/8 == open)
-                //must go to 9 (7/8 == locked, 8/9 == open)
-                //win (9 == end)
+                printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+                printf("[Room 7]\n"); //must go to 8 (4/7 == locked, 7/8 == open)
+                _getch();
+                printf("\n%s went through the door between 4 & 7.\n");
+                printf("The door locked behind %s.\n\n", name.c_str());
+                
+                printf("The door to 8 is open. It looks like this is the only way %s can go.", name.c_str());
+                _getch();
+                printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+                printf("[Room 8]\n"); //must go to 9 (7/8 == locked, 8/9 == open)
+                _getch();
+                printf("\n%s went through the door between 7 & 8.\n");
+                printf("The door locked behind %s.\n\n", name.c_str());
+                
+                printf("The door to 9 is open.");
+                _getch();
+                printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+                printf("[Room 9]\n"); //win (9 == end)
+                _getch();
+                printf("\n%s went through the door between 8 & 9.\n");
+                printf("The door locked behind %s.\n\n", name.c_str());
+                _getch();
+                printf("%s found the exit!\n\n", name.c_str());
+                printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+                                
+                printf("Y\n");
+                printf("Y         Y  OOOOOOOOOOO  U         U    W         W  I  N N       N\n");
+                printf(" Y       Y   O         O  U         U    W    W    W  I  N  N      N\n");
+                printf("  Y     Y    O         O  U         U    W   W W   W  I  N   N     N\n");
+                printf("   Y Y Y     O         O  U         U    W  W   W  W  I  N    N    N\n");
+                printf("     Y       O         O  U         U    W W     W W  I  N     N   N\n");
+                printf("     Y       O         O  U         U    W         W  I  N      N  N\n");
+                printf("     Y       OOOOOOOOOOO  UUUUUUUUUUU    W         W  I  N       N N\n");
             }
 
             else if (choice5 = 6) //dead end (5/6 == locked)
@@ -148,7 +202,14 @@ int main()
                 printf("You have reached a dead end.\n\n");
                 printf("------------------------------------------------------------------------------------------------------------------------\n\n");
                 _getch();
-                printf("\t\t\tGAME OVER\n");    //ASCII GAME OVER               
+                printf("       GGGGGGGGGGG      AAA      M         M  EEEEEEEEEEE    OOOOOOOOOOO  V          V  EEEEEEEEEEE  RRRRRRRRRRR\n");
+                printf("       G         G     A   A     MM       MM  E              O         O  V          V  E            R         R\n");
+                printf("       G              A     A    M M     M M  E              O         O  V          V  E            R         R\n");
+                printf("       G             A       A   M  M   M  M  EEEEEEEEEEE    O         O   V       V    EEEEEEEEEEE  R         R\n");
+                printf("       G    GGGGGG  AAAAAAAAAAA  M   M M   M  E              O         O    V     V     E            RRRRRRRRRRR\n");
+                printf("       G         G  A         A  M    M    M  E              O         O     V   V      E            R       R\n");
+                printf("       G         G  A         A  M         M  E              O         O      V V       E            R        R\n");
+                printf("       GGGGGGGGGGG  A         A  M         M  EEEEEEEEEEE    OOOOOOOOOOO       V        EEEEEEEEEEE  R         R\n");
             }
         }
     }
@@ -170,7 +231,7 @@ int main()
         scanf_s("%i", &choice4);
         fseek(stdin, 0, SEEK_END);
 
-        if (choice4 == 5) //(4/5 == locked, 2/5 == open, 5/6 == open)
+        if (choice4 == 5) //(4/5 == locked, 5/2 == open, 5/6 == open)
         {
             printf("------------------------------------------------------------------------------------------------------------------------\n\n");
             printf("[Room 5]\n");
@@ -185,7 +246,7 @@ int main()
             printf("\tb. Room 6\n");
             printf("> ");
             scanf_s("%i", &choice5);
-            fseek(stdin, 0, SEEK_END)
+            fseek(stdin, 0, SEEK_END);
 
             if (choice5 == 2) //must go to 3 (2/5 == closed, 2/3 == open, 1/2 == closed)
             {
@@ -207,7 +268,14 @@ int main()
                 printf("You have reached a dead end.\n\n");
                 printf("------------------------------------------------------------------------------------------------------------------------\n\n");
                 _getch();
-                printf("\t\t\tGAME OVER\n");    //ASCII GAME OVER  
+                printf("       GGGGGGGGGGG      AAA      M         M  EEEEEEEEEEE    OOOOOOOOOOO  V          V  EEEEEEEEEEE  RRRRRRRRRRR\n");
+                printf("       G         G     A   A     MM       MM  E              O         O  V          V  E            R         R\n");
+                printf("       G              A     A    M M     M M  E              O         O  V          V  E            R         R\n");
+                printf("       G             A       A   M  M   M  M  EEEEEEEEEEE    O         O   V       V    EEEEEEEEEEE  R         R\n");
+                printf("       G    GGGGGG  AAAAAAAAAAA  M   M M   M  E              O         O    V     V     E            RRRRRRRRRRR\n");
+                printf("       G         G  A         A  M    M    M  E              O         O     V   V      E            R       R\n");
+                printf("       G         G  A         A  M         M  E              O         O      V V       E            R        R\n");
+                printf("       GGGGGGGGGGG  A         A  M         M  EEEEEEEEEEE    OOOOOOOOOOO       V        EEEEEEEEEEE  R         R\n");
             }
 
             else if (choice5 == 6) //dead end (5/6 == closed)
@@ -222,20 +290,38 @@ int main()
                 printf("You have reached a dead end.\n\n");
                 printf("------------------------------------------------------------------------------------------------------------------------\n\n");
                 _getch();
-                printf("\t\t\tGAME OVER\n");    //ASCII GAME OVER
+                printf("       GGGGGGGGGGG      AAA      M         M  EEEEEEEEEEE    OOOOOOOOOOO  V          V  EEEEEEEEEEE  RRRRRRRRRRR\n");
+                printf("       G         G     A   A     MM       MM  E              O         O  V          V  E            R         R\n");
+                printf("       G              A     A    M M     M M  E              O         O  V          V  E            R         R\n");
+                printf("       G             A       A   M  M   M  M  EEEEEEEEEEE    O         O   V       V    EEEEEEEEEEE  R         R\n");
+                printf("       G    GGGGGG  AAAAAAAAAAA  M   M M   M  E              O         O    V     V     E            RRRRRRRRRRR\n");
+                printf("       G         G  A         A  M    M    M  E              O         O     V   V      E            R       R\n");
+                printf("       G         G  A         A  M         M  E              O         O      V V       E            R        R\n");
+                printf("       GGGGGGGGGGG  A         A  M         M  EEEEEEEEEEE    OOOOOOOOOOO       V        EEEEEEEEEEE  R         R\n");
             }
         }
 
-        else if (choice4 == 7)
+        else if (choice4 == 7) //UNFINISHED
         {
-            //must go to 8 (4/7 == locked, 7/8 == open)
-            //must go to 9 (7/8 == locked, 8/9 == open)
+            printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+            printf("[Room 7]\n"); //must go to 8 (4/7 == locked, 7/8 == open)
+            _getch();
+            printf("\n%s went through the door between 5 & 4.\n");
+            printf("The door locked behind %s.\n\n", name.c_str());
+            _getch();
+                        
+            printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+            printf("[Room 8]\n"); //must go to 9 (7/8 == locked, 8/9 == open)
+            _getch();
+            printf("\n%s went through the door between 5 & 4.\n");
+            printf("The door locked behind %s.\n\n", name.c_str());
+            _getch();
+
             //win (9 == end)
         }
-    }
+    }    
 
-    printf("\n");
-    printf("\n");
+    return 0;
 }
 
 
