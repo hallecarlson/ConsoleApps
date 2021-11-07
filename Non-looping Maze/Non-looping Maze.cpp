@@ -54,10 +54,10 @@ using namespace std;
 
 int main()
 {
-    printf("Welcome to my maze game!\nCreated By: Halle Carlson\n");
-    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+    printf("Welcome to my maze game!\nCreated By: Halle Carlson\n\n");
     
-    printf("Please enter your name:\n\tPlayer:");
+    printf("Please enter your name:\n\t> ");
     string name;
     cin >> name;
     fseek(stdin, 0, SEEK_END);
