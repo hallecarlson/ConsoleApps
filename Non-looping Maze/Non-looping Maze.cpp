@@ -8,7 +8,11 @@
                     go back. Use nested branching. There are three+ levels of nesting. The user must be able to take each 
                     to the very end, even if it leads to a dead end.
 
-    Pseudocode:
+    Pseudocode:     The program asks the player to input their name. An explanation of the maze game is given. The program first asks the player
+                    where they want to go from room 1 (room 2 or room 4), then, the paths can branch from there. The doors close behind the player
+                    and they cannot go back, creating more dead ends on top of the dead ends that already exist. There are only 2 paths that lead
+                    to success: 1->2->5->4->7->8->9 and 1->4->7->8->9. When the player reaches the end (room 9) or a dead end, an ASCII art end 
+                    screen message is printed. There are 8 possible outcomes total.
 
     Maintenance Log:
     Date: 11/2/21   Done:
@@ -57,6 +61,8 @@
                     Added code for consistency
                     Added code to complete all paths
                     Tested all paths
+                    Pushed to GitHub
+                    Added pseudocode
                     Pushed to GitHub
 
 */
