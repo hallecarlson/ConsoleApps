@@ -22,6 +22,10 @@
                     Formatted output
                     Pushed to GitHub
 
+    Date: 11/9/21   Done:
+                    Added code
+                    Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -42,22 +46,20 @@ int main()
     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
     printf("You wake up in a strange room. The room is dim, constructed from cobblestone and only lit by wall sconces.\n");
     printf("You carefully examine the room for clues as to where you are and how to get out.\n");
-    /*
     printf("The walls to your left, right, and in front of you each have a door.\n");
     printf("All three doors look completely identical.\n");
-    */
-    printf("The walls to your right and left are barren, except for cobwebs and spiders here and there.\n");
+    printf("The the room is damp and riddled with cobwebs. It looks as is nobody has been here for a while.\n\n");
     printf("You turn around to look at the fourth wall.\n");
     printf("Behind you is a wall lined from head to toe with weapons.\n");
     printf("There are swords, maces, knifes, guns, anything you could ever imagine.\n");
     printf("You figure you should probably take one before you exit the room.\n\n");
     printf("------------------------------------------------------------------------------------------------------------------------\n\n");
-    printf("Upon closer look, most of the weapons look either too dull or fragile, or too large for you to wield.\n");
+    printf("Upon closer look, most of the weapons look either too dull or fragile to be effective, or too large for you to wield.\n");
     printf("You carefully scan the wall for a suitable weapon.\n");
     printf("You pick apart three possible choices.\n");
-    printf("\ta. a light crossbow with 3 bolts\n");
-    printf("\tb. a pair of polished shortswords\n");
-    printf("\n");
+    printf("\ta. a light crossbow made of steel, with 3 sharp bolts\n");
+    printf("\tb. a pair of polished shortswords with ornately-crafted hilts, suited for small hands to grip\n");
+    printf("\tc. a round shield, crafted with tough wood, metal rims, and leather straps on the back\n");
     printf("\n");
     printf("\n");
     printf("\n");
