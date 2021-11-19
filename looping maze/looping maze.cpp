@@ -3,9 +3,22 @@
     Author:         Halle Carlson
     Project Name:   Problem GS04-05 (looping maze)
     File Name:      looping maze.cpp
-    Purpose:        
+    Purpose:        Create a new version of the maze from GS03-05 that allows the player to go back and forth through doors
+                    instead of not being able to go back through the same door. It's easier to start from scratch instead of 
+                    adding the code from the old project. There should be an overarching loop and branching for each room.
 
-    Pseudocode:     
+    Pseudocode:     Title
+                    Player inputs name
+                    Instructions/introduction
+                    Variables for program
+                    Screen cleared 
+                    Player starts in room 1 and is given the choice to go to either room 2 or room 4
+                    Player input
+                    Process repeats each time the player enters a room, unless it is a dead end (3 and 6), in which the player
+                    automatically goes back to the previous room
+                    Game ends when player reaches room 9
+                    End screen
+                    Player chooses to retake or end the maze game
 
     Maintenance Log:
     Date: 11/15/21  Done:
@@ -18,6 +31,19 @@
                     Formatted code and comments
                     Edited code
                     Pushed to GitHub
+
+    Date: 11/19/21  Done:
+                    Tested code
+                    Formatted code
+                    Tried to implement looping for individual room inputs
+                    Tested code again
+                    Edited code back to what it was before because the new code didn't work and was taking too much time for
+                    something I didn't need to do
+                    Tested code one more time
+                    Added comments
+                    Added pseudocode
+                    Pushed to GitHub
+
 
 */
 
@@ -34,7 +60,7 @@ int main()
     printf("------------------------------------------------------------------------------------------------------------------------\n\n");
     printf("                                                   Looping Maze\n");
     printf("                                             Created By: Halle Carlson\n\n");
-    printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
 
     printf("Please enter your name:\n> ");
     string name;
@@ -51,9 +77,9 @@ int main()
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     _getch();
 
-    int room;
-    int choice;
+    int room;    
     char retake;
+    int choice;
 
     do
     {
@@ -63,26 +89,26 @@ int main()
         do
         {
             if (room == 1)
-            {
-                printf("------------------------------------------------------------------------------------------------------------------------\n");
-                printf("[Room 1]\n"); //connects to 2 & 4
-                _getch();
-                printf("Go where ?\n");
-                printf("\ta. Room 2\n");
-                printf("\tb. Room 4\n");
-                printf("> ");
-                scanf_s("%i", &room);
-                fseek(stdin, 0, SEEK_END);
+            {                
+                    printf("------------------------------------------------------------------------------------------------------------------------\n");
+                    printf("[Room 1]\n"); //connects to 2 & 4
+                    _getch();
+                    printf("Go where ?\n");
+                    printf("\ta. Room 2\n");
+                    printf("\tb. Room 4\n");
+                    printf("> ");
+                    scanf_s("%i", &choice);
+                    fseek(stdin, 0, SEEK_END);
+                    
+                    if (choice == 2)
+                    {
+                        room = 2;
+                    }
 
-                if (choice == 2)
-                {
-                    room = 2;
-                }
-
-                else if (choice == 4);
-                {
-                    room = 4;
-                }
+                    else if (choice == 4)
+                    {
+                        room = 4;
+                    }
             }
 
             if (room == 2)
@@ -95,7 +121,7 @@ int main()
                 printf("\tb. Room 3\n");
                 printf("\tc. Room 5\n");
                 printf("> ");
-                scanf_s("%i", &room);
+                scanf_s("%i", &choice);
                 fseek(stdin, 0, SEEK_END);
 
                 if (choice == 1)
@@ -103,12 +129,12 @@ int main()
                     room = 1;
                 }
 
-                else if (choice == 3);
+                else if (choice == 3)
                 {
                     room = 3;
                 }
 
-                else if (choice == 5);
+                else if (choice == 5)
                 {
                     room = 5;
                 }
@@ -135,7 +161,7 @@ int main()
                 printf("\tb. Room 5\n");
                 printf("\tc. Room 7\n");
                 printf("> ");
-                scanf_s("%i", &room);
+                scanf_s("%i", &choice);
                 fseek(stdin, 0, SEEK_END);
 
                 if (choice == 1)
@@ -143,12 +169,12 @@ int main()
                     room = 1;
                 }
 
-                else if (choice == 5);
+                else if (choice == 5)
                 {
                     room = 5;
                 }
 
-                else if (choice == 7);
+                else if (choice == 7)
                 {
                     room = 7;
                 }
@@ -164,7 +190,7 @@ int main()
                 printf("\tb. Room 4\n");
                 printf("\tc. Room 6\n");
                 printf("> ");
-                scanf_s("%i", &room);
+                scanf_s("%i", &choice);
                 fseek(stdin, 0, SEEK_END);
 
                 if (choice == 2)
@@ -172,12 +198,12 @@ int main()
                     room = 2;
                 }
 
-                else if (choice == 4);
+                else if (choice == 4)
                 {
                     room = 4;
                 }
 
-                else if (choice == 6);
+                else if (choice == 6)
                 {
                     room = 6;
                 }
@@ -204,7 +230,7 @@ int main()
                 printf("\ta. Room 4\n");
                 printf("\tb. Room 8\n");
                 printf("> ");
-                scanf_s("%i", &room);
+                scanf_s("%i", &choice);
                 fseek(stdin, 0, SEEK_END);
 
                 if (choice == 4)
@@ -212,7 +238,7 @@ int main()
                     room = 4;
                 }
 
-                else if (choice == 8);
+                else if (choice == 8)
                 {
                     room = 8;
                 }
@@ -227,7 +253,7 @@ int main()
                 printf("\ta. Room 7\n");
                 printf("\tb. Room 9\n");
                 printf("> ");
-                scanf_s("%i", &room);
+                scanf_s("%i", &choice);
                 fseek(stdin, 0, SEEK_END);
 
                 if (choice == 7)
@@ -235,7 +261,7 @@ int main()
                     room = 7;
                 }
 
-                else if (choice == 9);
+                else if (choice == 9)
                 {
                     room = 9;
                 }
@@ -246,7 +272,7 @@ int main()
                 printf("------------------------------------------------------------------------------------------------------------------------\n");
                 printf("[Room 9]\n"); //win
                 _getch();
-                printf("%s found the exit !", name.c_str());
+                printf("%s found the exit !\n", name.c_str());
                 _getch();
                 printf("------------------------------------------------------------------------------------------------------------------------\n\n");
                 _getch();
