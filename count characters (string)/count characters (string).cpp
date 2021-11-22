@@ -15,17 +15,23 @@
                     Added code and comments for setup
                     Pushed to GitHub
 
+    Date: 11/22/21  Done:
+                    Minor changes
+                    Pushed to GitHub
+
 */
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
 #include <string>
 #include <windows.h>
+using namespace std;
 
 int main()
 {
-    using namespace std;
-
+    
+    
+  
 
     return 0;
 }
