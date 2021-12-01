@@ -31,6 +31,12 @@
                         Added code for narration and endings
                         Pushed to GitHub
 
+            12/1/21     Done:
+                        Pulled from GitHub
+                        Added code for narration and endings
+                        Pushed to GitHub
+
+
 */
 
 #include <iostream>
@@ -131,7 +137,7 @@ int main()
 
                 break;
             case '3': //beach
-                printf("%s opened the door between the rocking chair and the dining table.\nThey heard the sound of a calm ocean, and nothing else.\nIn front of %s, there was a peaceful beach.\n", name.c_str-str()); 
+                printf("%s opened the door between the rocking chair and the dining table.\nThey heard the sound of a calm ocean, and nothing else.\nIn front of %s, there was a peaceful beach.\n", name.c_str()); 
                 printf("The air was warm, the sky was clear, and the sand was pale.\nThere were shining seashells protruding out of the ground\nOld fallen trees had been made into habitats by the animals that lived on the beach.\n"); 
                 printf("%s removed their socks and shoes and walked around, enjoying the feeling of hot sand between their toes.\n", name.c_str()); 
                  
@@ -210,27 +216,56 @@ int main()
 
         if (choice == 1) //low&bright UNFINISHED
         {
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
+            printf("%s walked through the rippling water, which had no reaction to their movement.\nIt was cool but not cold, and sent a chilldown %s's spine.\n", name.c_str());
+            printf("%s walked into a limestone bathhouse.\nNarrow walkways formed a square around the bath.\nWaterfalls spill over the path on either side, cutting off the path to the opposite side of the room.\n", name.c_str());
+            printf("To the side of either waterfall, on the same side of the room as %s, there were two doorways.\nThe doorways were covered by curtains, which were dyed a rich purple.\n", name.c_str());
+            printf("Directly across the bath, there was a wooden door, which had worn overtime from the steam of the bath.\n");
+            _getch();
+
+            printf("Which path did %s choose?\n", name.c_str());
+            printf("\t1. the left doorway\n");
+            printf("\t2. the right doorway\n");
+            printf("\t3. the the far doorway\n");
+            printf(">");
+            scanf_s("%i", &choice);
+            fseek(stdin, 0, SEEK_END);
 
             switch (choice) //endings
             {
             case '1': //horse
-                printf("\n"); //blah blah blah
+                printf("%s walked along the narrow path to the doorway by the left waterfall.\nOn the other side of the curtain, there was a brightly lit hallway.\nThe hallway stopped and led to a door.\n", name.c_str()); 
+                _getch();
+                printf("%s opened the door and walked out onto a beautiful mountain trail.\nA majestic horse with black fur and a white mane stood, its hair flowing in the breeze.\n", name.c_str());
+                printf("The horse kneeled when it saw %s.\nThe horse was equipped with a sadle and bridle, ready to adventure with %s.\n", name.c_str());
+                printf("%s put one foot in the stirrup and grabbed onto the top of the sadle, swinging themself up onto the back of the horse.\n", name.c_str());
+                _getch();
+                printf("%s and the horse rode along the mountain trail.\n", name.c_str());
+                
+                //end message
+
                 break;
             case '2': //cottage
-                printf("\n"); //blah blah blah
+                printf("%s walked along the narrow path to the doorway by the right waterfall.\nOn the other side of the curtain, there was a dim hallway.\nThe hallway stopped and led to a door.\n", name.c_str());
+                _getch();
+                printf("%s opened the door and heard birds singing.\nThey looked up and saw that they were in an enchanted forest.\nFaries flew through the air, colorful birds perched on trees, end everything looked like it was sparkling.\n");
+                printf("%s walked around the magical scene, and saw a cozy cottage.\n", name.c_str());
+                printf("%s sat in a rocking chair on the porch, and watched the fairies.\n", name.c_str());
+                
+                //end message
+
                 break;
             case '3': //invisibility cloak
-                printf("\n"); //blah blah blah
+                printf("\n"); 
+                printf("\n");
+                printf("\n");
+                printf("\n");
+                printf("\n");
+                printf("\n");
+                printf("\n");
+                printf("\n");
+                printf("\n");
+                printf("\n");
+                printf("\n");
                 break;
             }
         }
@@ -250,13 +285,13 @@ int main()
             switch (choice) //endings
             {
             case '1': //crown
-                printf("\n"); //blah blah blah
+                printf("\n");
                 break;
             case '2': //treasure
-                printf("\n"); //blah blah blah
+                printf("\n"); 
                 break;
             case '3': //harp
-                printf("\n"); //blah blah blah
+                printf("\n"); 
                 break;
             }
         }
