@@ -27,6 +27,10 @@
                         Added comments for clarity
                         Pushed to GitHub
 
+                        Pulled from GitHub
+                        Added code for narration and endings
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -159,7 +163,7 @@ int main()
             switch (choice) //endings
             {
             case '1': //meal
-                printf("%s began to walk down the left path.\n%s thet their guard down whistled while they walked.\nIt took a few minutes to reach the end.\n", name.c_str());
+                printf("%s walked down the left path.\n%s thet their guard down whistled while they walked.\nIt took a few minutes to reach the end.\n", name.c_str());
                 printf("%s walked into an ornately decorated dining hall.\nBeautifully crafted candelabras illuminated the room\n", name.c_str());
                 printf("%s blew out the torch and took a seat at the table.\nIt was filled with platters of all their favorite foods.\n", name.c_str());
                 printf("%s enjoyed a nice meal.\n", name.c_str());
@@ -168,10 +172,22 @@ int main()
 
                 break;
             case '2': //guitar
-                printf("\n"); //blah blah blah
+                printf("%s walked down the middle path.\n%s let their guard down and danced around a bit as they walked.\nIt took a long time to reach the end.\n", name.c_str()); 
+                printf("%s walked into open air.\nThey looked forward and saw that the exit led to the top of a tall hill overlooking the sea.\n%s saw a fallen tree with flowers growing out of it.\nThey walked towards the tree and saw a guitar proped up agains the tree trunk.\n", name.c_str());
+                printf("%s sat down and pulled the guitar onto their lap.\n");
+                _getch();
+                printf("%s leaned against the tree trunk and watched seagulls fly through the air as they plucked notes on the strings.\n");
+                
+                //end message
+
                 break;
             case '3': //planetarium
-                printf("\n"); //blah blah blah
+                printf("%s walked down the right path.\n %s let their guard down for the few minutes it took to reach the end.\n", name.c_str()); 
+                printf("%s walked into a round room with a glass dome ceiling.\nIt was night, and %s could see all of the stars in the sky.\nFloor pillows were scattered around, and in the center of the room, there was a telescope.\n", name.c_str());
+                printf("%s grabbed a floor pillow and sat under the telescope.\nThey put their eye to the lens and spent the night stargazing.\n", name.c_str());
+                
+                //end message
+
                 break;
             }
         }
@@ -182,13 +198,8 @@ int main()
         printf("The room on the other side looked very, very old.\nIt seemed to be part of a temple, constructed in turquoise stone.\n");
         _getch();
         printf("There was a shallow pool of water covering most of the floor.\nThis water rippled with no visible source, which made %s wonder if there were ghosts in the temple.\n", name.c_str());
-        printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
+        printf("Directly across the room, there was an archway, separating the temple room from a source of blinding light.\nOn either side of %s, there were staircases leading to another archway above the first.\nTotal darkness lay behind the higher arch.\n", name.c_str());
+        _getch();
 
         printf("Which path did %s choose?\n", name.c_str());
         printf("\t1. The lower, bright archway\n");
@@ -199,6 +210,17 @@ int main()
 
         if (choice == 1) //low&bright UNFINISHED
         {
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+
             switch (choice) //endings
             {
             case '1': //horse
@@ -214,6 +236,17 @@ int main()
         }
         else if (choice == 2) //high&dark UNFINISHED
         {
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+            printf("\n");
+
             switch (choice) //endings
             {
             case '1': //crown
