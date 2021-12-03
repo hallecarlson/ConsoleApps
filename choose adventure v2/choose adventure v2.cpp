@@ -36,6 +36,10 @@
                         Added code for narration and endings
                         Pushed to GitHub
 
+            12/3/21     Done:
+                        Added code for narration and endings
+                        Pushed to GitHub
+
 
 */
 
@@ -255,26 +259,35 @@ int main()
 
                 break;
             case '3': //invisibility cloak
-                printf("\n"); 
-                printf("\n");
-                printf("\n");
-                printf("\n");
-                printf("\n");
-                printf("\n");
-                printf("\n");
-                printf("\n");
-                printf("\n");
-                printf("\n");
-                printf("\n");
+                printf("%s jumped into the bath and swam across.\nThe water was hot, and a layer of steam obscured %s's vision.\n", name.c_str()); 
+                printf("%s rose out of the water and opened the wooden door.\nTheir clothes were drenched and dripping water that was now cold.\n", name.c_str());
+                printf("The room behind the door was a dusty storage room.\nThere were shelves of towels, cleaning supplies, brooms, and mops.\n");
+                printf("There was another wooden door behind a cluster of supplies.\n");
+                printf("In the center of the room, there was a box\n");
+                printf("The lid was ajar, and there was a note left on top.\n%s read it.\n", name.c_str());
+                printf("''I leave my cloak of invisibility to whoever finds it''\n");
+                printf("%s gasped and opened the box.\nThere was a cloak inside made of blue velvet and violet detailing.\n", name.c_str());
+                printf("%s took the cloak and threw it over their shoulders.\n", name.c_str());
+                printf("%s's entire body dissapeared!\n", name.c_str());
+                printf("%s went to the blocked doorway.\n", name.c_str());
+                _getch();
+                printf("%s moved all of the supplpies away from the door, and opened it.\n", name.c_str());
+                _getch();
+                printf("Behind the door was an exit from the supply closet into a village.\n");
+                _getch();
+                printf("%s began a long journey to an unknown destination.\n", name.c_str());
+                
+                //end message
+                
                 break;
             }
         }
         else if (choice == 2) //high&dark UNFINISHED
         {
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
+            printf("%s walked up the left staircase and through the dark archway.\n", name.c_str());
+            printf("On the other side was a dark underground canal, and an empty gondola.\n", name.c_str());
+            printf("%s climbed onto the front  and took the oar.\n%s sailed slowly down the tunnel, with only the reflection of light off the water to guide them.\n", name.c_str());
+            printf("%s quickly stopped the gondola when they noticed that the canal was about to branch off into three seperate tunnels.\n");
             printf("\n");
             printf("\n");
             printf("\n");
