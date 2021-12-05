@@ -40,6 +40,11 @@
                         Added code for narration and endings
                         Pushed to GitHub
 
+            12/5/21     Done:
+                        Pulled from GitHub
+                        Added code for narration and endings
+                        Finished narration and endings
+                        Pushed to GitHub
 
 */
 
@@ -229,7 +234,7 @@ int main()
             printf("Which path did %s choose?\n", name.c_str());
             printf("\t1. the left doorway\n");
             printf("\t2. the right doorway\n");
-            printf("\t3. the the far doorway\n");
+            printf("\t3. the far doorway\n");
             printf(">");
             scanf_s("%i", &choice);
             fseek(stdin, 0, SEEK_END);
@@ -287,39 +292,63 @@ int main()
             printf("%s walked up the left staircase and through the dark archway.\n", name.c_str());
             printf("On the other side was a dark underground canal, and an empty gondola.\n", name.c_str());
             printf("%s climbed onto the front  and took the oar.\n%s sailed slowly down the tunnel, with only the reflection of light off the water to guide them.\n", name.c_str());
-            printf("%s quickly stopped the gondola when they noticed that the canal was about to branch off into three seperate tunnels.\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
-            printf("\n");
+            printf("%s quickly stopped the gondola when they noticed that the canal was about to branch off into three seperate paths.\n");
+            printf("In the low light, all three canals looked identical.\n");
+            _getch();
+
+            printf("Which path did %s choose?\n", name.c_str());
+            printf("\t1. the left canal\n");
+            printf("\t2. the middle canal\n");
+            printf("\t3. the right canal\n");
+            printf(">");
+            scanf_s("%i", &choice);
+            fseek(stdin, 0, SEEK_END);         
 
             switch (choice) //endings
             {
             case '1': //crown
-                printf("\n");
+                printf("%s steered the gondola down the left canal.\n");
+                printf("After a few minutes, %s saw a small dock lit by two torches on either side.\n", name.c_str());
+                printf("%s slowed the gondola to a halt and grabbed the rope on the dock, tying the gondola to a post.\n", name.c_str());
+                printf("They hopped off and walked down the dock, where a staricase waited at the end.\n");
+                printf("%s walked up the stairs, which led into a bright hall with marble pedestals holding rare artifacts.\n", name.c_str());
+                printf("At the end of the hall, in the center of the walkway, was a lone pedestal, displaying a regal crown.\n");
+                printf("%s had a feeling this was their reward for navigating the cave.\n", name.c_str());
+                printf("%s took the crown and put it on their head, and then they walked back and forth the hall, examining the artifacts and imagining their stories.\n", name.c_str());
+                
+                //end message
+
                 break;
             case '2': //treasure
-                printf("\n"); 
+                printf("%s steered the gondola down the middle canal.\n", name.c_str()); 
+                printf("After a long while, %s saw a riverbank, lit by a torch stuck in the sand.\n", name.c_str()); 
+                printf("%s hopped onto the riverbank and noticed a large vault door, cracked open.\n", name.c_str()); 
+                printf("%s went to open the door wider, and endered the vault.\n", name.c_str()); 
+                printf("%s's eyes opened wide in shock at the treasure trove in front of them.\n", name.c_str()); 
+                printf("There was gold, and gems, and jewelry, and any other treasure imaginable.\n"); 
+                printf("%s ran through the vault, exploring the large gold piles.\n", name.c_str()); 
+                
+                //end message
+
                 break;
             case '3': //harp
-                printf("\n"); 
+                printf("%s steered the gondola down the right canal.\n", name.c_str()); 
+                printf("After a short while, %s saw a large dock, devoid of any boats.\n", name.c_str()); 
+                printf("%s grabbed a rope bound to a post and tied the gondola to the dock.\n", name.c_str()); 
+                printf("They hopped onto the gondola and walked down the large dock, which was next to a raised town street.\n"); 
+                printf("It was dark out, and %s noticed a staircase lit by a streetlight.\n", name.c_str()); 
+                printf("%s climbed the staircase, which was oddly long.\nOnce they reached the top, %s saw that they were on a balcony overlooking a plaza.\nThere was a fountain in the middle, and benches all around.\n", name.c_str()); 
+                printf("%s didn't see anyone down there.\n", name.c_str()); 
+                printf("%s took a seat on a short, cushioned chair.\n", name.c_str()); 
+                printf("There was a beautiful harp next to the chair.\nIt was coated in gold and its strings looked like thin tendons.\n");
+                printf("%s played a melodic song under the stars to the empty town plaza.\n");
+                
+                //end message
+
                 break;
             }
         }
     }
-
-    printf("\n");
-    printf("\n");
-    printf("\n");
-    printf("\n");
-    printf("\n");
-    printf("\n");
-    printf("\n");
-    printf("\n");
-    printf("\n");
-    printf("\n");
 
     return 0;
 }
