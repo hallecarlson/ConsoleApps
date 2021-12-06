@@ -79,16 +79,6 @@
                         Checked code format
                         Added pseudocode
                         Pushed to GitHub
-
-            12/6/21     Done:
-                        Pulled from GitHub
-                        Tested code
-                        Fixed errors
-                        Tried to implement looping for final level of nested branching
-                        Failed
-                        Tested code again
-                        Discovered more errors
-                        Pushed to GitHub
 */
 
 #include <iostream>
