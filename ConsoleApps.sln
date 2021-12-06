@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "looping maze", "looping maz
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "choose adventure v2", "choose adventure v2\choose adventure v2.vcxproj", "{FD35DE04-AB70-4EE3-BC63-C8F43529563A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RPGmainmenu", "RPGmainmenu\RPGmainmenu.vcxproj", "{2262FA64-216B-4C6C-9530-080CE4089890}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -201,6 +203,14 @@ Global
 		{FD35DE04-AB70-4EE3-BC63-C8F43529563A}.Release|x64.Build.0 = Release|x64
 		{FD35DE04-AB70-4EE3-BC63-C8F43529563A}.Release|x86.ActiveCfg = Release|Win32
 		{FD35DE04-AB70-4EE3-BC63-C8F43529563A}.Release|x86.Build.0 = Release|Win32
+		{2262FA64-216B-4C6C-9530-080CE4089890}.Debug|x64.ActiveCfg = Debug|x64
+		{2262FA64-216B-4C6C-9530-080CE4089890}.Debug|x64.Build.0 = Debug|x64
+		{2262FA64-216B-4C6C-9530-080CE4089890}.Debug|x86.ActiveCfg = Debug|Win32
+		{2262FA64-216B-4C6C-9530-080CE4089890}.Debug|x86.Build.0 = Debug|Win32
+		{2262FA64-216B-4C6C-9530-080CE4089890}.Release|x64.ActiveCfg = Release|x64
+		{2262FA64-216B-4C6C-9530-080CE4089890}.Release|x64.Build.0 = Release|x64
+		{2262FA64-216B-4C6C-9530-080CE4089890}.Release|x86.ActiveCfg = Release|Win32
+		{2262FA64-216B-4C6C-9530-080CE4089890}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
