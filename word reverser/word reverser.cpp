@@ -13,6 +13,9 @@
     Maintenance Log:
     Date: 12/7/21       Done:
                         Created project
+                        Added comments
+                        Added basic starting code
+                        Pushed to GitHub
 */
 
 #include <iostream>
