@@ -89,6 +89,17 @@
                         Tested code again
                         Discovered more errors
                         Pushed to GitHub
+
+            12/8/21     Done:
+                        Pulled from GitHub
+                        Got help from Mr. Miyoshi
+                        Took single quotes out of cases in switch branching for endings
+                        Tested for errors
+                        Fixed errors ( forgot a bunch of .c_str()'s )
+                        Tested each ending
+                        Pushed to GitHub
+                        
+
 */
 
 #include <iostream>
@@ -189,12 +200,12 @@ int main()
                 {
                 case 1: //kitchen/bookcase door >> sauna
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                    printf("%s opened the door between the kitchen and the bookcase.\nA wave of steam and hot air enveloped %s for a moment, and then dissapated, leaving their face dripping.\n", name.c_str());
+                     printf("%s opened the door between the kitchen and the bookcase.\nA wave of steam and hot air enveloped %s for a moment, and then dissapated, leaving their face dripping.\n", name.c_str(), name.c_str());
                     _getch();
                     printf("%s rubbed their eyes and looked forward.\nThe door led to a sauna!\n", name.c_str());
                     _getch();
-                    printf("%s removed their socks and shoes, and walked in.\n%s sat on the bench and closed their eyes, feeling tired after their journey through the cave.\n", name.c_str());
-                    _getch;
+                    printf("%s removed their socks and shoes, and walked in.\n%s sat on the bench and closed their eyes, feeling tired after their journey through the cave.\n", name.c_str(), name.c_str());
+                    _getch();
 
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                     printf("You finished the game !\n");
@@ -211,7 +222,7 @@ int main()
                     _getch();
                     printf("%s looked forward and saw a campfire in the middle of a grassy field.\nIt was night, and there were fireflies in the air.\nThe moon shined on the grass by the fire.\n", name.c_str());
                     _getch();
-                    printf("%s walked to the campfire.\nThe air was cool, and %s wondered how they could possibly be avove the ground when they were just in a cave.\n", name.c_str());
+                    printf("%s walked to the campfire.\nThe air was cool, and %s wondered how they could possibly be avove the ground when they were just in a cave.\n", name.c_str(), name.c_str());
                     _getch();
                     printf("%s saw marshmallows, graham crackers, chocolate, and skewers.\n", name.c_str());
                     _getch();
@@ -263,8 +274,8 @@ int main()
 
         else if (choice == 2) //swim forward
         {
-        printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-        printf("%s slowly walked into the pond until it was deep enough to swim in\nIt was lukewarm and refreshing.\n", name.c_str());
+            printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+            printf("%s slowly walked into the pond until it was deep enough to swim in\nIt was lukewarm and refreshing.\n", name.c_str());
             _getch();
             printf("The pond extended into small streams leading through tunnels.\n");
             _getch();
@@ -299,7 +310,7 @@ int main()
 
             switch (choice) //endings
             {
-            case '1': //left tunnel >> meal
+            case 1: //left tunnel >> meal
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 printf("%s walked down the left path.\n", name.c_str());
                 _getch();
@@ -321,7 +332,7 @@ int main()
 
                 break;
 
-            case '2': //middle tunnel >> guitar
+            case 2: //middle tunnel >> guitar
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 printf("%s walked down the middle path.\n", name.c_str()); 
                 _getch();
@@ -333,9 +344,9 @@ int main()
                 _getch();
                 printf("%s walked towards the tree and saw a guitar proped up agains the tree trunk.\n", name.c_str());
                 _getch();
-                printf("%s sat down and pulled the guitar onto their lap.\n");
+                printf("%s sat down and pulled the guitar onto their lap.\n", name.c_str());
                 _getch();
-                printf("%s leaned against the tree trunk and watched seagulls fly through the air as they plucked notes on the strings.\n");
+                printf("%s leaned against the tree trunk and watched seagulls fly through the air as they plucked notes on the strings.\n", name.c_str());
                 _getch();
 
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
@@ -347,7 +358,7 @@ int main()
 
                 break;
 
-            case '3': //right tunnel >> planetarium
+            case 3: //right tunnel >> planetarium
                 
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 printf("%s walked down the right path.\n", name.c_str()); 
@@ -388,7 +399,7 @@ int main()
         _getch();
         printf("On either side of %s, there were staircases leading to another archway above the first.\n", name.c_str());
         _getch();
-        printf("Total darkness lay behind the higher arch.\n", name.c_str());
+        printf("Total darkness lay behind the higher arch.\n");
         printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
         _getch();
 
@@ -426,7 +437,7 @@ int main()
 
             switch (choice) //endings
             {
-            case '1': //left doorway >> horse
+            case 1: //left doorway >> horse
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 printf("%s walked along the narrow path to the doorway by the left waterfall.\n", name.c_str()); 
                 _getch();
@@ -456,7 +467,7 @@ int main()
 
                 break;
 
-            case '2': //right doorway >> cottage
+            case 2: //right doorway >> cottage
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 printf("%s walked along the narrow path to the doorway by the right waterfall.\n", name.c_str());
                 _getch();
@@ -464,7 +475,7 @@ int main()
                 _getch();
                 printf("%s walked until the hallway stopped and led to a door.\n", name.c_str());
                 _getch();
-                printf("%s opened the door and heard birds singing.\n");
+                printf("%s opened the door and heard birds singing.\n", name.c_str());
                 _getch();
                 printf("%s looked up and saw that they were in an enchanted forest.\n", name.c_str());
                 _getch();
@@ -484,7 +495,7 @@ int main()
 
                 break;
 
-            case '3': //far doorway >> invisibility cloak
+            case 3: //far doorway >> invisibility cloak
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 printf("%s jumped into the bath and swam across.\n", name.c_str()); 
                 _getch();
@@ -537,13 +548,13 @@ int main()
             printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
             printf("%s walked up the left staircase and through the dark archway.\n", name.c_str());
             _getch();
-            printf("On the other side was a dark underground canal, and an empty gondola.\n", name.c_str());
+            printf("On the other side was a dark underground canal, and an empty gondola.\n");
             _getch();
             printf("%s climbed onto the front and took the oar.\n", name.c_str());
             _getch();
             printf("%s sailed slowly down the tunnel, with only the reflection of light off the water to guide them.\n", name.c_str());
             _getch();
-            printf("%s quickly stopped the gondola when they noticed that the canal was about to branch off into three seperate paths.\n");
+            printf("%s quickly stopped the gondola when they noticed that the canal was about to branch off into three seperate paths.\n", name.c_str());
             _getch();
             printf("In the low light, all three canals looked identical.\n");
             printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
@@ -559,9 +570,9 @@ int main()
 
             switch (choice) //endings
             {
-            case '1': //left canal >> crown
+            case 1: //left canal >> crown
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                printf("\%s steered the gondola down the left canal.\n");
+                printf("\%s steered the gondola down the left canal.\n", name.c_str());
                 _getch();
                 printf("After a few minutes, %s saw a small dock lit by two torches on either side.\n", name.c_str());
                 _getch();
@@ -587,7 +598,7 @@ int main()
 
                 break;
 
-            case '2': //middle canal >> treasure
+            case 2: //middle canal >> treasure
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 printf("%s steered the gondola down the middle canal.\n", name.c_str()); 
                 _getch();
@@ -613,7 +624,7 @@ int main()
 
                 break;
 
-            case '3': //right canal >> harp
+            case 3: //right canal >> harp
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 printf("%s steered the gondola down the right canal.\n", name.c_str()); 
                 _getch();
@@ -635,7 +646,7 @@ int main()
                 _getch();
                 printf("There was a beautiful harp next to the chair.\nIt was coated in gold and its strings looked like thin tendons.\n");
                 _getch();
-                printf("%s played a melodic song under the stars to the empty town plaza.\n");
+                printf("%s played a melodic song under the stars to the empty town plaza.\n", name.c_str());
                 _getch();
 
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
