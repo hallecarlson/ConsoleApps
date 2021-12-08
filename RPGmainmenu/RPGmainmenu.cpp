@@ -10,8 +10,18 @@
                     dungeon you will be making. You need to have a loop around a movement system that allows you to move between rooms, but
                     you don't need the rooms yet. This will consist of some sort of branching.
 
-    Pseudocode:     
-
+    Pseudocode:     Variables
+                    Screen is cleared whevever player returns to main menu
+                    Selections are printed to main menu along with the number of items selected
+                    Choices to select character or items
+                    Character selection screen with option to return to menu or begin game
+                    after selection is made
+                    Item selection screen with options to select a weapon or a miscellaneous
+                    item and to return to menu or begin game after selection is made
+                    Both selection screens have messages that display if a selection was
+                    already made
+                    Do-while loop around main menu that repeats until menu selection is '3',
+                    the choice that begins the game
 
     Notes: Error with selections printing in menu
 
@@ -36,6 +46,14 @@
                         Added comments for clarity
                         Added a note about an error
                         Pushed to GitHub
+
+    Date: 12/8/21       Done: 
+                        Pulled from GitHub
+                        Fixed an error with if statements and selection printout on main menu
+                        Added a variable to count how many items are selected
+                        Added pseudocode and comments
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -54,6 +72,7 @@ int main()
     int item_type;
     int item_weapon = 0;
     int item_misc = 0;
+    int items = 0;
 
     do //menu loop
     {
@@ -68,33 +87,35 @@ int main()
         {
             printf("Cobalt\n");
         }
-        if (chara == 2)
+        else if (chara == 2)
         {
             printf("Magenta\n");
         }
-        if (chara == 3)
+        else if (chara == 3)
         {
             printf("Sunflower\n");
         }
-        else;
+        else 
         {
             printf("not selected\n");
         }
+
+        printf("Items: %i\n", items);
 
         printf("Weapon: ");        
         if (item_weapon == 1)
         {
             printf("Longsword\n");
         }
-        if (item_weapon == 2)
+        else if (item_weapon == 2)
         {
             printf("Shortsword\n");
         }
-        if (item_weapon == 3)
+        else if (item_weapon == 3)
         {
             printf("Spear\n");
         }
-        else;
+        else 
         {
             printf("not selected\n");
         }
@@ -104,15 +125,15 @@ int main()
         {
             printf("Healing potions\n");
         }
-        if (item_misc == 2)
+        else if (item_misc == 2)
         {
             printf("Spellbook\n");
         }
-        if (item_misc == 3)
+        else if (item_misc == 3)
         {
             printf("Lunchbox\n");
         }
-        else;
+        else 
         {
             printf("not selected\n");
         }
@@ -223,16 +244,19 @@ int main()
                     if (item_weapon == 1) //Longsword
                     {
                         item_weapon = 1;
+                        items++;
                         printf("\n\nSelected: Longsword\n\n");
                     }
                     else if (item_weapon == 2) //Shortsword
                     {
                         item_weapon = 2;
+                        items++;
                         printf("\n\nSelected: Shortsword\n\n");
                     }
                     else if (item_weapon == 3) //Spear
                     {
                         item_weapon = 3;
+                        items++;
                         printf("\n\nSelected: Spear\n\n");
                     }
                 }
@@ -268,16 +292,19 @@ int main()
                     if (item_misc == 1) //potions
                     {
                         item_misc = 1;
+                        items++;
                         printf("\n\nSelected: healing potions\n\n");
                     }
                     else if (item_misc == 2) //spellbook
                     {
                         item_misc = 2;
+                        items++;
                         printf("\n\nSelected: spellbook\n\n");
                     }
                     else if (item_misc == 3) //lunchbox
                     {
                         item_misc = 3;
+                        items++;
                         printf("\n\nSelected: lunchbox\n\n");
                     }
                 }
