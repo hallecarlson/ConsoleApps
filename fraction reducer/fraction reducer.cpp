@@ -18,18 +18,69 @@
                         Added comments
                         Added basic starting code
                         Pushed to GitHub
+
+    Date: 12/10/21      Done:
+                        Added code
+                        Wrote a function for GCF
+                        Pushed to GitHub
 */
 
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
 #include <string>
-#include <windows.h>
 using namespace std;
+
+//int GCF();
+
+int num;
+int denom;
+int gcf;
+int i;
+
+int GCF(int num, int denom)
+{
+    int gcf = 1;
+    for (i = 2; i <= num; i++)
+    {
+        if (num % i == 0 && denom % i == 0)
+        {
+            gcf = i;
+        }
+    }
+    return gcf;
+}
 
 int main()
 {
-    
+    printf("Welcome to my Fraction Reducer program!\n");
+    printf("By: Halle Carlson\n\n");
+
+    printf("Please enter a numerator\n");
+    printf(">\n");
+    scanf_s("%i", &num);
+    fseek(stdin, 0, SEEK_END);
+
+    printf("Please enter a denominator\n");
+    printf(">\n");
+    scanf_s("%i", &denom);
+    fseek(stdin, 0, SEEK_END);
+
+    printf("Your GCF (greatest common factor):\n");
+    printf("%i\n", gcf);
+
+    printf("Your reduced fraction:\n");
+    int rf = num / denom;
+    printf("\n");
+
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+
     return 0;
 }
 
