@@ -26,11 +26,6 @@
 
     Date: 12/11/21      Done:
                         Pulled from GitHub
-                        Added code for GCF function
-                        Changed code in GCF function to factor down instead of up
-                        Tested for errors
-                        Troubleshooted
-                        Pushed to GitHub
 
 */
 
@@ -50,19 +45,10 @@ int i;
 int GCF(int num, int denom)
 {
     gcf = 1;
-
-    if (num >= denom)
+    i = num;
+    for (i >= 1; i--;) //check this later
     {
-        i = denom;
-    }
-    else if (denom > num)
-    {
-        i = num;
-    }
-
-    for (i >= 2; i--;) //check this later
-    {
-        if (num % i == 0 && denom % i == 0) //change?
+        if (num % i == 0 && denom % i == 0) //change
         {
             gcf = i;
         }
@@ -89,7 +75,7 @@ int main()
     printf("%i\n", gcf);
 
     printf("Your reduced fraction:\n");
-    num = num / gcf; //error int division by 0
+    num = num / gcf;
     denom = denom / gcf;
     printf("%i/%i\n", num, denom);
 

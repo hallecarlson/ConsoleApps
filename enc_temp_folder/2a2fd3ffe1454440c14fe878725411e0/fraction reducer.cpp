@@ -26,11 +26,6 @@
 
     Date: 12/11/21      Done:
                         Pulled from GitHub
-                        Added code for GCF function
-                        Changed code in GCF function to factor down instead of up
-                        Tested for errors
-                        Troubleshooted
-                        Pushed to GitHub
 
 */
 

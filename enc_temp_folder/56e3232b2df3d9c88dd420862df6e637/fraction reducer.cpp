@@ -26,11 +26,6 @@
 
     Date: 12/11/21      Done:
                         Pulled from GitHub
-                        Added code for GCF function
-                        Changed code in GCF function to factor down instead of up
-                        Tested for errors
-                        Troubleshooted
-                        Pushed to GitHub
 
 */
 
@@ -53,16 +48,16 @@ int GCF(int num, int denom)
 
     if (num >= denom)
     {
-        i = denom;
+        i = num;
     }
     else if (denom > num)
     {
-        i = num;
+        i = denom;
     }
 
     for (i >= 2; i--;) //check this later
     {
-        if (num % i == 0 && denom % i == 0) //change?
+        if (num % i == 0 && denom % i == 0) //change
         {
             gcf = i;
         }
