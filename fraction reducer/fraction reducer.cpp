@@ -32,6 +32,12 @@
                         Troubleshooted
                         Pushed to GitHub
 
+                        Tried to find what was causing the error
+                        Got help from Ryan
+                        Tried different things to fix the error
+                        Failed
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -42,15 +48,11 @@ using namespace std;
 
 //int GCF();
 
-int num;
-int denom;
-int gcf;
-int i;
-
-int GCF(int num, int denom)
+int GCF(int num, int denom, int gcf)
 {
-    gcf = 1;
+    //int i;
 
+    /*
     if (num >= denom)
     {
         i = denom;
@@ -59,12 +61,35 @@ int GCF(int num, int denom)
     {
         i = num;
     }
+    */
 
-    for (i >= 2; i--;) //check this later
+    /*for (i >= 2; i--) //check this later
     {
         if (num % i == 0 && denom % i == 0) //change?
         {
             gcf = i;
+        }
+    }*/
+    int i;
+    if (num > denom)
+    {
+        i = num;
+    }
+    else if (denom > num)
+    {
+        i = denom;
+    }
+    else //same
+    {
+        i = num;
+    }
+    while (true)
+    {
+        if (num % i == 0 && denom % i == 0)
+        {
+            gcf = i;
+            i--;
+            break;
         }
     }
     return gcf;
@@ -74,6 +99,10 @@ int main()
 {
     printf("Welcome to my Fraction Reducer program!\n");
     printf("By: Halle Carlson\n\n");
+
+    int num;
+    int denom;
+    int gcf;
 
     printf("Please enter a numerator\n");
     printf(">\n");
@@ -85,6 +114,7 @@ int main()
     scanf_s("%i", &denom);
     fseek(stdin, 0, SEEK_END);
 
+    GCF(num, denom, gcf); //function call
     printf("Your GCF (greatest common factor):\n");
     printf("%i\n", gcf);
 
