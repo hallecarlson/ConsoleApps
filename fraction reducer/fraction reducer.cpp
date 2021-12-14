@@ -50,6 +50,10 @@
                         Added pseudocode
                         Pushed to gitHub
 
+    Date: 12/14/21      Done:
+                        Fixed minor formatting error
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -83,18 +87,18 @@ int main()
 
     int num;
     printf("Please enter a numerator\n");
-    printf(">\n");
+    printf(">");
     scanf_s("%i", &num);
     fseek(stdin, 0, SEEK_END);
 
     int denom;
-    printf("Please enter a denominator\n");
-    printf(">\n");
+    printf("\nPlease enter a denominator\n");
+    printf(">");
     scanf_s("%i", &denom);
     fseek(stdin, 0, SEEK_END);
 
     int gcf = GCF(num, denom); //function call
-    printf("Your GCF (greatest common factor):\n");
+    printf("\nYour GCF (greatest common factor):\n");
     printf("%i\n", gcf);
 
     printf("Your reduced fraction:\n");
