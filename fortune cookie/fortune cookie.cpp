@@ -22,6 +22,10 @@
                         Added comments
                         Added basic starting code
                         Pushed to GitHub
+
+    Date: 12/14/21      Done:
+                        Added code for fortunes
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -33,6 +37,15 @@ using namespace std;
 
 int main()
 {
-
+    printf("You will have a nice dream tonight.\n");
+    printf("You will do well on your next test.\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
     return 0;
 }

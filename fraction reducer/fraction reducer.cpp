@@ -53,6 +53,8 @@
     Date: 12/14/21      Done:
                         Fixed minor formatting error
                         Pushed to GitHub
+                        Delted old comment
+                        Pushed to GitHub
 
 */
 
@@ -102,7 +104,7 @@ int main()
     printf("%i\n", gcf);
 
     printf("Your reduced fraction:\n");
-    num = num / gcf; //error int division by 0
+    num = num / gcf; 
     denom = denom / gcf;
     printf("%i/%i\n", num, denom);
 
