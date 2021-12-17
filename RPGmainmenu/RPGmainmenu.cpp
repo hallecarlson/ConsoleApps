@@ -54,6 +54,10 @@
                         Added pseudocode and comments
                         Pushed to GitHub
 
+    Date: 12/17/21      Done:
+                        Added introductions for each character's story
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -318,6 +322,26 @@ int main()
         }
 
     } while (menu_choice != 3);
+
+
+    if (chara == 1) //cobalt
+    {
+        printf("Cobalt woke up in Rose Village\n");
+        printf("she looked around in a panic, and saw fields of flowers\n");
+        printf("Cobalt didn't know her way back to Ultramarine!");
+    }
+    else if (chara == 2) //magenta
+    {
+        printf("Magenta woke up in Goldenrod\n");
+        printf("he looked around in a panic, and saw tall buildings, which towered over him\n");
+        printf("Magenta didn't know his way back to Rose Village!");
+    }
+    else if (chara == 3) //sunflower
+    {
+        printf("Sunflower woke up in Ultramarine\n");
+        printf("she looked around in a panic, and saw a system of buildings, almost completely submerged in water.\n");
+        printf("Sunflower didn't know her way back to Goldenrod!");
+    }
 
     return 0;
 }
