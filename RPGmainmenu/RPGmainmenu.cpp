@@ -58,6 +58,17 @@
                         Added introductions for each character's story
                         Pushed to GitHub
 
+    Date: 12/24/21      Done:
+                        Pulled from GitHub
+                        Added a function for player movement
+                        Added code for starting rooms
+                        Added placeholder code for movement between rooms
+                        Added code for starting hp / max hp
+                        Added code for weapon damage
+                        Slightly altered character descriptions to fit with new code and make
+                        future coding simpler
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -69,6 +80,136 @@
 #include <windows.h>
 using namespace std;
 
+int movement(int room, int choice, int chara)
+{
+    room;
+    choice;
+    chara;
+    
+
+    do //starting room
+    {
+        if (chara == 1) //cobalt
+        {
+            //room = 
+        }
+
+        if (chara == 2) //magenta
+        {
+            //room = 
+        }
+
+        if (chara == 3) //sunflower
+        {
+            //room = 
+        }
+    } while (choice == 0);
+
+
+    if (choice == 1)
+    {
+        room = 1;        
+    }
+    if (choice == 2)
+    {
+        room = 2;
+    }
+    if (choice == 3)
+    {
+        room = 3;
+    }
+    if (choice == 4)
+    {
+        room = 4;
+    }
+    if (choice == 5)
+    {
+        room = 5;
+    }
+    if (choice == 6)
+    {
+        room = 6;
+    }
+    if (choice == 7)
+    {
+        room = 7;
+    }
+    if (choice == 8)
+    {
+        room = 8;
+    }
+    if (choice == 9)
+    {
+        room = 9;
+    }
+    if (choice == 10)
+    {
+        room = 10;
+    }
+    if (choice == 11)
+    {
+        room = 11;
+    }
+    if (choice == 12)
+    {
+        room = 12;
+    }
+    if (choice == 13)
+    {
+        room = 13;
+    }
+    if (choice == 14)
+    {
+        room = 14;
+    }
+    if (choice == 15)
+    {
+        room = 15;
+    }
+    if (choice == 16)
+    {
+        room = 16;
+    }
+    if (choice == 17)
+    {
+        room = 17;
+    }
+    if (choice == 18)
+    {
+        room = 18;
+    }
+    if (choice == 19)
+    {
+        room = 19;
+    }
+    if (choice == 20)
+    {
+        room = 20;
+    }
+    if (choice == 21)
+    {
+        room = 21;
+    }
+    if (choice == 22)
+    {
+        room = 22;
+    }
+    if (choice == 23)
+    {
+        room = 23;
+    }
+    if (choice == 24)
+    {
+        room = 24;
+    }
+    if (choice == 25)
+    {
+        room = 25;
+    }
+
+    return room;
+}
+
 int main()
 {
     int chara = 0;
@@ -77,6 +218,8 @@ int main()
     int item_weapon = 0;
     int item_misc = 0;
     int items = 0;
+    int room;
+    int choice;
 
     do //menu loop
     {
@@ -168,14 +311,14 @@ int main()
                 printf("\t\tspell:  minor healing (self)\n");
                 printf("\t\tattack: strike\n");
                 printf("\t\tspell:  reduce damage taken (self)\n");
-                printf("\t\thigh HP stat, defense specialty\n\n");
+                printf("\t\tdefense specialty\n\n");
                 printf("2. Magenta\n");
                 printf("\t\tbase\n");
                 printf("\t\t----\n\n");
                 printf("\t\tattack: strike\n");
                 printf("\t\tattack: thrash\n");
                 printf("\t\tspell:  increase damage dealt (self)\n");
-                printf("\t\thigh damage stat, physical attack specialty\n\n");
+                printf("\t\tphysical attack specialty\n\n");
                 printf("3. Sunflower\n");
                 printf("\t\tbase\n");
                 printf("\t\t----\n\n");
@@ -183,7 +326,7 @@ int main()
                 printf("\t\tspell:  slepp spell (enemy)\n");
                 printf("\t\tspell:  decrease accuracy (enemy)\n");
                 printf("\t\tspell:  increase accuracy (self)\n");
-                printf("\t\tbalanced stats, spellcasting specialty\n\n");
+                printf("\t\tspellcasting specialty\n\n");
 
                 printf(">");
                 scanf_s("%i", &chara);
@@ -193,16 +336,40 @@ int main()
                 {
                     chara = 1;
                     printf("\n\nSelected: Cobalt\n\n");
+
+                    int player_hp_max = 30;
+                    int player_hp_min = 20;
+                    int player_hp;
+
+                    player_hp = player_hp_min + rand() % (player_hp_max - player_hp_min + 1); //player hit points [20, 30] / 30 max
+                    
+                    printf("[hp] ---> %i / %i\n", player_hp, player_hp_max); //starting hp / 30 max
                 }
                 else if (chara == 2) //Magenta
                 {
                     chara = 2;
                     printf("\n\nSelected: Magenta\n\n");
+
+                    int player_hp_max = 30;
+                    int player_hp_min = 20;
+                    int player_hp;
+
+                    player_hp = player_hp_min + rand() % (player_hp_max - player_hp_min + 1); //player hit points [20, 30] / 30 max
+
+                    printf("[hp] ---> %i / %i\n", player_hp, player_hp_max); //starting hp / 30 max
                 }
                 else if (chara == 3) //Sunflower
                 {
                     chara = 3;
                     printf("\n\nSelected: Sunflower\n\n");
+
+                    int player_hp_max = 30;
+                    int player_hp_min = 20;
+                    int player_hp;
+
+                    player_hp = player_hp_min + rand() % (player_hp_max - player_hp_min + 1); //player hit points [20, 30] / 30 max
+
+                    printf("[hp] ---> %i / %i\n", player_hp, player_hp_max); //starting hp / 30 max
                 }
             }
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
@@ -250,18 +417,36 @@ int main()
                         item_weapon = 1;
                         items++;
                         printf("\n\nSelected: Longsword\n\n");
+
+                        int player_dp_max = 20;
+                        int player_dp_min = 10;
+                        int player_dp;
+
+                        printf("[dp] ------> %i - %i\n", player_dp_min, player_dp_max); //10-20 dp
                     }
                     else if (item_weapon == 2) //Shortsword
                     {
                         item_weapon = 2;
                         items++;
                         printf("\n\nSelected: Shortsword\n\n");
+
+                        int player_dp_max = 10;
+                        int player_dp_min = 8;
+                        int player_dp;
+
+                        printf("[dp] ---> %i - %i\n", player_dp_min, player_dp_max); //8-10 dp
                     }
                     else if (item_weapon == 3) //Spear
                     {
                         item_weapon = 3;
                         items++;
                         printf("\n\nSelected: Spear\n\n");
+
+                        int player_dp_max = 15;
+                        int player_dp_min = 10;
+                        int player_dp;
+
+                        printf("[dp] ------> %i - %i\n", player_dp_min, player_dp_max); //10-15 dp
                     }
                 }
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
