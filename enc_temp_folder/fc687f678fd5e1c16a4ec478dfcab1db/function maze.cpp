@@ -14,8 +14,6 @@
 
 
     Notes:  Error with input where game automatically ends
-            The error is because it automatically plays the while loop in int main()
-            without asking for impact
 
     Maintenance Log:
     Date: 12/7/21       Done:
@@ -31,10 +29,6 @@
                         Added variables and player input
                         Fixed errors
                         Added note about an error
-                        Pushed to GitHub
-
-                        Troubleshooted
-                        Found the source of the error
                         Pushed to GitHub
 */
 
@@ -233,7 +227,7 @@ int main()
     {
         if (choice == 1)
         {
-            room = room1(choice);
+            room = room2(choice);
         }
         else if (choice == 2)
         {
