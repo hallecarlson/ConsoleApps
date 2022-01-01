@@ -14,24 +14,13 @@
     Pseudocode:
 
 
-    Notes:              Found exception: Unhandled exception at 0x00007FF68A7C711D in word reverser.exe: 
-                        Stack cookie instrumentation code detected a stack-based buffer overrun.
-                        When player enters "word" input
+    Notes:
 
     Maintenance Log:
     Date: 12/7/21       Done:
                         Created project
                         Added comments
                         Added basic starting code
-                        Pushed to GitHub
-
-    Date: 12/31/21      Done:
-                        Did the following with help: 
-                        Added code inside function string wordreverser() to reverse a string inputted by the player
-                        Added intro dialogue and prompt for player input inside int main()
-                        Added output of original and reversed strings
-                        Discovered an exception when player enters input
-                        Tried to solve error but failed
                         Pushed to GitHub
 */
 
@@ -44,6 +33,7 @@ using namespace std;
 
 string wordreverser(string word, string word_reversed)
 {
+    word;
     word_reversed = "";
 
     for (int i = word.length() - 1; i >= 0; i--)
@@ -64,7 +54,6 @@ int main()
     scanf_s("%s", &word);
     fseek(stdin, 0, SEEK_END);
 
-    wordreverser(word, word_reversed);
     printf("\n\nYour word: %s", word.c_str());
     printf("\nReversed word: %s", word_reversed.c_str());
 

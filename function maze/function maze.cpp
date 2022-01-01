@@ -15,7 +15,7 @@
 
     Notes:  Error with input where game automatically ends
             The error is because it automatically plays the while loop in int main()
-            without asking for impact
+            without asking for input
 
     Maintenance Log:
     Date: 12/7/21       Done:
