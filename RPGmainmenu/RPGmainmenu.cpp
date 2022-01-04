@@ -210,6 +210,17 @@ int movement(int room, int choice, int chara)
     return room;
 }
 
+int room1()
+{
+    while (room == 1)
+    {
+        printf("You are now in Ultramarine\n");
+        //leads to Canary Yellow Island
+        //stuff for each character
+        printf("To the East is Canary Yellow Island, and it seems that is the only way to go.\n");
+    }
+}
+
 int main()
 {
     int chara = 0;

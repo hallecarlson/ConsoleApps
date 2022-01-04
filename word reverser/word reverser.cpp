@@ -11,12 +11,22 @@
                     Make sure to keep the original string unchanged in the calling function (presumably 
                     main()). Output the original and reversed strings in the calling function.
 
-    Pseudocode:
+    Pseudocode:         Word reverser function
+                        Variable for reversed string
+                        For loop that counts down the string length and reverses the letters
+                        Main function
+                        Variables for strings
+                        Introduction output
+                        Player inputs a string
+                        String for reversed word is set to the value of string for word, 
+                        which I realize was probably unecessary
+                        Original word and reversed word printed to screen
 
 
     Notes:              Found exception: Unhandled exception at 0x00007FF68A7C711D in word reverser.exe: 
                         Stack cookie instrumentation code detected a stack-based buffer overrun.
                         When player enters "word" input
+                        SOLVED
 
     Maintenance Log:
     Date: 12/7/21       Done:
@@ -33,6 +43,15 @@
                         Discovered an exception when player enters input
                         Tried to solve error but failed
                         Pushed to GitHub
+
+    Date: 1/3/22        Done:
+                        Tried to solve error with player input
+                        Asked for help from my dad but he couldn't solve the error either
+                        Discovered the error was with input code (used scanf_s for string instead of cin)
+                        Fixed error
+                        Tested Code
+                        Added pseudocode
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -42,9 +61,9 @@
 #include <windows.h>
 using namespace std;
 
-string wordreverser(string word, string word_reversed)
+string wordreverser(string word)
 {
-    word_reversed = "";
+    string word_reversed = "";
 
     for (int i = word.length() - 1; i >= 0; i--)
     {
@@ -56,17 +75,18 @@ string wordreverser(string word, string word_reversed)
 
 int main()
 {
-    string word;
-    string word_reversed;
+    string word = "";
+    string word_reversed = "";
 
     printf("Welcome to my word reverser game!\nBy: Halle Carlson\n");
     printf("Please input a word to be reversed\n>");
-    scanf_s("%s", &word);
-    fseek(stdin, 0, SEEK_END);
+    cin >> word;
+    fseek(stdin, 0, SEEK_END); 
 
-    wordreverser(word, word_reversed);
+    word_reversed = wordreverser(word);
     printf("\n\nYour word: %s", word.c_str());
     printf("\nReversed word: %s", word_reversed.c_str());
+    _getch();
 
     return 0;
 }
