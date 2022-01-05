@@ -223,13 +223,13 @@ int room12(int choice)
 int main()
 {
     int choice = 1;
-    int room;
+    int room = 1;
     char retake;
     bool exit = false;
 
     printf("Welcome to my maze game!\nBy: Halle Carlson\n\n");
 
-    while (exit == false)
+    while (room != 4)
     {
         if (choice == 1)
         {
@@ -299,6 +299,8 @@ int main()
             }
         }
     } 
+
+
 
     printf("Thanks for playing!\n");
     _getch();
