@@ -43,6 +43,15 @@
                         Fixed errors
                         Tested code
                         Pushed to GitHub
+
+                        Pulled from GitHub
+                        Swapped and added code
+                        Tried to fix errors with function arguments and variables
+                        Fixed errors
+                        Encountered another error with changing rooms
+                        Failed to fix
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -84,7 +93,7 @@ int room2(int room)
     return room;
 }
 
-int room3(int choice, int room)
+int room3(int room)
 {
     int choice;
     printf("You are in room 3\n");
@@ -104,7 +113,7 @@ int room3(int choice, int room)
     return room;
 }
 
-int room4(int choice, int room)
+int room4(int room)
 {
     printf("You are in room 4\n");
     _getch();
@@ -114,10 +123,10 @@ int room4(int choice, int room)
     return room;
 }
 
-int room5(int choice, int room)
+int room5(int room)
 {
     int choice;
-    printf("You are in room 3\n");
+    printf("You are in room 5\n");
     printf("Will you go to room 1 or room 6 or room 9?\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -138,7 +147,7 @@ int room5(int choice, int room)
     return room;
 }
 
-int room6(int choice, int room)
+int room6(int room)
 {
     int choice;
     printf("You are in room 6\n");
@@ -162,10 +171,10 @@ int room6(int choice, int room)
     return room;
 }
 
-int room7(int choice, int room)
+int room7(int room)
 {
     int choice;
-    printf("You are in room 6\n");
+    printf("You are in room 7\n");
     printf("Will you go to room 3 or room 8 or room 11?\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -186,39 +195,55 @@ int room7(int choice, int room)
     return room;
 }
 
-int room8(int choice, int room)
+int room8(int room)
 {
-    if (choice == 8)
+    int choice;
+    printf("You are in room 8\n");
+    printf("Will you go to room 7 or room 12?\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 7)
     {
-        room = 8;
+        room = 7;
+    }
+    else if (room == 12)
+    {
+        room = 12;
     }
 
     return room;
 }
 
-int room9(int choice, int room)
+int room9(int room)
 {
-    if (choice == 9)
+    int choice;
+    printf("You are in room 9");
+    printf("You must go to room 5\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 5)
     {
-        room = 9;
+        room = 5;
     }
 
     return room;
 }
 
-int room10(int choice, int room)
+int room10(int room)
 {
-    if (choice == 10)
+    int choice;
+    printf("You are in room 10");
+    printf("Will you go to room 6 or room 11?\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 6)
     {
-        room = 10;
+        room = 6;
     }
-
-    return room;
-}
-
-int room11(int choice, int room)
-{
-    if (choice == 11)
+    else if (choice == 11)
     {
         room = 11;
     }
@@ -226,11 +251,37 @@ int room11(int choice, int room)
     return room;
 }
 
-int room12(int choice, int room)
+int room11(int room)
 {
-    if (choice == 12)
+    int choice;
+    printf("You are in room 11");
+    printf("Will you go to room 7 or room 10?\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 7)
     {
-        room = 12;
+        room = 7;
+    }
+    else if (choice == 10)
+    {
+        room = 10;
+    }
+
+    return room;
+}
+
+int room12(int room)
+{
+    int choice;
+    printf("You are in room 12");
+    printf("You must go to room 8\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 8)
+    {
+        room = 8;
     }
 
     return room;
@@ -254,131 +305,48 @@ int main()
         }
         else if (room == 2)
         {
-            printf("You are in room 2\n");
-            printf("You must go to room 6\n");
-            do
-            {
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 6);
+            room = room2(room);
         }
         else if (room == 3)
         {
-            printf("You are in room 3\n");
-            do
-            {
-                printf("Will you go to room 4 or room 7?\n");
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 4 && choice != 7);
+            room = room3(room);
         }        
         else if (room == 5)
         {
-            printf("You are in room 5\n");
-            do
-            {
-                printf("Will you go to room 1 or room 6 or room 9?\n");
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 1 && choice != 6 && choice != 9);
+            room = room5(room);
         }
         else if (room == 6)
         {
-            printf("You are in room 6\n");
-            do
-            {
-                printf("Will you go to room 2 or room 5 or room 10?\n");
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 2 && choice != 5 && choice != 10);
+            room = room6(room);
         }
         else if (room == 7)
         {
-            printf("You are in room 7\n");
-            do
-            {
-                printf("Will you go to room 3 or room 8 or room 11?\n");
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 3 && choice != 8 && choice != 11);
+            room = room7(room);
         }
         else if (room == 8)
         {
-            printf("You are in room 8\n");
-            do
-            {
-                printf("Will you go to room 7 or room 12?\n");
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 7 && choice != 12);
+            room = room8(room);
         }
         else if (room == 9)
         {
-            printf("You are in room 9\n");
-            printf("You must go to room 5\n");
-            do
-            {
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 5);
+            room = room9(room);
         }
         else if (room == 10)
         {
-            printf("You are in room 10\n");
-            do
-            {
-                printf("Will you go to room 6 or room 11?\n");
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 6 && choice != 11);
+            room = room10(room);
         }
         else if (room == 11)
         {
-            printf("You are in room 11\n");
-            do
-            {
-                printf("Will you go to room 7 or room 10?\n");
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 7 && choice != 10);
+            room = room11(room);
         }
         else if (room == 12)
         {
-            printf("You are in room 12\n");
-            printf("You must go to room 8\n");
-            do
-            {
-                printf(">");
-                choice;
-                scanf_s("%i", &choice);
-                fseek(stdin, 0, SEEK_END);
-            } while (choice != 8);
+            room = room12(room);
         }
     }
     if (room == 4)
     {
-        printf("You are in room 4\n");
-        _getch();
-        printf("You found the exit!\n");
-        printf("You win!\n");
+        room = room4(room);
     }
 
     return 0;
