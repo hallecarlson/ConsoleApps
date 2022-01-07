@@ -10,8 +10,19 @@
                     Your maze must have a minimum of 12 rooms and the user may travel to each one. You
                     may have one path or multiple paths that get you to the exit.
 
-    Pseudocode:
+    Pseudocode:         Room functions
+                            Text
+                            Input
+                            Movement
+                            Returns room
 
+                        Main function
+                            Variables
+                            Intro text
+                            Game loop excluding exit room
+                            Code to set the room
+                            Exit room code to set the room
+                            Returns 0
 
     Notes:  
 
@@ -50,6 +61,14 @@
                         Fixed errors
                         Encountered another error with changing rooms
                         Failed to fix
+                        Pushed to GitHub
+
+    Date: 1/7/22        Done:
+                        Pulled from GitHub
+                        Fixed error in room functions with not being able to move from room to room
+                        Tested code
+                        Fixed formatting errors
+                        Added pseudocode
                         Pushed to GitHub
 
 */
@@ -105,7 +124,7 @@ int room3(int room)
     {
         room = 4;
     }
-    else if (room == 7)
+    else if (choice == 7)
     {
         room = 7;
     }
@@ -135,11 +154,11 @@ int room5(int room)
     {
         room = 1;
     }
-    else if (room == 6)
+    else if (choice == 6)
     {
         room = 6;
     }
-    else if (room == 9)
+    else if (choice == 9)
     {
         room = 9;
     }
@@ -159,11 +178,11 @@ int room6(int room)
     {
         room = 2;
     }
-    else if (room == 5)
+    else if (choice == 5)
     {
         room = 5;
     }
-    else if (room == 10)
+    else if (choice == 10)
     {
         room = 10;
     }
@@ -183,11 +202,11 @@ int room7(int room)
     {
         room = 3;
     }
-    else if (room == 8)
+    else if (choice == 8)
     {
         room = 8;
     }
-    else if (room == 11)
+    else if (choice == 11)
     {
         room = 11;
     }
@@ -207,7 +226,7 @@ int room8(int room)
     {
         room = 7;
     }
-    else if (room == 12)
+    else if (choice == 12)
     {
         room = 12;
     }
@@ -218,7 +237,7 @@ int room8(int room)
 int room9(int room)
 {
     int choice;
-    printf("You are in room 9");
+    printf("You are in room 9\n");
     printf("You must go to room 5\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -234,7 +253,7 @@ int room9(int room)
 int room10(int room)
 {
     int choice;
-    printf("You are in room 10");
+    printf("You are in room 10\n");
     printf("Will you go to room 6 or room 11?\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -254,7 +273,7 @@ int room10(int room)
 int room11(int room)
 {
     int choice;
-    printf("You are in room 11");
+    printf("You are in room 11\n");
     printf("Will you go to room 7 or room 10?\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -274,7 +293,7 @@ int room11(int room)
 int room12(int room)
 {
     int choice;
-    printf("You are in room 12");
+    printf("You are in room 12\n");
     printf("You must go to room 8\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -292,8 +311,6 @@ int main()
 {
     int choice = 1;
     int room = 1;
-    char retake;
-    bool exit = false;
 
     printf("Welcome to my maze game!\nBy: Halle Carlson\n\n");
 

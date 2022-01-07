@@ -80,7 +80,7 @@
 #include <windows.h>
 using namespace std;
 
-int movement(int room, int choice, int chara)
+/*int movement(int room, int choice, int chara)
 {
     room;
     choice;
@@ -208,15 +208,22 @@ int movement(int room, int choice, int chara)
     }
 
     return room;
-}
+}*/
 
-int room1()
+
+
+int room1(int room, int chara)
 {
     while (room == 1)
     {
+        if (chara == 2)
+        {
+            printf("You are now in Ultramarine\n");
+            printf("You reached home!")
+        }
+
         printf("You are now in Ultramarine\n");
-        //leads to Canary Yellow Island
-        //stuff for each character
+        printf("It's a shimmering sea town with limestone buildings protruding from the ocean.\n");
         printf("To the East is Canary Yellow Island, and it seems that is the only way to go.\n");
     }
 }
