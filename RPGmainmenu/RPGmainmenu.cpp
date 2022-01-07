@@ -69,6 +69,10 @@
                         future coding simpler
                         Pushed to GitHub
 
+    Date: 1/7/22        Done:
+                        Added code
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -212,30 +216,67 @@ using namespace std;
 
 
 
-int room1(int room, int chara)
+int ultramarine(int room, int chara)
 {
-    while (room == 1)
+    int choice;
+    if (chara == 2)
     {
-        if (chara == 2)
-        {
-            printf("You are now in Ultramarine\n");
-            printf("You reached home!")
-        }
-
+        printf("You are now in Ultramarine\n");
+        printf("You reached home!");
+    }
+    else
+    {
         printf("You are now in Ultramarine\n");
         printf("It's a shimmering sea town with limestone buildings protruding from the ocean.\n");
         printf("To the East is Canary Yellow Island, and it seems that is the only way to go.\n");
+
+        printf("1. Go to Canary Yellow Island\n2. Return to West Goldenrod?\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 2;
+        }
+        else if (choice == 2)
+        {
+            room = 12;
+        }
+
     }
+
 }
+int canary(int room, int chara)
+    {
+        int choice;
+        printf("You are now on Canary Yellow Island\n");
+        printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
+        printf("To the West is Ultramarine and to the south is Sunset Observatory.\n");
+
+        printf("1. Go to Ultramarine\n2. Return to West Goldenrod?\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 2;
+        }
+        else if (choice == 2)
+        {
+            room = 12;
+        }
+    }
 
 int main()
 {
     int chara = 0;
+
     int menu_choice;
     int item_type;
     int item_weapon = 0;
     int item_misc = 0;
     int items = 0;
+
     int room;
     int choice;
 
