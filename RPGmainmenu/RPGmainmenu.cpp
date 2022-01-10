@@ -79,6 +79,11 @@
                         Added comments for clarity
                         Pushed to GitHub
 
+                        Added code for functions for rooms 16-25/25
+                        Added code for movement, narration, and input
+                        Added comments for clarity
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -102,7 +107,7 @@ int combat()
 int ultramarine(int room, int chara) //room 1
 {
     int choice;
-    if (chara == 2)
+    if (chara == 1)
     {
         printf("You are now in Ultramarine\n");
         printf("You reached home!");
@@ -436,7 +441,7 @@ int rainbow(int room) //room 14
 
     return room;
 }
-//room 15
+//room15
 int carrot(int room) //room 15
 {
     int choice;
@@ -459,7 +464,265 @@ int carrot(int room) //room 15
 
     return room;
 }
-//room 16
+//room16
+int pumpkin(int room) //room 16
+{
+    int choice;
+    printf("You are now in Pumpkin Patch.\n");
+    printf("It's a spooky field of seemingly normal-looking pumpkins.\nUpon closer look, some of them are carved jack o' lanterns with candles inside.\n");
+    printf("To the North is Fluorescent Marsh, to the East is Olive Vineyard, and to the South is Royal Purple Castle.\n");
+
+    printf("1. Go to Fluorescent Marsh\n2. Go to Olive Vineyard\n3. Royal Purple Castle\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 11;
+    }
+    else if (choice == 2)
+    {
+        room = 17;
+    }
+    else if (choice == 3)
+    {
+        room = 21;
+    }
+
+    return room;
+}
+//room17
+int olive(int room) //room 17
+{
+    int choice;
+    printf("You are now in Olive Vineyard.\n");
+    printf("Olive trees line the perimiter of the vast grape vineyard.\n");
+    printf("To the East is Rouge Pass and to the West is Pumpkin Patch.\n");
+
+    printf("1. Go to Rouge Pass\n2. Go to Pumpkin Patch\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 18;
+    }
+    else if (choice == 2)
+    {
+        room = 16;
+    }
+
+    return room;
+}
+//room18
+int rouge(int room) //room 18
+{
+    int choice;
+    printf("You are now in Rouge Pass.\n");
+    printf("It's a long, wide path lined with trees.\nThe leaves resemble the beautiful colors of autumn.\n");
+    printf("To the East is Sienna Village, to the South is Purple Mountains Majesty, and to the West is Olive Vineyard.\n");
+
+    printf("1. Go to Sienna Village\n2. Go to Purple Mountains Majesty\n3. Go to Olive Vineyard\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 19;
+    }
+    else if (choice == 2)
+    {
+        room = 23;
+    }
+    else if (choice == 3)
+    {
+        room = 17;
+    }
+
+    return room;
+}
+//room19
+int sienna(int room) //room 19
+{
+    int choice;
+    printf("You are now in Sienna Village.\n");
+    printf("Log buildings surround a small village square.\nPeople sit around a bonfire playing folk songs.\n");
+    printf("To the North is Rainbow Bazaar, to the East is Cream Factory, to the South is Fuschia Village, and to the West is Rouge Pass.\n");
+
+    printf("1. Go to Rainbow Bazaar\n2. Go to Cream Factory\n3. Go to Fuschia Village\n4. Go to Rouge Pass\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 14;
+    }
+    else if (choice == 2)
+    {
+        room = 20;
+    }
+    else if (choice == 3)
+    {
+        room = 24;
+    }
+    else if (choice == 4)
+    {
+        room = 18;
+    }
+
+    return room;
+}
+//room20
+int cream(int room) //room 20
+{
+    int choice;
+    printf("You are now in Cream Factory.\n");
+    printf("Steam clouds arise from the main facility.\nCows graze in a pasture as employees walk around gathering milk.\n");
+    printf("To the West is Sienna Village.\nYou've reached a dead end.\n");
+
+    printf("1. Go to Sienna Village\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 19;
+    }
+
+    return room;
+}
+//room21
+int royalcastle(int room) //room 21
+{
+    int choice;
+    printf("You are now in Royal Purple Castle.\n");
+    printf("A narrow dirt path passes the castle, which is not open to visitors.\nThe queen lives here.\n");
+    printf("To the North is Pumpkin Patch and to the East is Royal Purple Castletown.\n");
+
+    printf("1. Go to Pumpkin Patch\n2. Go to Royal Purple Castletown\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 16;
+    }
+    else if (choice == 2)
+    {
+        room = 22;
+    }
+
+    return room;
+}
+//room22
+int royalcastletown(int room) //room 22
+{
+    int choice;
+    printf("You are now in Royal Purple Castletown.\n");
+    printf("It's a small town built from stone bricks.\nFamily-owned item shops line the street,next to pubs and apartments.\n");
+    printf("A man in a tunic and boots motions for you to come over.\nHe says he has heard of your good deeds and wants to offer you a free item from his shop.\n");
+
+    //free item choice
+    
+    printf("To the East is Purple Mountains Majesty and to the West is Royal Purple Castle.\n");
+
+    printf("1. Go to Purple Mountains Majesty\n2. Go to Royal Purple Castle\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 23;
+    }
+    else if (choice == 2)
+    {
+        room = 21;
+    }
+
+    return room;
+}
+//room23
+int purplemountains(int room) //room 23
+{
+    int choice;
+    printf("You are now in Purple Mountains Majesty.\n");
+    printf("There is a snowy pass between two peeks, which looks like quite the climb.\nAt the top, you find a glorious view of the kingdom.\n");
+    printf("To the North is Rouge Pass, to the East is Fuschia Village, and to the West is Royal Purple Castletown.\n");
+
+    printf("1. Go to Rouge Pass\n2. Go to Fuschia Village\n3. Go to Royal Purple Castletown\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 18;
+    }
+    else if (choice == 2)
+    {
+        room = 24;
+    }
+    else if (choice == 3)
+    {
+        room = 22;
+    }
+
+    return room;
+}
+//room24
+int fuschia(int room) //room 24
+{
+    int choice;
+    printf("You are now in Fuschia Village.\n");
+    printf("There are red tents spread throughout the pink grass.\nA rose-colored river flows through the center of the village.\n");
+    printf("To the North is Sienna Village, to the East is Rose Village, and to the West is Purple Mountains Majesty.\n");
+
+    printf("1. Go to Sienna Village\n2. Go to Rose Village\n3. Go to Purple Mountains Majesty\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 19;
+    }
+    else if (choice == 2)
+    {
+        room = 25;
+    }
+    else if (choice == 3)
+    {
+        room = 23;
+    }
+
+    return room;
+}
+//room25
+int rose(int room, int chara) //room 25
+{
+    int choice;
+    if (chara == 2)
+    {
+        printf("You are now in Rose Village\n");
+        printf("You reached home!");
+    }
+    else
+    {
+        printf("You are now in Ultramarine\n");
+        printf("It's a rose-colored lake with a few cabins lining the white sand beach.\n");
+        printf("To the West is Fuschia Village.\nYou've reached a dead end.\n");
+
+        printf("1. Go to Fuscia Village\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 24;
+        }
+
+    }
+
+    return room;
+}
 
 
 int main()
