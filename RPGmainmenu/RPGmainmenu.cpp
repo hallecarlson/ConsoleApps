@@ -23,7 +23,7 @@
                     Do-while loop around main menu that repeats until menu selection is '3',
                     the choice that begins the game
 
-    Notes: Error with selections printing in menu
+    Notes: Error with moving between rooms. Characters get stuck between starting room and second room.
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -84,6 +84,14 @@
                         Added comments for clarity
                         Pushed to GitHub
 
+    Date: 1/10/22       Done:  
+                        Pulled from GitHub
+                        Added code for rooms and movement in int main()
+                        Added narrationin in room functions, some of which are character-specific
+                        Tested code
+                        Found an error with movement
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -97,24 +105,46 @@ using namespace std;
     
    
 
-int combat()
+/*int combat()
 {
 
-}
+}*/
 
 
 //room1
-int ultramarine(int room, int chara) //room 1
+int ultramarine(int room, int chara, bool win) //room 1
 {
     int choice;
-    if (chara == 1)
+
+    if (chara == 1) //cobalt
     {
         printf("You are now in Ultramarine\n");
         printf("You reached home!");
+        win = true;
     }
-    else
+    else if (chara == 3) //sunflower
     {
-        printf("You are now in Ultramarine\n");
+        printf("You, Sunflower, wake up in Ultramarine.\n");
+        printf("You look around in a panic, and see a system of buildings, almost completely submerged in water.\n");
+        printf("You don't know your way back to Goldenrod!");
+        _getch;
+
+        printf("You are now in Ultramarine.\n");
+        printf("It's a shimmering sea town with limestone buildings protruding from the ocean.\n");
+        printf("To the East is Canary Yellow Island.\nYou're at a dead end.\n");
+
+        printf("1. Go to Canary Yellow Island\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 2;
+        }
+    }
+    else //magenta
+    {
+        printf("You are now in Ultramarine.\n");
         printf("It's a shimmering sea town with limestone buildings protruding from the ocean.\n");
         printf("To the East is Canary Yellow Island.\nYou've reached a dead end.\n");
 
@@ -139,7 +169,7 @@ int canary(int room) //room 2
         printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
         printf("To the West is Ultramarine and to the south is Sunset Observatory.\n");
 
-        printf("1. Go to Ultramarine\n2. Go to West Goldenrod?\n");
+        printf("1. Go to Ultramarine\n2. Go to West Goldenrod\n");
         printf(">");
         scanf_s("%i", &choice);
         fseek(stdin, 0, SEEK_END);
@@ -376,18 +406,47 @@ int westgolden(int room) //room 12
     return room;
 }
 //room13
-int goldenrod(int room, int chara) //room 13
+int goldenrod(int room, int chara, bool win) //room 13
 {
     int choice;
-    if (chara == 3)
+    if (chara == 2) //magenta
+    {
+    printf("You, Magenta, up in Goldenrod.\n");
+    printf("You look around in a panic, and see tall buildings, which tower over you.\n");
+    printf("You don't know your way back to Rose Village!");
+    _getch;
+
+    printf("You are now in Goldenrod\n");
+    printf("It's a huge and glorious city.\nThere's so much to see that it's almost overwhelming.\n");
+    printf("To the North is Violet District, to the East is Rainbow Baazar, and to the West is West Goldenrod.\n");
+
+    printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to West Goldenrod\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 8;
+    }
+    else if (choice == 2)
+    {
+        room = 14;
+    }
+    else if (choice == 3)
+    {
+        room = 12;
+    }
+    }
+    else if (chara == 3) //sunflower
     {
         printf("You are now in Goldenrod\n");
         printf("You reached home!");
+        win = true;
     }
-    else
+    else //cobalt
     {
         printf("You are now in Goldenrod\n");
-        printf("It's a huge and glorious city.\nThere's so much to see that it's almost overwhelming\n");
+        printf("It's a huge and glorious city.\nThere's so much to see that it's almost overwhelming.\n");
         printf("To the North is Violet District, to the East is Rainbow Baazar, and to the West Is West Goldenrod.\n");
 
         printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to West Goldenrod\n");
@@ -398,7 +457,7 @@ int goldenrod(int room, int chara) //room 13
         {
             room = 8;
         }
-        else if (choice == 2)
+        else if (choice == 2) //cobalt
         {
             room = 14;
         }
@@ -696,17 +755,38 @@ int fuschia(int room) //room 24
     return room;
 }
 //room25
-int rose(int room, int chara) //room 25
+int rose(int room, int chara, bool win) //room 25
 {
     int choice;
-    if (chara == 2)
+    if (chara == 1) //cobalt
+    {
+        printf("You, Cobalt, wake up in Rose Village.\n");
+        printf("You looked around in a panic, and see fields of flowers.\n");
+        printf("You don't know your way back to Ultramarine!\n");
+        _getch;
+
+        printf("You are now in Rose Village\n");
+        printf("It's a rose-colored lake with a few cabins lining the white sand beach.\n");
+        printf("To the West is Fuschia Village.\nYou're at a dead end.\n");
+
+        printf("1. Go to Fuscia Village\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 24;
+        }
+    }
+    else if (chara == 2) //magenta
     {
         printf("You are now in Rose Village\n");
         printf("You reached home!");
+        win = true;
     }
-    else
+    else //sunflower
     {
-        printf("You are now in Ultramarine\n");
+        printf("You are now in Rose Village\n");
         printf("It's a rose-colored lake with a few cabins lining the white sand beach.\n");
         printf("To the West is Fuschia Village.\nYou've reached a dead end.\n");
 
@@ -735,8 +815,9 @@ int main()
     int item_misc = 0;
     int items = 0;
 
-    int room;
+    int room = 0;
     int choice;
+    bool win = false;
 
     do //menu loop
     {
@@ -1025,25 +1106,125 @@ int main()
 
     } while (menu_choice != 3);
 
+    do
+    {
+        if (chara == 1)
+        {
+            room = rose(room, chara, win);
+        }
+        if (chara == 2)
+        {
+            room = goldenrod(room, chara, win);
+        }
+        else if (chara == 3)
+        {
+            room = ultramarine(room, chara, win);
+        }
 
-    if (chara == 1) //cobalt
-    {
-        printf("Cobalt woke up in Rose Village\n");
-        printf("she looked around in a panic, and saw fields of flowers\n");
-        printf("Cobalt didn't know her way back to Ultramarine!");
-    }
-    else if (chara == 2) //magenta
-    {
-        printf("Magenta woke up in Goldenrod\n");
-        printf("he looked around in a panic, and saw tall buildings, which towered over him\n");
-        printf("Magenta didn't know his way back to Rose Village!");
-    }
-    else if (chara == 3) //sunflower
-    {
-        printf("Sunflower woke up in Ultramarine\n");
-        printf("she looked around in a panic, and saw a system of buildings, almost completely submerged in water.\n");
-        printf("Sunflower didn't know her way back to Goldenrod!");
-    }
+
+
+        if (room == 1)
+        {
+            room = ultramarine(room, chara, win);
+        }
+        else if (room == 2)
+        {
+            room = canary(room);
+        }
+        else if (room == 3)
+        {
+            room = violetblue(room);
+        }
+        else if (room == 4)
+        {
+            room = rust(room);
+        }
+        else if (room == 5)
+        {
+            room = midnightblue(room);
+        }
+        else if (room == 6)
+        {
+            room = maroon(room);
+        }
+        else if (room == 7)
+        {
+            room = sunset(room);
+        }
+        else if (room == 8)
+        {
+            room = violet(room);
+        }
+        else if (room == 9)
+        {
+            room = silver(room);
+        }
+        else if (room == 10)
+        {
+            room = viridian(room);
+        }
+        else if (room == 11)
+        {
+            room = fluorescent(room);
+        }
+        else if (room == 12)
+        {
+            room = westgolden(room);
+        }
+        if (room == 13)
+        {
+            room = goldenrod(room, chara, win);
+        }
+        else if (room == 14)
+        {
+            room = rainbow(room);
+        }
+        else if (room == 15)
+        {
+            room = carrot(room);
+        }
+        else if (room == 16)
+        {
+            room = pumpkin(room);
+        }
+        else if (room == 17)
+        {
+            room = olive(room);
+        }
+        else if (room == 18)
+        {
+            room = rouge(room);
+        }
+        else if (room == 19)
+        {
+            room = sienna(room);
+        }
+        else if (room == 20)
+        {
+            room = cream(room);
+        }
+        else if (room == 21)
+        {
+            room = royalcastle(room);
+        }
+        else if (room == 22)
+        {
+            room = royalcastletown(room);
+        }
+        else if (room == 23)
+        {
+            room = purplemountains(room);
+        }
+        else if (room == 24)
+        {
+            room = fuschia(room);
+        }
+        else if (room == 25)
+        {
+            room = rose(room, chara, win);
+        }
+    } while (win == false);
+ 
 
     return 0;
 }
