@@ -10,7 +10,10 @@
                     dungeon you will be making. You need to have a loop around a movement system that allows you to move between rooms, but
                     you don't need the rooms yet. This will consist of some sort of branching.
 
-    Pseudocode:     Variables
+    Pseudocode:     Placeholder combat function
+                    Functions for rooms
+                    Dialogue and input
+                    Variables
                     Screen is cleared whevever player returns to main menu
                     Selections are printed to main menu along with the number of items selected
                     Choices to select character or items
@@ -22,6 +25,8 @@
                     already made
                     Do-while loop around main menu that repeats until menu selection is '3',
                     the choice that begins the game
+                    Code for setting the rooms including starting rooms
+                    End message
 
     Notes: Error with moving between rooms. Characters get stuck between starting room and second room.
 
@@ -103,6 +108,10 @@
                         Tested code
                         Fixed minor errors
                         Tested code again
+                        Pushed to GitHub
+
+    Date: 1/12/22       Done:
+                        Added pseudocode
                         Pushed to GitHub
 
 */
