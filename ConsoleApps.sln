@@ -57,6 +57,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "concessions", "concessions\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "personaldata", "personaldata\personaldata.vcxproj", "{C823BFA3-760C-41E8-A3FE-6598A6041F49}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pointdistance", "pointdistance\pointdistance.vcxproj", "{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -281,6 +283,14 @@ Global
 		{C823BFA3-760C-41E8-A3FE-6598A6041F49}.Release|x64.Build.0 = Release|x64
 		{C823BFA3-760C-41E8-A3FE-6598A6041F49}.Release|x86.ActiveCfg = Release|Win32
 		{C823BFA3-760C-41E8-A3FE-6598A6041F49}.Release|x86.Build.0 = Release|Win32
+		{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}.Debug|x64.ActiveCfg = Debug|x64
+		{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}.Debug|x64.Build.0 = Debug|x64
+		{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}.Debug|x86.ActiveCfg = Debug|Win32
+		{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}.Debug|x86.Build.0 = Debug|Win32
+		{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}.Release|x64.ActiveCfg = Release|x64
+		{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}.Release|x64.Build.0 = Release|x64
+		{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}.Release|x86.ActiveCfg = Release|Win32
+		{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
