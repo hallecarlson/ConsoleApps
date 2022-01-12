@@ -23,6 +23,11 @@
                         Found errors E0349 and C2679
                         Failed to fix errors
                         Pushed to GitHub
+
+    Date: 1/12/22       Done:
+                        Fixed the errors
+                        Got help from Mr. Miyoshi
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -40,7 +45,7 @@ struct Data
 
 int main()
 {
-    Data first, middle, last, phone, age;
+    Data data;
     char retake = 'n';
 
     printf("This program will store your personal data for totally legit purposes!\n");
@@ -49,11 +54,11 @@ int main()
     {
         printf("\nPlease input your first name\n");
         printf(">");
-        cin >> first;
+        cin >> data.first;
         //scanf_s("%s", &phone);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%s... is this correct?\t(y for yes || else for no)\n", first);
+        printf("%s... is this correct?\t(y for yes || else for no)\n", data.first.c_str());
         printf(">");
         scanf_s("%i", &retake);
         fseek(stdin, 0, SEEK_END);
@@ -63,11 +68,11 @@ int main()
     {
         printf("\nPlease input your middle name\n");
         printf(">");
-        cin >> middle;
+        cin >> data.middle;
         //scanf_s("%s", &phone);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%s... is this correct?\t(y for yes || else for no)\n", middle);
+        printf("%s... is this correct?\t(y for yes || else for no)\n", data.middle.c_str());
         printf(">");
         scanf_s("%i", &retake);
         fseek(stdin, 0, SEEK_END);
@@ -77,11 +82,11 @@ int main()
     {
         printf("\nPlease input your last name\n");
         printf(">");
-        cin >> last;
+        cin >> data.last;
         //scanf_s("%s", &phone);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%s... is this correct?\t(y for yes || else for no)\n", last);
+        printf("%s... is this correct?\t(y for yes || else for no)\n", data.last.c_str());
         printf(">");
         scanf_s("%i", &retake);
         fseek(stdin, 0, SEEK_END);
@@ -91,10 +96,10 @@ int main()
     {
         printf("\nPlease input your age\n");
         printf(">");
-        scanf_s("%i", &age);
+        scanf_s("%i", &data.age);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%i... is this correct?\t(y for yes || else for no)\n", age);
+        printf("%i... is this correct?\t(y for yes || else for no)\n", data.age);
         printf(">");
         scanf_s("%i", &retake);
         fseek(stdin, 0, SEEK_END);
@@ -104,18 +109,18 @@ int main()
     {
         printf("\nPlease input your phone number\n");
         printf(">");
-        cin >> phone;
+        cin >> data.phone;
         //scanf_s("%s", &phone);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%s... is this correct?\t(y for yes || else for no)\n", phone);
+        printf("%s... is this correct?\t(y for yes || else for no)\n", data.phone.c_str());
         printf(">");
         scanf_s("%i", &retake);
         fseek(stdin, 0, SEEK_END);
     } while (retake != 'y');
 
     printf("Your data:\n");
-    printf("\tFirst name: %s\n\tMiddle name: %s\n\tLast name: %s\n\tAge: %i\n\tPhone number: %s\n", first, middle, last, age, phone);
+    printf("\tFirst name: %s\n\tMiddle name: %s\n\tLast name: %s\n\tAge: %i\n\tPhone number: %s\n", data.first, data.middle, data.last, data.age, data.phone);
     printf("\nYour data is totally in good hands ;)");
     _getch();
 
