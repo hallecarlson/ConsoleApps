@@ -23,6 +23,11 @@
                         Found errors E0349 and C2679
                         Failed to fix errors
                         Pushed to GitHub
+
+                        Got help from Zach Conway
+                        Fixed errors with input
+                        Tested code
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -40,7 +45,7 @@ struct Data
 
 int main()
 {
-    Data first, middle, last, phone, age;
+    Data person;
     char retake = 'n';
 
     printf("This program will store your personal data for totally legit purposes!\n");
@@ -49,73 +54,77 @@ int main()
     {
         printf("\nPlease input your first name\n");
         printf(">");
-        cin >> first;
+        cin >> person.first;
         //scanf_s("%s", &phone);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%s... is this correct?\t(y for yes || else for no)\n", first);
+        printf("%s... is this correct?\t(y for yes || else for no)\n", person.first.c_str());
         printf(">");
-        scanf_s("%i", &retake);
+        scanf_s("%c", &retake);
         fseek(stdin, 0, SEEK_END);
     } while (retake != 'y');
 
+    retake = 'n';
     do
     {
         printf("\nPlease input your middle name\n");
         printf(">");
-        cin >> middle;
+        cin >> person.middle;
         //scanf_s("%s", &phone);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%s... is this correct?\t(y for yes || else for no)\n", middle);
+        printf("%s... is this correct?\t(y for yes || else for no)\n", person.middle.c_str());
         printf(">");
-        scanf_s("%i", &retake);
+        scanf_s("%c", &retake);
         fseek(stdin, 0, SEEK_END);
     } while (retake != 'y');
 
+    retake = 'n';
     do
     {
         printf("\nPlease input your last name\n");
         printf(">");
-        cin >> last;
+        cin >> person.last;
         //scanf_s("%s", &phone);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%s... is this correct?\t(y for yes || else for no)\n", last);
+        printf("%s... is this correct?\t(y for yes || else for no)\n", person.last.c_str());
         printf(">");
-        scanf_s("%i", &retake);
+        scanf_s("%c", &retake);
         fseek(stdin, 0, SEEK_END);
     } while (retake != 'y');
 
+    retake = 'n';
     do
     {
         printf("\nPlease input your age\n");
         printf(">");
-        scanf_s("%i", &age);
+        scanf_s("%i", &person.age);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%i... is this correct?\t(y for yes || else for no)\n", age);
+        printf("%i... is this correct?\t(y for yes || else for no)\n", person.age);
         printf(">");
-        scanf_s("%i", &retake);
+        scanf_s("%c", &retake);
         fseek(stdin, 0, SEEK_END);
     } while (retake != 'y');
 
+    retake = 'n';
     do
     {
         printf("\nPlease input your phone number\n");
         printf(">");
-        cin >> phone;
+        cin >> person.phone;
         //scanf_s("%s", &phone);
         fseek(stdin, 0, SEEK_END);
 
-        printf("%s... is this correct?\t(y for yes || else for no)\n", phone);
+        printf("%s... is this correct?\t(y for yes || else for no)\n", person.phone.c_str());
         printf(">");
-        scanf_s("%i", &retake);
+        scanf_s("%c", &retake);
         fseek(stdin, 0, SEEK_END);
     } while (retake != 'y');
 
     printf("Your data:\n");
-    printf("\tFirst name: %s\n\tMiddle name: %s\n\tLast name: %s\n\tAge: %i\n\tPhone number: %s\n", first, middle, last, age, phone);
+    printf("\tFirst name: %s\n\tMiddle name: %s\n\tLast name: %s\n\tAge: %i\n\tPhone number: %s\n", person.first.c_str(), person.middle.c_str(), person.last.c_str(), person.age, person.phone.c_str());
     printf("\nYour data is totally in good hands ;)");
     _getch();
 
