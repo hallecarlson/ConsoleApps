@@ -114,6 +114,13 @@
                         Added pseudocode
                         Pushed to GitHub
 
+    Date: 1/18/22       Done:
+                        Added code fora struct that holds player data for protagonist and enemy
+                        Modified code to work with the struct
+                        Fixed errors
+                        Got help from Mr. Miyoshi
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -126,14 +133,29 @@
 using namespace std;
     
    
-
-/*int combat()
+struct Player
 {
+    string name;            //player names
+    int chara;
 
-needs stuff for hp, dp, weapon differences, enemy hp and dp variation, encounters, 
-defeats, not too gruesome; something like "[name] has fallen in batle (exit game)
+    int hp, hpmin, hpmax;   //player health stats
+    int dp, dpmin, dpmax;   //player damage stats
 
-}*/
+};
+
+
+
+Player combat(Player p, Player e)
+{
+/*needs stuff for hp, dp, weapon differences, enemy hp and dp variation, encounters, 
+defeats, not too gruesome; something like "[name] has fallen in batle (exit game)*/   
+
+    //p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
+
+    //printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
+
+    return p;
+}
 
 
 //room1
@@ -825,7 +847,8 @@ int rose(int room, int chara, bool &win) //room 25
 
 int main()
 {
-    int chara = 0;
+    Player p;
+    p.chara = 0;
 
     int menu_choice;
     int item_type;
@@ -846,15 +869,15 @@ int main()
         printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
 
         printf("Character: ");        
-        if (chara == 1)
+        if (p.chara == 1)
         {
             printf("Cobalt\n");
         }
-        else if (chara == 2)
+        else if (p.chara == 2)
         {
             printf("Magenta\n");
         }
-        else if (chara == 3)
+        else if (p.chara == 3)
         {
             printf("Sunflower\n");
         }
@@ -914,11 +937,11 @@ int main()
         if (menu_choice == 1) //select character
         {
             printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-            if (chara == 1 || chara == 2 || chara == 3)
+            if (p.chara == 1 || p.chara == 2 || p.chara == 3)
             {
                 printf("A character has already been selected !\n");
             }
-            else if (chara != 1 || chara != 2 || chara != 3)
+            else if (p.chara != 1 || p.chara != 2 || p.chara != 3)
             {
                 printf("Select Character:\n\n");
                 printf("1. Cobalt\n");
@@ -945,12 +968,12 @@ int main()
                 printf("\t\tspellcasting specialty\n\n");
 
                 printf(">");
-                scanf_s("%i", &chara);
+                scanf_s("%i", &p.chara);
                 fseek(stdin, 0, SEEK_END);
 
-                if (chara == 1) //Cobalt
+                if (p.chara == 1) //Cobalt
                 {
-                    chara = 1;
+                    p.chara = 1;
                     printf("\n\nSelected: Cobalt\n\n");
 
                     int player_hp_max = 30;
@@ -961,9 +984,9 @@ int main()
                     
                     printf("[hp] ---> %i / %i\n", player_hp, player_hp_max); //starting hp / 30 max
                 }
-                else if (chara == 2) //Magenta
+                else if (p.chara == 2) //Magenta
                 {
-                    chara = 2;
+                    p.chara = 2;
                     printf("\n\nSelected: Magenta\n\n");
 
                     int player_hp_max = 30;
@@ -974,9 +997,9 @@ int main()
 
                     printf("[hp] ---> %i / %i\n", player_hp, player_hp_max); //starting hp / 30 max
                 }
-                else if (chara == 3) //Sunflower
+                else if (p.chara == 3) //Sunflower
                 {
-                    chara = 3;
+                    p.chara = 3;
                     printf("\n\nSelected: Sunflower\n\n");
 
                     int player_hp_max = 30;
@@ -1128,19 +1151,19 @@ int main()
     bool start = true;
     do
     {
-        if (chara == 1 && start)
+        if (p.chara == 1 && start)
         {
-            room = rose(room, chara, win);
+            room = rose(room, p.chara, win);
             start = false;
         }
-        if (chara == 2 && start)
+        if (p.chara == 2 && start)
         {
-            room = goldenrod(room, chara, win);
+            room = goldenrod(room, p.chara, win);
             start = false;
         }
-        else if (chara == 3 && start)
+        else if (p.chara == 3 && start)
         {
-            room = ultramarine(room, chara, win);
+            room = ultramarine(room, p.chara, win);
             start = false;
         }
 
@@ -1148,7 +1171,7 @@ int main()
 
         if (room == 1)
         {
-            room = ultramarine(room, chara, win);
+            room = ultramarine(room, p.chara, win);
         }
         else if (room == 2)
         {
@@ -1164,7 +1187,7 @@ int main()
         }
         else if (room == 5)
         {
-            room = goldenrod(room, chara, win);
+            room = goldenrod(room, p.chara, win);
         }
         else if (room == 6)
         {
@@ -1244,7 +1267,7 @@ int main()
         }
         else if (room == 25)
         {
-            room = rose(room, chara, win);
+            room = rose(room, p.chara, win);
         }
     } while (!win);
     //while (win)

@@ -32,12 +32,7 @@
                         Got help from Zach Conway
                         Fixed errors with input
                         Tested code
-                        Pushed to GitHub
-
-                        Got help from Zach Conway
-                        Fixed errors with input
-                        Tested code
-                        Pushed to GitHub
+                        Pushed to GitHub                     
 */
 
 #include <iostream>
