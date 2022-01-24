@@ -154,8 +154,9 @@ Player combat(Player p, Player e)
 /*needs stuff for hp, dp, weapon differences, enemy hp and dp variation, encounters, 
 defeats, not too gruesome; something like "[name] has fallen in batle (exit game)*/   
 
-    /*p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max     
-    printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max*/                      //located in int main(), commented here just in case
+    //p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
+
+    //printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
 
     return p;
 }
