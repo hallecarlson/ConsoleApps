@@ -126,6 +126,11 @@
                         Merged changes
                         Pushed to GitHub
 
+
+    Date: 1/25/22       Done:
+                        Added comments for future fights
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -219,6 +224,14 @@ int canary(int room) //room 2
         printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
         printf("To the West is Ultramarine and to the south is Sunset Observatory.\n");
 
+        /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+            
+            Battle! 
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
+
         printf("1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
         printf(">");
         scanf_s("%i", &choice);
@@ -241,6 +254,14 @@ int violetblue(int room) //room 3
     printf("You are now in Violet Blue Town \n");
     printf("It's a sleepy town of stargazers and birdwatchers.\nThe sky is entirely lit up with stars.\n");
     printf("To the South is Violet District.\nYou've reached a dead end.\n");
+
+    /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+
+            Battle!
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
 
     printf("1. Go to Violet District.\n");
     printf(">");
@@ -408,6 +429,14 @@ int silver(int room) //room 9
     printf("Shimmering, clear water flows throug small canyons and tunnels.\n");
     printf("To the North is West Goldenrod.\nYou've reached a dead end.\n");
 
+    /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+
+            Battle!
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
+
     printf("1. Go to West Goldenrod\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -426,6 +455,14 @@ int viridian(int room) //room 10
     printf("You are now in Viridian Forest\n");
     printf("The woods are thick and dim. Patches of sunlight shine through the canopy.\n");
     printf("To the North is Goldenrod and to the South is Carrot Meadow.\n");
+
+    /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+
+            Battle!
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
 
     printf("1. Go to Goldenrod\n2. Go to Carrot Meadow\n");
     printf(">");
@@ -450,6 +487,14 @@ int fluorescent(int room) //room 11
     printf("Colorful plants stick out of the bright blue mud.\nThere are a few paths of wet grass that look well-traversed.\n");
     printf("To the North is Maroon Town and to the South is Pumpkin Patch.\n");
 
+    /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+
+            Battle!
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
+
     printf("1. Go to Maroon Town\n2. Go to Pumpkin Patch\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -473,6 +518,14 @@ int rust(int room) //room 12
     printf("It's an old laboratory full of scary machinery and sinister-looking blueprints.\n");
     printf("To the North is Sunset Observatory and to the Eaat is Midnight Blue Town.\n");
 
+    /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+
+            Battle!
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
+
     printf("1. Go to Sunset Observatory\n2. Go to Midnight Blue Town\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -495,6 +548,14 @@ int midnightblue(int room) //room 13
     printf("You are now in Midnight Blue Town\n");
     printf("It's a dodgy, dark town without any stars in the sky.\nIt’s always night here.\n");
     printf("To the North is Violet Distrtict, to the East is Rainbow Bazaar, and to the West is Rust Laboratory.\n");
+
+    /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+
+            Battle!
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
 
     printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to Rust Laboratory\n");
     printf(">");
@@ -626,6 +687,14 @@ int rouge(int room) //room 18
     printf("It's a long, wide path lined with trees.\nThe leaves resemble the beautiful colors of autumn.\n");
     printf("To the East is Sienna Village, to the South is Purple Mountains Majesty, and to the West is Olive Vineyard.\n");
 
+    /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+
+            Battle!
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
+
     printf("1. Go to Sienna Village\n2. Go to Purple Mountains Majesty\n3. Go to Olive Vineyard\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -652,6 +721,14 @@ int sienna(int room) //room 19
     printf("You are now in Sienna Village.\n");
     printf("Log buildings surround a small village square.\nPeople sit around a bonfire playing folk songs.\n");
     printf("To the North is Rainbow Bazaar, to the East is Cream Factory, to the South is Fuschia Village, and to the West is Rouge Pass.\n");
+
+    /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+
+            Battle!
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
 
     printf("1. Go to Rainbow Bazaar\n2. Go to Cream Factory\n3. Go to Fuschia Village\n4. Go to Rouge Pass\n");
     printf(">");
@@ -780,6 +857,14 @@ int fuschia(int room) //room 24
     printf("There are red tents spread throughout the pink grass.\nA rose-colored river flows through the center of the village.\n");
     printf("To the North is Sienna Village, to the East is Rose Village, and to the West is Purple Mountains Majesty.\n");
 
+    /*  printf("You hear rustling in the foliage\n");
+            _getch();
+            printf("An enemy jumps out!\n);
+
+            Battle!
+            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
+        */
+
     printf("1. Go to Sienna Village\n2. Go to Rose Village\n3. Go to Purple Mountains Majesty\n");
     printf(">");
     scanf_s("%i", &choice);
@@ -867,10 +952,32 @@ int main()
     do //menu loop
     {
         system("cls");
-        printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("Welcome to my RPG !\n");
         printf("Created by Halle Carlson\n");
-        printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
+        _getch();
+
+        printf("It is reccomended that you create a map as you play.\n");
+        printf("The world in the game looks like the following:\n");
+        printf(" _______ _______ _______ _______ _______\n");
+        printf("|  ultra|      2|      3|      4| golden|\n");
+        printf("| marine|       |       |       |    rod|\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("|      6|      7|      8|      9|     10|\n");
+        printf("|       |       |       |       |       |\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("|     11|     12|     13|     14|     15|\n");
+        printf("|       |       |       |       |       |\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("|     16|     17|     18|     19|     20|\n");
+        printf("|       |       |       |       |       |\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("|     21|     22|     23|     24|   rose|\n");
+        printf("|       |       |       |       |village|\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
+        _getch();
 
         printf("Character: ");        
         if (p.chara == 1)
