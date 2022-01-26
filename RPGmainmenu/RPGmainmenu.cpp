@@ -131,6 +131,10 @@
                         Added comments for future fights
                         Pushed to GitHub
 
+    Date: 1/26/22       Done:
+                        Added comments for future item choices
+                        Pushed to GitHub
+
 */
 
 #include <iostream>
@@ -216,7 +220,7 @@ int ultramarine(int room, int chara, bool &win) //room 1
 
     return room;
 }
-//room2
+//room2         enemy encounter
 int canary(int room) //room 2
     {
         int choice;
@@ -246,8 +250,8 @@ int canary(int room) //room 2
         }
 
         return room;
-    }
-//room3
+    } 
+//room3         enemy encounter
 int violetblue(int room) //room 3
 {
     int choice;
@@ -274,13 +278,15 @@ int violetblue(int room) //room 3
 
     return room;
 }
-//room4
+//room4         item
 int westgolden(int room) //room 4
 {
     int choice;
     printf("You are now in West Goldenrod\n");
     printf("It's a small residential district of greater Goldenrod.\nThere isn't much to see here.\n");
     printf("To the East is Goldenrod and to the South is Silver Quarry.\n");
+
+    //choose 1 free item
 
     printf("1. Go to Goldenrod\n2. Go to Silver quarry\n");
     printf(">");
@@ -353,7 +359,7 @@ int goldenrod(int room, int chara, bool& win) //room 5
     }
     return room;
 }
-//room6
+//room6         item
 int maroon(int room) //room 6
 {
     int choice;
@@ -398,13 +404,15 @@ int sunset(int room) //room 7
 
     return room;
 }
-//room8
+//room8         item
 int violet(int room) //room 8
 {
     int choice;
     printf("You are now in Violet District\n");
     printf("It's a crowded neighborhood on the outskirts of Goldenrod\nEverywhere around you are people travelling to places.\n");
     printf("To the North is Violet Blue Town and to the South is Midnight Blue Town.\n");
+
+    //choose 1 free item
 
     printf("1. Go to Violet Blue Town\n2. Go to Mignight Blue Town\n");
     printf(">");
@@ -421,7 +429,7 @@ int violet(int room) //room 8
 
     return room;
 }
-//room9
+//room9         enemy encounter
 int silver(int room) //room 9
 {
     int choice;
@@ -448,7 +456,7 @@ int silver(int room) //room 9
  
     return room;
 }
-//room10
+//room10        enemy encounter
 int viridian(int room) //room 10
 {
     int choice;
@@ -479,7 +487,7 @@ int viridian(int room) //room 10
 
     return room;
 }
-//room11
+//room11        enemy encounter
 int fluorescent(int room) //room 11
 {
     int choice;
@@ -510,7 +518,7 @@ int fluorescent(int room) //room 11
 
     return room;
 }
-//room12
+//room12        enemy encounter
 int rust(int room) //room 12
 {
     int choice;
@@ -541,7 +549,7 @@ int rust(int room) //room 12
 
     return room;
 }
-//room13
+//room13        enemy encounter
 int midnightblue(int room) //room 13
 {
     int choice;
@@ -576,14 +584,14 @@ int midnightblue(int room) //room 13
 
     return room;
 }
-//room14
+//room14        item
 int rainbow(int room) //room 14
 {
     int choice;
     printf("You are now in Rainbow Bazaar.\n");
     printf("Dozens of colorful tents surround you, stocked with many items.\nDirectly in front of you, there is a purple tent.\nYou walk over, and the seller, a woman in royal purple robes, offers you the choice of a free item.\n");
     
-    //free item choice
+    //choose 1 free item
     
     printf("To the East is Carrot Meadow, to the South is Sienna Village, and to the West is Midnight Blue Town.\n");
 
@@ -606,13 +614,15 @@ int rainbow(int room) //room 14
 
     return room;
 }
-//room15
+//room15        item
 int carrot(int room) //room 15
 {
     int choice;
     printf("You are now in Carrot Meadow.\n");
     printf("There are a few farmers around the dirt field who are harvesting the throusands of carrots.\nThere's not much to see otherwise.\n");
     printf("To the North is Viridian Forest and to the West is Rainbow Bazaar.\n");
+
+    //heal by eating carrots, there is a sign that says "take what you need"
 
     printf("1. Go to Viridian Forest\n2. Go to Rainbow Bazaar\n");
     printf(">");
@@ -636,6 +646,8 @@ int pumpkin(int room) //room 16
     printf("You are now in Pumpkin Patch.\n");
     printf("It's a spooky field of seemingly normal-looking pumpkins.\nUpon closer look, some of them are carved jack o' lanterns with candles inside.\n");
     printf("To the North is Fluorescent Marsh, to the East is Olive Vineyard, and to the South is Royal Purple Castle.\n");
+
+    //choose 1 free item
 
     printf("1. Go to Fluorescent Marsh\n2. Go to Olive Vineyard\n3. Royal Purple Castle\n");
     printf(">");
@@ -679,7 +691,7 @@ int olive(int room) //room 17
 
     return room;
 }
-//room18
+//room18        enemy encounter
 int rouge(int room) //room 18
 {
     int choice;
@@ -714,7 +726,7 @@ int rouge(int room) //room 18
 
     return room;
 }
-//room19
+//room19        enemy encounter
 int sienna(int room) //room 19
 {
     int choice;
@@ -795,7 +807,7 @@ int royalcastle(int room) //room 21
 
     return room;
 }
-//room22
+//room22        item
 int royalcastletown(int room) //room 22
 {
     int choice;
@@ -803,7 +815,7 @@ int royalcastletown(int room) //room 22
     printf("It's a small town built from stone bricks.\nFamily-owned item shops line the street,next to pubs and apartments.\n");
     printf("A man in a tunic and boots motions for you to come over.\nHe says he has heard of your good deeds and wants to offer you a free item from his shop.\n");
 
-    //free item choice
+    //choose 1 free item
     
     printf("To the East is Purple Mountains Majesty and to the West is Royal Purple Castle.\n");
 
@@ -849,7 +861,7 @@ int purplemountains(int room) //room 23
 
     return room;
 }
-//room24
+//room24        enemy encounter
 int fuschia(int room) //room 24
 {
     int choice;
