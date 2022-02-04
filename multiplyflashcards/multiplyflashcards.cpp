@@ -23,6 +23,11 @@
                         Tested code
                         Fixed errors
                         Pushed to GitHub
+
+    Date: 2/4/22        Done:
+                        Added code for project
+                        Played around with a function
+                        Encountered errors with return type
                         
 */
 
@@ -35,11 +40,11 @@
 #include <vector>
 using namespace std;
 
-void tables(vector<int> table)
+void tables(vector<vector<int>> table, int scalar, int i)
 {
-    for (int scalar = 1; scalar <= 12; scalar++)
+    for (scalar = 1; scalar <= 12; scalar++)
     {
-        for (int i = 0; i <= 12; i++)
+        for (i = 0; i <= 12; i++)
         {            
             table.push_back(i);    
             //printf("%i * %i = ", i, scalar);
@@ -53,9 +58,38 @@ void tables(vector<int> table)
 int main()
 {
     srand((unsigned)time(NULL));
-    vector<int> table;
-    
-    tables(table);
+    vector<vector<int>> table;
+    int scalar = 1;
+    int i = 0;
+    int min = 1;
+    int max = 12;
+    int ans;
+    char retake;
+
+    tables(table, scalar, i);
+
+    do 
+    {
+        scalar = min + rand() % (max - min + 1);
+        printf("Please answer the following question: ");
+        printf("%i * %i = ", table.at(i), scalar);
+        scanf_s("%i\n", &ans);
+        fseek(stdin, 0, SEEK_END);       
+
+        if (ans == table.at(i) * scalar)
+        {
+            printf("Correct!\n");
+        }
+        else
+        {
+            printf("Incorrect!\n");
+        }
+
+        printf("Try another question? (y for yes)");
+        scanf_s("%c", &retake);
+        fseek(stdin, 0, SEEK_END);
+
+    } while (retake == 'y');
 
     return 0;
 }
