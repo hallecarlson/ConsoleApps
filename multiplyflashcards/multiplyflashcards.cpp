@@ -38,6 +38,7 @@
 #include <time.h>
 #include <string>
 #include <vector>
+#include <math.h>
 using namespace std;
 
 void tables(vector<vector<int>> table, int scalar, int i)

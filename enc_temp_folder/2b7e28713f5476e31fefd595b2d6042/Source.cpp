@@ -23,14 +23,6 @@
                         Got help from Mr. Miyoshi
                         Pushed to GitHub
 
-    Date: 2/6/22        Done:
-                        Pulled from GitHub
-                        Got help from Ryan Carlson
-                        Added code
-                        Fixed errors
-                        Encountered an exception 
-                        Pushed to GitHub
-
 */
 
 #include <iostream>
@@ -58,7 +50,7 @@ int main()
         vector<int> row;
         for (int i = 1; i <= 12; i++)
         {
-            row.push_back(i * scalar);
+            row.push_back(i*scalar);
             printf("%i, ", row[i - 1]);
             Sleep(50);
             //printf("%i * %i = ", i, scalar);
@@ -82,8 +74,8 @@ int main()
 
     do
     {
-        int rn1 = 1 + rand() % (12);
-        int rn2 = 1 + rand() % (12);
+        int rn1 = 1 + rand() % (12 - 1 + 1);
+        int rn2 = 1 + rand() % (12 - 1 + 1);
 
         printf("\nWhat is:");
         printf("%i * %i\n>", table[rn1][0], table[0][rn2]);
