@@ -23,78 +23,12 @@
                         Got help from Mr. Miyoshi
                         Pushed to GitHub
 
+    Date: 2/6/22        Done:
+                        Pulled from GitHub
+                        Got help from Ryan Carlson
+                        Added code
+                        Fixed errors
+                        Encountered an exception
+                        Pushed to GitHub
+
 */
-
-#include <iostream>
-#include <fstream>
-#include <conio.h>
-#include <stdio.h>
-#include <time.h>
-#include <string>
-#include <vector>
-#include <windows.h>
-using namespace std;
-
-int main()
-{
-    srand((unsigned)time(NULL));
-    vector<vector<int>> table;
-
-
-    printf("{ \n");
-    Sleep(50);
-    for (int scalar = 1; scalar <= 12; scalar++)
-    {
-        printf("{ ");
-        Sleep(50);
-        vector<int> row;
-        for (int i = 1; i <= 12; i++)
-        {
-            row.push_back(i*scalar);
-            printf("%i, ", row[i - 1]);
-            Sleep(50);
-            //printf("%i * %i = ", i, scalar);
-            //printf("%i\n", table.at(i) * scalar);
-
-        }
-        table.push_back(row);
-        printf(" }, \n");
-        Sleep(50);
-    }
-    printf("} \n");
-    Sleep(50);
-    _getch();
-
-    system("cls");
-    printf("Quiz time!\n");
-    _getch();
-
-    int ans;
-    char retake;
-
-    do
-    {
-        int rn1 = 1 + rand() % (12);
-        int rn2 = 1 + rand() % (12);
-
-        printf("\nWhat is:");
-        printf("%i * %i\n>", table[rn1][0], table[0][rn2]);
-        scanf_s("%i", &ans);
-        fseek(stdin, 0, SEEK_END);
-
-        if (ans == table[rn1][0] * table[0][rn2])
-        {
-            printf("\nCorrect!\n");
-        }
-        else
-        {
-            printf("\nIncorrect!\n");
-            printf("Answer: %i * %i\n", table[rn1][0] * table[0][rn2]);
-        }
-        printf("Try another ? (y for yes)\n>");
-        scanf_s("%c", &retake);
-        fseek(stdin, 0, SEEK_END);
-    } while (retake == 'y');
-
-    return 0;
-}
