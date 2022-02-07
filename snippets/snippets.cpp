@@ -14,7 +14,20 @@
                     a key). Make the multiplications random.
     File name:      snippets.cpp
 
-    Pseudocode:
+    Pseudocode:         2D vector for table
+                        Nested for loop to populate multiplication table
+                        Screen is cleared
+                        Quiz begins
+                        Variables
+                        Do-while loop
+                        Random numbers for multiplication question generated
+                        Question given
+                        User input
+                        If else statements to check that answer is correct or incorrect
+                        Option to continue answering questions
+                        User input
+                        Loop continues or exits
+
 
     Maintenance Log:
     Date: 2/4/22        Done:
@@ -33,6 +46,14 @@
                         
                         Renamed file
                         Pushed to GitHub
+
+    Date: 2/7/22        Done:
+                        Pulled from GitHub  
+                        Tested for errors
+                        Fixed errors with answer outputs
+                        Added pseudocode
+                        Pushed to GitHub
+                        
 
 */
 
@@ -100,7 +121,7 @@ int main()
         else
         {
             printf("\nIncorrect!\n");
-            printf("Answer: %i * %i\n", table[rn1][0] * table[0][rn2]);
+            printf("Answer: %i\n", table[rn1][0] * table[0][rn2]);
         }
         printf("Try another ? (y for yes)\n>");
         scanf_s("%c", &retake);
