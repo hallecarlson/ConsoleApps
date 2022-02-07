@@ -18,6 +18,10 @@
     Maintenance Log:
     Date: 2/2/22        Done:
                         Created project
+
+    Date: 2/7/22        Done:
+                        Added some code
+                        Pushed to GitHub
                         
 */
 
@@ -28,13 +32,18 @@
 #include <time.h>
 #include <string>
 #include <vector>
-#include <math.h>
 #define _USE_MATH_DEFINES   //M_PI for pi
+#include <math.h>
 using namespace std;
 
 int main()
 {
+    vector<float> sineTable;
 
+    for (int n = 1; n <=  360; n++)
+    {
+        sinTable.push_back(sin(n(2(M_PI) / 360)));
+    }
 
     return 0;
 }
