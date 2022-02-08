@@ -13,7 +13,11 @@
     Project name:   Problem GS10-03 (sine and cosine lookup tables)
     File name:      sinecosinetables.cpp
 
-    Pseudocode:         
+    Pseudocode:         Vector
+                        Sine table
+                        Cosine table
+                        Variables
+                        Loop for do-while loop that gives sine and cosine values to user after user input
 
     Maintenance Log:
     Date: 2/2/22        Done:
@@ -22,7 +26,15 @@
     Date: 2/7/22        Done:
                         Added some code
                         Pushed to GitHub
-                        
+
+    Date: 2/8/22        Done:
+                        Got help from Mr. Miyoshi
+                        Added code for project
+                        Tested code
+                        Fixed errors
+                        Added pseudocode
+                        Pushed to GitHub
+                       
 */
 
 #include <iostream>
@@ -34,16 +46,53 @@
 #include <vector>
 #define _USE_MATH_DEFINES   //M_PI for pi
 #include <math.h>
+#include <windows.h>
 using namespace std;
 
 int main()
 {
     vector<float> sineTable;
-
-    for (int n = 1; n <=  360; n++)
+    printf("Sine Table\n");
+    for (int s = 0; s < 360; s++)
     {
-        sinTable.push_back(sin(n(2(M_PI) / 360)));
+        sineTable.push_back(sin(s * (M_PI / 180.0)));
+        printf("%.4f\t", sineTable[s]);
+        //Sleep(50);
     }
+
+    printf("\n\n");
+
+    vector<float> cosineTable;
+    printf("Cosine Table\n");
+    for (int c = 0; c < 360; c++)
+    {
+        cosineTable.push_back(cos(c * (M_PI / 180.0)));
+        printf("%.4f\t", cosineTable[c]);
+        //Sleep(50);
+    }
+
+    int ans;
+    char retake;
+    do
+    {     
+        printf("\n\n\nWhat is the angle you want to see the sine and cosine values for?\n>");
+        scanf_s("%i", &ans);
+        fseek(stdin, 0, SEEK_END);
+        if (ans < 0)
+        {
+            ans = -ans;
+            ans = 360 - ans % 360;
+        }
+        else
+        {
+            ans = ans % 360;
+        }
+        printf("\nSine = %f\tCosine = %f", sineTable[ans], cosineTable[ans]);
+
+        printf("\nEnter another ? (y for yes)\n>");
+        scanf_s("%c", &retake);
+        fseek(stdin, 0, SEEK_END);
+    } while (retake == 'y');
 
     return 0;
 }
