@@ -53,6 +53,10 @@
                         Fixed errors with answer outputs
                         Added pseudocode
                         Pushed to GitHub
+
+    Date: 2/8/22        Done:
+                        Made minor changes
+                        Pushed to GitHub
                         
 
 */
@@ -110,18 +114,18 @@ int main()
         int rn2 = 1 + rand() % (12);
 
         printf("\nWhat is:");
-        printf("%i * %i\n>", table[rn1][0], table[0][rn2]);
+        printf("%i * %i\n>", table[rn1 - 1][0], table[0][rn2 - 1]);
         scanf_s("%i", &ans);
         fseek(stdin, 0, SEEK_END);
 
-        if (ans == table[rn1][0] * table[0][rn2])
+        if (ans == table[rn1 - 1][0] * table[0][rn2 - 1])
         {
             printf("\nCorrect!\n");
         }
         else
         {
             printf("\nIncorrect!\n");
-            printf("Answer: %i\n", table[rn1][0] * table[0][rn2]);
+            printf("Answer: %i\n", table[rn1 - 1][0] * table[0][rn2 - 1]);
         }
         printf("Try another ? (y for yes)\n>");
         scanf_s("%c", &retake);
