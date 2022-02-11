@@ -34,6 +34,11 @@
 
     Date: 2/11/22       Done:
                         Pushed to GitHub
+
+                        Pulled from GitHub
+                        Added code for project
+                        Got help from Mr. Miyoshi
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -47,7 +52,7 @@
 using namespace std;
 
 enum Suits { clubs, diamonds, hearts, spades };
-enum Designation { ace = 1, two, three, our, five, six, seven, eights, nine, ten, jack, queen, king };
+enum Designation { ace = 1, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king };
 
 struct Card
 {
@@ -67,7 +72,93 @@ int main()
 
     vector<Card> deck;
 
+    for (Suits s = clubs; s <= spades; s = Suits(s + 1))
+    {
+        for (Designation d = ace; d <= king; d = Designation(d + 1))
+        {
+            Card c;
+            c.suit = s;
+            c.designation = d;
+            if (d == ace)
+            {
+                card.description = "Ace";
+            }
+            else if (d = two)
+            {
+                card.description = "Two";
+            }
+            else if (d = three)
+            {
+                card.description = "Three";
+            }
+            else if (d = four)
+            {
+                card.description = "Four";
+            }
+            else if (d = five)
+            {
+                card.description = "Five";
+            }
+            else if (d = six)
+            {
+                card.description = "Six";
+            }
+            else if (d = seven)
+            {
+                card.description = "Seven";
+            }
+            else if (d = eight)
+            {
+                card.description = "Eight";
+            }
+            else if (d = nine)
+            {
+                card.description = "Nine";
+            }
+            else if (d = ten)
+            {
+                card.description = "Ten";
+            }
+            else if (d = jack)
+            {
+                card.description = "Jack";
+            }
+            else if (d = queen)
+            {
+                card.description = "Queen";
+            }
+            else if (d = king)
+            {
+                card.description = "King";
+            }
+        }
+    }
 
+
+
+    /*for (int i = 51; i >= 0; i--)
+    {
+        deck.push_back(i);
+
+        if (i >= 0 && i <= 12)
+        {
+            card.suit = clubs;
+        }
+        else if (i >= 13 && i <= 25)
+        {
+            card.suit = diamonds;
+        }
+        else if (i >= 26 && i <= 38)
+        {
+            card.suit = hearts;
+        }
+        else if (i >= 39 && i <= 51)
+        {
+            card.suit = spades;
+        }
+    }*/
+
+   
     /*
     define all elements of array as different cards
 
