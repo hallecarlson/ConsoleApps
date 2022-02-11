@@ -27,6 +27,13 @@
                         Got help from Mr. Miyoshi
                         Pushed to GitHub
 
+
+    Date: 2/10/22       Done:
+                        Pulled from GitHub
+                        Got help from Ryan Carlson
+
+    Date: 2/11/22       Done:
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -59,6 +66,25 @@ int main()
     card.description = "Ace of Clubs";
 
     vector<Card> deck;
+
+
+    /*
+    define all elements of array as different cards
+
+    to create the vector:
+
+    for loop of 52 iterations:
+    if between 1 and 13, suit type 1
+    13-26ish, suit type 2
+    26ish-39? suit type 3
+    39-52 suit type 4
+
+
+    for loop to go through vector, random number generated that swaps with vector[i] and reduces loop
+    
+    hand out cards by using random numbers
+    */
+
 
 
 /*int shuffler(vector<int> cards, int rn)
