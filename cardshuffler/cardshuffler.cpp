@@ -39,6 +39,10 @@
                         Added code for project
                         Got help from Mr. Miyoshi
                         Pushed to GitHub
+
+                        Pulled from GitHub
+                        Added code for project
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -63,14 +67,15 @@ struct Card
 
 int main()
 {
-    Card card;
+    srand((unsigned)time(NULL));
     
-    //example
+    /*example
     card.suit = clubs;
     card.designation = ace;
-    card.description = "Ace of Clubs";
+    card.description = "Ace of Clubs";*/
 
     vector<Card> deck;
+    Card card;
 
     for (Suits s = clubs; s <= spades; s = Suits(s + 1))
     {
@@ -83,80 +88,81 @@ int main()
             {
                 card.description = "Ace";
             }
-            else if (d = two)
+            else if (d == two)
             {
                 card.description = "Two";
             }
-            else if (d = three)
+            else if (d == three)
             {
                 card.description = "Three";
             }
-            else if (d = four)
+            else if (d == four)
             {
                 card.description = "Four";
             }
-            else if (d = five)
+            else if (d == five)
             {
                 card.description = "Five";
             }
-            else if (d = six)
+            else if (d == six)
             {
                 card.description = "Six";
             }
-            else if (d = seven)
+            else if (d == seven)
             {
                 card.description = "Seven";
             }
-            else if (d = eight)
+            else if (d == eight)
             {
                 card.description = "Eight";
             }
-            else if (d = nine)
+            else if (d == nine)
             {
                 card.description = "Nine";
             }
-            else if (d = ten)
+            else if (d == ten)
             {
                 card.description = "Ten";
             }
-            else if (d = jack)
+            else if (d == jack)
             {
                 card.description = "Jack";
             }
-            else if (d = queen)
+            else if (d == queen)
             {
                 card.description = "Queen";
             }
-            else if (d = king)
+            else if (d == king)
             {
                 card.description = "King";
             }
         }
+        if (s == clubs)
+        {
+            card.description = " of Clubs";
+        }
+        else if (s == diamonds)
+        {
+            card.description = " of Diamonds";
+        }
+        else if (s == hearts)
+        {
+            card.description = " of Hearts";
+        }
+        else if (s == spades)
+        {
+            card.description = " of Spades";
+        }
     }
 
-
-
-    /*for (int i = 51; i >= 0; i--)
+    int rn;
+    for (int i = 51; i >= 0; i--)
     {
-        deck.push_back(i);
+        //randomly generated suit and designation
+        //remove this card
+    }
 
-        if (i >= 0 && i <= 12)
-        {
-            card.suit = clubs;
-        }
-        else if (i >= 13 && i <= 25)
-        {
-            card.suit = diamonds;
-        }
-        else if (i >= 26 && i <= 38)
-        {
-            card.suit = hearts;
-        }
-        else if (i >= 39 && i <= 51)
-        {
-            card.suit = spades;
-        }
-    }*/
+    
 
    
     /*
@@ -201,6 +207,28 @@ int main()
         printf("%i\t", cards[c - 1]);
         //Sleep(50);
     }*/
+    /*for (int i = 51; i >= 0; i--)
+    {
+        deck.push_back(i);
+
+        if (i >= 0 && i <= 12)
+        {
+            card.suit = clubs;
+        }
+        else if (i >= 13 && i <= 25)
+        {
+            card.suit = diamonds;
+        }
+        else if (i >= 26 && i <= 38)
+        {
+            card.suit = hearts;
+        }
+        else if (i >= 39 && i <= 51)
+        {
+            card.suit = spades;
+        }
+    }*/
+
 
     return 0;
 }
