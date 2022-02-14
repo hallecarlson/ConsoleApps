@@ -43,6 +43,12 @@
                         Pulled from GitHub
                         Added code for project
                         Pushed to GitHub
+
+    Date: 2/14/22       Done:
+                        Got help from Mr. Miyoshi
+                        Added code for project
+                        Fixed some errors adn made some minor adjustments
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -68,18 +74,14 @@ struct Card
 int main()
 {
     srand((unsigned)time(NULL));
-    
-    /*example
-    card.suit = clubs;
-    card.designation = ace;
-    card.description = "Ace of Clubs";*/
 
     vector<Card> deck;
+    vector<Card> shuffledeck;
     Card card;
 
-    for (Suits s = clubs; s <= spades; s = Suits(s + 1))
+    for (Suits s = clubs; s <= spades; s = Suits(s + 1)) //suit loop
     {
-        for (Designation d = ace; d <= king; d = Designation(d + 1))
+        for (Designation d = ace; d <= king; d = Designation(d + 1)) //designation loop
         {
             Card c;
             c.suit = s;
@@ -136,35 +138,71 @@ int main()
             {
                 card.description = "King";
             }
-        }
-        if (s == clubs)
-        {
-            card.description = " of Clubs";
-        }
-        else if (s == diamonds)
-        {
-            card.description = " of Diamonds";
-        }
-        else if (s == hearts)
-        {
-            card.description = " of Hearts";
-        }
-        else if (s == spades)
-        {
-            card.description = " of Spades";
+
+            if (s == clubs)
+            {
+                card.description += " of Clubs";
+            }
+            else if (s == diamonds)
+            {
+                card.description += " of Diamonds";
+            }
+            else if (s == hearts)
+            {
+                card.description += " of Hearts";
+            }
+            else if (s == spades)
+            {
+                card.description += " of Spades";
+            }
+
+            deck.push_back(card);
         }
     }
 
-    int rn;
-    for (int i = 51; i >= 0; i--)
+    for (int i = 0; i < deck.size(); i++)
     {
-        //randomly generated suit and designation
-        //remove this card
+        printf("%s\n", deck[i].description.c_str());
     }
 
-    
+    while (deck.size() > 0) //shuffler
+    {
+        int index = rand() % deck.size();
+        shuffledeck.push_back(deck[index]);
+        deck.erase(deck.begin() + index);
+    }
 
-   
+    printf("\nShuffled\n\n");
+
+    for (int i = 0; i < shuffledeck.size(); i++)
+    {
+        printf("%s\n", shuffledeck[i].description.c_str());
+    }
+
+    printf("\n");
+
+    vector<vector<Card>> hands;
+    int x;
+    int y;
+    for (x = 0; x < 4; x = x + 1) //suit loop
+    {
+        vector<Card> hand;
+        for (y = 0; y < 13; y = y + 1) //designation loop
+        {
+            hand.push_back(shuffledeck[y]); //PROBLEM
+        }
+        hands.push_back(hand);
+    }
+    printf("Hands\n");
+    for (x = 0; x < 4; x = x + 1) //suit loop
+    {
+        printf("Hand %i\n", x + 1);
+        for (y = 0; y < 13; y = y + 1) //designation loop
+        {
+            printf("%s\n", hands[x][y].description.c_str());
+        }
+    }
+
     /*
     define all elements of array as different cards
 
