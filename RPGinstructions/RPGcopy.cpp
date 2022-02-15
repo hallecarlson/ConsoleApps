@@ -118,7 +118,7 @@
                         Copied code into new project
                         Added code for vectors for NPC enemies
                         Pushed to GitHub
-                        Added more code for merchant NPC vectors
+                        Added more code for merchant NPC vectors 
 
 */
 
