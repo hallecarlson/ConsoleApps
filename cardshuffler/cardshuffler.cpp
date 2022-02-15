@@ -49,6 +49,11 @@
                         Added code for project
                         Fixed some errors adn made some minor adjustments
                         Pushed to GitHub
+
+                        Pulled from GitHub
+                        Got help from Ryan Carlson
+                        Finished program 
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -184,12 +189,14 @@ int main()
     vector<vector<Card>> hands;
     int x;
     int y;
+    int index = 0;
     for (x = 0; x < 4; x = x + 1) //suit loop
     {
         vector<Card> hand;
         for (y = 0; y < 13; y = y + 1) //designation loop
         {
-            hand.push_back(shuffledeck[y]); //PROBLEM
+            hand.push_back(shuffledeck[index]);
+            index = index + 1;
         }
         hands.push_back(hand);
     }
@@ -202,71 +209,6 @@ int main()
             printf("%s\n", hands[x][y].description.c_str());
         }
     }
-
-    /*
-    define all elements of array as different cards
-
-    to create the vector:
-
-    for loop of 52 iterations:
-    if between 1 and 13, suit type 1
-    13-26ish, suit type 2
-    26ish-39? suit type 3
-    39-52 suit type 4
-
-
-    for loop to go through vector, random number generated that swaps with vector[i] and reduces loop
-    
-    hand out cards by using random numbers
-    */
-
-
-
-/*int shuffler(vector<int> cards, int rn)
-{
-    for (int s = 52; s >= 1; s--)
-    {
-        int rn = 1 + rand() % (cards.size());
-        
-    }
-
-    return;
-}
-
-int main()
-{
-    srand((unsigned)time(NULL));
-    vector<int> cards;
-    int rn;
-
-    for (int c = 1; c <= 52; c++)
-    {
-        cards.push_back(c);
-        printf("%i\t", cards[c - 1]);
-        //Sleep(50);
-    }*/
-    /*for (int i = 51; i >= 0; i--)
-    {
-        deck.push_back(i);
-
-        if (i >= 0 && i <= 12)
-        {
-            card.suit = clubs;
-        }
-        else if (i >= 13 && i <= 25)
-        {
-            card.suit = diamonds;
-        }
-        else if (i >= 26 && i <= 38)
-        {
-            card.suit = hearts;
-        }
-        else if (i >= 39 && i <= 51)
-        {
-            card.suit = spades;
-        }
-    }*/
-
 
     return 0;
 }

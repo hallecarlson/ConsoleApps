@@ -948,6 +948,9 @@ int rose(int room, int chara, bool &win) //room 25
 
 int main()
 {
+    vector<Player> players = numberoflements;
+    players[0].name = "Poo";
+
     Player p;
     p.chara = 0;
 
