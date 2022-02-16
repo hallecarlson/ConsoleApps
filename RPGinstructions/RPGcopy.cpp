@@ -120,6 +120,11 @@
                         Pushed to GitHub
                         Added more code for merchant NPC vectors 
 
+    Date: 2/16/22       Done:
+                        Added code for combat in a struct
+                        Changed code in a vector
+                        Got a bit of help from Mr. Miyoshi
+                        Pushed to GitHub
 */
 
 #include <iostream>
