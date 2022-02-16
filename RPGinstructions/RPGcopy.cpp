@@ -145,11 +145,40 @@ struct Player
 
 
 
-Player combat(Player p, Player e)
+Player combat(Player p, Player e, int chara, int item_weapon)
 {
     /*needs stuff for hp, dp, weapon differences, enemy hp and dp variation, encounters,
     defeats, not too gruesome; something like "[name] has fallen in batle (exit game)*/
 
+    //encounter! roll enemy hp
+    int hpmin = 10;
+    int hpmax = 20;
+    e.hp = hpmin + rand() % (hpmax - hpmin + 1);
+    int dpmin = 3;
+    int dpmax = 9;
+    e.dp = dpmin + rand() % (dpmax - dpmin + 1);
+
+    if (p.chara == 2)
+    {
+        if (int item_weapon == 1)
+        {
+            p.dpmin = 8;
+            p.dpmax = 15;
+            p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
+        }
+    }
+
+
+    /*
+                    printf("Weapon select:\n");
+                    printf("1. Longsword\n");
+                    printf("\t\tDeals high damage, low accuracy\n");
+                    printf("2. Shortsword\n");
+                    printf("\t\tDeals low-medium damage, high accuracy\n");
+                    printf("3. Spear\n");
+                    printf("\t\tDeals medium damage, medium accuracy\n");
+    */
+    //possibly put player hp in here
     /*p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
     printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max*/
 
@@ -937,18 +966,9 @@ int main()
     vector<Player> npc_e;
     vector<Player> npc_m;
     //vector<Player> npc_merchant; //possible merchant vector
-    for (int e = 0; e < 10; e++) //may need to be moved
+    for (int e = 0; e < 7; e++) //may need to be moved
     {
         Player temp_e;
-
-        int hpmin = 10;
-        int hpmax = 20;
-        temp_e.hp = hpmin + rand() % (hpmax - hpmin + 1);
-
-        int dpmin = 3;
-        int dpmax = 9;
-        temp_e.dp = dpmin + rand() % (dpmax - dpmin + 1);
-
         npc_e.push_back(temp_e);
     }
     for (int m = 0; m < 6; m++) //merchants heal the player; PLACEHOLDER: need to apply to player, not npc

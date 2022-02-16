@@ -14,7 +14,12 @@
                     runs through the inner loop (if you read each line), not the number of letters (you do not need to 
                     count letters).
 
-    Pseudocode:     
+    Pseudocode:     Intro
+                    Variables
+                    File accessed
+                    Characters counted
+                    Character numbers printed to screen
+                    Player thanked
 
     Maintenance Log:
     Date: 2/14/22   Done:
@@ -22,6 +27,11 @@
                     Added some code
                     Pushed to GitHub
 
+    Date:           Done:
+                    Got help from Mr. Miyoshi
+                    Added code
+                    Added pseudocode
+                    Pushed to GitHub
 */
 #include <iostream>
 #include <stdio.h>
@@ -31,90 +41,61 @@
 using namespace std;
 
 int main()
-{
-    ifstream in;
-    ofstream out("outputFile.txt");
-    in.open("inputFile.txt");
-    string temp;
-
-    if (!in.is_open())
-    {
-        printf("File not found...");
-        _getch();
-        return 0;
-    }
-
-    while (getline(in, temp))
-    {
-        printf("%s\n", temp.c_str());
-        out << temp << '\n';
-    }
+{    
     
-    out.close();
-    in.close();
-    _getch();
-    return 0;
-
-
-
-
-
-
-
-
-
-    
-    /*printf("------------------------------------------------------------------------------------------------------------------------\n\n");
+    printf("------------------------------------------------------------------------------------------------------------------------\n\n");
     printf("                                                Character Counter\n");
     printf("                                            Created By: Halle Carlson\n\n");
     printf("------------------------------------------------------------------------------------------------------------------------\n");
 
-    printf("\nThis program gets user input and counts:\n");
+    printf("\nThis program gets text file data and counts:\n");
     printf("- spaces\n");
     printf("- tabs\n");
     printf("- newlines\n");
     printf("- single-digit numbers\n\n");
     _getch();
 
-    char retake;
-
-    do
-    {
         system("cls");
-        printf("------------------------------------------------------------------------------------------------------------------------\n\n");
-        printf("                                                Character Counter\n");
-        printf("                                            Created By: Halle Carlson\n\n");
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
 
         int space = 0;
         int tab = 0;
         int newline = 0;
         int number = 0;
 
-        printf("End your input with a tilde (~)\n");
-        printf(">");
-        string input;
-        getline(cin, input, '~');
-        fseek(stdin, 0, SEEK_END);
+        ifstream in;
+        ofstream out("outputFile.txt");
+        in.open("charactersfile.txt");
+        string temp;
 
-        for (int i = 0; i < input.length(); i++)
+        if (!in.is_open())
         {
-            if (input[i] == ' ')
+            printf("File not found...");
+            _getch();
+            return 0;
+        }
+
+        while (getline(in, temp))
+        {
+            printf("%s\n", temp.c_str());
+            out << temp << '\n';
+
+            for (int i = 0; i < temp.length(); i++)
             {
-                space++;
+                if (temp[i] == ' ')
+                {
+                    space++;
+                }
+                if (temp[i] == '\t')
+                {
+                    tab++;
+                }
+                
+                if (temp[i] == '0' || temp[i] == '1' || temp[i] == '2' || temp[i] == '3' || temp[i] == '4' || temp[i] == '5' || temp[i] == '6' || temp[i] == '7' || temp[i] == '8' || temp[i] == '9')
+                {
+                    number++;
+                }
             }
-            if (input[i] == '\t')
-            {
-                tab++;
-            }
-            if (input[i] == '\n')
-            {
-                newline++;
-            }
-            if (input[i] == '0' || input[i] == '1' || input[i] == '2' || input[i] == '3' || input[i] == '4' || input[i] == '5' || input[i] == '6' || input[i] == '7' || input[i] == '8' || input[i] == '9')
-            {
-                number++;
-            }
+                newline++;          
         }
 
         printf("\n");
@@ -124,15 +105,12 @@ int main()
         printf("numbers:  %i\n\n", number);
         _getch();
 
-        printf("Input again ?\n(y for yes || any other key for no)\n");
-        printf(">");
-        scanf_s("%c", &retake);
-        fseek(stdin, 0, SEEK_END);
-
-    } while (retake == 'y');
+        out.close();
+        in.close();
+        _getch();
 
     printf("\nThanks for using my character counter!\n");
-    _getch();*/
+    _getch();
 
     return 0;
 }
