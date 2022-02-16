@@ -27,7 +27,8 @@
                     Added some code
                     Pushed to GitHub
 
-    Date:  2/16/22  Done:
+    Date:  2/16/22  
+    +.04101Done:
                     Got help from Mr. Miyoshi
                     Added code
                     Added pseudocode
