@@ -33,11 +33,11 @@ using namespace std;
 int main()
 {
     ifstream in;
-    ofstream out("outputFile.txt");
-    in.open("inputFile.txt");
+    ofstream out("charactersfile.txt");
+    in.open("charactersfile.txt");
     string temp;
 
-    if (!in.is_open())
+    if (!in.is_open()) 
     {
         printf("File not found...");
         _getch();
@@ -47,7 +47,7 @@ int main()
     while (getline(in, temp))
     {
         printf("%s\n", temp.c_str());
-        out << temp << '\n';
+        //out << temp << '\n';
     }
     
     out.close();

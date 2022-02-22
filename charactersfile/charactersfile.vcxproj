@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClCompile Include="charactersfile.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="charactersfile.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
