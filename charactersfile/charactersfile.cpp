@@ -12,7 +12,7 @@
                     editor, even your compiler.) Make sure the text file has a known number of digits, tabs, spaces, and 
                     newlines (for testing). The total number of characters should just be the number of times your code 
                     runs through the inner loop (if you read each line), not the number of letters (you do not need to 
-                    count letters).
+                    count letters).    
 
     Pseudocode:     Intro
                     Variables
