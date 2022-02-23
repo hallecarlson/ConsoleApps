@@ -55,7 +55,8 @@ int main()
     }
 
     out.close();
-
     in.close();
+
+    _getch();
     return 0;
 }
