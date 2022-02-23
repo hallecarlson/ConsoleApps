@@ -16,6 +16,13 @@
                         Pushed to GitHub
 
                         Pulled from GitHub
+                        Added code for project
+                        Got more help from Ryan Carlson
+
+    Date: 2/23/22       Done:
+                        Pushed to GitHub
+
+
 */
 #include <iostream>
 #include <stdio.h>
@@ -27,14 +34,13 @@ using namespace std;
 int main()
 {
     ifstream in;
-    ofstream out("outputFile.txt");
+    ofstream out("delimitedfiles.txt");
     in.open("delimitedfiles.txt");
     string temp;
     string name;
+    char c;
     int i;
     float f;
-    char c;
-
 
     if (!in.is_open())
     {
@@ -43,18 +49,35 @@ int main()
         return 0;
     }
 
-    while (getline(in, name, ','))
-    { 
-        getline(in, temp);
-        i = temp.at(0);
-        getline(in, temp);
-        f = temp.at(0);
+    while (getline(in, temp))
+    {
         getline(in, temp, ',');
+        i = stoi(temp);
+        getline(in, temp, ',');
+        f = stof(temp);
+        getline(in, temp, ',');
+        name = temp;
+        getline(in, temp);
         c = temp.at(0);
-        
-        out << name << '\t' << c << '\t' << '\n' << f << '\n';
-        cout << name << '\t' << c << '\t' << i << '\n' << f << '\n';
+
+        out << i << '\t' << f << '\t' << name << '\t' << c << '\n';
+        cout << i << '\t' << f << '\t' << name << '\t' << c << '\n';
     }
+
+    /*while (getline(in, name))
+    { 
+        getline(in, temp, ',');
+        i = stoi(temp);
+        getline(in, temp, ',');
+        f = stof(temp);
+        getline(in, temp, ',');
+        name = temp;
+        getline(in, temp);
+        c = temp.at(0);
+           
+        //out << i << '\t' << f << '\t' << name << '\t' << c << '\n';
+        cout << i << '\t' << f << '\t' << name << '\t' << c << '\n';
+    }*/
 
     out.close();
     in.close();
