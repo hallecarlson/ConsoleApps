@@ -42,7 +42,7 @@ int main()
     }
 
     while (getline(in, name, ','))
-    {
+    { 
         getline(in, temp);
         i = temp.at(0);
         getline(in, temp);
