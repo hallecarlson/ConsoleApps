@@ -7,7 +7,13 @@
                     and a character (in that order) on each of 10 rows. Write a program to get in the data 
                     and then output it into a tab-delimited file.
 
-    Pseudocode:     
+    Pseudocode:         Files opened
+                        Variables
+                        File not found message
+                        While loop
+                        Each part of the string is read and converted to a different variable
+                        Each line is outputted to screen
+                        Files closed
 
     Maintenance Log:
     Date: 2/22/22       Done:
@@ -22,6 +28,12 @@
     Date: 2/23/22       Done:
                         Pushed to GitHub
 
+                        Pulled from GitHub
+                        Merged changes
+                        Got help from Mr. Miyoshi
+                        Changed code
+                        Added pseudocode
+                        Pushed to GitHub
 
 */
 #include <iostream>
@@ -34,7 +46,7 @@ using namespace std;
 int main()
 {
     ifstream in;
-    ofstream out("delimitedfiles.txt");
+    ofstream out("filesdelimited.txt");
     in.open("delimitedfiles.txt");
     string temp;
     string name;
@@ -49,35 +61,20 @@ int main()
         return 0;
     }
 
-    while (getline(in, temp))
+    while (getline(in, temp, ','))
     {
-        getline(in, temp, ',');
+
         i = stoi(temp);
         getline(in, temp, ',');
         f = stof(temp);
         getline(in, temp, ',');
         name = temp;
         getline(in, temp);
-        c = temp.at(0);
+        c = temp.at(0);        
 
         out << i << '\t' << f << '\t' << name << '\t' << c << '\n';
         cout << i << '\t' << f << '\t' << name << '\t' << c << '\n';
     }
-
-    /*while (getline(in, name))
-    { 
-        getline(in, temp, ',');
-        i = stoi(temp);
-        getline(in, temp, ',');
-        f = stof(temp);
-        getline(in, temp, ',');
-        name = temp;
-        getline(in, temp);
-        c = temp.at(0);
-           
-        //out << i << '\t' << f << '\t' << name << '\t' << c << '\n';
-        cout << i << '\t' << f << '\t' << name << '\t' << c << '\n';
-    }*/
 
     out.close();
     in.close();
