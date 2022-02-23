@@ -16,8 +16,9 @@
     Maintenance Log:
     Date: 2/23/22       Done:
                         Created project
-                        Added pseudocode
-
+                        Added comments
+                        Added code for project
+                        Pushed to GitHub
 
 */
 #include <iostream>
@@ -25,12 +26,46 @@
 #include <conio.h>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
+
+struct Search
+{
+    string name;
+    int age;
+    int height;
+    int weight;
+    string phone;
+};
 
 int main()
 {
-    
+    vector<Search> search;
+
+    ifstream in;
+    ofstream out("vectorsearch.txt");
+    in.open("searchvector.txt");
+
+    if (!in.is_open())
+    {
+        printf("File not found...");
+        _getch();
+        return 0;
+    }
+
+
+
+    out.close();
+    in.close();
 
     _getch();
     return 0;
 }
+/*
+    Loretta,18,66,130,425.844.1231
+    Mike,16,68,145,425.844.1232
+    Charles,17,72,160,425.844.1233
+    Gracie,15,74,205,425.844.1234
+    Anna,19,73,170,425.844.1235
+    George,15,62,115,425.844.1236
+    */

@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClCompile Include="searchvector.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="searchvector.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
