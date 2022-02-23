@@ -1029,7 +1029,6 @@ int main()
 {
     vector<Player> npc_e;
     vector<Player> npc_m;
-    //vector<Player> npc_merchant; //possible merchant vector
     for (int e = 0; e < 7; e++) //may need to be moved
     {
         Player temp_e;
