@@ -20,6 +20,11 @@
                         Added code for project
                         Pushed to GitHub
 
+    Date: 2/25/22       Done:
+                        Added code for project
+                        Got help from Mr. Miyoshi
+                        Pushed to GitHub
+
 */
 #include <iostream>
 #include <stdio.h>
@@ -29,7 +34,7 @@
 #include <vector>
 using namespace std;
 
-struct Search
+struct Data
 {
     string name;
     int age;
@@ -38,13 +43,17 @@ struct Search
     string phone;
 };
 
+bool searching(Data d)
+
 int main()
 {
-    vector<Search> search;
+    vector<Data> data;
 
     ifstream in;
     ofstream out("vectorsearch.txt");
     in.open("searchvector.txt");
+
+    string temp;
 
     if (!in.is_open())
     {
@@ -53,10 +62,31 @@ int main()
         return 0;
     }
 
+    while (getline(in, temp, ','))
+    {
+        Data d;
+        d.name = temp;
 
+        getline(in, temp, ',');
+        d.age = stoi(temp);
+
+        getline(in, temp, ',');
+        d.height = stoi(temp);
+
+        getline(in, temp, ',');
+        d.weight = stoi(temp);
+
+        getline(in, temp);
+        d.phone = temp;
+
+        data.push_back(d);
+        cout << d.name << '\t' << d.age << '\t' << d.height << '\t' << d.weight << '\t' << d.phone << '\n';
+    }
 
     out.close();
     in.close();
+
+    printf("Search a name, age, height, weight, or phone number.\n>");
 
     _getch();
     return 0;
