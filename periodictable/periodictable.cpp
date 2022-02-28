@@ -61,7 +61,7 @@ bool Search(string input_symbol, string input_name, int input_number, Data d)
 
 int main()
 {
-    vector<Data> data;
+    vector<Data> data; 
     bool found = false;
     char retake;
     Data d;
