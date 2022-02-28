@@ -21,6 +21,9 @@
                         Created text file
                         Added code for project
                         Pushed to GitHub
+
+    Date: 2/28/22       Done:
+                        Pushed to GitHub
 */
 #include <iostream>
 #include <stdio.h>
@@ -36,6 +39,25 @@ struct Data
     string name;
     int number;
 };
+
+bool Search(string input_symbol, string input_name, int input_number, Data d)
+{
+    bool found = false;
+    if (input_symbol == d.symbol)
+    {
+        found = true;
+    }
+    if (input_name == d.name)
+    {
+        found = true;
+    }
+    if (input_number == d.number)
+    {
+        found = true;
+    }
+    
+    return found;
+}
 
 int main()
 {
@@ -91,7 +113,8 @@ int main()
             printf("\nSymbols matching your search:\n");
             for (int i = 0; i < data.size(); i++)
             {
-                if (data[i].symbol == input_symbol)
+                bool f = Search(input_symbol, d.symbol);
+                if (f = true)
                 {
                     printf("%s\n", data[i].symbol.c_str());
                     found = true;
