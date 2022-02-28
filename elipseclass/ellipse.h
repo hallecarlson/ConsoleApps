@@ -1,7 +1,7 @@
 #pragma once
 #define_USE_MATH_DEFINES
 #include <math.h>
-using namespace std;
+using namespace std; 
 
 class ellipse
 {
