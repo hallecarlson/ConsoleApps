@@ -64,6 +64,7 @@ int main()
     vector<Data> data;
     bool found = false;
     char retake;
+    Data d;
 
     ifstream in;
     ofstream out("table.txt");
@@ -80,7 +81,7 @@ int main()
 
     while (getline(in, temp, ','))
     {
-        Data d;
+        //Data d;
         d.symbol = temp;
 
         getline(in, temp);
