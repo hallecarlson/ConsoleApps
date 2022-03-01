@@ -2,29 +2,37 @@
 
 ellipse::ellipse()
 {
-	r = 0;
+	r1 = 0;
+	r2 = 0;
 }
-ellipse::ellipse(float input)
+ellipse::ellipse(float input1, float input2)
 {
-	r = input;
+	r1 = input1;
+	r2 = input2;
 }
 ellipse::ellipse(ellipse(&E))
 {
-	r = E.r1;
+	r1 = E.r1;
+	r2 = E.r2;
 }
-void ellipse::setRadius(float input)
+void ellipse::setRadius(float input1, float input2)
 {
-	r = input;
+	r1 = input1;
+	r2 = input2;
 }
-float ellipse::getRadius()
+float ellipse::getRadius1()
 {
-	return r;
+	return r1;
+}
+float ellipse::getRadius2()
+{
+	return r2;
 }
 float ellipse::circumference()
-{
-	return(2.0 * M_PI * r);
+{	
+	return(2 * M_PI * sqrt(r1 * r2));
 }
 float ellipse::area()
 {
-	return(M_PI * r * r)
+	return(M_PI * r1 * r2);
 }

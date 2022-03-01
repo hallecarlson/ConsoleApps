@@ -7,10 +7,11 @@ class ellipse
 {
 public:
     ellipse();
-    ellipse(float r);
+    ellipse(float r1, float r2);
     ellipse(ellipse& E);
-    void setRadius(float input);
-    float getRadius();
+    void setRadius(float input1, float input2);
+    float getRadius1();
+    float getRadius2();
     float circumference();
     float area();
 

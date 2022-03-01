@@ -17,7 +17,13 @@
     Maintenance Log:
     Date: 2/28/22       Done:
                         Created project
-                        
+                        Added code for project
+                        Pushed to GitHub
+
+                        Pulled from GitHub
+                        Got help from Ryan Carlson
+                        Added code for project
+                        Pushed to GitHub
 */
 #include <iostream> 
 #include <stdio.h>
@@ -29,11 +35,12 @@
 
 int main()
 {
-    ellipse E1;
-    E1.setRadius(3.0);
-    printf("r = %f", E1.getRadius());
-    E1.circumference();
-    E1.area();
+    ellipse E;
+    E.setRadius(3.0);
+    printf("r1 = %f\n", E.getRadius1());
+    printf("r2 = %f", E.getRadius2());
+    E.circumference();
+    E.area();
 
     return 0;
 }
