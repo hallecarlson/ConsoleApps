@@ -3,11 +3,11 @@
 #include <math.h>
 using namespace std;
 
-class rectangle
+class animal
 {
 public:
-    rectangle();
-    rectangle(float l, float w);
+    animal();
+    animal(float l, float w);
     rectangle(rectangle& R);
     void setDimensions(float length, float width);
     float getL();
