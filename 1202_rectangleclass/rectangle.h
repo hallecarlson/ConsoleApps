@@ -8,9 +8,9 @@ class rectangle
 {
 public:
     rectangle();
-    rectangle(float l, float w); //previously r1 and r2
+    rectangle(float l, float w);
     rectangle(rectangle& R);
-    void setDimiensions(float length, float width); //previously rad1 and rad2
+    void setDimensions(float length, float width);
     float getL();
     float getW();
     float perimeter();
