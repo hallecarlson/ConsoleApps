@@ -12,7 +12,28 @@
                     area of an ellipse is Pi * r1 * r2. The circumference of an ellipse is approximately 
                     2 * Pi * sqrt (r1 * r2) according to Johannes Kepler.
 
-    Pseudocode:        
+    Pseudocode:         ellipse.h
+                        Headers
+                        Ellipse and its elements declared
+                        Method to set radius of ellipse
+                        Variables
+                        Radii
+
+                        ellipse.cpp
+                        Header
+                        r1 and r2 set to 0
+                        r1 and r2 set to rad1 and rad2
+                        r1 and r2 set to E's radii
+                        Set again
+                        Radii returned
+                        Circumference and area returned
+
+                        ellipseclass.cpp
+                        Headers
+                        Ellipse E declared
+                        Radii set to float values
+                        Circumference and area included
+                        Values printed
 
     Maintenance Log:
     Date: 2/28/22       Done:
@@ -31,6 +52,8 @@
                         Got help from Mr. Miyoshi
                         Fixed an error
                         Tested code
+                        Pushed to GitHub
+                        Added pseudocode
                         Pushed to GitHub
 */
 #include <iostream> 

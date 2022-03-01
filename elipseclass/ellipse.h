@@ -9,7 +9,7 @@ public:
     ellipse();
     ellipse(float r1, float r2);
     ellipse(ellipse& E);
-    void setRadii(float input1, float input2);
+    void setRadii(float rad1, float rad2);
     float getR1();
     float getR2();
     float circumference();
