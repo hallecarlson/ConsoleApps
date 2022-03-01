@@ -1,14 +1,9 @@
-//added code for project
-// rectangle.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// righttriangleclass.cpp : This file contains the 'main' function. Program execution begins and ends there.
 /*
     Author:         Halle Carlson
-    Project Name:   Problem GS12-02 (rectangle class)
-    File Name:      rectangleclass.cpp
-    Purpose:        Write a class called rectangle and a program that tests the class. The class must 
-                    have the required elements (instance variables) of a rectangle (length and width). 
-                    The class must also have a default constructor, a method(s) to set the instance variables, 
-                    a method(s) to get the instance variables, a perimeter method, and an area method. The 
-                    perimeter and area methods must return the rectangle’s perimeter and area.
+    Project Name:   Problem GS12-03 (right triangle class)
+    File Name:      righttriangleclass.cpp
+    Purpose:        Write a class called triangle and a program that tests the class. The class must have the required elements (instance variables) of a right triangle (base and height). The class must also have a default constructor, a method(s) to set the instance variables, a method(s) to get the instance variables, a perimeter method, and an area method. The perimeter and area methods must return the rectangle’s perimeter and area. (Hint: Do not make a class variable for the hypotenuse. Calculate it where you need it - in the perimeter method. If you would like to add a method to return the hypotenuse, you can add it to the class and use it to find your perimeter.)
 
     Pseudocode:         rectangle.h
                         Headers
@@ -37,11 +32,7 @@
     Date: 3/1/22        Done:
                         Created project
                         Added code for project
-                        Fixed errors
-                        Added pseudocode
-                        Pushed to GitHub
-                        Made minor changes to comments
-                        Pushed to GitHub
+                        
 */
 #include <iostream> 
 #include <stdio.h>

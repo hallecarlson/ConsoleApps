@@ -85,6 +85,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1202_rectangleclass", "1202
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1204_animalclass", "animalclass\animalclass.vcxproj", "{B714052E-73B5-421F-B243-8D062D985705}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1203_righttriangleclass", "righttriangleclass\righttriangleclass.vcxproj", "{384F983B-817A-4209-AAF0-18FB5C1DA58C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -421,6 +423,14 @@ Global
 		{B714052E-73B5-421F-B243-8D062D985705}.Release|x64.Build.0 = Release|x64
 		{B714052E-73B5-421F-B243-8D062D985705}.Release|x86.ActiveCfg = Release|Win32
 		{B714052E-73B5-421F-B243-8D062D985705}.Release|x86.Build.0 = Release|Win32
+		{384F983B-817A-4209-AAF0-18FB5C1DA58C}.Debug|x64.ActiveCfg = Debug|x64
+		{384F983B-817A-4209-AAF0-18FB5C1DA58C}.Debug|x64.Build.0 = Debug|x64
+		{384F983B-817A-4209-AAF0-18FB5C1DA58C}.Debug|x86.ActiveCfg = Debug|Win32
+		{384F983B-817A-4209-AAF0-18FB5C1DA58C}.Debug|x86.Build.0 = Debug|Win32
+		{384F983B-817A-4209-AAF0-18FB5C1DA58C}.Release|x64.ActiveCfg = Release|x64
+		{384F983B-817A-4209-AAF0-18FB5C1DA58C}.Release|x64.Build.0 = Release|x64
+		{384F983B-817A-4209-AAF0-18FB5C1DA58C}.Release|x86.ActiveCfg = Release|Win32
+		{384F983B-817A-4209-AAF0-18FB5C1DA58C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
