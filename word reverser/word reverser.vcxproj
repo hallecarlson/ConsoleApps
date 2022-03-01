@@ -24,6 +24,7 @@
     <ProjectGuid>{2eadff1a-72a0-4422-a645-f97ab32cc7f1}</ProjectGuid>
     <RootNamespace>wordreverser</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>0605_wordreverser</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

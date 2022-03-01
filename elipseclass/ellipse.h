@@ -1,5 +1,5 @@
 #pragma once
-#define_USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
 #include <math.h>
 using namespace std; 
 
@@ -9,9 +9,9 @@ public:
     ellipse();
     ellipse(float r1, float r2);
     ellipse(ellipse& E);
-    void setRadius(float input1, float input2);
-    float getRadius1();
-    float getRadius2();
+    void setRadii(float input1, float input2);
+    float getR1();
+    float getR2();
     float circumference();
     float area();
 

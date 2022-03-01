@@ -24,6 +24,7 @@
     <ProjectGuid>{ad0136a0-6575-4702-99c4-b33ad8c88eaf}</ProjectGuid>
     <RootNamespace>delimitedfiles</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>1102_delimitedfiles</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

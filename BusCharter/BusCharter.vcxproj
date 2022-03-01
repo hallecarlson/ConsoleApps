@@ -24,6 +24,7 @@
     <ProjectGuid>{11afbfaa-8c1f-402e-afa9-026666f6f131}</ProjectGuid>
     <RootNamespace>BusCharter</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>0205_BusCharter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

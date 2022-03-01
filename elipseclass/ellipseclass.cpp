@@ -24,23 +24,31 @@
                         Got help from Ryan Carlson
                         Added code for project
                         Pushed to GitHub
+
+    Date: 3/1/22        Done:
+                        Pulled from GitHub
+                        Folowed Mr. Miyoshi's tutorial to fix errors & add code
+                        Got help from Mr. Miyoshi
+                        Fixed an error
+                        Tested code
+                        Pushed to GitHub
 */
 #include <iostream> 
 #include <stdio.h>
 #include <conio.h>
-#include <fstream>
-#include <string>
-#include <vector>
 #include "ellipse.h"
+using namespace std;
 
 int main()
 {
     ellipse E;
-    E.setRadius(3.0);
-    printf("r1 = %f\n", E.getRadius1());
-    printf("r2 = %f", E.getRadius2());
+    E.setRadii(3.7, 7.3);
     E.circumference();
     E.area();
+    printf("r1 = %f\n", E.getR1());
+    printf("r2 = %f\n", E.getR2());
+    printf("circumference = %f\narea = %f\n", E.circumference(), E.area());
+    
 
     return 0;
 }

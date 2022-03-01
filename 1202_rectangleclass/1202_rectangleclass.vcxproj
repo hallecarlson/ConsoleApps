@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{eefb1442-bc98-4314-9ad7-e98f445dd3d0}</ProjectGuid>
-    <RootNamespace>VariablesAndConstants</RootNamespace>
+    <ProjectGuid>{44233cd0-ec0c-45a5-a1c8-d6b2bd1a9990}</ProjectGuid>
+    <RootNamespace>My1202rectangleclass</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>0105_VariablesAndConstants</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="VariablesAndConstants.cpp" />
+    <ClCompile Include="rectangle.cpp" />
+    <ClCompile Include="rectangleclass.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="rectangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,6 +24,7 @@
     <ProjectGuid>{49b14d4d-c43c-4750-9b01-3abe9ca9bb84}</ProjectGuid>
     <RootNamespace>sinecosinetables</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>1003_sinecosinetables</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

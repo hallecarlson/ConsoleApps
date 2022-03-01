@@ -3,85 +3,85 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApps", "ConsoleApps\ConsoleApps.vcxproj", "{B5B54474-49D5-4374-814F-6FCE0C39B7DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0103_helloworld", "ConsoleApps\ConsoleApps.vcxproj", "{B5B54474-49D5-4374-814F-6FCE0C39B7DB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RPG", "RPG\RPG.vcxproj", "{7F29FFF3-546D-4546-826D-053F42E5D579}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RPGintro_old", "RPG\RPG.vcxproj", "{7F29FFF3-546D-4546-826D-053F42E5D579}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VariablesAndConstants", "VariablesAndConstants\VariablesAndConstants.vcxproj", "{EEFB1442-BC98-4314-9AD7-E98F445DD3D0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0105_VariablesAndConstants", "VariablesAndConstants\VariablesAndConstants.vcxproj", "{EEFB1442-BC98-4314-9AD7-E98F445DD3D0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RPGcopy", "RPGinstructions\RPGinstructions.vcxproj", "{67B8A77E-CF2C-499D-893F-93A61464FE9F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RPG_current", "RPGinstructions\RPGinstructions.vcxproj", "{67B8A77E-CF2C-499D-893F-93A61464FE9F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OneVariable1-10", "OneVariable1-10\OneVariable1-10.vcxproj", "{3455B703-A5D6-4E78-B812-143B2B72E99D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0201_OneVariable1-10", "OneVariable1-10\OneVariable1-10.vcxproj", "{3455B703-A5D6-4E78-B812-143B2B72E99D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aLittleDivision", "aLittleDivision\aLittleDivision.vcxproj", "{F3747C6B-9B16-421B-80CC-36FA2F70094F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0202_aLittleDivision", "aLittleDivision\aLittleDivision.vcxproj", "{F3747C6B-9B16-421B-80CC-36FA2F70094F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RandomNumbers", "RandomNumbers\RandomNumbers.vcxproj", "{4D645C0E-1CAD-4E26-A747-5098E622A863}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0203_RandomNumbers", "RandomNumbers\RandomNumbers.vcxproj", "{4D645C0E-1CAD-4E26-A747-5098E622A863}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{2147E26B-7E3E-44BB-BBE3-C78F165F6C38}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProgram", "Test\Test.vcxproj", "{2147E26B-7E3E-44BB-BBE3-C78F165F6C38}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MoreRandom", "MoreRandom\MoreRandom.vcxproj", "{20004D10-11EC-4AB9-B692-706EC1231B06}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0205_BusCharter", "BusCharter\BusCharter.vcxproj", "{11AFBFAA-8C1F-402E-AFA9-026666F6F131}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BusCharter", "BusCharter\BusCharter.vcxproj", "{11AFBFAA-8C1F-402E-AFA9-026666F6F131}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0206_Averages", "Averages\Averages.vcxproj", "{4E5D6B7E-F22B-49FC-B2F8-B10FB3968E68}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Averages", "Averages\Averages.vcxproj", "{4E5D6B7E-F22B-49FC-B2F8-B10FB3968E68}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0302_ScienceQuizUsingIf", "Science Quiz Using If\Science Quiz Using If.vcxproj", "{3B713909-18D0-4DBD-B7DF-34945B575DEF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Science Quiz Using If", "Science Quiz Using If\Science Quiz Using If.vcxproj", "{3B713909-18D0-4DBD-B7DF-34945B575DEF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0303_ComputerProgrammingQuizUsingSwitch", "Computer Programming Quiz Using Switch\Computer Programming Quiz Using Switch.vcxproj", "{B71B5045-FACA-48FE-8499-F27B53E2FE9C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Computer Programming Quiz Using Switch", "Computer Programming Quiz Using Switch\Computer Programming Quiz Using Switch.vcxproj", "{B71B5045-FACA-48FE-8499-F27B53E2FE9C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0304_chooseyourownadventure(if and switch)", "choose your own adventure (if and switch)\choose your own adventure (if and switch).vcxproj", "{CD49F186-85E3-4502-823A-091BC2808AA2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "choose your own adventure (if and switch)", "choose your own adventure (if and switch)\choose your own adventure (if and switch).vcxproj", "{CD49F186-85E3-4502-823A-091BC2808AA2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0306_Non-loopingMaze", "Non-looping Maze\Non-looping Maze.vcxproj", "{EF4B7E63-E47D-48AE-B3F2-C4B2B9496F35}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Non-looping Maze", "Non-looping Maze\Non-looping Maze.vcxproj", "{EF4B7E63-E47D-48AE-B3F2-C4B2B9496F35}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0401_loopingquiz", "looping quiz\looping quiz.vcxproj", "{8D3D64F5-FBEC-4C5E-820E-25ED514B82C0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "looping quiz", "looping quiz\looping quiz.vcxproj", "{8D3D64F5-FBEC-4C5E-820E-25ED514B82C0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0403_countcharacters(string)", "count characters (string)\count characters (string).vcxproj", "{A1D33F8A-55AC-4985-8B82-EBD52FD325CC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "count characters (string)", "count characters (string)\count characters (string).vcxproj", "{A1D33F8A-55AC-4985-8B82-EBD52FD325CC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0405_loopingmaze", "looping maze\looping maze.vcxproj", "{0F038C09-2E4D-4F50-AECE-40E30FC2C4CD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "looping maze", "looping maze\looping maze.vcxproj", "{0F038C09-2E4D-4F50-AECE-40E30FC2C4CD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0304_chooseadventurev2", "choose adventure v2\choose adventure v2.vcxproj", "{FD35DE04-AB70-4EE3-BC63-C8F43529563A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "choose adventure v2", "choose adventure v2\choose adventure v2.vcxproj", "{FD35DE04-AB70-4EE3-BC63-C8F43529563A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RPGbackup_old", "RPGmainmenu\RPGmainmenu.vcxproj", "{2262FA64-216B-4C6C-9530-080CE4089890}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RPGmainmenu", "RPGmainmenu\RPGmainmenu.vcxproj", "{2262FA64-216B-4C6C-9530-080CE4089890}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0601_fractionreducer", "fraction reducer\fraction reducer.vcxproj", "{76211ADB-4139-4B65-BC23-A1008BC50AF3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fraction reducer", "fraction reducer\fraction reducer.vcxproj", "{76211ADB-4139-4B65-BC23-A1008BC50AF3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0603_fortunecookie", "fortune cookie\fortune cookie.vcxproj", "{CC6EF660-345C-4936-8472-F062C8766677}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fortune cookie", "fortune cookie\fortune cookie.vcxproj", "{CC6EF660-345C-4936-8472-F062C8766677}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0604_functionmaze", "function maze\function maze.vcxproj", "{236B1D75-2E41-4F18-ABE4-38E4E2D1E6E8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "function maze", "function maze\function maze.vcxproj", "{236B1D75-2E41-4F18-ABE4-38E4E2D1E6E8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0605_wordreverser", "word reverser\word reverser.vcxproj", "{2EADFF1A-72A0-4422-A645-F97AB32CC7F1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "word reverser", "word reverser\word reverser.vcxproj", "{2EADFF1A-72A0-4422-A645-F97AB32CC7F1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0604_FunctionMazev2", "Function Maze v2\Function Maze v2.vcxproj", "{35F9E144-67E5-4C04-8A99-DF384554BB42}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Function Maze v2", "Function Maze v2\Function Maze v2.vcxproj", "{35F9E144-67E5-4C04-8A99-DF384554BB42}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0701_concessions", "concessions\concessions.vcxproj", "{569AA7B1-B6CA-4616-B1D0-A5155777BFFB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "concessions", "concessions\concessions.vcxproj", "{569AA7B1-B6CA-4616-B1D0-A5155777BFFB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0702_personaldata", "personaldata\personaldata.vcxproj", "{C823BFA3-760C-41E8-A3FE-6598A6041F49}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "personaldata", "personaldata\personaldata.vcxproj", "{C823BFA3-760C-41E8-A3FE-6598A6041F49}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0704_pointdistance", "pointdistance\pointdistance.vcxproj", "{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pointdistance", "pointdistance\pointdistance.vcxproj", "{BBF591B9-0C83-435C-87D1-8BD4F3B2D035}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0705_lineslope", "lineslope\lineslope.vcxproj", "{2EFF1677-BE0C-48A7-98A4-C7AD610E5CD1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lineslope", "lineslope\lineslope.vcxproj", "{2EFF1677-BE0C-48A7-98A4-C7AD610E5CD1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1001_valuesbyscalar", "valuesbyscalar\valuesbyscalar.vcxproj", "{6A469B11-2228-4EDD-966C-E3B9BDEE1594}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "valuesbyscalar", "valuesbyscalar\valuesbyscalar.vcxproj", "{6A469B11-2228-4EDD-966C-E3B9BDEE1594}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1002_morefortunes", "morefortunes\morefortunes.vcxproj", "{81B1AD33-DA2A-4B91-A252-D65BC1516F80}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "morefortunes", "morefortunes\morefortunes.vcxproj", "{81B1AD33-DA2A-4B91-A252-D65BC1516F80}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1004_multiplyflashcards", "multiplyflashcards\multiplyflashcards.vcxproj", "{DEC1EFF2-D56A-437F-BFBF-3F1C117E7C24}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multiplyflashcards", "multiplyflashcards\multiplyflashcards.vcxproj", "{DEC1EFF2-D56A-437F-BFBF-3F1C117E7C24}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1003_sinecosinetables", "sinecosinetables\sinecosinetables.vcxproj", "{49B14D4D-C43C-4750-9B01-3ABE9CA9BB84}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sinecosinetables", "sinecosinetables\sinecosinetables.vcxproj", "{49B14D4D-C43C-4750-9B01-3ABE9CA9BB84}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1004_snippets", "snippets\snippets.vcxproj", "{DBEF2A10-FCD5-4272-A8A1-B3084B22031C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "snippets", "snippets\snippets.vcxproj", "{DBEF2A10-FCD5-4272-A8A1-B3084B22031C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1005b_cardshuffler", "cardshuffler\cardshuffler.vcxproj", "{CAB2C5AB-7B66-450E-A3AE-A371B9B66FB2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cardshuffler", "cardshuffler\cardshuffler.vcxproj", "{CAB2C5AB-7B66-450E-A3AE-A371B9B66FB2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1101_charactersfile", "charactersfile\charactersfile.vcxproj", "{87C3DBA3-19D5-4EFF-8B84-FF22A47308DC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "charactersfile", "charactersfile\charactersfile.vcxproj", "{87C3DBA3-19D5-4EFF-8B84-FF22A47308DC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1102_delimitedfiles", "delimitedfiles\delimitedfiles.vcxproj", "{AD0136A0-6575-4702-99C4-B33AD8C88EAF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "delimitedfiles", "delimitedfiles\delimitedfiles.vcxproj", "{AD0136A0-6575-4702-99C4-B33AD8C88EAF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1103_searchvector", "searchvector\searchvector.vcxproj", "{DD6260DC-C981-4077-8054-B4A237FE8A69}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "searchvector", "searchvector\searchvector.vcxproj", "{DD6260DC-C981-4077-8054-B4A237FE8A69}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1105_periodictable", "periodictable\periodictable.vcxproj", "{D4633B4E-E9D7-4429-B0CF-A0C5E0D454B6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "periodictable", "periodictable\periodictable.vcxproj", "{D4633B4E-E9D7-4429-B0CF-A0C5E0D454B6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1201_ellipseclass", "elipseclass\elipseclass.vcxproj", "{ED58F342-6B74-4E25-8D92-E91D63F7282C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ellipseclass", "elipseclass\elipseclass.vcxproj", "{ED58F342-6B74-4E25-8D92-E91D63F7282C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1202_rectangleclass", "1202_rectangleclass\1202_rectangleclass.vcxproj", "{44233CD0-EC0C-45A5-A1C8-D6B2BD1A9990}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -155,14 +155,6 @@ Global
 		{2147E26B-7E3E-44BB-BBE3-C78F165F6C38}.Release|x64.Build.0 = Release|x64
 		{2147E26B-7E3E-44BB-BBE3-C78F165F6C38}.Release|x86.ActiveCfg = Release|Win32
 		{2147E26B-7E3E-44BB-BBE3-C78F165F6C38}.Release|x86.Build.0 = Release|Win32
-		{20004D10-11EC-4AB9-B692-706EC1231B06}.Debug|x64.ActiveCfg = Debug|x64
-		{20004D10-11EC-4AB9-B692-706EC1231B06}.Debug|x64.Build.0 = Debug|x64
-		{20004D10-11EC-4AB9-B692-706EC1231B06}.Debug|x86.ActiveCfg = Debug|Win32
-		{20004D10-11EC-4AB9-B692-706EC1231B06}.Debug|x86.Build.0 = Debug|Win32
-		{20004D10-11EC-4AB9-B692-706EC1231B06}.Release|x64.ActiveCfg = Release|x64
-		{20004D10-11EC-4AB9-B692-706EC1231B06}.Release|x64.Build.0 = Release|x64
-		{20004D10-11EC-4AB9-B692-706EC1231B06}.Release|x86.ActiveCfg = Release|Win32
-		{20004D10-11EC-4AB9-B692-706EC1231B06}.Release|x86.Build.0 = Release|Win32
 		{11AFBFAA-8C1F-402E-AFA9-026666F6F131}.Debug|x64.ActiveCfg = Debug|x64
 		{11AFBFAA-8C1F-402E-AFA9-026666F6F131}.Debug|x64.Build.0 = Debug|x64
 		{11AFBFAA-8C1F-402E-AFA9-026666F6F131}.Debug|x86.ActiveCfg = Debug|Win32
@@ -411,6 +403,14 @@ Global
 		{ED58F342-6B74-4E25-8D92-E91D63F7282C}.Release|x64.Build.0 = Release|x64
 		{ED58F342-6B74-4E25-8D92-E91D63F7282C}.Release|x86.ActiveCfg = Release|Win32
 		{ED58F342-6B74-4E25-8D92-E91D63F7282C}.Release|x86.Build.0 = Release|Win32
+		{44233CD0-EC0C-45A5-A1C8-D6B2BD1A9990}.Debug|x64.ActiveCfg = Debug|x64
+		{44233CD0-EC0C-45A5-A1C8-D6B2BD1A9990}.Debug|x64.Build.0 = Debug|x64
+		{44233CD0-EC0C-45A5-A1C8-D6B2BD1A9990}.Debug|x86.ActiveCfg = Debug|Win32
+		{44233CD0-EC0C-45A5-A1C8-D6B2BD1A9990}.Debug|x86.Build.0 = Debug|Win32
+		{44233CD0-EC0C-45A5-A1C8-D6B2BD1A9990}.Release|x64.ActiveCfg = Release|x64
+		{44233CD0-EC0C-45A5-A1C8-D6B2BD1A9990}.Release|x64.Build.0 = Release|x64
+		{44233CD0-EC0C-45A5-A1C8-D6B2BD1A9990}.Release|x86.ActiveCfg = Release|Win32
+		{44233CD0-EC0C-45A5-A1C8-D6B2BD1A9990}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

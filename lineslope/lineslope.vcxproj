@@ -24,6 +24,7 @@
     <ProjectGuid>{2eff1677-be0c-48a7-98a4-c7ad610e5cd1}</ProjectGuid>
     <RootNamespace>lineslope</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>0705_lineslope</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

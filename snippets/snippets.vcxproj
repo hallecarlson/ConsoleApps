@@ -24,6 +24,7 @@
     <ProjectGuid>{dbef2a10-fcd5-4272-a8a1-b3084b22031c}</ProjectGuid>
     <RootNamespace>snippets</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>1004_snippets</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

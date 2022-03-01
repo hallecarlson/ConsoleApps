@@ -24,6 +24,7 @@
     <ProjectGuid>{cab2c5ab-7b66-450e-a3ae-a371b9b66fb2}</ProjectGuid>
     <RootNamespace>cardshuffler</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>1005b_cardshuffler</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

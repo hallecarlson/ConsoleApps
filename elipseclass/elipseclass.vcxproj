@@ -24,7 +24,7 @@
     <ProjectGuid>{ed58f342-6b74-4e25-8d92-e91d63f7282c}</ProjectGuid>
     <RootNamespace>elipseclass</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>ellipseclass</ProjectName>
+    <ProjectName>1201_ellipseclass</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

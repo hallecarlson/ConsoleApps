@@ -24,6 +24,7 @@
     <ProjectGuid>{dd6260dc-c981-4077-8054-b4a237fe8a69}</ProjectGuid>
     <RootNamespace>searchvector</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>1103_searchvector</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

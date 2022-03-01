@@ -24,6 +24,7 @@
     <ProjectGuid>{d4633b4e-e9d7-4429-b0cf-a0c5e0d454b6}</ProjectGuid>
     <RootNamespace>periodictable</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>1105_periodictable</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
