@@ -40,7 +40,6 @@
 #include <stdio.h>
 #include <conio.h>
 #include <fstream>
-#include <string>
 #include "animal.h"
 using namespace std;
 
@@ -49,6 +48,7 @@ int main()
     animal A;
     A.setCharacteristics("Bear", "Ursidae", 25);
     printf("name = %s\nscientific name = %s\nlife expectancy = ~%i\n", A.getN(), A.getSN(), A.getLE());
+    
     string input_name;
     printf("Change the animal\n>");
     getline(cin, input_name);

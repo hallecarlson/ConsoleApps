@@ -49,6 +49,9 @@
                         Tested code
                         Fixed minor errors
                         Pushed to GitHub
+
+                        Fixed minor thing with division
+                        Pushed to GitHub
                         
 */
 #include <iostream> 

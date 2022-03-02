@@ -34,6 +34,6 @@ float righttriangle::perimeter()
 }
 float righttriangle::area()
 {
-	return ((b * h) / 2);
+	return ((b * h) / 2.0);
 }
 
