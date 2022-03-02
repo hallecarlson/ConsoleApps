@@ -7,17 +7,15 @@ class righttriangle
 {
 public:
     righttriangle();
-    righttriangle(float b, float h, float hyp);
+    righttriangle(float b, float h);
     righttriangle(righttriangle& T);
-    void setDimensions(float base, float height, float hypotenuse);
+    void setDimensions(float base, float height);
     float getB();
     float getH();
-    float getHYP();
     float perimeter();
     float area();
 
 private:
     float b;
     float h;
-    float hyp;
 };

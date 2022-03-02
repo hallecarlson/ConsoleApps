@@ -42,24 +42,27 @@
                         Made changes to code
                         Encountered errors in trying to add the hypotenuse
                         Pushed to GitHub
+
+                        Pulled from GitHub
+                        Got rid of some hypotenuse things because I did them wrong
+                        Got help from Dhanasri Prabhu
+                        Tested code
+                        Fixed minor errors
+                        Pushed to GitHub
                         
 */
 #include <iostream> 
 #include <stdio.h>
 #include <conio.h>
-#define _USE_MATH_DEFINES
-#include <math.h>
 #include "righttriangle.h"
 using namespace std;
 
 int main()
 {
     righttriangle T;
-    T.setDimensions(9, 2, sqrt((b * b) + (h * h)));    
-    T.perimeter();
-    T.area();
+    T.setDimensions(9, 2);    
     printf("base = %f\nheight = %f\n", T.getB(), T.getH());
-    printf("hypotenuse = %f\nperimeter = %f\narea = %f\n", T.hypotenuse(), T.perimeter(), T.area());
+    printf("perimeter = %f\narea = %f\n", T.perimeter(), T.area());
 
 
     return 0;
