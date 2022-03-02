@@ -64,6 +64,5 @@ int main()
     printf("base = %f\nheight = %f\n", T.getB(), T.getH());
     printf("perimeter = %f\narea = %f\n", T.perimeter(), T.area());
 
-
     return 0;
 }

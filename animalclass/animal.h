@@ -7,15 +7,15 @@ class animal
 {
 public:
     animal();
-    animal(float l, float w);
-    rectangle(rectangle& R);
-    void setDimensions(float length, float width);
-    float getL();
-    float getW();
-    float perimeter();
-    float area();
+    animal(string n, string sn, int le); //name, scientific name, life expectancy
+    animal(animal& A);
+    void setCharacteristics(string name, string scientificname, int lifeexpectancy);
+    float getN();
+    float getSN();
+    float getLE();
 
 private:
-    float l;
-    float w;
+    string n;
+    string sn;
+    int le;
 };
