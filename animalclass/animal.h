@@ -11,9 +11,12 @@ public:
     animal(string n, string sn, int le); //name, scientific name, life expectancy
     animal(animal& A);
     void setCharacteristics(string name, string scientificname, int lifeexpectancy);
-    float getN();
-    float getSN();
-    float getLE();
+    void setName(string name);
+    void setScientificname(string scientificname);
+    void setLifeexpectancy(int lifeexpectancy);
+    string getN();
+    string getSN();
+    int getLE();
 
 private:
     string n;

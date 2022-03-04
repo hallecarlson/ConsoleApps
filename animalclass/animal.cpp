@@ -2,8 +2,8 @@
 
 animal::animal()
 {
-	n = 0;
-	sn = 0;
+	n = "a";
+	sn = "a";
 	le = 0;
 }
 animal::animal(string name, string scientificname, int lifeexpectancy)
@@ -12,7 +12,7 @@ animal::animal(string name, string scientificname, int lifeexpectancy)
 	sn = scientificname;
 	le = lifeexpectancy;
 }
-animal::animal(animal(&R))
+animal::animal(animal(&A))
 {
 	n = A.n;
 	sn = A.sn;
@@ -23,16 +23,29 @@ void animal::setCharacteristics(string name, string scientificname, int lifeexpe
 	n = name;
 	sn = scientificname;
 	le = lifeexpectancy;
+
 }
-float animal::getN()
+void animal::setName(string name)
+{
+	n = name;
+}
+void animal::setScientificname(string scientificname)
+{
+	n = scientificname;
+}
+void animal::setLifeexpectancy(int lifeexpectancy)
+{
+	n = lifeexpectancy;
+}
+string animal::getN()
 {
 	return n;
 }
-float animal::getSN()
+string animal::getSN()
 {
 	return sn;
 }
-float animal::getLE()
+int animal::getLE()
 {
 	return le;
 }
