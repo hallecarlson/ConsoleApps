@@ -46,6 +46,14 @@
                         Fixed minor errors
                         Added pseudocode
                         Pushed to GitHub
+
+    Date: 3/2/22        Done:
+                        Tried to fix errors
+                        Got help from Mr. Miyoshi
+                        Fixed errors
+                        Tested code
+                        Fixed more errors
+                        Pushed to GitHub
 */
 #include <iostream>
 #include <stdio.h>
@@ -126,7 +134,7 @@ int main()
             {
                 if (data[i].name == input_name)
                 {
-                    printf("%s\n", data[i].name.c_str());
+                    printf("%s\t%i\t%i\t%i\t%s\n", data[i].name.c_str(), data[i].age, data[i].height, data[i].weight, data[i].phone.c_str());
                     found = true;
                 }
             }
@@ -148,7 +156,7 @@ int main()
             {
                 if (data[i].age == stoi(input_age))
                 {
-                    printf("%i\n", data[i].age);
+                    printf("%s\t%i\t%i\t%i\t%s\n", data[i].name.c_str(), data[i].age, data[i].height, data[i].weight, data[i].phone.c_str());
                     found = true;
                 }
             }
@@ -165,12 +173,12 @@ int main()
             getline(cin, input_height);
             fseek(stdin, 0, SEEK_END);
             found = false;
-            printf("\nAges matching your search:\n");
+            printf("\nHeight matching your search:\n");
             for (int i = 0; i < data.size(); i++)
             {
                 if (data[i].height == stoi(input_height))
                 {
-                    printf("%i\n", data[i].height);
+                    printf("%s\t%i\t%i\t%i\t%s\n", data[i].name.c_str(), data[i].age, data[i].height, data[i].weight, data[i].phone.c_str());
                     found = true;
                 }
             }
@@ -190,9 +198,9 @@ int main()
             printf("\nWeights matching your search:\n");
             for (int i = 0; i < data.size(); i++)
             {
-                if (data[i].age == stoi(input_weight))
+                if (data[i].weight == stoi(input_weight))
                 {
-                    printf("%i\n", data[i].weight);
+                    printf("%s\t%i\t%i\t%i\t%s\n", data[i].name.c_str(), data[i].age, data[i].height, data[i].weight, data[i].phone.c_str());
                     found = true;
                 }
             }
@@ -214,7 +222,7 @@ int main()
             {
                 if (data[i].phone == input_phone)
                 {
-                    printf("%s\n", data[i].phone.c_str());
+                    printf("%s\t%i\t%i\t%i\t%s\n", data[i].name.c_str(), data[i].age, data[i].height, data[i].weight, data[i].phone.c_str());
                     found = true;
                 }
             }

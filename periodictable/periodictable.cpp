@@ -24,6 +24,11 @@
 
     Date: 2/28/22       Done:
                         Pushed to GitHub
+
+    Date: 3/2/22        Done:
+                        Got help from Mr. Miyoshi
+                        Made minor changes to code
+                        Pushed to GitHub
 */
 #include <iostream>
 #include <stdio.h>
@@ -114,9 +119,10 @@ int main()
             printf("\nSymbols matching your search:\n");
             for (int i = 0; i < data.size(); i++)
             {
-                bool f = Search(input_symbol, d.symbol);
-                if (f = true)
+                //bool f = Search(input_symbol, "", -1, data[i]);
+                if (Search(input_symbol, "", -1, data[i]))
                 {
+                    //string input_symbol, string input_name, int input_number, Data d
                     printf("%s\n", data[i].symbol.c_str());
                     found = true;
                 }

@@ -1,21 +1,25 @@
 #pragma once
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include <string>
 using namespace std;
 
 class animal
 {
 public:
     animal();
-    animal(float l, float w);
-    rectangle(rectangle& R);
-    void setDimensions(float length, float width);
-    float getL();
-    float getW();
-    float perimeter();
-    float area();
+    animal(string n, string sn, int le); //name, scientific name, life expectancy
+    animal(animal& A);
+    void setCharacteristics(string name, string scientificname, int lifeexpectancy);
+    void setName(string name);
+    void setScientificname(string scientificname);
+    void setLifeexpectancy(int lifeexpectancy);
+    string getN();
+    string getSN();
+    int getLE();
 
 private:
-    float l;
-    float w;
+    string n;
+    string sn;
+    int le;
 };
