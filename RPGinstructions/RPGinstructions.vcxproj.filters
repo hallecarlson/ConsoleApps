@@ -15,8 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RPGcopy.cpp">
+    <ClCompile Include="RPG_current.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="greypainter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="greypainter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

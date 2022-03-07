@@ -140,7 +140,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="RPGcopy.cpp" />
+    <ClCompile Include="greypainter.cpp" />
+    <ClCompile Include="RPG_current.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="greypainter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

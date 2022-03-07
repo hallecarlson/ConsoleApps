@@ -134,6 +134,12 @@
                         Tested code
                         Found a undeclared variable error, decided to fix later
                         Pushed to GitHub
+
+    Date: 3/7/22        Done:
+                        Puled from GitHub
+                        Added new .cpp and .h files for enemy class
+                        Fixed some code
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -144,6 +150,7 @@
 #include <time.h>
 #include <windows.h>
 #include <vector>
+#include "greypainter.h"
 using namespace std;
 
 
@@ -161,15 +168,15 @@ struct Player
 Player combat(Player p, Player e, int chara, int item_weapon)
 {
     //encounter! roll enemy hp (secret value)
-    int hpmin = 15;
-    int hpmax = 25;
-    e.hp = hpmin + rand() % (hpmax - hpmin + 1);
+    int e.hpmin = 15;
+    int e.hpmax = 25;
+    e.hp = e.hpmin + rand() % (e.hpmax - e.hpmin + 1);
 
     //player's turn
     //enemy's turn! roll enemy dp
-    int dpmin = 3;
-    int dpmax = 7;
-    e.dp = dpmin + rand() % (dpmax - dpmin + 1);
+    int e.dpmin = 3;
+    int e.dpmax = 7;
+    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
 
     if (p.chara == 2)
     {
@@ -1514,6 +1521,11 @@ int main()
         _getch();
     }
 
+
+
+
+    Grey G; //need to be rolled at every encounter
+    G.setStats("Grey Painter", e.hpmin + rand() % (e.hpmax - e.hpmin + 1), e.dpmin + rand() % (e.dpmax - e.dpmin + 1))
+
     return 0;
 }
-
