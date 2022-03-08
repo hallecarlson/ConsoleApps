@@ -2,13 +2,13 @@
 
 person::person()
 {
-	fn = "a";
-	mn = "a";
-	ln = "a";
-	a = 0;
-	p = "a";
+	fn = "";
+	mn = "";
+	ln = "";
+	a = "";
+	p = "";
 }
-person::person(string firstname, string middlename, string lastname, int age, string phonenumber)
+person::person(string firstname, string middlename, string lastname, string age, string phonenumber)
 {
 	fn = firstname;
 	mn = middlename;
@@ -24,7 +24,7 @@ person::person(person(&P))
 	a = P.a;
 	p = P.p;
 }
-void person::setCharacteristics(string firstname, string middlename, string lastname, int age, string phonenumber)
+void person::setCharacteristics(string firstname, string middlename, string lastname, string age, string phonenumber)
 {
 	fn = firstname;
 	mn = middlename;
@@ -44,7 +44,7 @@ void person::setLN(string lastname)
 {
 	ln = lastname;
 }
-void person::setA(int age)
+void person::setA(string age)
 {
 	a = age;
 }
@@ -64,7 +64,7 @@ string person::getLN()
 {
 	return ln;
 }
-int person::getA()
+string person::getA()
 {
 	return a;
 }

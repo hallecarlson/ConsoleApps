@@ -37,6 +37,16 @@
                         Created project
                         Added code to project
                         Pushed to GitHub
+
+    Date: 3/8/22        Done:
+                        Tested for errors
+                        Encountered an exception about age being an iteger value
+                        Changed age to a string value
+                        Edited code
+                        Changed the initial declarations of the string values to a blank string instead of "a"
+                        Fixed errors and exception
+                        Edited output formatting
+                        Pushed to GitHub
 */
 #include <iostream> 
 #include <stdio.h>
@@ -49,45 +59,45 @@ int main()
 {
     char retake;
     person P;
-    P.setCharacteristics("Halle", "Rose", "Carlson", 18, "425.213.7928");
-    printf("first name = %s\nmiddle name = %s\nlast name\nage = %i\nphone number = %s\n", P.getFN().c_str(), P.getMN().c_str(), P.getMN().c_str(), P.getA(), P.getP().c_str());
+    P.setCharacteristics("Halle", "Rose", "Carlson", "18", "425.213.7928");
+    printf("first name = %s\nmiddle name = %s\nlast name = %s\nage = %s\nphone number = %s\n", P.getFN().c_str(), P.getMN().c_str(), P.getLN().c_str(), P.getA().c_str(), P.getP().c_str());
 
     do
     {
         string i_fn;
-        printf("\nChange the first name\n");
+        printf("\nChange the first name\n>");
         getline(cin, i_fn);
         fseek(stdin, 0, SEEK_END);
         P.setFN(i_fn);
 
         string i_mn;
-        printf("\nChange the middle name\n");
+        printf("\nChange the middle name\n>");
         getline(cin, i_mn);
         fseek(stdin, 0, SEEK_END);
         P.setMN(i_mn);
 
         string i_ln;
-        printf("\nChange the last name\n");
+        printf("\nChange the last name\n>");
         getline(cin, i_ln);
         fseek(stdin, 0, SEEK_END);
         P.setLN(i_ln);
 
-        int i_a;
-        printf("\nChange the age\n");
-        scanf_s("%i", &i_a);
+        string i_a;
+        printf("\nChange the age\n>");
+        getline(cin, i_a);
         fseek(stdin, 0, SEEK_END);
         P.setA(i_a);
 
         string i_p;
-        printf("\nChange the phone number\n");
+        printf("\nChange the phone number\n>");
         getline(cin, i_p);
         fseek(stdin, 0, SEEK_END);
         P.setP(i_p);
 
         P.setCharacteristics(i_fn, i_mn, i_ln, i_a, i_p);
-        printf("\nfirst name = %s\nmiddle name = %s\nlast name = %s\nage = %i\nphone number = %s\n", P.getFN().c_str(), P.getMN().c_str(), P.getLN().c_str(), P.getA(), P.getP().c_str());
+        printf("\nfirst name = %s\nmiddle name = %s\nlast name = %s\nage = %s\nphone number = %s\n", P.getFN().c_str(), P.getMN().c_str(), P.getLN().c_str(), P.getA().c_str(), P.getP().c_str());
         
-        printf("\nDo you want to change the values again (y for yes, n for no)\n>");
+        printf("\nDo you want to change the values again (y for yes, else for no)\n>");
         scanf_s("%c", &retake);
         fseek(stdin, 0, SEEK_END);
     } while (retake == 'y');

@@ -8,24 +8,24 @@ class person
 {
 public:
     person();
-    person(string fn, string mn, string ln, int a, string p); //first name, middle name, last name, age, phone number
+    person(string fn, string mn, string ln, string a, string p); //first name, middle name, last name, age, phone number
     person(person& P);
-    void setCharacteristics(string firstname, string middlename, string lastname, int age, string phonenumber);
+    void setCharacteristics(string firstname, string middlename, string lastname, string age, string phonenumber);
     void setFN(string firstname);
     void setMN(string middlename);
     void setLN(string lastname);
-    void setA(int age);
+    void setA(string age);
     void setP(string phonenumber);
     string getFN();
     string getMN();
     string getLN();
-    int getA();
+    string getA();
     string getP();
 
 private:
     string fn;
     string mn;
     string ln;
-    int a;
+    string a;
     string p;
 };
