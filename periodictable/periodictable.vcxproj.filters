@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="periodictable.txt">
+    <Text Include="chem.dat">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>

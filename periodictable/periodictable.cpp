@@ -29,6 +29,15 @@
                         Got help from Mr. Miyoshi
                         Made minor changes to code
                         Pushed to GitHub
+
+    Date: 3/8/22        Done:
+                        Tested code
+                        Fixed some errors
+                        Experimented with code
+                        Got help from Mr. Miyoshi
+                        Added mass
+                        Tested code
+                        Pushed to GitHub
 */
 #include <iostream>
 #include <stdio.h>
@@ -43,6 +52,7 @@ struct Data
     string symbol;
     string name;
     int number;
+    float mass;
 };
 
 bool Search(string input_symbol, string input_name, int input_number, Data d)
@@ -73,7 +83,7 @@ int main()
 
     ifstream in;
     ofstream out("table.txt");
-    in.open("periodictable.txt");
+    in.open("chem.dat");
 
     string temp;
 
@@ -86,17 +96,21 @@ int main()
 
     while (getline(in, temp, ','))
     {
-        //Data d;
+        Data d;
         d.symbol = temp;
 
-        getline(in, temp);
+        getline(in, temp, ',');
         d.name = temp;
 
         getline(in, temp, ',');
         d.number = stoi(temp);
+        //d.number = temp;
+
+        getline(in, temp);
+        d.mass = stof(temp);
 
         data.push_back(d);
-        cout << d.symbol << '\t' << d.name << '\t' << d.number << '\n  ';
+        cout << d.symbol << '\t' << d.name << '\t' << d.number << '\t' << d.mass << '\n';
     }
 
     out.close();
@@ -120,10 +134,11 @@ int main()
             for (int i = 0; i < data.size(); i++)
             {
                 //bool f = Search(input_symbol, "", -1, data[i]);
-                if (Search(input_symbol, "", -1, data[i]))
+                //if (Search(input_symbol, "", -1, data[i]))
+                if (data[i].symbol == input_symbol)
                 {
                     //string input_symbol, string input_name, int input_number, Data d
-                    printf("%s\n", data[i].symbol.c_str());
+                    printf("%s\t%s\t%i\t%f\n", data[i].symbol.c_str(), data[i].name.c_str(), data[i].number, data[i].mass);
                     found = true;
                 }
             }
@@ -145,7 +160,7 @@ int main()
             {
                 if (data[i].name == input_name)
                 {
-                    printf("%s\n", data[i].name.c_str());
+                    printf("%s\t%s\t%i\t%f\n", data[i].symbol.c_str(), data[i].name.c_str(), data[i].number, data[i].mass);
                     found = true;
                 }
             }
@@ -167,7 +182,7 @@ int main()
             {
                 if (data[i].number == stoi(input_number))
                 {
-                    printf("%i\n", data[i].number);
+                    printf("%s\t%s\t%i\t%f\n", data[i].symbol.c_str(), data[i].name.c_str(), data[i].number, data[i].mass);
                     found = true;
                 }
             }
