@@ -13,7 +13,14 @@
                     read from the file. Then create functions that will search for an element based on the 
                     symbol, name, or atomic number.
 
-    Pseudocode:         
+    Pseudocode:         Search function
+                        Variables
+                        File opened
+                        File not found message
+                        Vector populated
+                        File closed
+                        User searches vector
+                        User may search again as many times as they want
 
     Maintenance Log:
     Date: 2/27/22       Done:
@@ -37,6 +44,8 @@
                         Got help from Mr. Miyoshi
                         Added mass
                         Tested code
+                        Pushed to GitHub
+                        Added pseudocode
                         Pushed to GitHub
 */
 #include <iostream>
