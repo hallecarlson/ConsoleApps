@@ -140,6 +140,11 @@
                         Added new .cpp and .h files for enemy class
                         Fixed some code
                         Pushed to GitHub
+
+    Date: 3/8/22        Done:
+                        Got help from Mr. Miyoshi
+                        Edited code for combat
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -161,21 +166,25 @@ struct Player
 
     int hp, hpmin, hpmax;   //player health stats
     int dp, dpmin, dpmax;   //player damage stats
+    int roll;
 };
 
 
 
 Player combat(Player p, Player e, int chara, int item_weapon)
 {
+    e.roll = 0;
+    p.roll = 0;
+
     //encounter! roll enemy hp (secret value)
-    int e.hpmin = 15;
-    int e.hpmax = 25;
+    e.hpmin = 15;
+    e.hpmax = 25;
     e.hp = e.hpmin + rand() % (e.hpmax - e.hpmin + 1);
 
     //player's turn
     //enemy's turn! roll enemy dp
-    int e.dpmin = 3;
-    int e.dpmax = 7;
+    e.dpmin = 3;
+    e.dpmax = 7;
     e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
 
     if (p.chara == 2)
@@ -220,6 +229,16 @@ Player combat(Player p, Player e, int chara, int item_weapon)
             p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
         }
     }
+
+    p.roll = 0 + rand() % (10 - 0 + 1);
+    if (p.chara == 2)
+    {
+        if (p.roll )
+    }
+    e.roll = 0 + rand() % (10 - 0 + 1);
+
+    p.hp = p.hp - e.dp;
+    e.hp = e.hp - p.dp;
 
     //basic battle sequence
     /*
