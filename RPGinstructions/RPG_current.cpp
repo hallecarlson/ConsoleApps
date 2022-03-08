@@ -233,7 +233,11 @@ Player combat(Player p, Player e, int chara, int item_weapon)
     p.roll = 0 + rand() % (10 - 0 + 1);
     if (p.chara == 2)
     {
-        if (p.roll )
+        if (p.roll >= 5)
+        {
+            p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
+
+        }
     }
     e.roll = 0 + rand() % (10 - 0 + 1);
 
