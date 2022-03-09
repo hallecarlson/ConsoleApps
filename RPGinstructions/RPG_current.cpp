@@ -150,6 +150,11 @@
                         Added a lot of code for combat regarding player's options in battle
                         Made minor changes to item descriptions
                         Pushed to GitHub
+
+    Date: 3/9/22        Done:
+                        Pulled from GitHub
+                        Added code for player battle actions
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -176,10 +181,13 @@ struct Player
 
 
 
-Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
+Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int food)
 {
     e.roll = 0;
     p.roll = 0;
+
+    int player_turn;
+    int player_spell;
 
     //encounter! roll enemy hp (secret value)
     e.hpmin = 10;
@@ -190,53 +198,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
     //enemy's turn! roll enemy dp
     e.dpmin = 2;
     e.dpmax = 7;
-    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-
-    if (p.chara == 2)
-    {
-        if (item_weapon == 1)
-        {
-            p.dpmin = 10;
-            p.dpmax = 15;
-            p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
-        }
-        else if (item_weapon == 2)
-        {
-            p.dpmin = 6;
-            p.dpmax = 9;
-            p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
-        }
-        else if (item_weapon == 3)
-        {
-            p.dpmin = 8;
-            p.dpmax = 13;
-            p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
-        }
-    }
-    else if (p.chara == 1 || p.chara == 3)
-    {
-        if (item_weapon == 1)
-        {
-            p.dpmin = 8;
-            p.dpmax = 10;
-            p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
-        }
-        else if (item_weapon == 2)
-        {
-            p.dpmin = 5;
-            p.dpmax = 8;
-            p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
-        }
-        else if (item_weapon == 3)
-        {
-            p.dpmin = 7;
-            p.dpmax = 9;
-            p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
-        }
-    }
-
-    int player_turn;
-    int player_spell;
+    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);}    
 
     p.roll = 0 + rand() % (10 - 0 + 1);
     if (p.roll >= 2) //turn successful
@@ -252,7 +214,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
         {
             if (chara == 1)
             {
-                printf("Cobalt tried to use her weapon");
+                printf("Cobalt tried to use her weapon\n");
                 if (item_weapon == 1) //longsword
                 {
                     p.dpmin = 8;
@@ -262,11 +224,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
                     {
                         p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
                         e.hp = e.hp - p.dp;
-                        printf("The enemy lost %i hp!", p.dp);
+                        printf("The enemy lost %i hp!\n", p.dp);
                     }
                     else if (p.roll < 5)
                     {
-                        printf("Cobalt missed!");
+                        printf("Cobalt missed!\n");
                     }
                 }
                 if (item_weapon == 2) //shortsword
@@ -275,7 +237,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
                     p.dpmax = 8;                    
                     p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
                     e.hp = e.hp - p.dp;
-                    printf("The enemy lost %i hp!", p.dp);                   
+                    printf("The enemy lost %i hp!\n", p.dp);                   
                 }
                 if (item_weapon == 3) //spear
                 {
@@ -286,18 +248,17 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
                     {
                         p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
                         e.hp = e.hp - p.dp;
-                        printf("The enemy lost %i hp!", p.dp);
+                        printf("The enemy lost %i hp!\n", p.dp);
                     }
                     else if (p.roll < 3)
                     {
-                        printf("Cobalt missed!");
+                        printf("Cobalt missed!\n");
                     }
                 }
             }
-
             if (chara == 2)
             {
-                printf("Magenta tried to use his weapon");
+                printf("Magenta tried to use his weapon\n");
                 if (item_weapon == 1) //longsword
                 {
                     p.dpmin = 10;
@@ -339,10 +300,9 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
                     }
                 }
             }
-
-            if (chara == 1)
+            if (chara == 3)
             {
-                printf("Sunflower tried to use her weapon");
+                printf("Sunflower tried to use her weapon\n");
                 if (item_weapon == 1) //longsword
                 {
                     p.dpmin = 8;
@@ -352,11 +312,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
                     {
                         p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
                         e.hp = e.hp - p.dp;
-                        printf("The enemy lost %i hp!", p.dp);
+                        printf("The enemy lost %i hp!\n", p.dp);
                     }
                     else if (p.roll < 5)
                     {
-                        printf("Sunflower missed!");
+                        printf("Sunflower missed!\n");
                     }
                 }
                 if (item_weapon == 2) //shortsword
@@ -365,7 +325,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
                     p.dpmax = 8;
                     p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
                     e.hp = e.hp - p.dp;
-                    printf("The enemy lost %i hp!", p.dp);
+                    printf("The enemy lost %i hp!\n", p.dp);
                 }
                 if (item_weapon == 3) //spear
                 {
@@ -376,11 +336,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
                     {
                         p.dp = p.dpmin + rand() % (p.dpmax - p.dpmin + 1);
                         e.hp = e.hp - p.dp;
-                        printf("The enemy lost %i hp!", p.dp);
+                        printf("The enemy lost %i hp!\n", p.dp);
                     }
                     else if (p.roll < 3)
                     {
-                        printf("Sunflower missed!");
+                        printf("Sunflower missed!\n");
                     }
                 }
             }
@@ -389,24 +349,24 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
         {
             if (chara == 1)
             {
-                printf("Cobalt struck the enemy!");
+                printf("Cobalt struck the enemy!\n");
                 p.dp = 5;
                 e.hp = e.hp - p.dp;
-                printf("The enemy lost %i hp!", p.dp);
+                printf("The enemy lost %i hp!\n", p.dp);
             }
             if (chara == 2)
             {
-                printf("Magenta struck the enemy!");
+                printf("Magenta struck the enemy!\n");
                 p.dp = 7;
                 e.hp = e.hp - p.dp;
-                printf("The enemy lost %i hp!", p.dp);
+                printf("The enemy lost %i hp!\n", p.dp);
             }
             if (chara == 3)
             {
-                printf("Sunflower struck the enemy!");
+                printf("Sunflower struck the enemy!\n");
                 p.dp = 5;
                 e.hp = e.hp - p.dp;
-                printf("The enemy lost %i hp!", p.dp);
+                printf("The enemy lost %i hp!\n", p.dp);
             }
         }
         else if (player_turn == 3)
@@ -470,19 +430,204 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc)
                     //if (player_spell == 3)
                     //if (plsyer_spell == 4)
                 }
-            }           
+            }  
+            if (item_misc != 2)
+            {                
+                if (chara == 3)
+                {
+                    do
+                    {
+                        printf("Choose a spell: 1. moderate healing\t2. increase accuracy\t3. decrease enemy accuracy\t4. sleep spell\n>");
+                        scanf_s("%i", &player_spell);
+                        fseek(stdin, 0, SEEK_END);
+                    } while (player_spell != 1 && player_spell != 2 && player_spell != 3 && player_spell != 4);
+                    if (player_spell == 1)
+                    {
+
+                        p.hphealed = 0;
+                        p.hpmin = 8;
+                        p.hpmax = 15;
+                        p.hphealed = p.hpmin + rand() % (p.hpmax - p.hpmin + 1);
+                        p.hp = p.hp + p.hphealed;
+                        if (p.hp > 30)
+                        {
+                            p.hp = 30;
+                        }
+                        printf("Sunflower gained %i hp! Sunflower now has %i hp\n", p.hphealed, p.hp);
+                    }
+                    //if (player_spell == 2)
+                    //if (player_spell == 3)
+                    //if (player_spell == 4)
+                }
+                if (chara == 1)
+                {
+                    printf("Cobalt does not have any spells!\nCobalt's turn was skipped\n");
+                }
+                if (chara == 2)
+                {
+                    printf("Magenta does not have any spells!\nMagenta's turn was skipped!\n");
+                }
+            }
         }
         else if (player_turn == 4)
         {
             if (item_misc == 1)
             {
-                //figure out how to count number of potions
+                if (potions > 0)
+                {
+                    p.hp = 30;
+                    if (chara == 1)
+                    {
+                        printf("Cobalt used a potion!\nCobalt now has %i hp\n", p.hp);
+                    }
+                    if (chara == 2)
+                    {
+                        printf("Magenta used a potion!\nMagenta now has %i hp\n", p.hp);
+                    }
+                    if (chara == 1)
+                    {
+                        printf("Sunflower used a potion!\nSunflower now has %i hp\n", p.hp);
+                    }
+                }
+                if (potions <= 0)
+                {
+                    if (chara == 1)
+                    {
+                        printf("Cobalt has no potions left!\nCobelt's turn was skipped\n");
+                    }
+                    if (chara == 2)
+                    {
+                        printf("Magenta has no potions left!\nMagenta's turn was sipped\n");
+                    }
+                    if (chara == 3)
+                    {
+                        printf("Sunflower has no items remaining!\nSunflower's turn was skipped!\n");
+                    }
+                }
             }
             if (item_misc == 3)
             {
-                //figure out how to count number of food items
+                if (food > 0)
+                {
+                    foodmin = 1;
+                    foodmax = 5;
+                    food = foodmin + rand() % (foodmax - foodmin + 1);
+                    if (food == 1) //sandwich
+                    {
+                        p.hp = 30;
+                        if (chara == 1)
+                        {
+                            printf("Cobalt healed fully!\nCobalt now has %i hp\n", p.hp);
+                        }
+                        if (chara == 2)
+                        {
+                            printf("Magenta healed fully!\nMagenta now has %i hp\n", p.hp);
+                        }
+                        if (chara == 3)
+                        {
+                            printf("Sunflower healed fully!\nSunflower now has %i hp\n", p.hp);
+                        }
+                        food--;
+                    }
+                    if (food == 2) //fruitcup
+                    {
+                        p.hphealed = 0;
+                        p.hpmin = 5;
+                        p.hpmax = 15;
+                        p.hphealed = p.hpmin + rand() % (p.hpmax - p.hpmin + 1);
+                        p.hp = p.hp + p.hphealed;
+                        if (p.hp > 30)
+                        {
+                            p.hp = 30;
+                        }
+                        if (chara == 1)
+                        {
+                            printf("Cobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        if (chara == 2)
+                        {
+                            printf("Magenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        if (chara == 3)
+                        {
+                            printf("Sunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        food--;
+                    }
+                    if (food == 3) //soda
+                    {
+                        p.hphealed = 6;
+                        p.hp = p.hp + p.hphealed;
+                        if (p.hp > 30)
+                        {
+                            p.hp = 30;
+                        }
+                        if (chara == 1)
+                        {
+                            printf("Cobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        if (chara == 2)
+                        {
+                            printf("Magenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        if (chara == 3)
+                        {
+                            printf("Sunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        food--;
+                    }
+                    if (food == 4) //beef jerkey
+                    {
+                        p.hphealed = 0;
+                        p.hpmin = 10;
+                        p.hpmax = 13;
+                        p.hphealed = p.hpmin + rand() % (p.hpmax - p.hpmin + 1);
+                        p.hp = p.hp + p.hphealed;
+                        if (p.hp > 30)
+                        {
+                            p.hp = 30;
+                        }
+                        if (chara == 1)
+                        {
+                            printf("Cobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        if (chara == 2)
+                        {
+                            printf("Magenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        if (chara == 3)
+                        {
+                            printf("Sunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        food--;
+                    }
+                    if (food == 5) //cake slice
+                    {
+                        p.hphealed = 0;
+                        p.hpmin = 1;
+                        p.hpmax = 29;
+                        p.hphealed = p.hpmin + rand() % (p.hpmax - p.hpmin + 1);
+                        p.hp = p.hp + p.hphealed;
+                        if (p.hp > 30)
+                        {
+                            p.hp = 30;
+                        }
+                        if (chara == 1)
+                        {
+                            printf("Cobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        if (chara == 2)
+                        {
+                            printf("Magenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        if (chara == 3)
+                        {
+                            printf("Sunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                        }
+                        food--;
+                    }
+                }
             }
-            //spellbook not included in this
         }
     }
     else //turn skipped
@@ -1352,6 +1497,9 @@ int main()
     int item_weapon = 0;
     int item_misc = 0;
     int items = 0;
+    int potions = 0;
+    int lunchbox = 0;
+    int food;
 
     int room = 0;
     int choice;
@@ -1638,9 +1786,9 @@ int main()
                     printf("1. 3 potions of full healing\n");
                     printf("\t\tMay be used to heal self by a fixed amount\n");
                     printf("2. Spellbook\n");
-                    printf("\t\tAllows your selected character to use spells they do not normally have access to\n");
+                    printf("\t\tAllows your selected character to use spells they do not normally have access to (useless to Sunflower)\n");
                     printf("3. Lunchbox\n");
-                    printf("\t\tContains various food items that may be used to heal self by a varying amount\n");
+                    printf("\t\tContains various food items that may be used to heal self by a random amount\n");
 
                     printf(">");
                     scanf_s("%i", &item_misc);
@@ -1651,6 +1799,7 @@ int main()
                         item_misc = 1;
                         items++;
                         printf("\n\nSelected: healing potions\n\n");
+                        potions = 3;
                     }
                     else if (item_misc == 2) //spellbook
                     {
@@ -1663,6 +1812,7 @@ int main()
                         item_misc = 3;
                         items++;
                         printf("\n\nSelected: lunchbox\n\n");
+                        lunchbox = 5;
                     }
                 }
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
