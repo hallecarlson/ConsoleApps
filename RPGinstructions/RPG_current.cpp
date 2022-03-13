@@ -155,6 +155,10 @@
                         Pulled from GitHub
                         Added code for player battle actions
                         Pushed to GitHub
+
+    Date: 3/13/22       Done:
+                        Edited a few things
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -214,7 +218,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
         {
             if (chara == 1)
             {
-                printf("Cobalt tried to use her weapon\n");
+                printf("\nCobalt tried to use her weapon\n");
                 if (item_weapon == 1) //longsword
                 {
                     p.dpmin = 8;
@@ -258,7 +262,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
             }
             if (chara == 2)
             {
-                printf("Magenta tried to use his weapon\n");
+                printf("\nMagenta tried to use his weapon\n");
                 if (item_weapon == 1) //longsword
                 {
                     p.dpmin = 10;
@@ -302,7 +306,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
             }
             if (chara == 3)
             {
-                printf("Sunflower tried to use her weapon\n");
+                printf("\nSunflower tried to use her weapon\n");
                 if (item_weapon == 1) //longsword
                 {
                     p.dpmin = 8;
@@ -349,21 +353,21 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
         {
             if (chara == 1)
             {
-                printf("Cobalt struck the enemy!\n");
+                printf("\nCobalt struck the enemy!\n");
                 p.dp = 5;
                 e.hp = e.hp - p.dp;
                 printf("The enemy lost %i hp!\n", p.dp);
             }
             if (chara == 2)
             {
-                printf("Magenta struck the enemy!\n");
+                printf("\nMagenta struck the enemy!\n");
                 p.dp = 7;
                 e.hp = e.hp - p.dp;
                 printf("The enemy lost %i hp!\n", p.dp);
             }
             if (chara == 3)
             {
-                printf("Sunflower struck the enemy!\n");
+                printf("\nSunflower struck the enemy!\n");
                 p.dp = 5;
                 e.hp = e.hp - p.dp;
                 printf("The enemy lost %i hp!\n", p.dp);
@@ -377,7 +381,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                 {
                     do
                     {
-                        printf("Choose a spell: 1. moderate healing\t2. increase accuracy\n>");
+                        printf("\nChoose a spell: 1. moderate healing\t2. increase accuracy\n>");
                         scanf_s("%i", &player_spell);
                         fseek(stdin, 0, SEEK_END);
                     } while (player_spell != 1 && player_spell != 2);
@@ -408,7 +412,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                 {            
                     do
                     {
-                        printf("Choose a spell: 1. moderate healing\t2. increase accuracy\t3. decrease enemy accuracy\t4. sleep spell\n>");
+                        printf("\nChoose a spell: 1. moderate healing\t2. increase accuracy\t3. decrease enemy accuracy\t4. sleep spell\n>");
                         scanf_s("%i", &player_spell);
                         fseek(stdin, 0, SEEK_END);
                     } while (player_spell != 1 && player_spell != 2 && player_spell != 3 && player_spell != 4);
@@ -437,7 +441,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                 {
                     do
                     {
-                        printf("Choose a spell: 1. moderate healing\t2. increase accuracy\t3. decrease enemy accuracy\t4. sleep spell\n>");
+                        printf("\nChoose a spell: 1. moderate healing\t2. increase accuracy\t3. decrease enemy accuracy\t4. sleep spell\n>");
                         scanf_s("%i", &player_spell);
                         fseek(stdin, 0, SEEK_END);
                     } while (player_spell != 1 && player_spell != 2 && player_spell != 3 && player_spell != 4);
@@ -478,30 +482,30 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                     p.hp = 30;
                     if (chara == 1)
                     {
-                        printf("Cobalt used a potion!\nCobalt now has %i hp\n", p.hp);
+                        printf("\nCobalt used a potion!\nCobalt now has %i hp\n", p.hp);
                     }
                     if (chara == 2)
                     {
-                        printf("Magenta used a potion!\nMagenta now has %i hp\n", p.hp);
+                        printf("\nMagenta used a potion!\nMagenta now has %i hp\n", p.hp);
                     }
                     if (chara == 1)
                     {
-                        printf("Sunflower used a potion!\nSunflower now has %i hp\n", p.hp);
+                        printf("\nSunflower used a potion!\nSunflower now has %i hp\n", p.hp);
                     }
                 }
                 if (potions <= 0)
                 {
                     if (chara == 1)
                     {
-                        printf("Cobalt has no potions left!\nCobelt's turn was skipped\n");
+                        printf("\nCobalt has no potions left!\nCobelt's turn was skipped\n");
                     }
                     if (chara == 2)
                     {
-                        printf("Magenta has no potions left!\nMagenta's turn was sipped\n");
+                        printf("\nMagenta has no potions left!\nMagenta's turn was sipped\n");
                     }
                     if (chara == 3)
                     {
-                        printf("Sunflower has no items remaining!\nSunflower's turn was skipped!\n");
+                        printf("\nSunflower has no items remaining!\nSunflower's turn was skipped!\n");
                     }
                 }
             }
@@ -517,15 +521,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         p.hp = 30;
                         if (chara == 1)
                         {
-                            printf("Cobalt healed fully!\nCobalt now has %i hp\n", p.hp);
+                            printf("\nCobalt healed fully!\nCobalt now has %i hp\n", p.hp);
                         }
                         if (chara == 2)
                         {
-                            printf("Magenta healed fully!\nMagenta now has %i hp\n", p.hp);
+                            printf("\nMagenta healed fully!\nMagenta now has %i hp\n", p.hp);
                         }
                         if (chara == 3)
                         {
-                            printf("Sunflower healed fully!\nSunflower now has %i hp\n", p.hp);
+                            printf("\nSunflower healed fully!\nSunflower now has %i hp\n", p.hp);
                         }
                         food--;
                     }
@@ -542,15 +546,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         }
                         if (chara == 1)
                         {
-                            printf("Cobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nCobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                         }
                         if (chara == 2)
                         {
-                            printf("Magenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nMagenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                         }
                         if (chara == 3)
                         {
-                            printf("Sunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nSunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                         }
                         food--;
                     }
@@ -564,15 +568,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         }
                         if (chara == 1)
                         {
-                            printf("Cobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nCobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                         }
                         if (chara == 2)
                         {
-                            printf("Magenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nMagenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                         }
                         if (chara == 3)
                         {
-                            printf("Sunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nSunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                         }
                         food--;
                     }
@@ -589,15 +593,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         }
                         if (chara == 1)
                         {
-                            printf("Cobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nCobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                         }
                         if (chara == 2)
                         {
-                            printf("Magenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nMagenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                         }
                         if (chara == 3)
                         {
-                            printf("Sunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nSunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                         }
                         food--;
                     }
@@ -614,15 +618,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         }
                         if (chara == 1)
                         {
-                            printf("Cobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nCobalt gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                         }
                         if (chara == 2)
                         {
-                            printf("Magenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nMagenta gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                         }
                         if (chara == 3)
                         {
-                            printf("Sunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                            printf("\nSunflower gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                         }
                         food--;
                     }
@@ -634,15 +638,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     {
         if (p.chara == 1) //cobalt
         {
-            printf("Cobalt's turn was skipped!");
+            printf("\nCobalt's turn was skipped!");
         }
         if (p.chara == 2) //magenta
         {
-            printf("Magenta's turn was skipped!");
+            printf("\nMagenta's turn was skipped!");
         }
         if (p.chara == 3) //sunflower
         {
-            printf("Sunflower's turn was skipped!");
+            printf("\nSunflower's turn was skipped!");
         }
     }
     e.roll = 0 + rand() % (10 - 0 + 1);
