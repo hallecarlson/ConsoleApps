@@ -159,6 +159,12 @@
     Date: 3/13/22       Done:
                         Edited a few things
                         Pushed to GitHub
+
+    Date: 3/14/22       Done:
+                        Pulled from GtiHub
+                        Added code to combat function
+                        Fixed some errors
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -192,6 +198,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
 
     int player_turn;
     int player_spell;
+    int enemy_type;
+    string enemy;
 
     //encounter! roll enemy hp (secret value)
     e.hpmin = 10;
@@ -202,8 +210,34 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     //enemy's turn! roll enemy dp
     e.dpmin = 2;
     e.dpmax = 7;
-    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);}    
+    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);   
+    
+    enemy_type = 1 + rand() % (3 - 1 + 1);
+    if (enemy_type == 1)
+    {
+        enemy = "Grey Painter";
+    }
+    if (enemy_type == 2)
+    {
+        enemy = "Grey Knight";
+    }
+    if (enemy_type == 1)
+    {
+        enemy = "Grey Barbarian";
+    }
 
+    if (chara == 1)
+    {
+        printf("Cobalt encountered a %s!", enemy.c_str());
+    }
+    if (chara == 2)
+    {
+        printf("Magenta encountered a %s!", enemy.c_str());
+    }
+    if (chara == 3)
+    {
+        printf("Sunflower encountered a %s!", enemy.c_str());
+    }
     p.roll = 0 + rand() % (10 - 0 + 1);
     if (p.roll >= 2) //turn successful
     {
@@ -650,9 +684,169 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
         }
     }
     e.roll = 0 + rand() % (10 - 0 + 1);
+    if (enemy_type = 1)
+    {
+        if (chara == 1)
+        {
+            printf("The %s tried to strike Cobalt with their fists!\n", enemy.c_str());
+            e.dpmin = 1;
+            e.dpmax = 3;
+            e.roll = 0 + rand() % (10 - 0 + 1);
+            if (e.roll >= 2)
+            {
+                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                p.hp = p.hp - e.dp;
+                printf("Cobalt lost %i hp!\n", e.dp);
+            }
+            else if (e.roll < 2)
+            {
+                printf("The %s missed!\n", enemy.c_str());
+            }
+        }
+        if (chara == 2)
+        {
+            printf("The %s tried to strike Magenta with their fists!\n", enemy.c_str());
+            e.dpmin = 1;
+            e.dpmax = 5;
+            e.roll = 0 + rand() % (10 - 0 + 1);
+            if (e.roll >= 2)
+            {
+                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                p.hp = p.hp - e.dp;
+                printf("Magenta lost %i hp!\n", e.dp);
+            }
+            else if (e.roll < 2)
+            {
+                printf("The %s missed!\n", enemy.c_str());
+            }
+        }
+        if (chara == 3)
+        {
+            printf("The %s tried to strike Sunflower with their fists!\n", enemy.c_str());
+            e.dpmin = 1;
+            e.dpmax = 5;
+            e.roll = 0 + rand() % (10 - 0 + 1);
+            if (e.roll >= 2)
+            {
+                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                p.hp = p.hp - e.dp;
+                printf("Sunflower lost %i hp!\n", e.dp);
+            }
+            else if (e.roll < 2)
+            {
+                printf("The %s missed!\n", enemy.c_str());
+            }
+        }
+    }
+    if (enemy_type = 2)
+    {
+        if (chara == 1)
+        {
+            printf("The %s tried to strike Cobalt with their sword!\n", enemy.c_str());
+            e.dpmin = 3;
+            e.dpmax = 6;
+            e.roll = 0 + rand() % (10 - 0 + 1);
+            if (e.roll >= 4)
+            {
+                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                p.hp = p.hp - e.dp;
+                printf("Cobalt lost %i hp!\n", e.dp);
+            }
+            else if (e.roll < 4)
+            {
+                printf("The %s missed!\n", enemy.c_str());
+            }
+        }
+        if (chara == 2)
+        {
+            printf("The %s tried to strike Magenta with their sword!\n", enemy.c_str());
+            e.dpmin = 4;
+            e.dpmax = 7;
+            e.roll = 0 + rand() % (10 - 0 + 1);
+            if (e.roll >= 4)
+            {
+                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                p.hp = p.hp - e.dp;
+                printf("Magenta lost %i hp!\n", e.dp);
+            }
+            else if (e.roll < 4)
+            {
+                printf("The %s missed!\n", enemy.c_str());
+            }
+        }
+        if (chara == 3)
+        {
+            printf("The %s tried to strike Sunflower with their sword!\n", enemy.c_str());
+            e.dpmin = 4;
+            e.dpmax = 7;
+            e.roll = 0 + rand() % (10 - 0 + 1);
+            if (e.roll >= 4)
+            {
+                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                p.hp = p.hp - e.dp;
+                printf("Sunflower lost %i hp!\n", e.dp);
+            }
+            else if (e.roll < 4)
+            {
+                printf("The %s missed!\n", enemy.c_str());
+            }
+        }
+    }
+    if (enemy_type = 3)
+    {
+        if (chara == 1)
+        {
+            printf("The %s tried to strike Cobalt with their club!\n", enemy.c_str());
+            e.dpmin = 5;
+            e.dpmax = 9;
+            e.roll = 0 + rand() % (10 - 0 + 1);
+            if (e.roll >= 6)
+            {
+                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                p.hp = p.hp - e.dp;
+                printf("Cobalt lost %i hp!\n", e.dp);
+            }
+            else if (e.roll < 6)
+            {
+                printf("The %s missed!\n", enemy.c_str());
+            }
+        }
+        if (chara == 2)
+        {
+            printf("The %s tried to strike Magenta with their club!\n", enemy.c_str());
+            e.dpmin = 6;
+            e.dpmax = 10;
+            e.roll = 0 + rand() % (10 - 0 + 1);
+            if (e.roll >= 6)
+            {
+                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                p.hp = p.hp - e.dp;
+                printf("Magenta lost %i hp!\n", e.dp);
+            }
+            else if (e.roll < 6)
+            {
+                printf("The %s missed!\n", enemy.c_str());
+            }
+        }
+        if (chara == 3)
+        {
+            printf("The %s tried to strike Sunflower with their club!\n", enemy.c_str());
+            e.dpmin = 6;
+            e.dpmax = 10;
+            e.roll = 0 + rand() % (10 - 0 + 1);
+            if (e.roll >= 6)
+            {
+                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                p.hp = p.hp - e.dp;
+                printf("Sunflower lost %i hp!\n", e.dp);
+            }
+            else if (e.roll < 6)
+            {
+                printf("The %s missed!\n", enemy.c_str());
+            }
+        }
+    }
 
-    p.hp = p.hp - e.dp;
-    e.hp = e.hp - p.dp;
 
     //basic battle sequence
     /*
