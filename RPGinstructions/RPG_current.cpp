@@ -180,6 +180,10 @@
                         Fixed some text
                         Fine-tuned some things
                         Pushed to GitHub
+
+    Date: 3/18/22       Done:
+                        Added code for combat
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -217,8 +221,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     int enemy_type = 0;
     string enemy = "";
 
-    int foodmin; //declare here and take out of below code, add more types of foods;
-    int foodmax; //same
+    int foodmin = 1;
+    int foodmax = 5; 
     bool player_accuracy = false;
     bool enemy_accuracy = false;
     bool sleep = false;
@@ -236,7 +240,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     {
         enemy = "Grey Knight";
     }
-    if (enemy_type == 1)
+    if (enemy_type == 3)
     {
         enemy = "Grey Barbarian";
     }
@@ -259,7 +263,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
         if (p.hp > 0)
         {
             p.roll = 0 + rand() % (10 - 0 + 1);
-            if (p.roll >= 2) //turn successful
+            if (p.roll >= 2)
             {
                 do
                 {
@@ -712,12 +716,12 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 p.roll = 0 + rand() % (10 - 0 + 1);
                                 if (player_accuracy == false)
                                 {
-                                    if (p.roll >= 4)
+                                    if (p.roll >= 6)
                                     {
                                         sleep = true;
                                         printf("Sunflower put the %s to sleep!\n", enemy.c_str());
                                     }
-                                    else if (p.roll < 4)
+                                    else if (p.roll < 6)
                                     {
                                         sleep = false;
                                         printf("Sunflower tried to put the %s to sleep, but nothing happened!\n", enemy.c_str());
@@ -725,12 +729,12 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                                 if (player_accuracy == true)
                                 {
-                                    if (p.roll >= 6)
+                                    if (p.roll >= 4)
                                     {
                                         sleep = true;
                                         printf("Sunflower put the %s to sleep!\n", enemy.c_str());
                                     }
-                                    else if (p.roll < 6)
+                                    else if (p.roll < 4)
                                     {
                                         sleep = false;
                                         printf("Sunflower tried to put the %s to sleep, but nothing happened!\n", enemy.c_str());
@@ -763,9 +767,66 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                                 printf("Sunflower gained %i hp! Sunflower now has %i hp\n", p.hphealed, p.hp);
                             }
-                            //if (player_spell == 2)
-                            //if (player_spell == 3)
-                            //if (player_spell == 4)
+                            else if (player_spell == 2)
+                            {
+                                if (player_accuracy == false)
+                                {
+                                    player_accuracy = true;
+                                    if (chara == 3)
+                                    {
+                                        printf("Sunflower's accuracy was raised by 2 stages\nAccuracy checks will now be more forgiving\n");
+                                    }
+                                }
+                                else if (player_accuracy == true)
+                                {
+                                    if (chara == 3)
+                                    {
+                                        printf("Sunflower's accuracy is already raised\nSunflower's turn was skipped\n");
+                                    }
+                                }
+                            }
+                            else if (player_spell == 3)
+                            {
+                                if (enemy_accuracy == false)
+                                {
+                                    enemy_accuracy = true;
+                                    printf("The %s's accuracy was lowered by 2 stages\nAccuracy checks will now be more challenging\n", enemy.c_str());
+                                }
+                                else if (enemy_accuracy == true)
+                                {
+                                    printf("The %s's accuracy is already lowered\nSunflower's turn was skipped\n", enemy.c_str());
+                                }
+                            }
+                            else if (player_spell == 4)
+                            {
+                                p.roll = 0 + rand() % (10 - 0 + 1);
+                                if (player_accuracy == false)
+                                {
+                                    if (p.roll >= 6)
+                                    {
+                                        sleep = true;
+                                        printf("Sunflower put the %s to sleep!\n", enemy.c_str());
+                                    }
+                                    else if (p.roll < 6)
+                                    {
+                                        sleep = false;
+                                        printf("Sunflower tried to put the %s to sleep, but nothing happened!\n", enemy.c_str());
+                                    }
+                                }
+                                if (player_accuracy == true)
+                                {
+                                    if (p.roll >= 4)
+                                    {
+                                        sleep = true;
+                                        printf("Sunflower put the %s to sleep!\n", enemy.c_str());
+                                    }
+                                    else if (p.roll < 4)
+                                    {
+                                        sleep = false;
+                                        printf("Sunflower tried to put the %s to sleep, but nothing happened!\n", enemy.c_str());
+                                    }
+                                }
+                            }
                         }
                         if (chara == 1)
                         {
@@ -817,8 +878,6 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                     {
                         if (food > 0)
                         {
-                            foodmin = 1;
-                            foodmax = 5;
                             food = foodmin + rand() % (foodmax - foodmin + 1);
                             if (food == 1) //sandwich
                             {
@@ -975,641 +1034,672 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
             e.roll = 0 + rand() % (10 - 0 + 1);
             if (e.roll >= 2)
             {
-                if (enemy_type == 1)
+                if (sleep == false)
                 {
-                    if (chara == 1)
+                    if (enemy_type == 1)
                     {
-                        printf("The %s tried to strike Cobalt with their fists!\n", enemy.c_str());
-                        e.dpmin = 1;
-                        e.dpmax = 3;
-                        e.roll = 0 + rand() % (10 - 0 + 1);
-                        if (enemy_accuracy == false)
+                        if (chara == 1)
                         {
-                            if (e.roll >= 2)
+                            printf("The %s tried to strike Cobalt with their fists!\n", enemy.c_str());
+                            e.dpmin = 1;
+                            e.dpmax = 3;
+                            e.roll = 0 + rand() % (10 - 0 + 1);
+                            if (enemy_accuracy == false)
                             {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Cobalt lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
+                                if (e.roll >= 2)
                                 {
-                                    printf("The %s defeated Cobalt!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Cobalt lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Cobalt!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                    if (p.hp <= 0)
+                                    {
+                                        //fix
+                                    }
                                 }
-                                if (p.hp <= 0)
+                                else if (e.roll < 2)
                                 {
-                                    //fix
+                                    printf("The %s missed!\n", enemy.c_str());
                                 }
                             }
-                            else if (e.roll < 2)
+                            else if (enemy_accuracy == true)
                             {
-                                printf("The %s missed!\n", enemy.c_str());
+                                if (e.roll >= 4)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Cobalt lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Cobalt!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                    if (p.hp <= 0)
+                                    {
+                                        //fix
+                                    }
+                                }
+                                else if (e.roll < 4)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
                             }
                         }
-                        else if (enemy_accuracy == true)
+                        if (chara == 2)
                         {
-                            if (e.roll >= 4)
+                            printf("The %s tried to strike Magenta with their fists!\n", enemy.c_str());
+                            e.dpmin = 1;
+                            e.dpmax = 5;
+                            e.roll = 0 + rand() % (10 - 0 + 1);
+                            if (enemy_accuracy == false)
                             {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Cobalt lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
+                                if (e.roll >= 2)
                                 {
-                                    printf("The %s defeated Cobalt!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Magenta lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Magenta!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
                                 }
-                                if (p.hp <= 0)
+                                else if (e.roll < 2)
                                 {
-                                    //fix
+                                    printf("The %s missed!\n", enemy.c_str());
                                 }
                             }
-                            else if (e.roll < 4)
+                            else if (enemy_accuracy == true)
                             {
-                                printf("The %s missed!\n", enemy.c_str());
+                                if (e.roll >= 4)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Magenta lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Magenta!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 4)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
+                            }
+                        }
+                        if (chara == 3)
+                        {
+                            printf("The %s tried to strike Sunflower with their fists!\n", enemy.c_str());
+                            e.dpmin = 1;
+                            e.dpmax = 5;
+                            e.roll = 0 + rand() % (10 - 0 + 1);
+                            if (enemy_accuracy == false)
+                            {
+                                if (e.roll >= 2)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Sunflower lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Sunflower!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 2)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
+                            }
+                            else if (enemy_accuracy == true)
+                            {
+                                if (e.roll >= 4)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Sunflower lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Sunflower!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 4)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
                             }
                         }
                     }
-                    if (chara == 2)
+                    if (enemy_type == 2)
                     {
-                        printf("The %s tried to strike Magenta with their fists!\n", enemy.c_str());
-                        e.dpmin = 1;
-                        e.dpmax = 5;
-                        e.roll = 0 + rand() % (10 - 0 + 1);
-                        if (enemy_accuracy == false)
+                        if (chara == 1)
                         {
-                            if (e.roll >= 2)
+                            printf("The %s tried to strike Cobalt with their sword!\n", enemy.c_str());
+                            e.dpmin = 3;
+                            e.dpmax = 6;
+                            e.roll = 0 + rand() % (10 - 0 + 1);
+                            if (enemy_accuracy == false)
                             {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Magenta lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
+                                if (e.roll >= 4)
                                 {
-                                    printf("The %s defeated Magenta!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Cobalt lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Cobalt!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 4)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
                                 }
                             }
-                            else if (e.roll < 2)
+                            else if (enemy_accuracy == true)
                             {
-                                printf("The %s missed!\n", enemy.c_str());
+                                if (e.roll >= 6)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Cobalt lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Cobalt!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 6)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
                             }
                         }
-                        else if (enemy_accuracy == true)
+                        if (chara == 2)
                         {
-                            if (e.roll >= 4)
+                            printf("The %s tried to strike Magenta with their sword!\n", enemy.c_str());
+                            e.dpmin = 4;
+                            e.dpmax = 7;
+                            e.roll = 0 + rand() % (10 - 0 + 1);
+                            if (enemy_accuracy == false)
                             {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Magenta lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
+                                if (e.roll >= 4)
                                 {
-                                    printf("The %s defeated Magenta!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Magenta lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Magenta!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 4)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
                                 }
                             }
-                            else if (e.roll < 4)
+                            else if (enemy_accuracy == true)
                             {
-                                printf("The %s missed!\n", enemy.c_str());
+                                if (e.roll >= 6)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Magenta lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Magenta!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 6)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
+                            }
+                        }
+                        if (chara == 3)
+                        {
+                            printf("The %s tried to strike Sunflower with their sword!\n", enemy.c_str());
+                            e.dpmin = 4;
+                            e.dpmax = 7;
+                            e.roll = 0 + rand() % (10 - 0 + 1);
+                            if (enemy_accuracy == false)
+                            {
+                                if (e.roll >= 4)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Sunflower lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Sunflower!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 4)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
+                            }
+                            else if (enemy_accuracy == true)
+                            {
+                                if (e.roll >= 6)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Sunflower lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Sunflower!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 6)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
                             }
                         }
                     }
-                    if (chara == 3)
+                    if (enemy_type == 3)
                     {
-                        printf("The %s tried to strike Sunflower with their fists!\n", enemy.c_str());
-                        e.dpmin = 1;
-                        e.dpmax = 5;
-                        e.roll = 0 + rand() % (10 - 0 + 1);
-                        if (enemy_accuracy == false)
+                        if (chara == 1)
                         {
-                            if (e.roll >= 2)
+                            printf("The %s tried to strike Cobalt with their club!\n", enemy.c_str());
+                            e.dpmin = 5;
+                            e.dpmax = 9;
+                            e.roll = 0 + rand() % (10 - 0 + 1);
+                            if (enemy_accuracy == false)
                             {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Sunflower lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
+                                if (e.roll >= 6)
                                 {
-                                    printf("The %s defeated Sunflower!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Cobalt lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Cobalt!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 6)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
                                 }
                             }
-                            else if (e.roll < 2)
+                            else if (enemy_accuracy == true)
                             {
-                                printf("The %s missed!\n", enemy.c_str());
+                                if (e.roll >= 8)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Cobalt lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Cobalt!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 8)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
                             }
                         }
-                        else if (enemy_accuracy == true)
+                        if (chara == 2)
                         {
-                            if (e.roll >= 4)
+                            printf("The %s tried to strike Magenta with their club!\n", enemy.c_str());
+                            e.dpmin = 6;
+                            e.dpmax = 10;
+                            e.roll = 0 + rand() % (10 - 0 + 1);
+                            if (enemy_accuracy == false)
                             {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Sunflower lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
+                                if (e.roll >= 6)
                                 {
-                                    printf("The %s defeated Sunflower!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Magenta lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Magenta!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 6)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
                                 }
                             }
-                            else if (e.roll < 4)
+                            else if (enemy_accuracy == true)
                             {
-                                printf("The %s missed!\n", enemy.c_str());
+                                if (e.roll >= 8)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Magenta lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Magenta!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 8)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
+                            }
+                        }
+                        if (chara == 3)
+                        {
+                            printf("The %s tried to strike Sunflower with their club!\n", enemy.c_str());
+                            e.dpmin = 6;
+                            e.dpmax = 10;
+                            e.roll = 0 + rand() % (10 - 0 + 1);
+                            if (enemy_accuracy == false)
+                            {
+                                if (e.roll >= 6)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Sunflower lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Sunflower!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 6)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
+                            }
+                            else if (enemy_accuracy == true)
+                            {
+                                if (e.roll >= 8)
+                                {
+                                    e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
+                                    p.hp = p.hp - e.dp;
+                                    printf("Sunflower lost %i hp!\n", e.dp);
+                                    if (p.hp <= 0)
+                                    {
+                                        printf("The %s defeated Sunflower!\n\n", enemy.c_str());
+                                        _getch();
+                                        printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
+                                        printf("G          A    A   MM    MM  E\n");
+                                        printf("G         A      A  M M  M M  EEEEEEEE\n");
+                                        printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
+                                        printf("G      G  A      A  M      M  E\n");
+                                        printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
+                                        printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O  V      V  E         R      R\n");
+                                        printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
+                                        printf("O      O   V    V   E         R     R\n");
+                                        printf("O      O    V  V    E         R      R\n");
+                                        printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
+                                        _getch();
+                                    }
+                                }
+                                else if (e.roll < 8)
+                                {
+                                    printf("The %s missed!\n", enemy.c_str());
+                                }
                             }
                         }
                     }
                 }
-                if (enemy_type == 2)
+                else if (sleep == true)
                 {
-                    if (chara == 1)
+                    e.roll = 0 + rand() % (10 - 0 + 1);
+                    if (enemy_accuracy == false)
                     {
-                        printf("The %s tried to strike Cobalt with their sword!\n", enemy.c_str());
-                        e.dpmin = 3;
-                        e.dpmax = 6;
-                        e.roll = 0 + rand() % (10 - 0 + 1);
-                        if (enemy_accuracy == false)
+                        if (e.roll >= 6)
                         {
-                            if (e.roll >= 4)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Cobalt lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Cobalt!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 4)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
+                            printf("The %s woke up!\n", enemy.c_str());
+                            sleep = false;
                         }
-                        else if (enemy_accuracy == true)
+                        else if (e.roll < 6)
                         {
-                            if (e.roll >= 6)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Cobalt lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Cobalt!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 6)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
+                            printf("The %s tried to wake up, but failed!\n", enemy.c_str());
                         }
                     }
-                    if (chara == 2)
+                    else if (enemy_accuracy == true)
                     {
-                        printf("The %s tried to strike Magenta with their sword!\n", enemy.c_str());
-                        e.dpmin = 4;
-                        e.dpmax = 7;
-                        e.roll = 0 + rand() % (10 - 0 + 1);
-                        if (enemy_accuracy == false)
+                        if (e.roll >= 8)
                         {
-                            if (e.roll >= 4)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Magenta lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Magenta!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 4)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
+                            printf("The %s woke up!\n", enemy.c_str());
+                            sleep = false;
                         }
-                        else if (enemy_accuracy == true)
+                        else if (e.roll < 8)
                         {
-                            if (e.roll >= 6)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Magenta lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Magenta!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 6)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
-                        }
-                    }
-                    if (chara == 3)
-                    {
-                        printf("The %s tried to strike Sunflower with their sword!\n", enemy.c_str());
-                        e.dpmin = 4;
-                        e.dpmax = 7;
-                        e.roll = 0 + rand() % (10 - 0 + 1);
-                        if (enemy_accuracy == false)
-                        {
-                            if (e.roll >= 4)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Sunflower lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Sunflower!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 4)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
-                        }
-                        else if (enemy_accuracy == true)
-                        {
-                            if (e.roll >= 6)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Sunflower lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Sunflower!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 6)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
-                        }
-                    }
-                }
-                if (enemy_type == 3)
-                {
-                    if (chara == 1)
-                    {
-                        printf("The %s tried to strike Cobalt with their club!\n", enemy.c_str());
-                        e.dpmin = 5;
-                        e.dpmax = 9;
-                        e.roll = 0 + rand() % (10 - 0 + 1);
-                        if (enemy_accuracy == false)
-                        {
-                            if (e.roll >= 6)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Cobalt lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Cobalt!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 6)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
-                        }
-                        else if (enemy_accuracy == true)
-                        {
-                            if (e.roll >= 8)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Cobalt lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Cobalt!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 8)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
-                        }
-                    }
-                    if (chara == 2)
-                    {
-                        printf("The %s tried to strike Magenta with their club!\n", enemy.c_str());
-                        e.dpmin = 6;
-                        e.dpmax = 10;
-                        e.roll = 0 + rand() % (10 - 0 + 1);
-                        if (enemy_accuracy == false)
-                        {
-                            if (e.roll >= 6)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Magenta lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Magenta!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 6)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
-                        }
-                        else if (enemy_accuracy == true)
-                        {
-                            if (e.roll >= 8)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Magenta lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Magenta!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 8)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
-                        }
-                    }
-                    if (chara == 3)
-                    {
-                        printf("The %s tried to strike Sunflower with their club!\n", enemy.c_str());
-                        e.dpmin = 6;
-                        e.dpmax = 10;
-                        e.roll = 0 + rand() % (10 - 0 + 1);
-                        if (enemy_accuracy == false)
-                        {
-                            if (e.roll >= 6)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Sunflower lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Sunflower!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 6)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
-                        }
-                        else if (enemy_accuracy == true)
-                        {
-                            if (e.roll >= 8)
-                            {
-                                e.dp = e.dpmin + rand() % (e.dpmax - e.dpmin + 1);
-                                p.hp = p.hp - e.dp;
-                                printf("Sunflower lost %i hp!\n", e.dp);
-                                if (p.hp <= 0)
-                                {
-                                    printf("The %s defeated Sunflower!\n\n", enemy.c_str());
-                                    _getch();
-                                    printf("GGGGGGGG    AAAA    M      M  EEEEEEEE\n");
-                                    printf("G          A    A   MM    MM  E\n");
-                                    printf("G         A      A  M M  M M  EEEEEEEE\n");
-                                    printf("G   GGGG  AAAAAAAA  M  MM  M  E\n");
-                                    printf("G      G  A      A  M      M  E\n");
-                                    printf("GGGGGGGG  A      A  M      M  EEEEEEEE\n\n");
-                                    printf("OOOOOOOO  V      V  EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O  V      V  E         R      R\n");
-                                    printf("O      O   V    V   EEEEEEEE  RRRRRRRR\n");
-                                    printf("O      O   V    V   E         R     R\n");
-                                    printf("O      O    V  V    E         R      R\n");
-                                    printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                    _getch();
-                                }
-                            }
-                            else if (e.roll < 8)
-                            {
-                                printf("The %s missed!\n", enemy.c_str());
-                            }
+                            printf("The %s tried to wake up, but failed!\n", enemy.c_str());
                         }
                     }
                 }
@@ -1683,13 +1773,10 @@ int canary(int room) //room 2
     printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
     printf("To the West is Ultramarine and to the south is Sunset Observatory.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-        _getch();
-        printf("An enemy jumps out!\n);
+    printf("You hear rustling in the foliage\n");
+    _getch();
+    printf("An enemy jumps out!\n");
 
-        Battle!
-        (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-    */
 
     printf("1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
     printf(">");
@@ -2445,6 +2532,8 @@ int main()
     int room = 0;
     int choice;
     bool win = false;
+
+    p = combat(p, npc_e[0], p.chara, item_weapon, item_misc, potions, lunchbox, food);
 
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("Welcome to Crayonland!\n");
