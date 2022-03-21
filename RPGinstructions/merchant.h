@@ -2,14 +2,15 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <string>
+#include "player.h"
 using namespace std;
 
-class Grey
+class Merchant
 {
 public:
-	Grey();
-	Grey(string n, int hp, int d);
-	Grey(Grey& G);
+	Merchant();
+	Merchant(string n, int hp, int d);
+	Merchant(Merchant& M);
 	void setStats(string name, int hitpoints, int damagepoints);
 	void setName(string name);
 	void setHitpoints(int hitpoints);
@@ -17,6 +18,8 @@ public:
 	string getN();
 	int getHP();
 	int getDP();
+	void healPlayer(Player& p);
+	void interaction(Player& p);
 
 private:
 	string n;

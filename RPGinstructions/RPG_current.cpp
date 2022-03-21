@@ -208,6 +208,10 @@
     Date: 3/21/22       Done:
                         Added code and comments for instructions and save states and whatnot
                         Pushed to GitHub
+
+                        Got help from Mr. Miyoshi  
+                        Added code in classes for NPC interactions
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -218,20 +222,9 @@
 #include <time.h>
 #include <windows.h>
 #include <vector>
-#include "greypainter.h"
+#include "merchant.h"
+#include "player.h"
 using namespace std;
-
-
-struct Player
-{
-    string name;
-    int chara;
-
-    int hp, hpmin, hpmax, hphealed;
-    int dp, dpmin, dpmax;   
-    int roll;
-};
-
 
 
 Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int food)
@@ -1741,6 +1734,14 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     return p;
 }
 
+/*  (in a class)
+*   "chara encountered a merchant!"
+*   "the merchant spots chara and waves, smiling"
+*   "you look weary from your travels, young one. let me heal you and send you on your way with something that will help you"
+*   "the merchant healed chara fully! chara now has %i hp"
+*   "the merchant gave chara food for his/her lunchbox"
+*   food++
+*/
 
 //room1
 int ultramarine(int room, int chara, bool& win) //room 1
@@ -2521,15 +2522,15 @@ int main()
     Player e;
 
     vector<Player> npc_e;
-    vector<Player> npc_m;
     for (int e = 0; e < 7; e++) //may need to be moved
     {
         Player temp_e;
         npc_e.push_back(temp_e);
     }
+    vector<Merchant> npc_m;
     for (int m = 0; m < 6; m++) //merchants heal the player; PLACEHOLDER: need to apply to player, not npc
     {
-        Player temp_m;
+        Merchant temp_m;
 
         int hphealed;
         int hp;
@@ -2545,6 +2546,8 @@ int main()
 
         npc_m.push_back(temp_m);
     }
+
+    npc_m[0].interaction(p);
 
     int menu_choice;
     int item_type;
@@ -2866,7 +2869,7 @@ int main()
                     printf("2. Spellbook\n");
                     printf("\t\tAllows your selected character to use spells they do not normally have access to (useless to Sunflower)\n");
                     printf("3. Lunchbox\n");
-                    printf("\t\tContains various food items that may be used to heal self by a random amount\n");
+                    printf("\t\tContains various food items that may be used to heal self by a random amount (Your character will have an empty lunchbox if you do not select this item)\n");
 
                     printf(">");
                     scanf_s("%i", &item_misc);

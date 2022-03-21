@@ -18,12 +18,15 @@
     <ClCompile Include="RPG_current.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="greypainter.cpp">
+    <ClCompile Include="merchant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="greypainter.h">
+    <ClInclude Include="merchant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
