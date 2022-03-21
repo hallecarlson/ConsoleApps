@@ -7,9 +7,29 @@
 
     Pseudocode:     
       
-    Notes:              implement sleep (later try to find a way to make enemies wake up, maybea random 
-                        generated number each turn of sleep and enemy cn spend a turn trying to wake up)
+    Requirements:       Done    Comment section (Green text in beginning of file), Comments used throughout code
+                        Intro and clear instructions, easy to use interface
+                        Simple dungeon with 25 rooms minimum
+                        4 NPCs minimum
+                        NPC niteractions effective and consistent (I/O, branching, looping, classes)
+                        Option mechanics effectivebranching), game loops and other loops effective (looping)
+                        Strings to hold appropriate data (addressing user by name, holding NPC responses, other 
+                            canned opuput that may be used multiple times (strings)
+                        Functions used appropriately (passing correct arguments and returning correct values 
+                            (for intro and interactions at least), rooms and interactions)
+                        Game works (beginning, middle, end), replayable with entertainment value, has error checking
+                        Uses structs or classes for player stats and other places as appropriate (struct/classes)
+                        Uses vectors as appropriate (NPCs saved to vectors at least)
+                        Uses object-oriented programming (NPCs should transition from being structs to classes, 
+                            classes should be used in some way if not for NPCs
+                        Use files for save states, use at checkpoints of aw will, user may start new game or continue old game
+                        Game thoroughly tested by at least 4 others who fill out 5-question questionnaire that I create
+
+
+    Notes:              implement save states, 
                         fix death messages
+                        finish adding instructions for stuff like weapons
+                        change vectors to functions?
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -183,6 +203,10 @@
 
     Date: 3/18/22       Done:
                         Added code for combat
+                        Pushed to GitHub
+
+    Date: 3/21/22       Done:
+                        Added code and comments for instructions and save states and whatnot
                         Pushed to GitHub
 */
 
@@ -1712,6 +1736,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
         }
     } 
 
+    printf("The battle ended\n");
+
     return p;
 }
 
@@ -2490,6 +2516,10 @@ int rose(int room, int chara, bool& win) //room 25
 
 int main()
 {
+    Player p;
+    p.chara = 0;
+    Player e;
+
     vector<Player> npc_e;
     vector<Player> npc_m;
     for (int e = 0; e < 7; e++) //may need to be moved
@@ -2501,24 +2531,20 @@ int main()
     {
         Player temp_m;
 
-        int heal;
+        int hphealed;
         int hp;
-        int healmin = 10;
-        int healmax = 29;
-        int hpmax = 30;
+        int hpmin = 10;
+        int hpmax = 29;
 
-        heal = healmin + rand() % (healmax - healmin + 1);
-        if (hp > 30) //undeclared error here, fix later
+        p.hphealed = p.hpmin + rand() % (p.hpmax - p.hpmin + 1);
+        p.hp = p.hp + p.hphealed;
+        if (p.hp > 30) //undeclared error here, fix later
         {
-            hp = 30;
+            p.hp = 30;
         }
 
         npc_m.push_back(temp_m);
     }
-
-    Player p;
-    p.chara = 0;
-    Player e;
 
     int menu_choice;
     int item_type;
@@ -2541,16 +2567,32 @@ int main()
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     _getch();
 
+    /* save states; add file stuff
+    *   if save data exists
+    *   printf("Would you like to 1. begin a new game or 2. continue a saved game?\n");
+    *   int gamestart;
+    *   scanf_s("%i", &gamestart);
+    *   fseek(stdin, 0, SEEK_END);
+    *   if (gamestart == 1)
+    * {
+    *   start below process 
+    * }
+    * else if (gamestart == 2)
+    * {
+    *   start from functions
+    * }
+    */
+
     printf("Please enter your name\n>");
     string user;
     cin >> user;
     fseek(stdin, 0, SEEK_END);
 
-    printf("%s, it is reccomended that you create a map as you play.\n", user.c_str());
+    printf("%s, it is recommended that you create a map as you play.\n", user.c_str());
     printf("The world in the game looks like the following:\n");
     printf(" _______ _______ _______ _______ _______\n");
-    printf("|  ultra|      2|      3|      4| golden|\n");
-    printf("| marine|       |       |       |    rod|\n");
+    printf("|  start|      2|      3|      4|  start|\n");
+    printf("|  point|       |       |       |  point|\n");
     printf("|_______|_______|_______|_______|_______|\n");
     printf("|      6|      7|      8|      9|     10|\n");
     printf("|       |       |       |       |       |\n");
@@ -2561,11 +2603,16 @@ int main()
     printf("|     16|     17|     18|     19|     20|\n");
     printf("|       |       |       |       |       |\n");
     printf("|_______|_______|_______|_______|_______|\n");
-    printf("|     21|     22|     23|     24|   rose|\n");
-    printf("|       |       |       |       |village|\n");
+    printf("|     21|     22|     23|     24|  start|\n");
+    printf("|       |       |       |       |  point|\n");
     printf("|_______|_______|_______|_______|_______|\n");
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     _getch();
+
+    printf("The game follows three different paths depending on which of three characters you choose: Cobalt, Magenta, or Sunflower\n");
+    printf("You must traverse the kingdom and help your selected character find their homeland\n");
+    printf("On the way, you will encounter allies who will help you, and enemies who will block your path\n");
+    printf("Good luck! (And remember to have fun\n");
 
     do //menu loop
     {
@@ -2650,25 +2697,26 @@ int main()
             }
             else if (p.chara != 1 || p.chara != 2 || p.chara != 3)
             {
+                printf("Characters may use a multitude of battle actions and each specializes in one stat/action\n");
+                
                 printf("Select Character:\n\n");
                 printf("1. Cobalt\n");
                 printf("\t\tbase\n");
                 printf("\t\t----\n\n");
                 printf("\t\tspell:  minor healing (self)\n");
                 printf("\t\tattack: strike\n");
-                printf("\t\tspell:  reduce damage taken (self)\n");
                 printf("\t\tdefense specialty\n\n");
                 printf("2. Magenta\n");
                 printf("\t\tbase\n");
                 printf("\t\t----\n\n");
                 printf("\t\tattack: strike\n");
                 printf("\t\tattack: thrash\n");
-                printf("\t\tspell:  increase damage dealt (self)\n");
                 printf("\t\tphysical attack specialty\n\n");
                 printf("3. Sunflower\n");
                 printf("\t\tbase\n");
                 printf("\t\t----\n\n");
                 printf("\t\tattack: strike\n");
+                printf("\t\tspell:  moderate healing\n");
                 printf("\t\tspell:  sleep spell (enemy)\n");
                 printf("\t\tspell:  decrease accuracy (enemy)\n");
                 printf("\t\tspell:  increase accuracy (self)\n");
@@ -2683,39 +2731,39 @@ int main()
                     p.chara = 1;
                     printf("\n\nSelected: Cobalt\n\n");
 
-                    int player_hp_max = 30;
-                    int player_hp_min = 20;
-                    int player_hp;
+                    int p.hpmax = 30;
+                    int p.hpmin = 20;
+                    int p.hp;
 
-                    player_hp = player_hp_min + rand() % (player_hp_max - player_hp_min + 1); //player hit points [20, 30] / 30 max
+                    p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
 
-                    printf("[hp] ---> %i / %i\n", player_hp, player_hp_max); //starting hp / 30 max
+                    printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
                 }
                 else if (p.chara == 2) //Magenta
                 {
                     p.chara = 2;
                     printf("\n\nSelected: Magenta\n\n");
 
-                    int player_hp_max = 30;
-                    int player_hp_min = 20;
-                    int player_hp;
+                    int p.hpmax = 30;
+                    int p.hpmin = 20;
+                    int p.hp;
 
-                    player_hp = player_hp_min + rand() % (player_hp_max - player_hp_min + 1); //player hit points [20, 30] / 30 max
+                    p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
 
-                    printf("[hp] ---> %i / %i\n", player_hp, player_hp_max); //starting hp / 30 max
+                    printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
                 }
                 else if (p.chara == 3) //Sunflower
                 {
                     p.chara = 3;
                     printf("\n\nSelected: Sunflower\n\n");
 
-                    int player_hp_max = 30;
-                    int player_hp_min = 20;
-                    int player_hp;
+                    int p.hpmax = 30;
+                    int p.hpmin = 20;
+                    int p.hp;
 
-                    player_hp = player_hp_min + rand() % (player_hp_max - player_hp_min + 1); //player hit points [20, 30] / 30 max
+                    p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
 
-                    printf("[hp] ---> %i / %i\n", player_hp, player_hp_max); //starting hp / 30 max
+                    printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
                 }
             }
             printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
