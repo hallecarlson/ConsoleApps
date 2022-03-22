@@ -9,20 +9,17 @@ class Merchant
 {
 public:
 	Merchant();
-	Merchant(string n, int hp, int d);
+	Merchant(string n, int hp);
 	Merchant(Merchant& M);
-	void setStats(string name, int hitpoints, int damagepoints);
+	void setStats(string name, int hitpoints);
 	void setName(string name);
 	void setHitpoints(int hitpoints);
-	void setDamagepoints(int damagepoints);
 	string getN();
 	int getHP();
-	int getDP();
 	void healPlayer(Player& p);
 	void interaction(Player& p);
 
 private:
 	string n;
 	int hp;
-	int dp;
 };

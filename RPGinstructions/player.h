@@ -9,4 +9,5 @@ struct Player
     int hp, hpmin, hpmax, hphealed;
     int dp, dpmin, dpmax;
     int roll;
+    int lunchbox;
 };

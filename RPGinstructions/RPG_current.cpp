@@ -7,29 +7,29 @@
 
     Pseudocode:     
       
-    Requirements:       Done    Comment section (Green text in beginning of file), Comments used throughout code
-                        Intro and clear instructions, easy to use interface
-                        Simple dungeon with 25 rooms minimum
-                        4 NPCs minimum
-                        NPC niteractions effective and consistent (I/O, branching, looping, classes)
-                        Option mechanics effectivebranching), game loops and other loops effective (looping)
-                        Strings to hold appropriate data (addressing user by name, holding NPC responses, other 
-                            canned opuput that may be used multiple times (strings)
-                        Functions used appropriately (passing correct arguments and returning correct values 
-                            (for intro and interactions at least), rooms and interactions)
-                        Game works (beginning, middle, end), replayable with entertainment value, has error checking
-                        Uses structs or classes for player stats and other places as appropriate (struct/classes)
-                        Uses vectors as appropriate (NPCs saved to vectors at least)
-                        Uses object-oriented programming (NPCs should transition from being structs to classes, 
-                            classes should be used in some way if not for NPCs
-                        Use files for save states, use at checkpoints of aw will, user may start new game or continue old game
-                        Game thoroughly tested by at least 4 others who fill out 5-question questionnaire that I create
+    Requirements:       Up-to-date  Comment section (Green text in beginning of file), Comments used throughout code
+                        Done        Intro and clear instructions, easy to use interface
+                        Done        Simple dungeon with 25 rooms minimum
+                        In progress 4 NPCs minimum
+                        In progress NPC interactions effective and consistent (I/O, branching, looping, classes)
+                        Up-to-date  Option mechanics effective (branching), game loops and other loops effective (looping)
+                        In progress Strings to hold appropriate data (addressing user by name, holding NPC responses, other 
+                                        canned opuput that may be used multiple times (strings)
+                        Up-to-date  Functions used appropriately (passing correct arguments and returning correct values 
+                                        (for intro and interactions at least), rooms and interactions)
+                        Up-to-date  Game works (beginning, middle, end), replayable with entertainment value, has error checking
+                        In progress Uses structs or classes for player stats and other places as appropriate (struct/classes)
+                        In progress Uses vectors as appropriate (NPCs saved to vectors at least)
+                        In progress Uses object-oriented programming (NPCs should transition from being structs to classes, 
+                                        classes should be used in some way if not for NPCs
+                        Not done    Use files for save states, use at checkpoints of at will, user may start new game or continue old game
+                        Not done    Game thoroughly tested by at least 4 others who fill out 5-question questionnaire that I create
 
 
     Notes:              implement save states, 
                         fix death messages
-                        finish adding instructions for stuff like weapons
-                        change vectors to functions?
+                        edit vectors to what they need to be
+                        change npc interactions to strings
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -207,10 +207,18 @@
 
     Date: 3/21/22       Done:
                         Added code and comments for instructions and save states and whatnot
+                        Added comments for RPG requirements
                         Pushed to GitHub
 
                         Got help from Mr. Miyoshi  
                         Added code in classes for NPC interactions
+                        Pushed to GitHub
+
+                        Pulled from GitHub
+                        Edited code for merchant class
+                        Tweaked various code
+                        Added more text
+                        Added progress through RPG requirements
                         Pushed to GitHub
 */
 
@@ -893,7 +901,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                     }
                     if (item_misc == 3)
                     {
-                        if (food > 0)
+                        if (lunchbox > 0)
                         {
                             food = foodmin + rand() % (foodmax - foodmin + 1);
                             if (food == 1) //sandwich
@@ -1734,14 +1742,6 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     return p;
 }
 
-/*  (in a class)
-*   "chara encountered a merchant!"
-*   "the merchant spots chara and waves, smiling"
-*   "you look weary from your travels, young one. let me heal you and send you on your way with something that will help you"
-*   "the merchant healed chara fully! chara now has %i hp"
-*   "the merchant gave chara food for his/her lunchbox"
-*   food++
-*/
 
 //room1
 int ultramarine(int room, int chara, bool& win) //room 1
@@ -2532,6 +2532,7 @@ int main()
     {
         Merchant temp_m;
 
+        /*
         int hphealed;
         int hp;
         int hpmin = 10;
@@ -2543,6 +2544,7 @@ int main()
         {
             p.hp = 30;
         }
+        */
 
         npc_m.push_back(temp_m);
     }
@@ -2555,14 +2557,13 @@ int main()
     int item_misc = 0;
     int items = 0;
     int potions = 0;
-    int lunchbox = 0;
     int food;
 
     int room = 0;
     int choice;
     bool win = false;
 
-    p = combat(p, npc_e[0], p.chara, item_weapon, item_misc, potions, lunchbox, food);
+    p = combat(p, npc_e[0], p.chara, item_weapon, item_misc, potions, p.lunchbox, food);
 
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("Welcome to Crayonland!\n");
@@ -2700,7 +2701,7 @@ int main()
             }
             else if (p.chara != 1 || p.chara != 2 || p.chara != 3)
             {
-                printf("Characters may use a multitude of battle actions and each specializes in one stat/action\n");
+                printf("Characters may use a multitude of battle actions and each character specializes in one stat/action\n");
                 
                 printf("Select Character:\n\n");
                 printf("1. Cobalt\n");
@@ -2797,6 +2798,8 @@ int main()
                 else if (item_weapon != 1 || item_weapon != 2 || item_weapon != 3)
                 {
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+                    printf("Characters may select from the following three weapons, each of which has a damage and accuracy range balanced differently\n");
+                    
                     printf("Weapon select:\n");
                     printf("1. Longsword\n");
                     printf("\t\tDeals high damage, low accuracy\n");
@@ -2863,12 +2866,14 @@ int main()
                 else if (item_misc != 1 || item_misc != 2 || item_misc != 3)
                 {
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+                    printf("Characters may choose from the following three miscellaneous items, each of which has a unique use in battle\n");
+
                     printf("Item select:\n");
                     printf("1. 3 potions of full healing\n");
                     printf("\t\tMay be used to heal self by a fixed amount\n");
                     printf("2. Spellbook\n");
                     printf("\t\tAllows your selected character to use spells they do not normally have access to (useless to Sunflower)\n");
-                    printf("3. Lunchbox\n");
+                    printf("3. Full lunchbox\n");
                     printf("\t\tContains various food items that may be used to heal self by a random amount (Your character will have an empty lunchbox if you do not select this item)\n");
 
                     printf(">");
@@ -3035,13 +3040,6 @@ int main()
         printf("You reached home!\n");
         _getch();
     }
-
-
-
-    /*
-    Grey G; //need to be rolled at every encounter
-    G.setStats("Grey Painter", e.hpmin + rand() % (e.hpmax - e.hpmin + 1), e.dpmin + rand() % (e.dpmax - e.dpmin + 1));
-    */
 
     return 0;
 }
