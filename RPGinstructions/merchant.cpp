@@ -5,22 +5,33 @@ Merchant::Merchant()
 {
 	n = "";
 	hp = 0;
-	dp = 0;
+	hpmin = 0;
+	hpmax = 0;
+	hphealed = 0;
 }
-Merchant::Merchant(string name, int hitpoints)
+Merchant::Merchant(string name, int hitpoints, int minhitpoints, int maxhitpoints, int healedhitpoints)
 {
 	n = name;
 	hp = hitpoints;
+	hpmin = minhitpoints;
+	hpmax = maxhitpoints;
+	hphealed = healedhitpoints;
 }
 Merchant::Merchant(Merchant(&M))
 {
 	n = M.n;
 	hp = M.hp;
+	hpmin = M.hpmin;
+	hpmax = M.hpmax;
+	hphealed = M.hphealed;
 }
-void Merchant::setStats(string name, int hitpoints)
+void Merchant::setStats(string name, int hitpoints, int minhitpoints, int maxhitpoints, int healedhitpoints)
 {
-	n = name; 
+	n = name;
 	hp = hitpoints;
+	hpmin = minhitpoints;
+	hpmax = maxhitpoints;
+	hphealed = healedhitpoints;
 }
 void Merchant::setName(string name)
 {
@@ -30,6 +41,18 @@ void Merchant::setHitpoints(int hitpoints)
 {
 	hp = hitpoints;
 }
+void Merchant::setMinhitpoints(int minhitpoints)
+{
+	hpmin = minhitpoints;
+}
+void Merchant::setMaxhitpoints(int maxhitpoints)
+{
+	hpmax = maxhitpoints;
+}
+void Merchant::setHealedhitpoints(int healedhitpoints)
+{
+	hphealed = healedhitpoints;
+}
 string Merchant::getN()
 {
 	return n;
@@ -37,6 +60,18 @@ string Merchant::getN()
 int Merchant::getHP()
 {
 	return hp;
+}
+int Merchant::getHPMIN()
+{
+	return hpmin;
+}
+int Merchant::getHPMAX()
+{
+	return hpmax;
+}
+int Merchant::getHPHEALED();
+{
+	return hphealed;
 }
 void Merchant::healPlayer(Player& p)
 {

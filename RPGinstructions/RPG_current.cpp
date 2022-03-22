@@ -220,6 +220,14 @@
                         Added more text
                         Added progress through RPG requirements
                         Pushed to GitHub
+
+    Date: 3/22/22       Done:
+                        Pulled from GitHub
+                        Added code for classes
+                        Added code and dialogue for merchant and enemy encounters in room functions
+                        Got help from Mr. Miyoshi
+                        Setup code for beginning new game or continuing from a save state
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -1803,6 +1811,7 @@ int canary(int room) //room 2
     printf("You hear rustling in the foliage\n");
     _getch();
     printf("An enemy jumps out!\n");
+    e[0].interaction(p);
 
 
     printf("1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
@@ -1821,20 +1830,17 @@ int canary(int room) //room 2
     return room;
 }
 //room3         enemy encounter
-int violetblue(int room) //room 3
+int violetblue(int room) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if encountered
 {
     int choice;
     printf("You are now in Violet Blue Town \n");
     printf("It's a sleepy town of stargazers and birdwatchers.\nThe sky is entirely lit up with stars.\n");
     printf("To the South is Violet District.\nYou've reached a dead end.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-            _getch();
-            printf("An enemy jumps out!\n);
-
-            Battle!
-            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-        */
+    printf("You hear \n");
+    _getch();
+    printf("An enemy jumps out!\n");
+    e[0].interaction(p);
 
     printf("1. Go to Violet District.\n");
     printf(">");
@@ -1848,14 +1854,26 @@ int violetblue(int room) //room 3
     return room;
 }
 //room4         item
-int westgolden(int room) //room 4
+int westgolden(int room, vector<Merchant> npc_m, Player p, int chara) //room 4
 {
     int choice;
     printf("You are now in West Goldenrod\n");
     printf("It's a small residential district of greater Goldenrod.\nThere isn't much to see here.\n");
     printf("To the East is Goldenrod and to the South is Silver Quarry.\n");
 
-    //choose 1 free item
+    if (chara == 1)
+    {
+        printf("Cobalt sees someone off in the distance, standing next to a food display\n");
+    }
+    else if (chara == 2)
+    {
+        printf("Magenta sees someone off in the distance, standing next to a food display\n");
+    }
+    else if (chara == 3)
+    {
+        printf("Sunflower sees someone off in the distance, standing next to a food display\n");
+    }
+    npc_m[0].interaction(p);
 
     printf("1. Go to Goldenrod\n2. Go to Silver quarry\n");
     printf(">");
@@ -1929,13 +1947,25 @@ int goldenrod(int room, int chara, bool& win) //room 5
     return room;
 }
 //room6         item
-int maroon(int room) //room 6
+int maroon(int room, vector<Merchant> npc_m, Player p, int chara) //room 6
 {
     int choice;
     printf("You are now in Maroon Town\n");
     printf("It's a small, laid back town.\nThere are item kiosks here.\n");
 
-    //choose 1 free item
+    if (chara == 1)
+    {
+        printf("Cobalt sees someone off in the distance, standing next to one of the kiosks\n");
+    }
+    else if (chara == 2)
+    {
+        printf("Magenta sees someone off in the distance, standing next to one of the kiosks\n");
+    }
+    else if (chara == 3)
+    {
+        printf("Sunflower sees someone off in the distance, standing next to one of the kiosks\n");
+    }
+    npc_m[1].interaction(p);
 
     printf("To the South is Fluorescent Marsh.\nYou've reached a dead end.\n");
 
@@ -1974,14 +2004,26 @@ int sunset(int room) //room 7
     return room;
 }
 //room8         item
-int violet(int room) //room 8
+int violet(int room, vector<Merchant> npc_m, Player p, int chara) //room 8
 {
     int choice;
     printf("You are now in Violet District\n");
     printf("It's a crowded neighborhood on the outskirts of Goldenrod\nEverywhere around you are people travelling to places.\n");
     printf("To the North is Violet Blue Town and to the South is Midnight Blue Town.\n");
 
-    //choose 1 free item
+    if (chara == 1)
+    {
+        printf("Cobalt sees someone among the crowd, standing in under a hooded wall of a building\n");
+    }
+    else if (chara == 2)
+    {
+        printf("Magenta sees someone among the crowd, standing in under a hooded wall of a building\n");
+    }
+    else if (chara == 3)
+    {
+        printf("Sunflower sees someone among the crowd, standing in under a hooded wall of a building\n");
+    }
+    npc_m[2].interaction(p);
 
     printf("1. Go to Violet Blue Town\n2. Go to Mignight Blue Town\n");
     printf(">");
@@ -2154,13 +2196,25 @@ int midnightblue(int room) //room 13
     return room;
 }
 //room14        item
-int rainbow(int room) //room 14
+int rainbow(int room, vector<Merchant> npc_m, Player p, int chara) //room 14
 {
     int choice;
     printf("You are now in Rainbow Bazaar.\n");
-    printf("Dozens of colorful tents surround you, stocked with many items.\nDirectly in front of you, there is a purple tent.\nYou walk over, and the seller, a woman in royal purple robes, offers you the choice of a free item.\n");
+    printf("Dozens of colorful tents surround you, stocked with many items.\n");
 
-    //choose 1 free item
+    if (chara == 1)
+    {
+        printf("Cobalt sees someone in a purple tent, directly in front of her. They're waering the purple robes of a royal castletown guard.\n");
+    }
+    else if (chara == 2)
+    {
+        printf("Magenta sees someone in a purple tent, directly in front of him. They're waering the purple robes of a royal castletown guard.\n");
+    }
+    else if (chara == 3)
+    {
+        printf("Sunflower sees someone in a purple tent, directly in front of her. They're waering the purple robes of a royal castletown guard.\n");
+    }
+    npc_m[3].interaction(p);
 
     printf("To the East is Carrot Meadow, to the South is Sienna Village, and to the West is Midnight Blue Town.\n");
 
@@ -2184,14 +2238,26 @@ int rainbow(int room) //room 14
     return room;
 }
 //room15        item
-int carrot(int room) //room 15
+int carrot(int room, vector<Merchant> npc_m, Player p, int chara) //room 15
 {
     int choice;
     printf("You are now in Carrot Meadow.\n");
-    printf("There are a few farmers around the dirt field who are harvesting the throusands of carrots.\nThere's not much to see otherwise.\n");
+    printf("There are a few farmers around the dirt field who are harvesting the thousands of carrots.\nThere's not much to see otherwise.\n");
     printf("To the North is Viridian Forest and to the West is Rainbow Bazaar.\n");
 
-    //heal by eating carrots, there is a sign that says "take what you need"
+    if (chara == 1)
+    {
+        printf("Cobalt sees someone in a farm stand, with crates filled to the brim with farm-to-table treats\n");
+    }
+    else if (chara == 2)
+    {
+        printf("Magenta sees someone in a farm stand, with crates filled to the brim with farm-to-table treats\n");
+    }
+    else if (chara == 3)
+    {
+        printf("Sunflower sees someone in a farm stand, with crates filled to the brim with farm-to-table treats\n");
+    }
+    npc_m[4].interaction(p);
 
     printf("1. Go to Viridian Forest\n2. Go to Rainbow Bazaar\n");
     printf(">");
@@ -2377,14 +2443,26 @@ int royalcastle(int room) //room 21
     return room;
 }
 //room22        item
-int royalcastletown(int room) //room 22
+int royalcastletown(int room, vector<Merchant> npc_m, Player p, int chara) //room 22
 {
     int choice;
     printf("You are now in Royal Purple Castletown.\n");
     printf("It's a small town built from stone bricks.\nFamily-owned item shops line the street,next to pubs and apartments.\n");
-    printf("A man in a tunic and boots motions for you to come over.\nHe says he has heard of your good deeds and wants to offer you a free item from his shop.\n");
+    printf("Someone in a tunic and boots motions for you to come over.\nHe says he has heard of your good deeds and wants to offer you a free item from his shop.\n");
 
-    //choose 1 free item
+    if (chara == 1)
+    {
+        printf("Cobalt sees someone outside a pub, with a small shop settled into a small alcove\n");
+    }
+    else if (chara == 2)
+    {
+        printf("Magenta sees someone outside a pub, with a small shop settled into a small alcove\n");
+    }
+    else if (chara == 3)
+    {
+        printf("Sunflower sees someone outside a pub, with a small shop settled into a small alcove\n");
+    }
+    npc_m[5].interaction(p);
 
     printf("To the East is Purple Mountains Majesty and to the West is Royal Purple Castle.\n");
 
@@ -2522,30 +2600,15 @@ int main()
     Player e;
 
     vector<Player> npc_e;
-    for (int e = 0; e < 7; e++) //may need to be moved
+    for (int e = 0; e < 7; e++) //currently 7 enemies, check this later
     {
         Player temp_e;
         npc_e.push_back(temp_e);
     }
     vector<Merchant> npc_m;
-    for (int m = 0; m < 6; m++) //merchants heal the player; PLACEHOLDER: need to apply to player, not npc
+    for (int m = 0; m < 6; m++) //merchants heal the player; currently 6 merchants, check this later (probably 4 around the path, 2 outside the path)
     {
         Merchant temp_m;
-
-        /*
-        int hphealed;
-        int hp;
-        int hpmin = 10;
-        int hpmax = 29;
-
-        p.hphealed = p.hpmin + rand() % (p.hpmax - p.hpmin + 1);
-        p.hp = p.hp + p.hphealed;
-        if (p.hp > 30) //undeclared error here, fix later
-        {
-            p.hp = 30;
-        }
-        */
-
         npc_m.push_back(temp_m);
     }
 
@@ -2571,6 +2634,7 @@ int main()
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     _getch();
 
+
     /* save states; add file stuff
     *   if save data exists
     *   printf("Would you like to 1. begin a new game or 2. continue a saved game?\n");
@@ -2587,6 +2651,24 @@ int main()
     * }
     */
 
+    bool newgame;
+    int savestateinput;
+    do
+    {
+        printf("Would you like to 1. begin a new game, or 2. continue from a previous save state?\n>");
+        scanf_s("%i", &savestateinput);
+        fseek(stdin, 0, SEEK_END);
+    } while(savestateinput != 1 && savestateinput != 2);
+    if (savestateinput = 1)
+    {
+        newgame = true;
+    }
+    else if (savestateinput = 2)
+    {
+        newgame = false;
+    }
+
+    //add loop around menu for new game; implemelt continue game from written file data below
     printf("Please enter your name\n>");
     string user;
     cin >> user;
