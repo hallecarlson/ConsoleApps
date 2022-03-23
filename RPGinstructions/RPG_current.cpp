@@ -30,6 +30,7 @@
                         fix death messages
                         edit vectors to what they need to be
                         change npc interactions to strings
+                        finish files
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -231,6 +232,13 @@
 
                         This is a test...
                         GitHub problems.  MTM
+
+    Data: 3/23/22       Done:
+                        Got help from Mr. Miyoshi
+                        Added code for reading save data from files and writing save data to files
+                        Added code for enemy encounters and tweaked amount of enemies pushed to vectors
+                        Added a few comments
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -241,6 +249,7 @@
 #include <time.h>
 #include <windows.h>
 #include <vector>
+#include <fstream>
 #include "merchant.h"
 #include "player.h"
 using namespace std;
@@ -1753,6 +1762,29 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     return p;
 }
 
+void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox)
+{
+    ofstream out("savestate.txt");
+    out << p.chara << ',' << user << ',' << item_weapon << ',' << c << '\n';
+    out.close();
+
+    /*
+    * getline(in, temp, ',');
+        p.chara = stoi(temp);
+        getline(in, temp, ',');
+        user = temp;
+        getline(in, temp, ',');
+        item_weapon = stoi(temp);
+        getline(in, temp, ',');
+        item_misc = stoi(temp);
+        getline(in, temp, ',');
+        potions = stoi(temp);
+        getline(in, temp, ',');
+        lunchbox = stoi(temp);
+        getline(in, temp, ',');
+        room = stoi(temp);
+    */
+}
 
 //room1
 int ultramarine(int room, int chara, bool& win) //room 1
@@ -1840,10 +1872,10 @@ int violetblue(int room) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if e
     printf("It's a sleepy town of stargazers and birdwatchers.\nThe sky is entirely lit up with stars.\n");
     printf("To the South is Violet District.\nYou've reached a dead end.\n");
 
-    printf("You hear \n");
+    printf("You hear something approach you from behind\n");
     _getch();
-    printf("An enemy jumps out!\n");
-    e[0].interaction(p);
+    printf("You spin around and see an enemy!\n");
+    e[1].interaction(p);
 
     printf("1. Go to Violet District.\n");
     printf(">");
@@ -2051,13 +2083,10 @@ int silver(int room) //room 9
     printf("Shimmering, clear water flows throug small canyons and tunnels.\n");
     printf("To the North is West Goldenrod.\nYou've reached a dead end.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-            _getch();
-            printf("An enemy jumps out!\n);
-
-            Battle!
-            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-        */
+    printf("You hear something struggling to swim to you\n");
+    _getch();
+    printf("An enemy jumps out of the water! You pity their poor swimming skills and decide to fight them\n");
+    e[2].interaction(p);
 
     printf("1. Go to West Goldenrod\n");
     printf(">");
@@ -2078,13 +2107,10 @@ int viridian(int room) //room 10
     printf("The woods are thick and dim. Patches of sunlight shine through the canopy.\n");
     printf("To the North is Goldenrod and to the South is Carrot Meadow.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-            _getch();
-            printf("An enemy jumps out!\n);
-
-            Battle!
-            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-        */
+    printf("You hear something jump out of a tree\n");
+    _getch();
+    printf("An enemy lands in front of you!\n");
+    e[3].interaction(p);
 
     printf("1. Go to Goldenrod\n2. Go to Carrot Meadow\n");
     printf(">");
@@ -2109,13 +2135,10 @@ int fluorescent(int room) //room 11
     printf("Colorful plants stick out of the bright blue mud.\nThere are a few paths of wet grass that look well-traversed.\n");
     printf("To the North is Maroon Town and to the South is Pumpkin Patch.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-            _getch();
-            printf("An enemy jumps out!\n);
-
-            Battle!
-            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-        */
+    printf("You hear something sloshing through the deep mud\n");
+    _getch();
+    printf("An enemy slowly approaches!\n");
+    e[4].interaction(p);
 
     printf("1. Go to Maroon Town\n2. Go to Pumpkin Patch\n");
     printf(">");
@@ -2138,15 +2161,12 @@ int rust(int room) //room 12
     int choice;
     printf("You are now in Rust Laboratory\n");
     printf("It's an old laboratory full of scary machinery and sinister-looking blueprints.\n");
-    printf("To the North is Sunset Observatory and to the Eaat is Midnight Blue Town.\n");
+    printf("To the North is Sunset Observatory and to the East is Midnight Blue Town.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-            _getch();
-            printf("An enemy jumps out!\n);
-
-            Battle!
-            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-        */
+    printf("You hear shoes against the old, metal floor\n");
+    _getch();
+    printf("An enemy loudly jumps in front of you!\n");
+    e[5].interaction(p);
 
     printf("1. Go to Sunset Observatory\n2. Go to Midnight Blue Town\n");
     printf(">");
@@ -2171,13 +2191,10 @@ int midnightblue(int room) //room 13
     printf("It's a dodgy, dark town without any stars in the sky.\nIt’s always night here.\n");
     printf("To the North is Violet Distrtict, to the East is Rainbow Bazaar, and to the West is Rust Laboratory.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-            _getch();
-            printf("An enemy jumps out!\n);
-
-            Battle!
-            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-        */
+    printf("Out of the corner of your eye, you notice something in the shadows\n");
+    _getch();
+    printf("A lurking enemy tries to sneak up on you!\n");
+    e[6].interaction(p);
 
     printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to Rust Laboratory\n");
     printf(">");
@@ -2337,13 +2354,10 @@ int rouge(int room) //room 18
     printf("It's a long, wide path lined with trees.\nThe leaves resemble the beautiful colors of autumn.\n");
     printf("To the East is Sienna Village, to the South is Purple Mountains Majesty, and to the West is Olive Vineyard.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-            _getch();
-            printf("An enemy jumps out!\n);
-
-            Battle!
-            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-        */
+    printf("You hear rustling in the leaves\n");
+    _getch();
+    printf("An enemy jumps out of a red leaf pile!\n");
+    e[7].interaction(p);
 
     printf("1. Go to Sienna Village\n2. Go to Purple Mountains Majesty\n3. Go to Olive Vineyard\n");
     printf(">");
@@ -2372,13 +2386,10 @@ int sienna(int room) //room 19
     printf("Log buildings surround a small village square.\nPeople sit around a bonfire playing folk songs.\n");
     printf("To the North is Rainbow Bazaar, to the East is Cream Factory, to the South is Fuschia Village, and to the West is Rouge Pass.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-            _getch();
-            printf("An enemy jumps out!\n);
-
-            Battle!
-            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-        */
+    printf("Someone by the fire turns and walks toward you\n");
+    _getch();
+    printf("An enemy stands in your way!\n");
+    e[8].interaction(p);
 
     printf("1. Go to Rainbow Bazaar\n2. Go to Cream Factory\n3. Go to Fuschia Village\n4. Go to Rouge Pass\n");
     printf(">");
@@ -2519,13 +2530,10 @@ int fuschia(int room) //room 24
     printf("There are red tents spread throughout the pink grass.\nA rose-colored river flows through the center of the village.\n");
     printf("To the North is Sienna Village, to the East is Rose Village, and to the West is Purple Mountains Majesty.\n");
 
-    /*  printf("You hear rustling in the foliage\n");
-            _getch();
-            printf("An enemy jumps out!\n);
-
-            Battle!
-            (wherever battle goes: roll enemy hp, implement turns, roll player dp and enemy dp each attack, or use spell)
-        */
+    printf("You hear a tent flap opening\n");
+    _getch();
+    printf("You turn around and see an emeny!\n");
+    e[9].interaction(p);
 
     printf("1. Go to Sienna Village\n2. Go to Rose Village\n3. Go to Purple Mountains Majesty\n");
     printf(">");
@@ -2603,13 +2611,13 @@ int main()
     Player e;
 
     vector<Player> npc_e;
-    for (int e = 0; e < 7; e++) //currently 7 enemies, check this later
+    for (int e = 0; e < 9; e++) //currently 7 enemies, check this later
     {
         Player temp_e;
         npc_e.push_back(temp_e);
     }
     vector<Merchant> npc_m;
-    for (int m = 0; m < 6; m++) //merchants heal the player; currently 6 merchants, check this later (probably 4 around the path, 2 outside the path)
+    for (int m = 0; m < 5; m++) //merchants heal the player; currently 6 merchants, check this later (probably 4 around the path, 2 outside the path)
     {
         Merchant temp_m;
         npc_m.push_back(temp_m);
@@ -2617,12 +2625,14 @@ int main()
 
     npc_m[0].interaction(p);
 
+    string user;
     int menu_choice;
     int item_type;
     int item_weapon = 0;
     int item_misc = 0;
     int items = 0;
     int potions = 0;
+    int lunchbox = 0;
     int food;
 
     int room = 0;
@@ -2662,276 +2672,228 @@ int main()
         scanf_s("%i", &savestateinput);
         fseek(stdin, 0, SEEK_END);
     } while(savestateinput != 1 && savestateinput != 2);
-    if (savestateinput = 1)
+    if (savestateinput = 1) //will begin a new game
     {
         newgame = true;
     }
-    else if (savestateinput = 2)
+    else if (savestateinput = 2) //will begin game from previous save data
     {
         newgame = false;
     }
 
-    //add loop around menu for new game; implemelt continue game from written file data below
-    printf("Please enter your name\n>");
-    string user;
-    cin >> user;
-    fseek(stdin, 0, SEEK_END);
-
-    printf("%s, it is recommended that you create a map as you play.\n", user.c_str());
-    printf("The world in the game looks like the following:\n");
-    printf(" _______ _______ _______ _______ _______\n");
-    printf("|  start|      2|      3|      4|  start|\n");
-    printf("|  point|       |       |       |  point|\n");
-    printf("|_______|_______|_______|_______|_______|\n");
-    printf("|      6|      7|      8|      9|     10|\n");
-    printf("|       |       |       |       |       |\n");
-    printf("|_______|_______|_______|_______|_______|\n");
-    printf("|     11|     12|     13|     14|     15|\n");
-    printf("|       |       |       |       |       |\n");
-    printf("|_______|_______|_______|_______|_______|\n");
-    printf("|     16|     17|     18|     19|     20|\n");
-    printf("|       |       |       |       |       |\n");
-    printf("|_______|_______|_______|_______|_______|\n");
-    printf("|     21|     22|     23|     24|  start|\n");
-    printf("|       |       |       |       |  point|\n");
-    printf("|_______|_______|_______|_______|_______|\n");
-    printf("------------------------------------------------------------------------------------------------------------------------\n");
-    _getch();
-
-    printf("The game follows three different paths depending on which of three characters you choose: Cobalt, Magenta, or Sunflower\n");
-    printf("You must traverse the kingdom and help your selected character find their homeland\n");
-    printf("On the way, you will encounter allies who will help you, and enemies who will block your path\n");
-    printf("Good luck! (And remember to have fun\n");
-
-    do //menu loop
+    string temp;
+    while (newgame == false) //file retrieval FINISH THIS
     {
-        system("cls");
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("Welcome to Crayonland!\n");
-        printf("Created by Halle Carlson\n");
-        printf("------------------------------------------------------------------------------------------------------------------------\n");      
+        ifstream in;
+        in.open("savestate.txt");
 
-        printf("Character: ");
-        if (p.chara == 1)
+        if (!in.is_open())
         {
-            printf("Cobalt\n");
-        }
-        else if (p.chara == 2)
-        {
-            printf("Magenta\n");
-        }
-        else if (p.chara == 3)
-        {
-            printf("Sunflower\n");
-        }
-        else
-        {
-            printf("%s has not selected a character\n", user.c_str());
+            printf("Save data not found...\n");
+            _getch();
+            newgame = true;
+            return newgame; //check if this works
         }
 
-        printf("Items: %i\n", items);
+        getline(in, temp, ',');
+        p.chara = stoi(temp);
+        getline(in, temp, ',');
+        user = temp;
+        getline(in, temp, ',');
+        item_weapon = stoi(temp);
+        getline(in, temp, ',');
+        item_misc = stoi(temp);
+        getline(in, temp, ',');
+        potions = stoi(temp);
+        getline(in, temp, ',');
+        lunchbox = stoi(temp);
+        getline(in, temp, ',');
+        room = stoi(temp);
+    }
 
-        printf("Weapon: ");
-        if (item_weapon == 1)
-        {
-            printf("Longsword\n");
-        }
-        else if (item_weapon == 2)
-        {
-            printf("Shortsword\n");
-        }
-        else if (item_weapon == 3)
-        {
-            printf("Spear\n");
-        }
-        else
-        {
-            printf("%s has not selected a weapon\n", user.c_str());
-        }
-
-        printf("Item: ");
-        if (item_misc == 1)
-        {
-            printf("Healing potions\n");
-        }
-        else if (item_misc == 2)
-        {
-            printf("Spellbook\n");
-        }
-        else if (item_misc == 3)
-        {
-            printf("Lunchbox\n");
-        }
-        else
-        {
-            printf("%s has not selected an item\n", user.c_str());
-        }
-
-        printf("\nMenu\n");
-        printf("----\n");
-
-        printf("1. Select %s's Character\n", user.c_str());
-        printf("2. Equip %s's character\n", user.c_str());
-        printf("3. Begin %s's game\n", user.c_str());
-        printf(">");
-        scanf_s("%i", &menu_choice);
+    //implement continue game from written file data below
+    while (newgame == true)
+    {
+        printf("Please enter your name\n>");        
+        cin >> user;
         fseek(stdin, 0, SEEK_END);
 
-        if (menu_choice == 1) //select character
+        printf("%s, it is recommended that you create a map as you play.\n", user.c_str());
+        printf("The world in the game looks like the following:\n");
+        printf(" _______ _______ _______ _______ _______\n");
+        printf("|  start|      2|      3|      4|  start|\n");
+        printf("|  point|       |       |       |  point|\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("|      6|      7|      8|      9|     10|\n");
+        printf("|       |       |       |       |       |\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("|     11|     12|     13|     14|     15|\n");
+        printf("|       |       |       |       |       |\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("|     16|     17|     18|     19|     20|\n");
+        printf("|       |       |       |       |       |\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("|     21|     22|     23|     24|  start|\n");
+        printf("|       |       |       |       |  point|\n");
+        printf("|_______|_______|_______|_______|_______|\n");
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
+        _getch();
+
+        printf("The game follows three different paths depending on which of three characters you choose: Cobalt, Magenta, or Sunflower\n");
+        printf("You must traverse the kingdom and help your selected character find their homeland\n");
+        printf("On the way, you will encounter allies who will help you, and enemies who will block your path\n");
+        printf("Good luck! (And remember to have fun\n");
+
+        do //menu loop
         {
-            printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-            if (p.chara == 1 || p.chara == 2 || p.chara == 3)
+            system("cls");
+            printf("------------------------------------------------------------------------------------------------------------------------\n");
+            printf("Welcome to Crayonland!\n");
+            printf("Created by Halle Carlson\n");
+            printf("------------------------------------------------------------------------------------------------------------------------\n");
+
+            printf("Character: ");
+            if (p.chara == 1)
             {
-                printf("A character has already been selected, %s!\n", user.c_str());
+                printf("Cobalt\n");
             }
-            else if (p.chara != 1 || p.chara != 2 || p.chara != 3)
+            else if (p.chara == 2)
             {
-                printf("Characters may use a multitude of battle actions and each character specializes in one stat/action\n");
-                
-                printf("Select Character:\n\n");
-                printf("1. Cobalt\n");
-                printf("\t\tbase\n");
-                printf("\t\t----\n\n");
-                printf("\t\tspell:  minor healing (self)\n");
-                printf("\t\tattack: strike\n");
-                printf("\t\tdefense specialty\n\n");
-                printf("2. Magenta\n");
-                printf("\t\tbase\n");
-                printf("\t\t----\n\n");
-                printf("\t\tattack: strike\n");
-                printf("\t\tattack: thrash\n");
-                printf("\t\tphysical attack specialty\n\n");
-                printf("3. Sunflower\n");
-                printf("\t\tbase\n");
-                printf("\t\t----\n\n");
-                printf("\t\tattack: strike\n");
-                printf("\t\tspell:  moderate healing\n");
-                printf("\t\tspell:  sleep spell (enemy)\n");
-                printf("\t\tspell:  decrease accuracy (enemy)\n");
-                printf("\t\tspell:  increase accuracy (self)\n");
-                printf("\t\tspellcasting specialty\n\n");
-
-                printf(">");
-                scanf_s("%i", &p.chara);
-                fseek(stdin, 0, SEEK_END);
-
-                if (p.chara == 1) //Cobalt
-                {
-                    p.chara = 1;
-                    printf("\n\nSelected: Cobalt\n\n");
-
-                    int p.hpmax = 30;
-                    int p.hpmin = 20;
-                    int p.hp;
-
-                    p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
-
-                    printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
-                }
-                else if (p.chara == 2) //Magenta
-                {
-                    p.chara = 2;
-                    printf("\n\nSelected: Magenta\n\n");
-
-                    int p.hpmax = 30;
-                    int p.hpmin = 20;
-                    int p.hp;
-
-                    p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
-
-                    printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
-                }
-                else if (p.chara == 3) //Sunflower
-                {
-                    p.chara = 3;
-                    printf("\n\nSelected: Sunflower\n\n");
-
-                    int p.hpmax = 30;
-                    int p.hpmin = 20;
-                    int p.hp;
-
-                    p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
-
-                    printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
-                }
+                printf("Magenta\n");
             }
-            printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-            printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", user.c_str());
+            else if (p.chara == 3)
+            {
+                printf("Sunflower\n");
+            }
+            else
+            {
+                printf("%s has not selected a character\n", user.c_str());
+            }
 
+            printf("Items: %i\n", items);
+
+            printf("Weapon: ");
+            if (item_weapon == 1)
+            {
+                printf("Longsword\n");
+            }
+            else if (item_weapon == 2)
+            {
+                printf("Shortsword\n");
+            }
+            else if (item_weapon == 3)
+            {
+                printf("Spear\n");
+            }
+            else
+            {
+                printf("%s has not selected a weapon\n", user.c_str());
+            }
+
+            printf("Item: ");
+            if (item_misc == 1)
+            {
+                printf("Healing potions\n");
+            }
+            else if (item_misc == 2)
+            {
+                printf("Spellbook\n");
+            }
+            else if (item_misc == 3)
+            {
+                printf("Lunchbox\n");
+            }
+            else
+            {
+                printf("%s has not selected an item\n", user.c_str());
+            }
+
+            printf("\nMenu\n");
+            printf("----\n");
+
+            printf("1. Select %s's Character\n", user.c_str());
+            printf("2. Equip %s's character\n", user.c_str());
+            printf("3. Begin %s's game\n", user.c_str());
             printf(">");
             scanf_s("%i", &menu_choice);
             fseek(stdin, 0, SEEK_END);
-        }
 
-        if (menu_choice == 2) //equip character
-        {
-            printf("Equip item from which: // you may equip one of each\n");
-            printf("1. Weapon\n");
-            printf("2. Miscellaneous item\n");
-
-            printf(">");
-            scanf_s("%i", &item_type);
-            fseek(stdin, 0, SEEK_END);
-
-            if (item_type == 1)
+            if (menu_choice == 1) //select character
             {
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                if (item_weapon == 1 || item_weapon == 2 || item_weapon == 3)
+                if (p.chara == 1 || p.chara == 2 || p.chara == 3)
                 {
-                    printf("A weapon has already been selected, %s!\n", user.c_str());
+                    printf("A character has already been selected, %s!\n", user.c_str());
                 }
-                else if (item_weapon != 1 || item_weapon != 2 || item_weapon != 3)
+                else if (p.chara != 1 || p.chara != 2 || p.chara != 3)
                 {
-                    printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                    printf("Characters may select from the following three weapons, each of which has a damage and accuracy range balanced differently\n");
-                    
-                    printf("Weapon select:\n");
-                    printf("1. Longsword\n");
-                    printf("\t\tDeals high damage, low accuracy\n");
-                    printf("2. Shortsword\n");
-                    printf("\t\tDeals low-medium damage, never misses\n");
-                    printf("3. Spear\n");
-                    printf("\t\tDeals medium damage, medium accuracy\n");
+                    printf("Characters may use a multitude of battle actions and each character specializes in one stat/action\n");
+
+                    printf("Select Character:\n\n");
+                    printf("1. Cobalt\n");
+                    printf("\t\tbase\n");
+                    printf("\t\t----\n\n");
+                    printf("\t\tspell:  minor healing (self)\n");
+                    printf("\t\tattack: strike\n");
+                    printf("\t\tdefense specialty\n\n");
+                    printf("2. Magenta\n");
+                    printf("\t\tbase\n");
+                    printf("\t\t----\n\n");
+                    printf("\t\tattack: strike\n");
+                    printf("\t\tattack: thrash\n");
+                    printf("\t\tphysical attack specialty\n\n");
+                    printf("3. Sunflower\n");
+                    printf("\t\tbase\n");
+                    printf("\t\t----\n\n");
+                    printf("\t\tattack: strike\n");
+                    printf("\t\tspell:  moderate healing\n");
+                    printf("\t\tspell:  sleep spell (enemy)\n");
+                    printf("\t\tspell:  decrease accuracy (enemy)\n");
+                    printf("\t\tspell:  increase accuracy (self)\n");
+                    printf("\t\tspellcasting specialty\n\n");
 
                     printf(">");
-                    scanf_s("%i", &item_weapon);
+                    scanf_s("%i", &p.chara);
                     fseek(stdin, 0, SEEK_END);
 
-                    if (item_weapon == 1) //Longsword
+                    if (p.chara == 1) //Cobalt
                     {
-                        item_weapon = 1;
-                        items++;
-                        printf("\n\nSelected: Longsword\n\n");
+                        p.chara = 1;
+                        printf("\n\nSelected: Cobalt\n\n");
 
-                        int player_dp_max = 20;
-                        int player_dp_min = 10;
-                        int player_dp;
+                        int p.hpmax = 30;
+                        int p.hpmin = 20;
+                        int p.hp;
 
-                        printf("[dp] ------> %i - %i\n", player_dp_min, player_dp_max); //10-20 dp
+                        p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
+
+                        printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
                     }
-                    else if (item_weapon == 2) //Shortsword
+                    else if (p.chara == 2) //Magenta
                     {
-                        item_weapon = 2;
-                        items++;
-                        printf("\n\nSelected: Shortsword\n\n");
+                        p.chara = 2;
+                        printf("\n\nSelected: Magenta\n\n");
 
-                        int player_dp_max = 10;
-                        int player_dp_min = 8;
-                        int player_dp;
+                        int p.hpmax = 30;
+                        int p.hpmin = 20;
+                        int p.hp;
 
-                        printf("[dp] ---> %i - %i\n", player_dp_min, player_dp_max); //8-10 dp
+                        p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
+
+                        printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
                     }
-                    else if (item_weapon == 3) //Spear
+                    else if (p.chara == 3) //Sunflower
                     {
-                        item_weapon = 3;
-                        items++;
-                        printf("\n\nSelected: Spear\n\n");
+                        p.chara = 3;
+                        printf("\n\nSelected: Sunflower\n\n");
 
-                        int player_dp_max = 15;
-                        int player_dp_min = 10;
-                        int player_dp;
+                        int p.hpmax = 30;
+                        int p.hpmin = 20;
+                        int p.hp;
 
-                        printf("[dp] ------> %i - %i\n", player_dp_min, player_dp_max); //10-15 dp
+                        p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
+
+                        printf("[hp] ---> %i / %i\n", p.hp, p.hpmax); //starting hp / 30 max
                     }
                 }
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
@@ -2941,62 +2903,142 @@ int main()
                 scanf_s("%i", &menu_choice);
                 fseek(stdin, 0, SEEK_END);
             }
-            if (item_type == 2)
+
+            if (menu_choice == 2) //equip character
             {
-                printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                if (item_misc == 1 || item_misc == 2 || item_misc == 3)
-                {
-                    printf("An item has already been selected, %s!\n", user.c_str());
-                }
-                else if (item_misc != 1 || item_misc != 2 || item_misc != 3)
-                {
-                    printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                    printf("Characters may choose from the following three miscellaneous items, each of which has a unique use in battle\n");
-
-                    printf("Item select:\n");
-                    printf("1. 3 potions of full healing\n");
-                    printf("\t\tMay be used to heal self by a fixed amount\n");
-                    printf("2. Spellbook\n");
-                    printf("\t\tAllows your selected character to use spells they do not normally have access to (useless to Sunflower)\n");
-                    printf("3. Full lunchbox\n");
-                    printf("\t\tContains various food items that may be used to heal self by a random amount (Your character will have an empty lunchbox if you do not select this item)\n");
-
-                    printf(">");
-                    scanf_s("%i", &item_misc);
-                    fseek(stdin, 0, SEEK_END);
-
-                    if (item_misc == 1) //potions
-                    {
-                        item_misc = 1;
-                        items++;
-                        printf("\n\nSelected: healing potions\n\n");
-                        potions = 3;
-                    }
-                    else if (item_misc == 2) //spellbook
-                    {
-                        item_misc = 2;
-                        items++;
-                        printf("\n\nSelected: spellbook\n\n");
-                    }
-                    else if (item_misc == 3) //lunchbox
-                    {
-                        item_misc = 3;
-                        items++;
-                        printf("\n\nSelected: lunchbox\n\n");
-                        lunchbox = 5;
-                    }
-                }
-                printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", user.c_str());
+                printf("Equip item from which: // you may equip one of each\n");
+                printf("1. Weapon\n");
+                printf("2. Miscellaneous item\n");
 
                 printf(">");
-                scanf_s("%i", &menu_choice);
+                scanf_s("%i", &item_type);
                 fseek(stdin, 0, SEEK_END);
+
+                if (item_type == 1)
+                {
+                    printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+                    if (item_weapon == 1 || item_weapon == 2 || item_weapon == 3)
+                    {
+                        printf("A weapon has already been selected, %s!\n", user.c_str());
+                    }
+                    else if (item_weapon != 1 || item_weapon != 2 || item_weapon != 3)
+                    {
+                        printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+                        printf("Characters may select from the following three weapons, each of which has a damage and accuracy range balanced differently\n");
+
+                        printf("Weapon select:\n");
+                        printf("1. Longsword\n");
+                        printf("\t\tDeals high damage, low accuracy\n");
+                        printf("2. Shortsword\n");
+                        printf("\t\tDeals low-medium damage, never misses\n");
+                        printf("3. Spear\n");
+                        printf("\t\tDeals medium damage, medium accuracy\n");
+
+                        printf(">");
+                        scanf_s("%i", &item_weapon);
+                        fseek(stdin, 0, SEEK_END);
+
+                        if (item_weapon == 1) //Longsword
+                        {
+                            item_weapon = 1;
+                            items++;
+                            printf("\n\nSelected: Longsword\n\n");
+
+                            int player_dp_max = 20;
+                            int player_dp_min = 10;
+                            int player_dp;
+
+                            printf("[dp] ------> %i - %i\n", player_dp_min, player_dp_max); //10-20 dp
+                        }
+                        else if (item_weapon == 2) //Shortsword
+                        {
+                            item_weapon = 2;
+                            items++;
+                            printf("\n\nSelected: Shortsword\n\n");
+
+                            int player_dp_max = 10;
+                            int player_dp_min = 8;
+                            int player_dp;
+
+                            printf("[dp] ---> %i - %i\n", player_dp_min, player_dp_max); //8-10 dp
+                        }
+                        else if (item_weapon == 3) //Spear
+                        {
+                            item_weapon = 3;
+                            items++;
+                            printf("\n\nSelected: Spear\n\n");
+
+                            int player_dp_max = 15;
+                            int player_dp_min = 10;
+                            int player_dp;
+
+                            printf("[dp] ------> %i - %i\n", player_dp_min, player_dp_max); //10-15 dp
+                        }
+                    }
+                    printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+                    printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", user.c_str());
+
+                    printf(">");
+                    scanf_s("%i", &menu_choice);
+                    fseek(stdin, 0, SEEK_END);
+                }
+                if (item_type == 2)
+                {
+                    printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+                    if (item_misc == 1 || item_misc == 2 || item_misc == 3)
+                    {
+                        printf("An item has already been selected, %s!\n", user.c_str());
+                    }
+                    else if (item_misc != 1 || item_misc != 2 || item_misc != 3)
+                    {
+                        printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+                        printf("Characters may choose from the following three miscellaneous items, each of which has a unique use in battle\n");
+
+                        printf("Item select:\n");
+                        printf("1. 3 potions of full healing\n");
+                        printf("\t\tMay be used to heal self by a fixed amount\n");
+                        printf("2. Spellbook\n");
+                        printf("\t\tAllows your selected character to use spells they do not normally have access to (useless to Sunflower)\n");
+                        printf("3. Full lunchbox\n");
+                        printf("\t\tContains various food items that may be used to heal self by a random amount (Your character will have an empty lunchbox if you do not select this item)\n");
+
+                        printf(">");
+                        scanf_s("%i", &item_misc);
+                        fseek(stdin, 0, SEEK_END);
+
+                        if (item_misc == 1) //potions
+                        {
+                            item_misc = 1;
+                            items++;
+                            printf("\n\nSelected: healing potions\n\n");
+                            potions = 3;
+                        }
+                        else if (item_misc == 2) //spellbook
+                        {
+                            item_misc = 2;
+                            items++;
+                            printf("\n\nSelected: spellbook\n\n");
+                        }
+                        else if (item_misc == 3) //lunchbox
+                        {
+                            item_misc = 3;
+                            items++;
+                            printf("\n\nSelected: lunchbox\n\n");
+                            lunchbox = 5;
+                        }
+                    }
+                    printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
+                    printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", user.c_str());
+
+                    printf(">");
+                    scanf_s("%i", &menu_choice);
+                    fseek(stdin, 0, SEEK_END);
+                }
             }
-        }
 
-    } while (menu_choice != 3);
-
+        } while (menu_choice != 3);
+        break;
+    }
 
     bool start = true;
     do
