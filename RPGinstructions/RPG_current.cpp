@@ -239,6 +239,9 @@
                         Added code for enemy encounters and tweaked amount of enemies pushed to vectors
                         Added a few comments
                         Pushed to GitHub
+
+                        Finished a line of code for save writing during advisory
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -1762,28 +1765,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     return p;
 }
 
-void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox)
+void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room)
 {
     ofstream out("savestate.txt");
-    out << p.chara << ',' << user << ',' << item_weapon << ',' << c << '\n';
+    out << p.chara << ',' << user << ',' << item_weapon << ',' << item_misc << ',' << potions << ',' << lunchbox << ',' << room << ',';
     out.close();
-
-    /*
-    * getline(in, temp, ',');
-        p.chara = stoi(temp);
-        getline(in, temp, ',');
-        user = temp;
-        getline(in, temp, ',');
-        item_weapon = stoi(temp);
-        getline(in, temp, ',');
-        item_misc = stoi(temp);
-        getline(in, temp, ',');
-        potions = stoi(temp);
-        getline(in, temp, ',');
-        lunchbox = stoi(temp);
-        getline(in, temp, ',');
-        room = stoi(temp);
-    */
 }
 
 //room1
