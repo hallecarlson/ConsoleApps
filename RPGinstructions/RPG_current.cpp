@@ -34,8 +34,8 @@
     Notes:              edit vectors to what they need to be
                         change npc interactions to strings
                         get game to shut down and delete save data after death
-                        test
                         ask Mr. Miyoshi if enemy needs to be in a vector and how to do that if so
+                        test
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -254,6 +254,10 @@
 
                         Fixed room function calls in main to include info for encounters
                         Refined some things
+                        Pushed to GitHub
+
+    Date: 3/24/22       Done:
+                        Tried to fix an error and failed
                         Pushed to GitHub
 */
 
@@ -2690,13 +2694,13 @@ int main()
     Player p;
     p.chara = 0;
     Player e;
-
+    
     vector<Player> npc_e; //something with this needs to be fixed
     for (int e = 0; e < 9; e++) //currently 7 enemies, check this later
     {
         Player temp_e;
         npc_e.push_back(temp_e);
-    }
+    }    
     vector<Merchant> npc_m;
     for (int m = 0; m < 5; m++) //merchants heal the player; currently 6 merchants, check this later (probably 4 around the path, 2 outside the path)
     {
@@ -2927,9 +2931,9 @@ int main()
                         p.chara = 1;
                         printf("\n\nSelected: Cobalt\n\n");
 
-                        int p.hpmax = 30;
-                        int p.hpmin = 20;
-                        int p.hp;
+                        p.hpmax = 30;
+                        p.hpmin = 20;
+                        p.hp;
 
                         p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
 
