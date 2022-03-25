@@ -26,11 +26,11 @@
                         Not done    Game thoroughly tested by at least 4 others who fill out 5-question questionnaire that I create
 
 
-    Notes:              implement save states, 
-                        fix death messages
+    Notes:              shut down game when player dies
                         edit vectors to what they need to be
                         change npc interactions to strings
                         finish files
+                        implement scores
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -1762,28 +1762,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     return p;
 }
 
-void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox)
+void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room)
 {
     ofstream out("savestate.txt");
-    out << p.chara << ',' << user << ',' << item_weapon << ',' << c << '\n';
+    out << p.chara << ',' << user << ',' << item_weapon << ',' << item_misc << ',' << potions << ',' << lunchbox << ',' << room << '\n';
     out.close();
-
-    /*
-    * getline(in, temp, ',');
-        p.chara = stoi(temp);
-        getline(in, temp, ',');
-        user = temp;
-        getline(in, temp, ',');
-        item_weapon = stoi(temp);
-        getline(in, temp, ',');
-        item_misc = stoi(temp);
-        getline(in, temp, ',');
-        potions = stoi(temp);
-        getline(in, temp, ',');
-        lunchbox = stoi(temp);
-        getline(in, temp, ',');
-        room = stoi(temp);
-    */
 }
 
 //room1
@@ -2636,33 +2619,17 @@ int main()
     int food;
 
     int room = 0;
+    int score = 0;
     int choice;
     bool win = false;
 
-    p = combat(p, npc_e[0], p.chara, item_weapon, item_misc, potions, p.lunchbox, food);
+    //p = combat(p, npc_e[0], p.chara, item_weapon, item_misc, potions, p.lunchbox, food);
 
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("Welcome to Crayonland!\n");
     printf("Created by Halle Carlson\n");
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     _getch();
-
-
-    /* save states; add file stuff
-    *   if save data exists
-    *   printf("Would you like to 1. begin a new game or 2. continue a saved game?\n");
-    *   int gamestart;
-    *   scanf_s("%i", &gamestart);
-    *   fseek(stdin, 0, SEEK_END);
-    *   if (gamestart == 1)
-    * {
-    *   start below process 
-    * }
-    * else if (gamestart == 2)
-    * {
-    *   start from functions
-    * }
-    */
 
     bool newgame;
     int savestateinput;
@@ -2752,6 +2719,7 @@ int main()
             printf("Created by Halle Carlson\n");
             printf("------------------------------------------------------------------------------------------------------------------------\n");
 
+            printf("User: %s\n", user.c_str());
             printf("Character: ");
             if (p.chara == 1)
             {
@@ -2807,6 +2775,7 @@ int main()
             {
                 printf("%s has not selected an item\n", user.c_str());
             }
+            printf("Score: %i\n", score);
 
             printf("\nMenu\n");
             printf("----\n");
