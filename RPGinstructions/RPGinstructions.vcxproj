@@ -140,10 +140,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="merchant.cpp" />
     <ClCompile Include="RPG_current.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="merchant.h" />
     <ClInclude Include="player.h" />
   </ItemGroup>
