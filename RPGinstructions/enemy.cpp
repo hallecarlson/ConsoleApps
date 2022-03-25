@@ -17,7 +17,7 @@ Enemy::Enemy(int t, int r) //what does this do?
 
 	hp = hpmin + rand() % (hpmax - hpmin + 1);
 	dp = dpmin + rand() % (dpmax - dpmin + 1);
-
+	 
 	roll = r;
 	enemy_type = t;
 }
