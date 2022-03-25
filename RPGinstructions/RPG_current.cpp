@@ -14,23 +14,30 @@
                         In progress NPC interactions effective and consistent (I/O, branching, looping, classes)
                         Up-to-date  Option mechanics effective (branching), game loops and other loops effective (looping)
                         In progress Strings to hold appropriate data (addressing user by name, holding NPC responses, other 
-                                        canned opuput that may be used multiple times (strings)
+                                        canned output that may be used multiple times (strings)
                         Up-to-date  Functions used appropriately (passing correct arguments and returning correct values 
                                         (for intro and interactions at least), rooms and interactions)
-                        Up-to-date  Game works (beginning, middle, end), replayable with entertainment value, has error checking
+                        (Check)
+                        Many errors Game works (beginning, middle, end), replayable with entertainment value, has error checking
                         In progress Uses structs or classes for player stats and other places as appropriate (struct/classes)
+                        (Must be checked and tested)
                         In progress Uses vectors as appropriate (NPCs saved to vectors at least)
+                        (Must be finished and tested)
                         In progress Uses object-oriented programming (NPCs should transition from being structs to classes, 
                                         classes should be used in some way if not for NPCs
-                        Not done    Use files for save states, use at checkpoints of at will, user may start new game or continue old game
+                        (Must be tested)
+                        Done        Use files for save states, use at checkpoints of at will, user may start new game or continue old game
+                        (Must be tested)
                         Not done    Game thoroughly tested by at least 4 others who fill out 5-question questionnaire that I create
 
 
-    Notes:              shut down game when player dies
+    Notes:              implement save states, 
+                        fix death messages
                         edit vectors to what they need to be
                         change npc interactions to strings
-                        finish files
-                        implement scores
+                        get game to shut down and delete save data after death
+                        ask Mr. Miyoshi if enemy needs to be in a vector and how to do that if so
+                        test
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -239,6 +246,21 @@
                         Added code for enemy encounters and tweaked amount of enemies pushed to vectors
                         Added a few comments
                         Pushed to GitHub
+
+                        Pulled from GitHub
+                        Finished a line of code for save writing during advisory
+                        Pushed to GitHub
+
+                        Added code for saving the game after enemy encounters
+                        Added variables included in function calls
+
+                        Fixed room function calls in main to include info for encounters
+                        Refined some things
+                        Pushed to GitHub
+
+    Date: 3/24/22       Done:
+                        Tried to fix an error and failed
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -255,7 +277,7 @@
 using namespace std;
 
 
-Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int food)
+Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int food) //a fight sequence used in several rooms on the map
 {
     e.roll = 0;
     p.roll = 0;
@@ -1113,11 +1135,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                    }
-                                    if (p.hp <= 0)
-                                    {
-                                        //fix
-                                    }
+                                    }                                    
                                 }
                                 else if (e.roll < 2)
                                 {
@@ -1148,10 +1166,6 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                    }
-                                    if (p.hp <= 0)
-                                    {
-                                        //fix
                                     }
                                 }
                                 else if (e.roll < 4)
@@ -1762,7 +1776,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     return p;
 }
 
-void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room)
+void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room) //allows the user to save the game after enemy encounters
 {
     ofstream out("savestate.txt");
     out << p.chara << ',' << user << ',' << item_weapon << ',' << item_misc << ',' << potions << ',' << lunchbox << ',' << room << '\n';
@@ -1819,7 +1833,7 @@ int ultramarine(int room, int chara, bool& win) //room 1
     return room;
 }
 //room2         enemy encounter
-int canary(int room) //room 2
+int canary(int room, string user, char savechoice, Player e) //room 2
 {
     int choice;
     printf("You are now on Canary Yellow Island\n");
@@ -1830,9 +1844,18 @@ int canary(int room) //room 2
     _getch();
     printf("An enemy jumps out!\n");
     e[0].interaction(p);
+    //add variable for if enemy has been encountered yet and include that in saved data
 
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
-    printf("1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
+    printf("\n1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
     printf(">");
     scanf_s("%i", &choice);
     fseek(stdin, 0, SEEK_END);
@@ -1848,7 +1871,7 @@ int canary(int room) //room 2
     return room;
 }
 //room3         enemy encounter
-int violetblue(int room) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if encountered
+int violetblue(int room, string user, char savechoice, Player e) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if encountered
 {
     int choice;
     printf("You are now in Violet Blue Town \n");
@@ -1859,6 +1882,15 @@ int violetblue(int room) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if e
     _getch();
     printf("You spin around and see an enemy!\n");
     e[1].interaction(p);
+
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
     printf("1. Go to Violet District.\n");
     printf(">");
@@ -2059,7 +2091,7 @@ int violet(int room, vector<Merchant> npc_m, Player p, int chara) //room 8
     return room;
 }
 //room9         enemy encounter
-int silver(int room) //room 9
+int silver(int room, string user, char savechoice, Player e) //room 9
 {
     int choice;
     printf("You are now in Silver Quarry\n");
@@ -2070,6 +2102,15 @@ int silver(int room) //room 9
     _getch();
     printf("An enemy jumps out of the water! You pity their poor swimming skills and decide to fight them\n");
     e[2].interaction(p);
+
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
     printf("1. Go to West Goldenrod\n");
     printf(">");
@@ -2083,7 +2124,7 @@ int silver(int room) //room 9
     return room;
 }
 //room10        enemy encounter
-int viridian(int room) //room 10
+int viridian(int room, string user, char savechoice, Player e) //room 10
 {
     int choice;
     printf("You are now in Viridian Forest\n");
@@ -2094,6 +2135,15 @@ int viridian(int room) //room 10
     _getch();
     printf("An enemy lands in front of you!\n");
     e[3].interaction(p);
+
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
     printf("1. Go to Goldenrod\n2. Go to Carrot Meadow\n");
     printf(">");
@@ -2111,7 +2161,7 @@ int viridian(int room) //room 10
     return room;
 }
 //room11        enemy encounter
-int fluorescent(int room) //room 11
+int fluorescent(int room, string user, char savechoice, Player e) //room 11
 {
     int choice;
     printf("You are now in Fluorescent Marsh\n");
@@ -2122,6 +2172,15 @@ int fluorescent(int room) //room 11
     _getch();
     printf("An enemy slowly approaches!\n");
     e[4].interaction(p);
+
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
     printf("1. Go to Maroon Town\n2. Go to Pumpkin Patch\n");
     printf(">");
@@ -2139,7 +2198,7 @@ int fluorescent(int room) //room 11
     return room;
 }
 //room12        enemy encounter
-int rust(int room) //room 12
+int rust(int room, string user, char savechoice, Player e) //room 12
 {
     int choice;
     printf("You are now in Rust Laboratory\n");
@@ -2150,6 +2209,15 @@ int rust(int room) //room 12
     _getch();
     printf("An enemy loudly jumps in front of you!\n");
     e[5].interaction(p);
+
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
     printf("1. Go to Sunset Observatory\n2. Go to Midnight Blue Town\n");
     printf(">");
@@ -2167,7 +2235,7 @@ int rust(int room) //room 12
     return room;
 }
 //room13        enemy encounter
-int midnightblue(int room) //room 13
+int midnightblue(int room, string user, char savechoice, Player e) //room 13
 {
     int choice;
     printf("You are now in Midnight Blue Town\n");
@@ -2178,6 +2246,15 @@ int midnightblue(int room) //room 13
     _getch();
     printf("A lurking enemy tries to sneak up on you!\n");
     e[6].interaction(p);
+
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
     printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to Rust Laboratory\n");
     printf(">");
@@ -2330,7 +2407,7 @@ int olive(int room) //room 17
     return room;
 }
 //room18        enemy encounter
-int rouge(int room) //room 18
+int rouge(int room, string user, char savechoice, Player e) //room 18
 {
     int choice;
     printf("You are now in Rouge Pass.\n");
@@ -2341,6 +2418,15 @@ int rouge(int room) //room 18
     _getch();
     printf("An enemy jumps out of a red leaf pile!\n");
     e[7].interaction(p);
+
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
     printf("1. Go to Sienna Village\n2. Go to Purple Mountains Majesty\n3. Go to Olive Vineyard\n");
     printf(">");
@@ -2362,7 +2448,7 @@ int rouge(int room) //room 18
     return room;
 }
 //room19        enemy encounter
-int sienna(int room) //room 19
+int sienna(int room, string user, char savechoice, Player e) //room 19
 {
     int choice;
     printf("You are now in Sienna Village.\n");
@@ -2373,6 +2459,15 @@ int sienna(int room) //room 19
     _getch();
     printf("An enemy stands in your way!\n");
     e[8].interaction(p);
+
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
     printf("1. Go to Rainbow Bazaar\n2. Go to Cream Factory\n3. Go to Fuschia Village\n4. Go to Rouge Pass\n");
     printf(">");
@@ -2506,7 +2601,7 @@ int purplemountains(int room) //room 23
     return room;
 }
 //room24        enemy encounter
-int fuschia(int room) //room 24
+int fuschia(int room, string user, char savechoice, Player e) //room 24
 {
     int choice;
     printf("You are now in Fuschia Village.\n");
@@ -2517,6 +2612,15 @@ int fuschia(int room) //room 24
     _getch();
     printf("You turn around and see an emeny!\n");
     e[9].interaction(p);
+
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
     printf("1. Go to Sienna Village\n2. Go to Rose Village\n3. Go to Purple Mountains Majesty\n");
     printf(">");
@@ -2592,13 +2696,13 @@ int main()
     Player p;
     p.chara = 0;
     Player e;
-
-    vector<Player> npc_e;
+    
+    vector<Player> npc_e; //something with this needs to be fixed
     for (int e = 0; e < 9; e++) //currently 7 enemies, check this later
     {
         Player temp_e;
         npc_e.push_back(temp_e);
-    }
+    }    
     vector<Merchant> npc_m;
     for (int m = 0; m < 5; m++) //merchants heal the player; currently 6 merchants, check this later (probably 4 around the path, 2 outside the path)
     {
@@ -2618,6 +2722,7 @@ int main()
     int lunchbox = 0;
     int food;
 
+    char savechoice;
     int room = 0;
     int score = 0;
     int choice;
@@ -2649,7 +2754,7 @@ int main()
     }
 
     string temp;
-    while (newgame == false) //file retrieval FINISH THIS
+    while (newgame == false) //file retrieval 
     {
         ifstream in;
         in.open("savestate.txt");
@@ -2661,24 +2766,25 @@ int main()
             newgame = true;
             return newgame; //check if this works
         }
-
-        getline(in, temp, ',');
-        p.chara = stoi(temp);
-        getline(in, temp, ',');
-        user = temp;
-        getline(in, temp, ',');
-        item_weapon = stoi(temp);
-        getline(in, temp, ',');
-        item_misc = stoi(temp);
-        getline(in, temp, ',');
-        potions = stoi(temp);
-        getline(in, temp, ',');
-        lunchbox = stoi(temp);
-        getline(in, temp, ',');
-        room = stoi(temp);
+        else
+        {
+            getline(in, temp, ',');
+            p.chara = stoi(temp);
+            getline(in, temp, ',');
+            user = temp;
+            getline(in, temp, ',');
+            item_weapon = stoi(temp);
+            getline(in, temp, ',');
+            item_misc = stoi(temp);
+            getline(in, temp, ',');
+            potions = stoi(temp);
+            getline(in, temp, ',');
+            lunchbox = stoi(temp);
+            getline(in, temp, ',');
+            room = stoi(temp);
+        }
     }
 
-    //implement continue game from written file data below
     while (newgame == true)
     {
         printf("Please enter your name\n>");        
@@ -2830,9 +2936,9 @@ int main()
                         p.chara = 1;
                         printf("\n\nSelected: Cobalt\n\n");
 
-                        int p.hpmax = 30;
-                        int p.hpmin = 20;
-                        int p.hp;
+                        p.hpmax = 30;
+                        p.hpmin = 20;
+                        p.hp;
 
                         p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
 
@@ -3012,22 +3118,24 @@ int main()
     bool start = true;
     do
     {
-        if (p.chara == 1 && start)
+        if (newgame == true)
         {
-            room = rose(room, p.chara, win);
-            start = false;
+            if (p.chara == 1 && start)
+            {
+                room = rose(room, p.chara, win);
+                start = false;
+            }
+            else if (p.chara == 2 && start)
+            {
+                room = goldenrod(room, p.chara, win);
+                start = false;
+            }
+            else if (p.chara == 3 && start)
+            {
+                room = ultramarine(room, p.chara, win);
+                start = false;
+            }
         }
-        if (p.chara == 2 && start)
-        {
-            room = goldenrod(room, p.chara, win);
-            start = false;
-        }
-        else if (p.chara == 3 && start)
-        {
-            room = ultramarine(room, p.chara, win);
-            start = false;
-        }
-
 
 
         if (room == 1)
@@ -3036,15 +3144,15 @@ int main()
         }
         else if (room == 2)
         {
-            room = canary(room);
+            room = canary(room, user, savechoice, e);
         }
         else if (room == 3)
         {
-            room = violetblue(room);
+            room = violetblue(room, user, savechoice, e);
         }
         else if (room == 4)
         {
-            room = westgolden(room);
+            room = westgolden(room, npc_m, p, p.chara);
         }
         else if (room == 5)
         {
@@ -3052,7 +3160,7 @@ int main()
         }
         else if (room == 6)
         {
-            room = maroon(room);
+            room = maroon(room, npc_m, p, p.chara);
         }
         else if (room == 7)
         {
@@ -3060,35 +3168,35 @@ int main()
         }
         else if (room == 8)
         {
-            room = violet(room);
+            room = violet(room, npc_m, p, p.chara);
         }
         else if (room == 9)
         {
-            room = silver(room);
+            room = silver(room, user, savechoice, e);
         }
         else if (room == 10)
         {
-            room = viridian(room);
+            room = viridian(room, user, savechoice, e);
         }
         else if (room == 11)
         {
-            room = fluorescent(room);
+            room = fluorescent(room, user, savechoice, e);
         }
         else if (room == 12)
         {
-            room = rust(room);
+            room = rust(room, user, savechoice, e);
         }
         if (room == 13)
         {
-            room = midnightblue(room);
+            room = midnightblue(room, user, savechoice, e);
         }
         else if (room == 14)
         {
-            room = rainbow(room);
+            room = rainbow(room, npc_m, p, p.chara);
         }
         else if (room == 15)
         {
-            room = carrot(room);
+            room = carrot(room, npc_m, p, p.chara);
         }
         else if (room == 16)
         {
@@ -3100,11 +3208,11 @@ int main()
         }
         else if (room == 18)
         {
-            room = rouge(room);
+            room = rouge(room, user, savechoice, e);
         }
         else if (room == 19)
         {
-            room = sienna(room);
+            room = sienna(room, user, savechoice, e);
         }
         else if (room == 20)
         {
@@ -3116,7 +3224,7 @@ int main()
         }
         else if (room == 22)
         {
-            room = royalcastletown(room);
+            room = royalcastletown(room, npc_m, p, p.chara);
         }
         else if (room == 23)
         {
@@ -3124,7 +3232,7 @@ int main()
         }
         else if (room == 24)
         {
-            room = fuschia(room);
+            room = fuschia(room, user, savechoice, e);
         }
         else if (room == 25)
         {
