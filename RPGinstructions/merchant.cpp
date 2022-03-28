@@ -88,34 +88,34 @@ void Merchant::healPlayer(Player& p)
 void Merchant::interaction(Player& p)
 {	
 
-	if (chara == 1)
+	if (p.chara == 1)
 	{
 		printf("Cobalt encountered a merchant!\n");
 		printf("The merchant spots her and smiles, waving Cobalt over to them\n");
 		printf("'You look weary from your travels, young one'\n'come, let me heal you and send you on your way with a treat\n");
 		printf("The merchant healed Cobalt by %i! Cobalt now has %i hp\n", p.hphealed, p.hp);
 		printf("The merchant gave Cobalt a treat for her lunchbox\n");
-		lunchbox++;
+		p.lunchbox++;
 		printf("'Safe travels!'\n");
 	}
-	else if (chara == 2)
+	else if (p.chara == 2)
 	{
 		printf("Magenta encountered a merchant!\n");
 		printf("The merchant spots him and smiles, waving Magenta over to them\n");
 		printf("'You look weary from your travels, young one'\n'come, let me heal you and send you on your way with a treat\n");
 		printf("The merchant healed Magenta by %i! Magenta now has %i hp\n", p.hphealed, p.hp);
 		printf("The merchant gave Magenta a treat for his lunchbox\n");
-		lunchbox++;
+		p.lunchbox++;
 		printf("'Safe travels!'\n");
 	}
-	else if (chara == 3)
+	else if (p.chara == 3)
 	{
 		printf("Sunflower encountered a merchant!\n");
 		printf("The merchant spots her and smiles, waving Sunflower over to them\n");
 		printf("'You look weary from your travels, young one'\n'come, let me heal you and send you on your way with a treat\n");
 		printf("The merchant healed Sunflower by %i! Sunflower now has %i hp\n", p.hphealed, p.hp);
 		printf("The merchant gave Sunflower a treat for her lunchbox\n");
-		lunchbox++;
+		p.lunchbox++;
 		printf("'Safe travels!'\n");
 	}
 }

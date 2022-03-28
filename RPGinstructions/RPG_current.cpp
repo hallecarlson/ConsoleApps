@@ -282,6 +282,9 @@
                         Pulled from GitHub
                         Fixed some function calls for rooms in int main()
                         Pushed to GitHub
+                        Got help from Mr. Miyoshi
+                        Added code for npc interactions
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -1840,6 +1843,7 @@ void savedata(Player p, string user, int chara, int item_weapon, int item_misc, 
     out.close();
 }
 
+//change rooms to shut game down after hp
 //room1
 int ultramarine(int room, int chara, bool& win) //room 1
 {
@@ -1892,37 +1896,46 @@ int ultramarine(int room, int chara, bool& win) //room 1
 //room2         enemy encounter
 int canary(int room, string user, char savechoice, Player e, Player p) //room 2
 {
-    int choice;
-    printf("You are now on Canary Yellow Island\n");
-    printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
-    printf("To the West is Ultramarine and to the south is Sunset Observatory.\n");
+        int choice;
+        printf("You are now on Canary Yellow Island\n");
+        printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
+        printf("To the West is Ultramarine and to the south is Sunset Observatory.\n");
 
-    printf("You hear rustling in the foliage\n");
-    _getch();
-    printf("An enemy jumps out!\n");
-    e[0].interaction(p);
-    //add variable for if enemy has been encountered yet and include that in saved data
+        printf("You hear rustling in the foliage\n");
+        _getch();
+        printf("An enemy jumps out!\n");
+        //e[0].interaction(p);
+        combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.food, p.score)
+        //add variable for if enemy has been encountered yet and include that in saved data
 
-    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
-    scanf_s("%c", &savechoice);
-    fseek(stdin, 0, SEEK_END);
-    if (savechoice == 'y')
+    if (p.hp <= 0)
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
-        printf("\n%s's data has been saved\n", user.c_str());
+        printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+        scanf_s("%c", &savechoice);
+        fseek(stdin, 0, SEEK_END);
+        if (savechoice == 'y')
+        {
+            void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+            printf("\n%s's data has been saved\n", user.c_str());
+        }
+
+        printf("\n1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 1;
+        }
+        else if (choice == 2)
+        {
+            room = 12;
+        }
     }
 
-    printf("\n1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
+    else if (p.hp <= 0)
     {
-        room = 1;
-    }
-    else if (choice == 2)
-    {
-        room = 12;
+        room = 0;
     }
 
     return room;
@@ -2515,7 +2528,7 @@ int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
     printf("Someone by the fire turns and walks toward you\n");
     _getch();
     printf("An enemy stands in your way!\n");
-    e[8].interaction(p);
+    e.interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2767,7 +2780,7 @@ int main()
         npc_m.push_back(temp_m);
     }
 
-    npc_m[0].interaction(p);
+    //npc_m[0].interaction(p);
 
     string user;
     int menu_choice = 0;
@@ -2888,7 +2901,10 @@ int main()
         printf("The game follows three different paths depending on which of three characters you choose: Cobalt, Magenta, or Sunflower\n");
         printf("You must traverse the kingdom and help your selected character find their homeland\n");
         printf("On the way, you will encounter allies who will help you, and enemies who will block your path\n");
-        printf("Good luck! (And remember to have fun\n");
+        printf("Good luck! (And remember to have fun)\n");
+
+        p.encountered_e(10, false);
+        p.encountered_m(5, false);
 
         do //menu loop
         {
@@ -3217,7 +3233,7 @@ int main()
         }
         else if (room == 2)
         {
-            room = canary(room, user, savechoice, e, p);
+            room = canary(room, user, savechoice, npc_e[0], p);
         }
         else if (room == 3)
         {
