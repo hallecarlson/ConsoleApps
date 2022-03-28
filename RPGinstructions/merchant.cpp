@@ -83,7 +83,7 @@ void Merchant::healPlayer(Player& p)
 	if (p.hp > 30) 
 	{
 		p.hp = 30;
-	}
+	} 
 }
 void Merchant::interaction(Player& p)
 {	
