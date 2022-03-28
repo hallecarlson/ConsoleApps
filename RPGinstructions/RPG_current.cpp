@@ -272,6 +272,11 @@
                         Got help from Mr. Miyoshi
                         Saved other files in the project
                         Pushed to GitHub
+
+    Date: 3/27/22       Done:
+                        Pulled from GitHub
+                        Added code to print score after battle victories
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -371,6 +376,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Cobalt defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 5)
@@ -389,6 +395,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Cobalt defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -408,6 +415,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             {
                                 printf("Cobalt defeated the %s!", enemy.c_str());
                                 score++;
+                                printf("Score: %i", score);
                             }
                         }
                         if (item_weapon == 3) //spear
@@ -426,6 +434,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Cobalt defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -444,6 +453,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Cobalt defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 1)
@@ -472,6 +482,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Magenta defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 5)
@@ -490,6 +501,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Magenta defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -509,6 +521,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             {
                                 printf("Magenta defeated the %s!", enemy.c_str());
                                 score++;
+                                printf("Score: %i", score);
                             }
                         }
                         if (item_weapon == 3) //spear
@@ -527,6 +540,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Magenta defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -545,6 +559,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Magenta defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 1)
@@ -573,6 +588,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Sunflower defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 5)
@@ -591,6 +607,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Sunflower defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -610,6 +627,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             {
                                 printf("Sunflower defeated the %s!", enemy.c_str());
                                 score++;
+                                printf("Score: %i", score);
                             }
 
                         }
@@ -629,6 +647,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Sunflower defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -647,6 +666,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         printf("Sunflower defeated the %s!", enemy.c_str());
                                         score++;
+                                        printf("Score: %i", score);
                                     }
                                 }
                                 else if (p.roll < 1)
@@ -669,6 +689,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         {
                             printf("Cobalt defeated the %s!", enemy.c_str());
                             score++;
+                            printf("Score: %i", score);
                         }
                     }
                     if (chara == 2)
@@ -681,6 +702,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         {
                             printf("Magenta defeated the %s!", enemy.c_str());
                             score++;
+                            printf("Score: %i", score);
                         }
                     }
                     if (chara == 3)
@@ -693,7 +715,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         {
                             printf("Sunflower defeated the %s!", enemy.c_str());
                             score++;
-
+                            printf("Score: %i", score);
                         }
                     }
                 }
@@ -2754,7 +2776,7 @@ int main()
 
     char savechoice;
     int room = 0;
-    int score = 0;
+    int score;
     int choice;
     bool win = false;
 
@@ -2832,6 +2854,7 @@ int main()
 
     while (newgame == true)
     {
+        score = 0;
         printf("Please enter your name\n>");        
         cin >> user;
         fseek(stdin, 0, SEEK_END);
