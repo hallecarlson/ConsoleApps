@@ -21,7 +21,7 @@ Enemy::Enemy(int t, int r) //what does this do?
 	roll = r;
 	enemy_type = t;
 }
-int Enemy::getType()
+int Enemy::getType() 
 {
 	return enemy_type;
 }
