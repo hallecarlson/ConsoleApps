@@ -277,6 +277,11 @@
                         Pulled from GitHub
                         Added code to print score after battle victories
                         Pushed to GitHub
+
+    Date: 3/28/22       Done:
+                        Pulled from GitHub
+                        Fixed some function calls for rooms in int main()
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -1885,7 +1890,7 @@ int ultramarine(int room, int chara, bool& win) //room 1
     return room;
 }
 //room2         enemy encounter
-int canary(int room, string user, char savechoice, Player e) //room 2
+int canary(int room, string user, char savechoice, Player e, Player p) //room 2
 {
     int choice;
     printf("You are now on Canary Yellow Island\n");
@@ -1923,7 +1928,7 @@ int canary(int room, string user, char savechoice, Player e) //room 2
     return room;
 }
 //room3         enemy encounter
-int violetblue(int room, string user, char savechoice, Player e) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if encountered
+int violetblue(int room, string user, char savechoice, Player e, Player p) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if encountered
 {
     int choice;
     printf("You are now in Violet Blue Town \n");
@@ -2143,7 +2148,7 @@ int violet(int room, vector<Merchant> npc_m, Player p, int chara) //room 8
     return room;
 }
 //room9         enemy encounter
-int silver(int room, string user, char savechoice, Player e) //room 9
+int silver(int room, string user, char savechoice, Player e, Player p) //room 9
 {
     int choice;
     printf("You are now in Silver Quarry\n");
@@ -2176,7 +2181,7 @@ int silver(int room, string user, char savechoice, Player e) //room 9
     return room;
 }
 //room10        enemy encounter
-int viridian(int room, string user, char savechoice, Player e) //room 10
+int viridian(int room, string user, char savechoice, Player e, Player p) //room 10
 {
     int choice;
     printf("You are now in Viridian Forest\n");
@@ -2213,7 +2218,7 @@ int viridian(int room, string user, char savechoice, Player e) //room 10
     return room;
 }
 //room11        enemy encounter
-int fluorescent(int room, string user, char savechoice, Player e) //room 11
+int fluorescent(int room, string user, char savechoice, Player e, Player p) //room 11
 {
     int choice;
     printf("You are now in Fluorescent Marsh\n");
@@ -2250,7 +2255,7 @@ int fluorescent(int room, string user, char savechoice, Player e) //room 11
     return room;
 }
 //room12        enemy encounter
-int rust(int room, string user, char savechoice, Player e) //room 12
+int rust(int room, string user, char savechoice, Player e, Player p) //room 12
 {
     int choice;
     printf("You are now in Rust Laboratory\n");
@@ -2287,7 +2292,7 @@ int rust(int room, string user, char savechoice, Player e) //room 12
     return room;
 }
 //room13        enemy encounter
-int midnightblue(int room, string user, char savechoice, Player e) //room 13
+int midnightblue(int room, string user, char savechoice, Player e, Player p) //room 13
 {
     int choice;
     printf("You are now in Midnight Blue Town\n");
@@ -2459,7 +2464,7 @@ int olive(int room) //room 17
     return room;
 }
 //room18        enemy encounter
-int rouge(int room, string user, char savechoice, Player e) //room 18
+int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
 {
     int choice;
     printf("You are now in Rouge Pass.\n");
@@ -2500,7 +2505,7 @@ int rouge(int room, string user, char savechoice, Player e) //room 18
     return room;
 }
 //room19        enemy encounter
-int sienna(int room, string user, char savechoice, Player e) //room 19
+int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
 {
     int choice;
     printf("You are now in Sienna Village.\n");
@@ -2653,7 +2658,7 @@ int purplemountains(int room) //room 23
     return room;
 }
 //room24        enemy encounter
-int fuschia(int room, string user, char savechoice, Player e) //room 24
+int fuschia(int room, string user, char savechoice, Player e, Player p) //room 24
 {
     int choice;
     printf("You are now in Fuschia Village.\n");
@@ -2765,8 +2770,8 @@ int main()
     npc_m[0].interaction(p);
 
     string user;
-    int menu_choice;
-    int item_type;
+    int menu_choice = 0;
+    int item_type = 0;
     int item_weapon = 0;
     int item_misc = 0;
     int items = 0;
@@ -3017,9 +3022,9 @@ int main()
                         p.chara = 2;
                         printf("\n\nSelected: Magenta\n\n");
 
-                        int p.hpmax = 30;
-                        int p.hpmin = 20;
-                        int p.hp;
+                        p.hpmax = 30;
+                        p.hpmin = 20;
+                        p.hp;
 
                         p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
 
@@ -3030,9 +3035,9 @@ int main()
                         p.chara = 3;
                         printf("\n\nSelected: Sunflower\n\n");
 
-                        int p.hpmax = 30;
-                        int p.hpmin = 20;
-                        int p.hp;
+                        p.hpmax = 30;
+                        p.hpmin = 20;
+                        p.hp;
 
                         p.hp = p.hpmin + rand() % (p.hpmax - p.hpmin + 1); //player hit points [20, 30] / 30 max
 
@@ -3212,11 +3217,11 @@ int main()
         }
         else if (room == 2)
         {
-            room = canary(room, user, savechoice, e);
+            room = canary(room, user, savechoice, e, p);
         }
         else if (room == 3)
         {
-            room = violetblue(room, user, savechoice, e);
+            room = violetblue(room, user, savechoice, e, p);
         }
         else if (room == 4)
         {
@@ -3240,23 +3245,23 @@ int main()
         }
         else if (room == 9)
         {
-            room = silver(room, user, savechoice, e);
+            room = silver(room, user, savechoice, e, p);
         }
         else if (room == 10)
         {
-            room = viridian(room, user, savechoice, e);
+            room = viridian(room, user, savechoice, e, p);
         }
         else if (room == 11)
         {
-            room = fluorescent(room, user, savechoice, e);
+            room = fluorescent(room, user, savechoice, e, p);
         }
         else if (room == 12)
         {
-            room = rust(room, user, savechoice, e);
+            room = rust(room, user, savechoice, e, p);
         }
         if (room == 13)
         {
-            room = midnightblue(room, user, savechoice, e);
+            room = midnightblue(room, user, savechoice, e, p);
         }
         else if (room == 14)
         {
@@ -3276,11 +3281,11 @@ int main()
         }
         else if (room == 18)
         {
-            room = rouge(room, user, savechoice, e);
+            room = rouge(room, user, savechoice, e, p);
         }
         else if (room == 19)
         {
-            room = sienna(room, user, savechoice, e);
+            room = sienna(room, user, savechoice, e, p);
         }
         else if (room == 20)
         {
@@ -3300,7 +3305,7 @@ int main()
         }
         else if (room == 24)
         {
-            room = fuschia(room, user, savechoice, e);
+            room = fuschia(room, user, savechoice, e, p);
         }
         else if (room == 25)
         {
