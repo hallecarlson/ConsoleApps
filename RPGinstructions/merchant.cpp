@@ -55,7 +55,7 @@ void Merchant::setHealedhitpoints(int healedhitpoints)
 }
 string Merchant::getN()
 {
-	return n;
+	return n; 
 }
 int Merchant::getHP()
 {
