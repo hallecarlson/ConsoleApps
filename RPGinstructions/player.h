@@ -9,7 +9,7 @@ struct Player
     int chara;
 
     int hp, hpmin, hpmax, hphealed;
-    int dp, dpmin, dpmax;
+    int dp, dpmin, dpmax; 
     int roll;
     int lunchbox, potions; 
     int item_weapon, item_misc;
