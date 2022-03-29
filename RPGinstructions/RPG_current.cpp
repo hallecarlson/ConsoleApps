@@ -39,6 +39,13 @@
                         ask Mr. Miyoshi if enemy needs to be in a vector and how to do that if so
                         test
 
+                        edits to make:
+                        - rolls can probably change to not p.roll = 0 +rand() % (10 - 0 + 1) to something like 0 + rand() % 10
+                        - lots of formatting issues
+                        - fix the odd number issues with -8903482890357 and such
+                        - make it so you can always use the lunchbox in battle
+                        - add hp healing in merchant.cpp, i didn't do that but dialogue acts like i did
+
     Maintenance Log:
     Date:   12/6/21     Done:
                         Created project
@@ -285,6 +292,17 @@
                         Got help from Mr. Miyoshi
                         Added code for npc interactions
                         Pushed to GitHub
+
+    Date: 3/29/22       Done: 
+                        Fixed many errors
+                        Tweaked a bit of code
+                        Got help from Mr. Miyoshi
+                        Tested code for the first time in a long time!!
+                        Found errors and bugs
+                        Made a list of things to fix
+                        Edited code to make merchants actually heal the player, because I forgot to implement that
+                        Changed tome dialogue formatting
+                        Pushed to GitHub
 */
 
 #include <iostream>
@@ -298,10 +316,11 @@
 #include <fstream>
 #include "merchant.h"
 #include "player.h"
+#include "enemy.h"
 using namespace std;
 
 
-Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int food, int score) //a fight sequence used in several rooms on the map
+Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int &score) //a fight sequence used in several rooms on the map
 {
     e.roll = 0;
     p.roll = 0;
@@ -312,6 +331,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
     int enemy_type = 0;
     string enemy = "";
 
+    int food = 0;
     int foodmin = 1;
     int foodmax = 5; 
     bool player_accuracy = false;
@@ -382,9 +402,9 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     printf("Cobalt hit the %s with her longsword!\nThe %s lost %i hp!\n", enemy.c_str(), enemy.c_str(), p.dp);
                                     if (e.hp <= 0)
                                     {
-                                        printf("Cobalt defeated the %s!", enemy.c_str());
+                                        printf("Cobalt defeated the %s!\n", enemy.c_str());
                                         score++;
-                                        printf("Score: %i", score);
+                                        printf("Score: %i\n", score);
                                     }
                                 }
                                 else if (p.roll < 5)
@@ -1901,11 +1921,11 @@ int canary(int room, string user, char savechoice, Player e, Player p) //room 2
         printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
         printf("To the West is Ultramarine and to the south is Sunset Observatory.\n");
 
-        printf("You hear rustling in the foliage\n");
+        printf("You hear rustling in the foliage\n\n");
         _getch();
         printf("An enemy jumps out!\n");
         //e[0].interaction(p);
-        combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.food, p.score)
+        combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
         //add variable for if enemy has been encountered yet and include that in saved data
 
     if (p.hp <= 0)
@@ -1951,7 +1971,8 @@ int violetblue(int room, string user, char savechoice, Player e, Player p) //roo
     printf("You hear something approach you from behind\n");
     _getch();
     printf("You spin around and see an enemy!\n");
-    e[1].interaction(p);
+    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    //e[1].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2171,7 +2192,8 @@ int silver(int room, string user, char savechoice, Player e, Player p) //room 9
     printf("You hear something struggling to swim to you\n");
     _getch();
     printf("An enemy jumps out of the water! You pity their poor swimming skills and decide to fight them\n");
-    e[2].interaction(p);
+    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    //e[2].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2204,7 +2226,8 @@ int viridian(int room, string user, char savechoice, Player e, Player p) //room 
     printf("You hear something jump out of a tree\n");
     _getch();
     printf("An enemy lands in front of you!\n");
-    e[3].interaction(p);
+    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    //e[3].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2241,7 +2264,8 @@ int fluorescent(int room, string user, char savechoice, Player e, Player p) //ro
     printf("You hear something sloshing through the deep mud\n");
     _getch();
     printf("An enemy slowly approaches!\n");
-    e[4].interaction(p);
+    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    //e[4].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2278,7 +2302,8 @@ int rust(int room, string user, char savechoice, Player e, Player p) //room 12
     printf("You hear shoes against the old, metal floor\n");
     _getch();
     printf("An enemy loudly jumps in front of you!\n");
-    e[5].interaction(p);
+    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    //e[5].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2309,13 +2334,14 @@ int midnightblue(int room, string user, char savechoice, Player e, Player p) //r
 {
     int choice;
     printf("You are now in Midnight Blue Town\n");
-    printf("It's a dodgy, dark town without any stars in the sky.\nIt’s always night here.\n");
+    printf("It's a dodgy, dark town without any stars in the sky.\nIt's always night here.\n");
     printf("To the North is Violet Distrtict, to the East is Rainbow Bazaar, and to the West is Rust Laboratory.\n");
 
     printf("Out of the corner of your eye, you notice something in the shadows\n");
     _getch();
     printf("A lurking enemy tries to sneak up on you!\n");
-    e[6].interaction(p);
+    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    //e[6].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2487,7 +2513,8 @@ int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
     printf("You hear rustling in the leaves\n");
     _getch();
     printf("An enemy jumps out of a red leaf pile!\n");
-    e[7].interaction(p);
+    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    //e[7].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2528,7 +2555,8 @@ int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
     printf("Someone by the fire turns and walks toward you\n");
     _getch();
     printf("An enemy stands in your way!\n");
-    e.interaction(p);
+    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    //e.interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2681,7 +2709,8 @@ int fuschia(int room, string user, char savechoice, Player e, Player p) //room 2
     printf("You hear a tent flap opening\n");
     _getch();
     printf("You turn around and see an emeny!\n");
-    e[9].interaction(p);
+    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    //e[9].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
     scanf_s("%c", &savechoice);
@@ -2785,16 +2814,15 @@ int main()
     string user;
     int menu_choice = 0;
     int item_type = 0;
-    int item_weapon = 0;
-    int item_misc = 0;
+    p.item_weapon = 0;
+    p.item_misc = 0;
     int items = 0;
-    int potions = 0;
-    int lunchbox = 0;
-    int food;
+    p.potions = 0;
+    p.lunchbox = 0;
 
-    char savechoice;
+    char savechoice = 'n';
     int room = 0;
-    int score;
+    int score = 0;
     int choice;
     bool win = false;
 
@@ -2843,25 +2871,25 @@ int main()
             getline(in, temp, ',');
             user = temp;
             getline(in, temp, ',');
-            item_weapon = stoi(temp);
+            p.item_weapon = stoi(temp);
             getline(in, temp, ',');
-            item_misc = stoi(temp);
+            p.item_misc = stoi(temp);
             getline(in, temp, ',');
-            potions = stoi(temp);
+            p.potions = stoi(temp);
             getline(in, temp, ',');
-            lunchbox = stoi(temp);
+            p.lunchbox = stoi(temp);
             getline(in, temp, ',');
             room = stoi(temp);
 
-            if (chara == 1)
+            if (p.chara == 1)
             {
                 printf("Character: Cobalt\n");
             }
-            else if (chara == 2)
+            else if (p.chara == 2)
             {
                 printf("Character: Magenta\n");
             }
-            else if (chara == 3)
+            else if (p.chara == 3)
             {
                 printf("Character: Sunflower\n");
             }
@@ -2903,8 +2931,11 @@ int main()
         printf("On the way, you will encounter allies who will help you, and enemies who will block your path\n");
         printf("Good luck! (And remember to have fun)\n");
 
-        p.encountered_e(10, false);
-        p.encountered_m(5, false);
+        /*for (int i = 0; i < 10; i++)
+        {
+            p.encountered_e[i] = false;
+        }
+        p.encountered_m(5, false);*/
 
         do //menu loop
         {
@@ -2936,15 +2967,15 @@ int main()
             printf("Items: %i\n", items);
 
             printf("Weapon: ");
-            if (item_weapon == 1)
+            if (p.item_weapon == 1)
             {
                 printf("Longsword\n");
             }
-            else if (item_weapon == 2)
+            else if (p.item_weapon == 2)
             {
                 printf("Shortsword\n");
             }
-            else if (item_weapon == 3)
+            else if (p.item_weapon == 3)
             {
                 printf("Spear\n");
             }
@@ -2954,15 +2985,15 @@ int main()
             }
 
             printf("Item: ");
-            if (item_misc == 1)
+            if (p.item_misc == 1)
             {
                 printf("Healing potions\n");
             }
-            else if (item_misc == 2)
+            else if (p.item_misc == 2)
             {
                 printf("Spellbook\n");
             }
-            else if (item_misc == 3)
+            else if (p.item_misc == 3)
             {
                 printf("Lunchbox\n");
             }
@@ -3081,11 +3112,11 @@ int main()
                 if (item_type == 1)
                 {
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                    if (item_weapon == 1 || item_weapon == 2 || item_weapon == 3)
+                    if (p.item_weapon == 1 || p.item_weapon == 2 || p.item_weapon == 3)
                     {
                         printf("A weapon has already been selected, %s!\n", user.c_str());
                     }
-                    else if (item_weapon != 1 || item_weapon != 2 || item_weapon != 3)
+                    else if (p.item_weapon != 1 || p.item_weapon != 2 || p.item_weapon != 3)
                     {
                         printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                         printf("Characters may select from the following three weapons, each of which has a damage and accuracy range balanced differently\n");
@@ -3099,44 +3130,41 @@ int main()
                         printf("\t\tDeals medium damage, medium accuracy\n");
 
                         printf(">");
-                        scanf_s("%i", &item_weapon);
+                        scanf_s("%i", &p.item_weapon);
                         fseek(stdin, 0, SEEK_END);
 
-                        if (item_weapon == 1) //Longsword
+                        if (p.item_weapon == 1) //Longsword
                         {
-                            item_weapon = 1;
+                            p.item_weapon = 1;
                             items++;
                             printf("\n\nSelected: Longsword\n\n");
 
-                            int player_dp_max = 20;
-                            int player_dp_min = 10;
-                            int player_dp;
+                            p.dpmax = 10;
+                            p.dpmin = 8;
 
-                            printf("[dp] ------> %i - %i\n", player_dp_min, player_dp_max); //10-20 dp
+                            printf("[dp] ------> %i - %i\n", p.dpmin, p.dpmax);
                         }
-                        else if (item_weapon == 2) //Shortsword
+                        else if (p.item_weapon == 2) //Shortsword
                         {
-                            item_weapon = 2;
+                            p.item_weapon = 2;
                             items++;
                             printf("\n\nSelected: Shortsword\n\n");
 
-                            int player_dp_max = 10;
-                            int player_dp_min = 8;
-                            int player_dp;
+                            p.dpmax = 8;
+                            p.dpmin = 5;
 
-                            printf("[dp] ---> %i - %i\n", player_dp_min, player_dp_max); //8-10 dp
+                            printf("[dp] ---> %i - %i\n", p.dpmin, p.dpmax);
                         }
-                        else if (item_weapon == 3) //Spear
+                        else if (p.item_weapon == 3) //Spear
                         {
-                            item_weapon = 3;
+                            p.item_weapon = 3;
                             items++;
                             printf("\n\nSelected: Spear\n\n");
 
-                            int player_dp_max = 15;
-                            int player_dp_min = 10;
-                            int player_dp;
+                            p.dpmax = 9;
+                            p.dpmin = 7;
 
-                            printf("[dp] ------> %i - %i\n", player_dp_min, player_dp_max); //10-15 dp
+                            printf("[dp] ------> %i - %i\n", p.dpmin, p.dpmax);
                         }
                     }
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
@@ -3149,11 +3177,11 @@ int main()
                 if (item_type == 2)
                 {
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                    if (item_misc == 1 || item_misc == 2 || item_misc == 3)
+                    if (p.item_misc == 1 || p.item_misc == 2 || p.item_misc == 3)
                     {
                         printf("An item has already been selected, %s!\n", user.c_str());
                     }
-                    else if (item_misc != 1 || item_misc != 2 || item_misc != 3)
+                    else if (p.item_misc != 1 || p.item_misc != 2 || p.item_misc != 3)
                     {
                         printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                         printf("Characters may choose from the following three miscellaneous items, each of which has a unique use in battle\n");
@@ -3167,28 +3195,28 @@ int main()
                         printf("\t\tContains various food items that may be used to heal self by a random amount (Your character will have an empty lunchbox if you do not select this item)\n");
 
                         printf(">");
-                        scanf_s("%i", &item_misc);
+                        scanf_s("%i", &p.item_misc);
                         fseek(stdin, 0, SEEK_END);
 
-                        if (item_misc == 1) //potions
+                        if (p.item_misc == 1) //potions
                         {
-                            item_misc = 1;
+                            p.item_misc = 1;
                             items++;
                             printf("\n\nSelected: healing potions\n\n");
-                            potions = 3;
+                            p.potions = 3;
                         }
-                        else if (item_misc == 2) //spellbook
+                        else if (p.item_misc == 2) //spellbook
                         {
-                            item_misc = 2;
+                            p.item_misc = 2;
                             items++;
                             printf("\n\nSelected: spellbook\n\n");
                         }
-                        else if (item_misc == 3) //lunchbox
+                        else if (p.item_misc == 3) //lunchbox
                         {
-                            item_misc = 3;
+                            p.item_misc = 3;
                             items++;
                             printf("\n\nSelected: lunchbox\n\n");
-                            lunchbox = 5;
+                            p.lunchbox = 5;
                         }
                     }
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");

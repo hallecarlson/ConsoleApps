@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 using namespace std;
 
 struct Player
@@ -12,6 +13,7 @@ struct Player
     int roll;
     int lunchbox, potions; 
     int item_weapon, item_misc;
+    int score;
 
     vector<bool> encountered_e;
     vector<bool> encountered_m;

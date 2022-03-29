@@ -10,7 +10,7 @@ class Merchant
 public:
 	Merchant();
 	Merchant(string n, int hp, int hpmin, int hpmax, int hphealed);
-	Merchant(Merchant& M);
+	//Merchant(Merchant& M);
 	void setStats(string name, int hitpoints, int minhitpoints, int maxhitpoints, int healedhitpoints);
 	void setName(string name);
 	void setHitpoints(int hitpoints);
