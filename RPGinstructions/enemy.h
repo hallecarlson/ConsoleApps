@@ -9,7 +9,7 @@ public:
     //Enemy Enemy(int t, int r);
     //int setType(); 
     //int setRoll();
-    int getType();
+    int getType(); 
     int getRoll();
     
 private:
