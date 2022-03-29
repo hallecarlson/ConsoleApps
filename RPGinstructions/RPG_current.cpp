@@ -301,7 +301,7 @@
                         Found errors and bugs
                         Made a list of things to fix
                         Edited code to make merchants actually heal the player, because I forgot to implement that
-                        Changed tome dialogue formatting
+                        Changed tome dialogue formatting 
                         Pushed to GitHub
 */
 
