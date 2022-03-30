@@ -76,7 +76,7 @@ int Merchant::getHPHEALED()
 void Merchant::healPlayer(Player& p)
 {
 	p.hpmin = 10;
-	p.hpmax = 29;
+	p.hpmax = 20;
 
 	p.hphealed = p.hpmin + rand() % (p.hpmax - p.hpmin + 1);
 	p.hp = p.hp + p.hphealed;
@@ -102,7 +102,7 @@ void Merchant::interaction(Player& p)
 		printf("The merchant healed Cobalt by %i! Cobalt now has %i hp\n", p.hphealed, p.hp);
 		printf("The merchant gave Cobalt a treat for her lunchbox\n");
 		p.lunchbox++;
-		printf("'Safe travels!'\n");
+		printf("'Safe travels!'\n\n");
 	}
 	else if (p.chara == 2)
 	{
@@ -116,7 +116,7 @@ void Merchant::interaction(Player& p)
 			p.hp = 30;
 		}
 		printf("The merchant healed Magenta by %i! Magenta now has %i hp\n", p.hphealed, p.hp);
-		printf("The merchant gave Magenta a treat for his lunchbox\n");
+		printf("The merchant gave Magenta a treat for his lunchbox\n\n");
 		p.lunchbox++;
 		printf("'Safe travels!'\n");
 	}
@@ -132,7 +132,7 @@ void Merchant::interaction(Player& p)
 			p.hp = 30;
 		}
 		printf("The merchant healed Sunflower by %i! Sunflower now has %i hp\n", p.hphealed, p.hp);
-		printf("The merchant gave Sunflower a treat for her lunchbox\n");
+		printf("The merchant gave Sunflower a treat for her lunchbox\n\n");
 		p.lunchbox++;
 		printf("'Safe travels!'\n");
 	}

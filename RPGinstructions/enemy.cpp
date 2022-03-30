@@ -1,4 +1,4 @@
-#include "enemy.h"
+/*#include "enemy.h"
 
 //Enemy::Enemy()
 //{
@@ -28,4 +28,4 @@ int Enemy::getType()
 int Enemy::getRoll()
 {
 	return roll;
-}
+}*/

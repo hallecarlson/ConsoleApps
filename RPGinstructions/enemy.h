@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <string>
 using namespace std;
 
@@ -20,5 +20,5 @@ private:
     int roll;
     int enemy_type;
 
-};
+};*/
 
