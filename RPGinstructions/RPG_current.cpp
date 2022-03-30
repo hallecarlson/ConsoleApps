@@ -10,7 +10,7 @@
     Requirements:       Up-to-date  Comment section (Green text in beginning of file), Comments used throughout code
                         Done        Intro and clear instructions, easy to use interface
                         Done        Simple dungeon with 25 rooms minimum
-                        In progress 4 NPCs minimum
+                        Done         4 NPCs minimum
                         In progress NPC interactions effective and consistent (I/O, branching, looping, classes)
                         Up-to-date  Option mechanics effective (branching), game loops and other loops effective (looping)
                         In progress Strings to hold appropriate data (addressing user by name, holding NPC responses, other 
@@ -25,9 +25,8 @@
                         (Must be finished and tested)
                         In progress Uses object-oriented programming (NPCs should transition from being structs to classes, 
                                         classes should be used in some way if not for NPCs
-                        (Must be tested)
-                        Done        Use files for save states, use at checkpoints of at will, user may start new game or continue old game
-                        (Must be tested)
+                                    (Comment out enemy structs and test
+                        Not done    Use files for save states, use at checkpoints of at will, user may start new game or continue old game
                         Not done    Game thoroughly tested by at least 4 others who fill out 5-question questionnaire that I create
 
 
@@ -44,6 +43,8 @@
                         - lots of formatting issues
                         - fix the odd number issues with -8903482890357 and such
                         - fix post-enemy encounter code to be like it is in canary
+                        - add what happens in combat if the player does not select a weapon or misc item
+                        - canary to sunset skips sunset and puts player in rust
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -310,6 +311,15 @@
                         Tweaked code to set hp to 1 after a loss so it's in a different place
                         Tweaked code to allow score so be written/read to/from files
                         Pushed to GitHub
+
+    Date: 3/30/22       Done:   
+                        Pulled from GitHub
+                        Added code and dialogue for battle defeats
+                        Edited formatting issues in dialogue
+                        Had Dhanasri Prabhu test game
+                        Edited funtion calls to remove unnecessary variables
+                        Added p. to a ton of variables in combat and main()
+                        Pushed to GitHub
 */ 
 
 #include <iostream>
@@ -327,7 +337,7 @@
 using namespace std;
 
 
-Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int &score) //a fight sequence used in several rooms on the map
+Player combat(Player p, Player e) //a fight sequence used in several rooms on the map
 {
     e.roll = 0;
     p.roll = 0;
@@ -363,15 +373,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
         enemy = "Grey Barbarian";
     }
 
-    if (chara == 1)
+    if (p.chara == 1)
     {
         printf("Cobalt encountered a %s!", enemy.c_str());
     }
-    if (chara == 2)
+    if (p.chara == 2)
     {
         printf("Magenta encountered a %s!", enemy.c_str());
     }
-    if (chara == 3)
+    if (p.chara == 3)
     {
         printf("Sunflower encountered a %s!", enemy.c_str());
     }
@@ -392,10 +402,10 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
 
                 if (player_turn == 1)
                 {
-                    if (chara == 1)
+                    if (p.chara == 1)
                     {
                         printf("\nCobalt tried to use her weapon\n");
-                        if (item_weapon == 1) //longsword
+                        if (p.item_weapon == 1) //longsword
                         {
                             p.dpmin = 8;
                             p.dpmax = 10;
@@ -410,8 +420,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Cobalt defeated the %s!\n", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i\n", score);
+                                        p.score++;
+                                        printf("Score: %i\n", p.score);
                                     }
                                 }
                                 else if (p.roll < 5)
@@ -429,8 +439,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Cobalt defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -439,7 +449,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (item_weapon == 2) //shortsword
+                        if (p.item_weapon == 2) //shortsword
                         {
                             p.dpmin = 5;
                             p.dpmax = 8;
@@ -449,11 +459,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             if (e.hp <= 0)
                             {
                                 printf("Cobalt defeated the %s!", enemy.c_str());
-                                score++;
-                                printf("Score: %i", score);
+                                p.score++;
+                                printf("Score: %i", p.score);
                             }
                         }
-                        if (item_weapon == 3) //spear
+                        if (p.item_weapon == 3) //spear
                         {
                             p.dpmin = 7;
                             p.dpmax = 9;
@@ -468,8 +478,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Cobalt defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -487,8 +497,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Cobalt defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 1)
@@ -498,10 +508,10 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             }
                         }
                     }
-                    if (chara == 2)
+                    if (p.chara == 2)
                     {
                         printf("\nMagenta tried to use his weapon\n");
-                        if (item_weapon == 1) //longsword
+                        if (p.item_weapon == 1) //longsword
                         {
                             p.dpmin = 10;
                             p.dpmax = 15;
@@ -516,8 +526,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Magenta defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 5)
@@ -535,8 +545,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Magenta defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -545,7 +555,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (item_weapon == 2) //shortsword
+                        if (p.item_weapon == 2) //shortsword
                         {
                             p.dpmin = 6;
                             p.dpmax = 9;
@@ -555,11 +565,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             if (e.hp <= 0)
                             {
                                 printf("Magenta defeated the %s!", enemy.c_str());
-                                score++;
-                                printf("Score: %i", score);
+                                p.score++;
+                                printf("Score: %i", p.score);
                             }
                         }
-                        if (item_weapon == 3) //spear
+                        if (p.item_weapon == 3) //spear
                         {
                             p.dpmin = 8;
                             p.dpmax = 13;
@@ -574,8 +584,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Magenta defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -593,8 +603,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Magenta defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 1)
@@ -604,10 +614,10 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             }
                         }
                     }
-                    if (chara == 3)
+                    if (p.chara == 3)
                     {
                         printf("\nSunflower tried to use her weapon\n");
-                        if (item_weapon == 1) //longsword
+                        if (p.item_weapon == 1) //longsword
                         {
                             p.dpmin = 8;
                             p.dpmax = 10;
@@ -622,8 +632,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Sunflower defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 5)
@@ -641,8 +651,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Sunflower defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -651,7 +661,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (item_weapon == 2) //shortsword
+                        if (p.item_weapon == 2) //shortsword
                         {
                             p.dpmin = 5;
                             p.dpmax = 8;
@@ -661,12 +671,12 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             if (e.hp <= 0)
                             {
                                 printf("Sunflower defeated the %s!", enemy.c_str());
-                                score++;
-                                printf("Score: %i", score);
+                                p.score++;
+                                printf("Score: %i", p.score);
                             }
 
                         }
-                        if (item_weapon == 3) //spear
+                        if (p.item_weapon == 3) //spear
                         {
                             p.dpmin = 7;
                             p.dpmax = 9;
@@ -681,8 +691,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Sunflower defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 3)
@@ -700,8 +710,8 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     if (e.hp <= 0)
                                     {
                                         printf("Sunflower defeated the %s!", enemy.c_str());
-                                        score++;
-                                        printf("Score: %i", score);
+                                        p.score++;
+                                        printf("Score: %i", p.score);
                                     }
                                 }
                                 else if (p.roll < 1)
@@ -714,7 +724,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                 }
                 else if (player_turn == 2)
                 {
-                    if (chara == 1)
+                    if (p.chara == 1)
                     {
                         printf("\nCobalt struck the enemy with her fists!\n");
                         p.dp = 5;
@@ -723,11 +733,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         if (e.hp <= 0)
                         {
                             printf("Cobalt defeated the %s!", enemy.c_str());
-                            score++;
-                            printf("Score: %i", score);
+                            p.score++;
+                            printf("Score: %i", p.score);
                         }
                     }
-                    if (chara == 2)
+                    if (p.chara == 2)
                     {
                         printf("\nMagenta struck the enemy with his fists!\n");
                         p.dp = 7;
@@ -736,11 +746,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         if (e.hp <= 0)
                         {
                             printf("Magenta defeated the %s!", enemy.c_str());
-                            score++;
-                            printf("Score: %i", score);
+                            p.score++;
+                            printf("Score: %i", p.score);
                         }
                     }
-                    if (chara == 3)
+                    if (p.chara == 3)
                     {
                         printf("\nSunflower struck the enemy with her fists!\n");
                         p.dp = 5;
@@ -749,16 +759,16 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         if (e.hp <= 0)
                         {
                             printf("Sunflower defeated the %s!", enemy.c_str());
-                            score++;
-                            printf("Score: %i", score);
+                            p.score++;
+                            printf("Score: %i", p.score);
                         }
                     }
                 }
                 else if (player_turn == 3)
                 {
-                    if (item_misc == 2)
+                    if (p.item_misc == 2)
                     {
-                        if (chara == 1 || chara == 2)
+                        if (p.chara == 1 || p.chara == 2)
                         {
                             do
                             {
@@ -778,11 +788,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 {
                                     p.hp = 30;
                                 }
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("Cobalt gained %i hp! Cobalt now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                if (chara == 2)
+                                if (p.chara == 2)
                                 {
                                     printf("Magenta gained %i hp! Magenta now has %i hp\n", p.hphealed, p.hp);
                                 }
@@ -792,29 +802,29 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 if (player_accuracy == false)
                                 {
                                     player_accuracy = true;
-                                    if (chara == 1)
+                                    if (p.chara == 1)
                                     {
                                         printf("Cobalt's accuracy was raised by 2 stages\nAccuracy checks will now be more forgiving\n");
                                     }
-                                    if (chara == 2)
+                                    if (p.chara == 2)
                                     {
                                         printf("Magenta's accuracy was raised by 2 stages\nAccuracy checks will now be more forgiving\n");
                                     }
                                 }
                                 else if (player_accuracy == true)
                                 {
-                                    if (chara == 1)
+                                    if (p.chara == 1)
                                     {
                                         printf("Cobalt's accuracy is already raised\nCobalt's turn was skipped\n");
                                     }
-                                    if (chara == 2)
+                                    if (p.chara == 2)
                                     {
                                         printf("Magenta's accuracy is already raised\nMagenta's turn was skipped\n");
                                     }
                                 }
                             }
                         }
-                        if (chara == 3)
+                        if (p.chara == 3)
                         {
                             do
                             {
@@ -840,14 +850,14 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 if (player_accuracy == false)
                                 {
                                     player_accuracy = true;
-                                    if (chara == 3)
+                                    if (p.chara == 3)
                                     {
                                         printf("Sunflower's accuracy was raised by 2 stages\nAccuracy checks will now be more forgiving\n");
                                     }                                   
                                 }
                                 else if (player_accuracy == true)
                                 {
-                                    if (chara == 3)
+                                    if (p.chara == 3)
                                     {
                                         printf("Sunflower's accuracy is already raised\nSunflower's turn was skipped\n");
                                     }
@@ -897,9 +907,9 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             }
                         }
                     }
-                    if (item_misc != 2)
+                    if (p.item_misc != 2)
                     {
-                        if (chara == 3)
+                        if (p.chara == 3)
                         {
                             do
                             {
@@ -926,14 +936,14 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 if (player_accuracy == false)
                                 {
                                     player_accuracy = true;
-                                    if (chara == 3)
+                                    if (p.chara == 3)
                                     {
                                         printf("Sunflower's accuracy was raised by 2 stages\nAccuracy checks will now be more forgiving\n");
                                     }
                                 }
                                 else if (player_accuracy == true)
                                 {
-                                    if (chara == 3)
+                                    if (p.chara == 3)
                                     {
                                         printf("Sunflower's accuracy is already raised\nSunflower's turn was skipped\n");
                                     }
@@ -982,11 +992,11 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (chara == 1)
+                        if (p.chara == 1)
                         {
                             printf("Cobalt does not have any spells!\nCobalt's turn was skipped\n");
                         }
-                        if (chara == 2)
+                        if (p.chara == 2)
                         {
                             printf("Magenta does not have any spells!\nMagenta's turn was skipped!\n");
                         }
@@ -995,7 +1005,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                 else if (player_turn == 4)
                 {
                 int item_battlechoice;
-                    if (item_misc == 1)
+                    if (p.item_misc == 1)
                     {
                         do
                         {
@@ -1005,33 +1015,33 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         } while (item_battlechoice != 1 && item_battlechoice != 2);
                         if (item_battlechoice == 1)
                         {
-                            if (potions > 0)
+                            if (p.potions > 0)
                             {
                                 p.hp = 30;
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("\nCobalt used a potion!\nCobalt now has %i hp\n", p.hp);
                                 }
-                                if (chara == 2)
+                                if (p.chara == 2)
                                 {
                                     printf("\nMagenta used a potion!\nMagenta now has %i hp\n", p.hp);
                                 }
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("\nSunflower used a potion!\nSunflower now has %i hp\n", p.hp);
                                 }
                             }
-                            if (potions <= 0)
+                            if (p.potions <= 0)
                             {
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("\nCobalt has no potions left!\nCobalt's turn was skipped\n");
                                 }
-                                if (chara == 2)
+                                if (p.chara == 2)
                                 {
                                     printf("\nMagenta has no potions left!\nMagenta's turn was sipped\n");
                                 }
-                                if (chara == 3)
+                                if (p.chara == 3)
                                 {
                                     printf("\nSunflower has no items remaining!\nSunflower's turn was skipped!\n");
                                 }
@@ -1039,21 +1049,21 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         }
                         if (item_battlechoice == 2)
                         {
-                            if (lunchbox > 0)
+                            if (p.lunchbox > 0)
                             {
                                 food = foodmin + rand() % (foodmax - foodmin + 1);
                                 if (food == 1) //sandwich
                                 {
                                     p.hp = 30;
-                                    if (chara == 1)
+                                    if (p.chara == 1)
                                     {
                                         printf("\nCobalt ate a sandwich and healed fully!\nCobalt now has %i hp\n", p.hp);
                                     }
-                                    if (chara == 2)
+                                    if (p.chara == 2)
                                     {
                                         printf("\nMagenta ate a sandwich and healed fully!\nMagenta now has %i hp\n", p.hp);
                                     }
-                                    if (chara == 3)
+                                    if (p.chara == 3)
                                     {
                                         printf("\nSunflower ate a sandwich and healed fully!\nSunflower now has %i hp\n", p.hp);
                                     }
@@ -1070,15 +1080,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         p.hp = 30;
                                     }
-                                    if (chara == 1)
+                                    if (p.chara == 1)
                                     {
                                         printf("\nCobalt ate a fruitcup and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    if (chara == 2)
+                                    if (p.chara == 2)
                                     {
                                         printf("\nMagenta ate a fruitcup and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    if (chara == 3)
+                                    if (p.chara == 3)
                                     {
                                         printf("\nSunflower ate a fruitcup and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                     }
@@ -1092,15 +1102,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         p.hp = 30;
                                     }
-                                    if (chara == 1)
+                                    if (p.chara == 1)
                                     {
                                         printf("\nCobalt drank a soda and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    if (chara == 2)
+                                    if (p.chara == 2)
                                     {
                                         printf("\nMagenta drank a soda and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    if (chara == 3)
+                                    if (p.chara == 3)
                                     {
                                         printf("\nSunflower drank a soda and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                     }
@@ -1117,15 +1127,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         p.hp = 30;
                                     }
-                                    if (chara == 1)
+                                    if (p.chara == 1)
                                     {
                                         printf("\nCobalt ate beef jerkey and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    if (chara == 2)
+                                    if (p.chara == 2)
                                     {
                                         printf("\nMagenta ate beef jerkey and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    if (chara == 3)
+                                    if (p.chara == 3)
                                     {
                                         printf("\nSunflower ate beef jerkey and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                     }
@@ -1142,15 +1152,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                     {
                                         p.hp = 30;
                                     }
-                                    if (chara == 1)
+                                    if (p.chara == 1)
                                     {
                                         printf("\nCobalt ate a slice of cake and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    if (chara == 2)
+                                    if (p.chara == 2)
                                     {
                                         printf("\nMagenta ate a slice of cake and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    if (chara == 3)
+                                    if (p.chara == 3)
                                     {
                                         printf("\nSunflower ate a slice of cake and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                     }
@@ -1159,38 +1169,38 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                             }
                             else if (food <= 0)
                             {
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("Cobalt's lunchbox is empty!\nCobalt's turn was skipped\n");
                                 }
-                                if (chara == 2)
+                                if (p.chara == 2)
                                 {
                                     printf("Magenta's lunchbox is empty!\nMagenta's turn was skipped\n");
                                 }
-                                if (chara == 3)
+                                if (p.chara == 3)
                                 {
                                     printf("Sunflower's lunchbox is empty!\nSunflower's turn was skipped\n");
                                 }
                             }
                         }
                     }
-                    if (item_misc == 3 || item_misc == 2)
+                    if (p.item_misc == 3 || p.item_misc == 2)
                     {
-                        if (lunchbox > 0)
+                        if (p.lunchbox > 0)
                         {
                             food = foodmin + rand() % (foodmax - foodmin + 1);
                             if (food == 1) //sandwich
                             {
                                 p.hp = 30;
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("\nCobalt ate a sandwich and healed fully!\nCobalt now has %i hp\n", p.hp);
                                 }
-                                if (chara == 2)
+                                if (p.chara == 2)
                                 {
                                     printf("\nMagenta ate a sandwich and healed fully!\nMagenta now has %i hp\n", p.hp);
                                 }
-                                if (chara == 3)
+                                if (p.chara == 3)
                                 {
                                     printf("\nSunflower ate a sandwich and healed fully!\nSunflower now has %i hp\n", p.hp);
                                 }
@@ -1207,15 +1217,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 {
                                     p.hp = 30;
                                 }
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("\nCobalt ate a fruitcup and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                if (chara == 2)
+                                if (p.chara == 2)
                                 {
                                     printf("\nMagenta ate a fruitcup and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                if (chara == 3)
+                                if (p.chara == 3)
                                 {
                                     printf("\nSunflower ate a fruitcup and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                 }
@@ -1229,15 +1239,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 {
                                     p.hp = 30;
                                 }
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("\nCobalt drank a soda and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                if (chara == 2)
+                                if (p.chara == 2)
                                 {
                                     printf("\nMagenta drank a soda and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                if (chara == 3)
+                                if (p.chara == 3)
                                 {
                                     printf("\nSunflower drank a soda and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                 }
@@ -1254,15 +1264,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 {
                                     p.hp = 30;
                                 }
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("\nCobalt ate beef jerkey and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                if (chara == 2)
+                                if (p.chara == 2)
                                 {
                                     printf("\nMagenta ate beef jerkey and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                if (chara == 3)
+                                if (p.chara == 3)
                                 {
                                     printf("\nSunflower ate beef jerkey and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                 }
@@ -1279,15 +1289,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 {
                                     p.hp = 30;
                                 }
-                                if (chara == 1)
+                                if (p.chara == 1)
                                 {
                                     printf("\nCobalt ate a slice of cake and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                if (chara == 2)
+                                if (p.chara == 2)
                                 {
                                     printf("\nMagenta ate a slice of cake and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                if (chara == 3)
+                                if (p.chara == 3)
                                 {
                                     printf("\nSunflower ate a slice of cake and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                 }
@@ -1296,15 +1306,15 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                         }
                         else if (food <= 0)
                         {
-                            if (chara == 1)
+                            if (p.chara == 1)
                             {
                                 printf("Cobalt's lunchbox is empty!\nCobalt's turn was skipped\n");
                             }
-                            if (chara == 2)
+                            if (p.chara == 2)
                             {
                                 printf("Magenta's lunchbox is empty!\nMagenta's turn was skipped\n");
                             }
-                            if (chara == 3)
+                            if (p.chara == 3)
                             {
                                 printf("Sunflower's lunchbox is empty!\nSunflower's turn was skipped\n");
                             }
@@ -1338,7 +1348,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                 {
                     if (enemy_type == 1)
                     {
-                        if (chara == 1)
+                        if (p.chara == 1)
                         {
                             printf("The %s tried to strike Cobalt with their fists!\n", enemy.c_str());
                             e.dpmin = 1;
@@ -1368,7 +1378,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }                                    
                                 }
                                 else if (e.roll < 2)
@@ -1400,7 +1410,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 4)
@@ -1409,7 +1419,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (chara == 2)
+                        if (p.chara == 2)
                         {
                             printf("The %s tried to strike Magenta with their fists!\n", enemy.c_str());
                             e.dpmin = 1;
@@ -1439,7 +1449,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 2)
@@ -1471,7 +1481,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 4)
@@ -1480,7 +1490,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (chara == 3)
+                        if (p.chara == 3)
                         {
                             printf("The %s tried to strike Sunflower with their fists!\n", enemy.c_str());
                             e.dpmin = 1;
@@ -1510,7 +1520,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 2)
@@ -1542,7 +1552,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 4)
@@ -1554,7 +1564,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                     }
                     if (enemy_type == 2)
                     {
-                        if (chara == 1)
+                        if (p.chara == 1)
                         {
                             printf("The %s tried to strike Cobalt with their sword!\n", enemy.c_str());
                             e.dpmin = 3;
@@ -1584,7 +1594,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 4)
@@ -1616,7 +1626,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 6)
@@ -1625,7 +1635,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (chara == 2)
+                        if (p.chara == 2)
                         {
                             printf("The %s tried to strike Magenta with their sword!\n", enemy.c_str());
                             e.dpmin = 4;
@@ -1655,7 +1665,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 4)
@@ -1687,7 +1697,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 6)
@@ -1696,7 +1706,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (chara == 3)
+                        if (p.chara == 3)
                         {
                             printf("The %s tried to strike Sunflower with their sword!\n", enemy.c_str());
                             e.dpmin = 4;
@@ -1726,7 +1736,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 4)
@@ -1758,7 +1768,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 6)
@@ -1770,7 +1780,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                     }
                     if (enemy_type == 3)
                     {
-                        if (chara == 1)
+                        if (p.chara == 1)
                         {
                             printf("The %s tried to strike Cobalt with their club!\n", enemy.c_str());
                             e.dpmin = 5;
@@ -1800,7 +1810,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 6)
@@ -1832,7 +1842,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 8)
@@ -1841,7 +1851,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (chara == 2)
+                        if (p.chara == 2)
                         {
                             printf("The %s tried to strike Magenta with their club!\n", enemy.c_str());
                             e.dpmin = 6;
@@ -1871,7 +1881,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 6)
@@ -1903,7 +1913,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 8)
@@ -1912,7 +1922,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                 }
                             }
                         }
-                        if (chara == 3)
+                        if (p.chara == 3)
                         {
                             printf("The %s tried to strike Sunflower with their club!\n", enemy.c_str());
                             e.dpmin = 6;
@@ -1942,7 +1952,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 6)
@@ -1974,7 +1984,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         _getch();
-                                        score--;
+                                        p.score--;
                                     }
                                 }
                                 else if (e.roll < 8)
@@ -2022,7 +2032,7 @@ Player combat(Player p, Player e, int chara, int item_weapon, int item_misc, int
         }
     } 
 
-    printf("The battle ended\n");
+    printf("\nThe battle ended\n");
 
     return p;
 }
@@ -2047,6 +2057,7 @@ int ultramarine(int room, int chara, bool& win) //room 1
     }
     else if (chara == 3) //sunflower
     {
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You, Sunflower, wake up in Ultramarine.\n");
         printf("You look around in a panic, and see a system of buildings, almost completely submerged in water.\n");
         printf("You don't know your way back to Goldenrod!");
@@ -2096,7 +2107,7 @@ int canary(int room, string user, char savechoice, Player e, Player p) //room 2
         _getch();
         printf("An enemy jumps out!\n");
         //e[0].interaction(p);
-        combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+        combat(p, e);
         //add variable for if enemy has been encountered yet and include that in saved data
 
         printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2126,6 +2137,7 @@ int canary(int room, string user, char savechoice, Player e, Player p) //room 2
         else if (p.hp <= 0)
         {
             p.hp = 1;
+            printf("%s, please close the game window\n", user.c_str());
             //shut game down
         }
 
@@ -2142,7 +2154,7 @@ int violetblue(int room, string user, char savechoice, Player e, Player p) //roo
     printf("You hear something approach you from behind\n");
     _getch();
     printf("You spin around and see an enemy!\n");
-    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    combat(p, e);
     //e[1].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2154,13 +2166,22 @@ int violetblue(int room, string user, char savechoice, Player e, Player p) //roo
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    printf("1. Go to Violet District.\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
+    if (p.hp > 0)
     {
-        room = 8;
+        printf("1. Go to Violet District.\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 8;
+        }
+    }
+    else if (p.hp <= 0)
+    {
+        p.hp = 1;
+        printf("%s, please close the game window\n", user.c_str());
+        //shut game down
     }
 
     return room;
@@ -2209,6 +2230,7 @@ int goldenrod(int room, int chara, bool& win) //room 5
     int choice;
     if (chara == 2) //magenta
     {
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You, Magenta, up in Goldenrod.\n");
         printf("You look around in a panic, and see tall buildings, which tower over you.\n");
         printf("You don't know your way back to Rose Village!");
@@ -2363,7 +2385,7 @@ int silver(int room, string user, char savechoice, Player e, Player p) //room 9
     printf("You hear something struggling to swim to you\n");
     _getch();
     printf("An enemy jumps out of the water! You pity their poor swimming skills and decide to fight them\n");
-    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    combat(p, e);
     //e[2].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2375,13 +2397,22 @@ int silver(int room, string user, char savechoice, Player e, Player p) //room 9
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    printf("1. Go to West Goldenrod\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
+    if (p.hphealed > 0)
     {
-        room = 4;
+        printf("1. Go to West Goldenrod\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 4;
+        }
+    }
+    else if (p.hp <= 0)
+    {
+        p.hp = 1;
+        printf("%s, please close the game window\n", user.c_str());
+        //shut game down
     }
 
     return room;
@@ -2397,7 +2428,7 @@ int viridian(int room, string user, char savechoice, Player e, Player p) //room 
     printf("You hear something jump out of a tree\n");
     _getch();
     printf("An enemy lands in front of you!\n");
-    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    combat(p, e);
     //e[3].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2409,17 +2440,26 @@ int viridian(int room, string user, char savechoice, Player e, Player p) //room 
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    printf("1. Go to Goldenrod\n2. Go to Carrot Meadow\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
+    if (p.hp > 0)
     {
-        room = 5;
+        printf("1. Go to Goldenrod\n2. Go to Carrot Meadow\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 5;
+        }
+        else if (choice == 2)
+        {
+            room = 15;
+        }
     }
-    else if (choice == 2)
+    else if (p.hp <= 0)
     {
-        room = 15;
+        p.hp = 1;
+        printf("%s, please close the game window\n", user.c_str());
+        //shut game down
     }
 
     return room;
@@ -2435,29 +2475,38 @@ int fluorescent(int room, string user, char savechoice, Player e, Player p) //ro
     printf("You hear something sloshing through the deep mud\n");
     _getch();
     printf("An enemy slowly approaches!\n");
-    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    combat(p, e);
     //e[4].interaction(p);
 
-    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
-    scanf_s("%c", &savechoice);
-    fseek(stdin, 0, SEEK_END);
-    if (savechoice == 'y')
+    if (p.hp > 0)
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
-        printf("\n%s's data has been saved\n", user.c_str());
-    }
+        printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+        scanf_s("%c", &savechoice);
+        fseek(stdin, 0, SEEK_END);
+        if (savechoice == 'y')
+        {
+            void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+            printf("\n%s's data has been saved\n", user.c_str());
+        }
 
-    printf("1. Go to Maroon Town\n2. Go to Pumpkin Patch\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
-    {
-        room = 6;
+        printf("1. Go to Maroon Town\n2. Go to Pumpkin Patch\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 6;
+        }
+        else if (choice == 2)
+        {
+            room = 16;
+        }
     }
-    else if (choice == 2)
+    else if (p.hp <= 0)
     {
-        room = 16;
+        p.hp = 1;
+        printf("%s, please close the game window\n", user.c_str());
+        //shut game down
     }
 
     return room;
@@ -2473,7 +2522,7 @@ int rust(int room, string user, char savechoice, Player e, Player p) //room 12
     printf("You hear shoes against the old, metal floor\n");
     _getch();
     printf("An enemy loudly jumps in front of you!\n");
-    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    combat(p, e);
     //e[5].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2485,17 +2534,26 @@ int rust(int room, string user, char savechoice, Player e, Player p) //room 12
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    printf("1. Go to Sunset Observatory\n2. Go to Midnight Blue Town\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
+    if (p.hp > 0)
     {
-        room = 7;
+        printf("1. Go to Sunset Observatory\n2. Go to Midnight Blue Town\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 7;
+        }
+        else if (choice == 2)
+        {
+            room = 13;
+        }
     }
-    else if (choice == 2)
+    else if (p.hp <= 0)
     {
-        room = 13;
+        p.hp = 1;
+        printf("%s, please close the game window\n", user.c_str());
+        //shut game down
     }
 
     return room;
@@ -2511,7 +2569,7 @@ int midnightblue(int room, string user, char savechoice, Player e, Player p) //r
     printf("Out of the corner of your eye, you notice something in the shadows\n");
     _getch();
     printf("A lurking enemy tries to sneak up on you!\n");
-    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    combat(p, e);
     //e[6].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2523,21 +2581,30 @@ int midnightblue(int room, string user, char savechoice, Player e, Player p) //r
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to Rust Laboratory\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
+    if (p.hp > 0)
     {
-        room = 8;
+        printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to Rust Laboratory\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 8;
+        }
+        else if (choice == 2)
+        {
+            room = 14;
+        }
+        else if (choice == 3)
+        {
+            room = 12;
+        }
     }
-    else if (choice == 2)
+    else if (p.hp <= 0)
     {
-        room = 14;
-    }
-    else if (choice == 3)
-    {
-        room = 12;
+        printf("%s, please close the game window\n", user.c_str());
+        p.hp = 1;
+        //shut game down
     }
 
     return room;
@@ -2684,7 +2751,7 @@ int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
     printf("You hear rustling in the leaves\n");
     _getch();
     printf("An enemy jumps out of a red leaf pile!\n");
-    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    combat(p, e);
     //e[7].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2696,21 +2763,30 @@ int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    printf("1. Go to Sienna Village\n2. Go to Purple Mountains Majesty\n3. Go to Olive Vineyard\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
+    if (p.hp > 0)
     {
-        room = 19;
+        printf("1. Go to Sienna Village\n2. Go to Purple Mountains Majesty\n3. Go to Olive Vineyard\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 19;
+        }
+        else if (choice == 2)
+        {
+            room = 23;
+        }
+        else if (choice == 3)
+        {
+            room = 17;
+        }
     }
-    else if (choice == 2)
+    else if (p.hp <= 0)
     {
-        room = 23;
-    }
-    else if (choice == 3)
-    {
-        room = 17;
+        p.hp = 1;
+        printf("%s, please close the game window\n", user.c_str());
+        //shut game down
     }
 
     return room;
@@ -2726,7 +2802,7 @@ int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
     printf("Someone by the fire turns and walks toward you\n");
     _getch();
     printf("An enemy stands in your way!\n");
-    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    combat(p, e);
     //e.interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2738,25 +2814,34 @@ int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    printf("1. Go to Rainbow Bazaar\n2. Go to Cream Factory\n3. Go to Fuschia Village\n4. Go to Rouge Pass\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
+    if (p.hp > 0)
     {
-        room = 14;
+        printf("1. Go to Rainbow Bazaar\n2. Go to Cream Factory\n3. Go to Fuschia Village\n4. Go to Rouge Pass\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 14;
+        }
+        else if (choice == 2)
+        {
+            room = 20;
+        }
+        else if (choice == 3)
+        {
+            room = 24;
+        }
+        else if (choice == 4)
+        {
+            room = 18;
+        }
     }
-    else if (choice == 2)
+    else if (p.hp <= 0)
     {
-        room = 20;
-    }
-    else if (choice == 3)
-    {
-        room = 24;
-    }
-    else if (choice == 4)
-    {
-        room = 18;
+        p.hp = 1;
+        printf("%s, please close the game window\n", user.c_str());
+        //shut game down
     }
 
     return room;
@@ -2880,7 +2965,7 @@ int fuschia(int room, string user, char savechoice, Player e, Player p) //room 2
     printf("You hear a tent flap opening\n");
     _getch();
     printf("You turn around and see an emeny!\n");
-    combat(p, e, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, p.score);
+    combat(p, e);
     //e[9].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2892,21 +2977,30 @@ int fuschia(int room, string user, char savechoice, Player e, Player p) //room 2
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    printf("1. Go to Sienna Village\n2. Go to Rose Village\n3. Go to Purple Mountains Majesty\n");
-    printf(">");
-    scanf_s("%i", &choice);
-    fseek(stdin, 0, SEEK_END);
-    if (choice == 1)
+    if (p.hp > 0)
     {
-        room = 19;
+        printf("1. Go to Sienna Village\n2. Go to Rose Village\n3. Go to Purple Mountains Majesty\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 19;
+        }
+        else if (choice == 2)
+        {
+            room = 25;
+        }
+        else if (choice == 3)
+        {
+            room = 23;
+        }
     }
-    else if (choice == 2)
+    else if (p.hp <= 0)
     {
-        room = 25;
-    }
-    else if (choice == 3)
-    {
-        room = 23;
+        p.hp = 1;
+        printf("%s, please close the game window\n", user.c_str());
+        //shut game down
     }
 
     return room;
@@ -2917,6 +3011,7 @@ int rose(int room, int chara, bool& win) //room 25
     int choice;
     if (chara == 1) //cobalt
     {
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You, Cobalt, wake up in Rose Village.\n");
         printf("You looked around in a panic, and see fields of flowers.\n");
         printf("You don't know your way back to Ultramarine!\n");
@@ -2965,6 +3060,7 @@ int main()
 {
     Player p;
     p.chara = 0;
+    p.score = 0;
     Player e;
     
     vector<Player> npc_e; //something with this needs to be fixed
@@ -3365,7 +3461,7 @@ int main()
                         printf("2. Spellbook\n");
                         printf("\t\tAllows your selected character to use spells they do not normally have access to (useless to Sunflower)\n");
                         printf("3. Full lunchbox\n");
-                        printf("\t\tContains various food items that may be used to heal self by a random amount (Your character will have an empty lunchbox if you do not select this item)\n");
+                        printf("\t\tContains various food items that may be used to heal self by a random amount\n\t\t(Your character will have an empty lunchbox if you do not select this item)\n");
 
                         printf(">");
                         scanf_s("%i", &p.item_misc);
@@ -3408,6 +3504,7 @@ int main()
     bool start = true;
     do
     {
+        printf("\n\n\tScore: %i\n\n", score);
         if (newgame == true)
         {
             if (p.chara == 1 && start)
