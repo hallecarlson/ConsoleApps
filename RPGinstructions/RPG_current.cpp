@@ -326,6 +326,9 @@
                         Fixed an issue with canary to sunset skipping sunset and going to rust
                         Minor code changes
                         Pushed to GitHub
+
+                        Fixed some formatting issues
+                        Pushed to GitHub
 */ 
 
 #include <iostream>
@@ -2067,7 +2070,7 @@ int ultramarine(int room, int chara, bool& win) //room 1
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You, Sunflower, wake up in Ultramarine.\n");
         printf("You look around in a panic, and see a system of buildings, almost completely submerged in water.\n");
-        printf("You don't know your way back to Goldenrod!");
+        printf("You don't know your way back to Goldenrod!\n");
         _getch;
 
         printf("You are now in Ultramarine.\n");
@@ -2110,11 +2113,11 @@ int canary(int room, string user, char savechoice, Player e, Player p) //room 2
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now on Canary Yellow Island\n");
         printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
-        printf("To the West is Ultramarine and to the south is Sunset Observatory.\n");
+        printf("To the West is Ultramarine and to the south is Sunset Observatory.\n\n");
 
         printf("You hear rustling in the foliage\n\n");
         _getch();
-        printf("An enemy jumps out!\n");
+        printf("An enemy jumps out!\n\n");
         //e[0].interaction(p);
         combat(p, e);
         //add variable for if enemy has been encountered yet and include that in saved data
@@ -2159,11 +2162,11 @@ int violetblue(int room, string user, char savechoice, Player e, Player p) //roo
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Violet Blue Town \n");
     printf("It's a sleepy town of stargazers and birdwatchers.\nThe sky is entirely lit up with stars.\n");
-    printf("To the South is Violet District.\nYou've reached a dead end.\n");
+    printf("To the South is Violet District.\nYou've reached a dead end.\n\n");
 
-    printf("You hear something approach you from behind\n");
+    printf("You hear something approach you from behind\n\n");
     _getch();
-    printf("You spin around and see an enemy!\n");
+    printf("You spin around and see an enemy!\n\n");
     combat(p, e);
     //e[1].interaction(p);
 
@@ -2203,19 +2206,19 @@ int westgolden(int room, vector<Merchant> npc_m, Player p, int chara) //room 4
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in West Goldenrod\n");
     printf("It's a small residential district of greater Goldenrod.\nThere isn't much to see here.\n");
-    printf("To the East is Goldenrod and to the South is Silver Quarry.\n");
+    printf("To the East is Goldenrod and to the South is Silver Quarry.\n\n");
 
     if (chara == 1)
     {
-        printf("Cobalt sees someone off in the distance, standing next to a food display\n");
+        printf("Cobalt sees someone off in the distance, standing next to a food display\n\n");
     }
     else if (chara == 2)
     {
-        printf("Magenta sees someone off in the distance, standing next to a food display\n");
+        printf("Magenta sees someone off in the distance, standing next to a food display\n\n");
     }
     else if (chara == 3)
     {
-        printf("Sunflower sees someone off in the distance, standing next to a food display\n");
+        printf("Sunflower sees someone off in the distance, standing next to a food display\n\n");
     }
     npc_m[0].interaction(p);
 
@@ -2299,19 +2302,19 @@ int maroon(int room, vector<Merchant> npc_m, Player p, int chara) //room 6
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Maroon Town\n");
-    printf("It's a small, laid back town.\nThere are item kiosks here.\n");
+    printf("It's a small, laid back town.\nThere are item kiosks here.\n\n");
 
     if (chara == 1)
     {
-        printf("Cobalt sees someone off in the distance, standing next to one of the kiosks\n");
+        printf("Cobalt sees someone off in the distance, standing next to one of the kiosks\n\n");
     }
     else if (chara == 2)
     {
-        printf("Magenta sees someone off in the distance, standing next to one of the kiosks\n");
+        printf("Magenta sees someone off in the distance, standing next to one of the kiosks\n\n");
     }
     else if (chara == 3)
     {
-        printf("Sunflower sees someone off in the distance, standing next to one of the kiosks\n");
+        printf("Sunflower sees someone off in the distance, standing next to one of the kiosks\n\n");
     }
     npc_m[1].interaction(p);
 
@@ -2359,19 +2362,19 @@ int violet(int room, vector<Merchant> npc_m, Player p, int chara) //room 8
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Violet District\n");
     printf("It's a crowded neighborhood on the outskirts of Goldenrod\nEverywhere around you are people travelling to places.\n");
-    printf("To the North is Violet Blue Town and to the South is Midnight Blue Town.\n");
+    printf("To the North is Violet Blue Town and to the South is Midnight Blue Town.\n\n");
 
     if (chara == 1)
     {
-        printf("Cobalt sees someone among the crowd, standing in under a hooded wall of a building\n");
+        printf("Cobalt sees someone among the crowd, standing in under a hooded wall of a building\n\n");
     }
     else if (chara == 2)
     {
-        printf("Magenta sees someone among the crowd, standing in under a hooded wall of a building\n");
+        printf("Magenta sees someone among the crowd, standing in under a hooded wall of a building\n\n");
     }
     else if (chara == 3)
     {
-        printf("Sunflower sees someone among the crowd, standing in under a hooded wall of a building\n");
+        printf("Sunflower sees someone among the crowd, standing in under a hooded wall of a building\n\n");
     }
     npc_m[2].interaction(p);
 
@@ -2397,11 +2400,11 @@ int silver(int room, string user, char savechoice, Player e, Player p) //room 9
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Silver Quarry\n");
     printf("Shimmering, clear water flows throug small canyons and tunnels.\n");
-    printf("To the North is West Goldenrod.\nYou've reached a dead end.\n");
+    printf("To the North is West Goldenrod.\nYou've reached a dead end.\n\n");
 
-    printf("You hear something struggling to swim to you\n");
+    printf("You hear something struggling to swim to you\n\n");
     _getch();
-    printf("An enemy jumps out of the water! You pity their poor swimming skills and decide to fight them\n");
+    printf("An enemy jumps out of the water!\n You pity their poor swimming skills and decide to fight them\n\n");
     combat(p, e);
     //e[2].interaction(p);
 
@@ -2441,11 +2444,11 @@ int viridian(int room, string user, char savechoice, Player e, Player p) //room 
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Viridian Forest\n");
     printf("The woods are thick and dim. Patches of sunlight shine through the canopy.\n");
-    printf("To the North is Goldenrod and to the South is Carrot Meadow.\n");
+    printf("To the North is Goldenrod and to the South is Carrot Meadow.\n\n");
 
-    printf("You hear something jump out of a tree\n");
+    printf("You hear something jump out of a tree\n\n");
     _getch();
-    printf("An enemy lands in front of you!\n");
+    printf("An enemy lands in front of you!\n\n");
     combat(p, e);
     //e[3].interaction(p);
 
@@ -2489,11 +2492,11 @@ int fluorescent(int room, string user, char savechoice, Player e, Player p) //ro
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Fluorescent Marsh\n");
     printf("Colorful plants stick out of the bright blue mud.\nThere are a few paths of wet grass that look well-traversed.\n");
-    printf("To the North is Maroon Town and to the South is Pumpkin Patch.\n");
+    printf("To the North is Maroon Town and to the South is Pumpkin Patch.\n\n");
 
-    printf("You hear something sloshing through the deep mud\n");
+    printf("You hear something sloshing through the deep mud\n\n");
     _getch();
-    printf("An enemy slowly approaches!\n");
+    printf("An enemy slowly approaches!\n\n");
     combat(p, e);
     //e[4].interaction(p);
 
@@ -2537,11 +2540,11 @@ int rust(int room, string user, char savechoice, Player e, Player p) //room 12
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Rust Laboratory\n");
     printf("It's an old laboratory full of scary machinery and sinister-looking blueprints.\n");
-    printf("To the North is Sunset Observatory and to the East is Midnight Blue Town.\n");
+    printf("To the North is Sunset Observatory and to the East is Midnight Blue Town.\n\n");
 
-    printf("You hear shoes against the old, metal floor\n");
+    printf("You hear shoes against the old, metal floor\n\n");
     _getch();
-    printf("An enemy loudly jumps in front of you!\n");
+    printf("An enemy loudly jumps in front of you!\n\n");
     combat(p, e);
     //e[5].interaction(p);
 
@@ -2585,11 +2588,11 @@ int midnightblue(int room, string user, char savechoice, Player e, Player p) //r
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Midnight Blue Town\n");
     printf("It's a dodgy, dark town without any stars in the sky.\nIt's always night here.\n");
-    printf("To the North is Violet Distrtict, to the East is Rainbow Bazaar, and to the West is Rust Laboratory.\n");
+    printf("To the North is Violet Distrtict, to the East is Rainbow Bazaar, and to the West is Rust Laboratory.\n\n");
 
-    printf("Out of the corner of your eye, you notice something in the shadows\n");
+    printf("Out of the corner of your eye, you notice something in the shadows\n\n");
     _getch();
-    printf("A lurking enemy tries to sneak up on you!\n");
+    printf("A lurking enemy tries to sneak up on you!\n\n");
     combat(p, e);
     //e[6].interaction(p);
 
@@ -2636,19 +2639,19 @@ int rainbow(int room, vector<Merchant> npc_m, Player p, int chara) //room 14
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Rainbow Bazaar.\n");
-    printf("Dozens of colorful tents surround you, stocked with many items.\n");
+    printf("Dozens of colorful tents surround you, stocked with many items.\n\n");
 
     if (chara == 1)
     {
-        printf("Cobalt sees someone in a purple tent, directly in front of her. They're waering the purple robes of a royal castletown guard.\n");
+        printf("Cobalt sees someone in a purple tent, directly in front of her. They're waering the purple robes of a royal castletown guard.\n\n");
     }
     else if (chara == 2)
     {
-        printf("Magenta sees someone in a purple tent, directly in front of him. They're waering the purple robes of a royal castletown guard.\n");
+        printf("Magenta sees someone in a purple tent, directly in front of him. They're waering the purple robes of a royal castletown guard.\n\n");
     }
     else if (chara == 3)
     {
-        printf("Sunflower sees someone in a purple tent, directly in front of her. They're waering the purple robes of a royal castletown guard.\n");
+        printf("Sunflower sees someone in a purple tent, directly in front of her. They're waering the purple robes of a royal castletown guard.\n\n");
     }
     npc_m[3].interaction(p);
 
@@ -2680,19 +2683,19 @@ int carrot(int room, vector<Merchant> npc_m, Player p, int chara) //room 15
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Carrot Meadow.\n");
     printf("There are a few farmers around the dirt field who are harvesting the thousands of carrots.\nThere's not much to see otherwise.\n");
-    printf("To the North is Viridian Forest and to the West is Rainbow Bazaar.\n");
+    printf("To the North is Viridian Forest and to the West is Rainbow Bazaar.\n\n");
 
     if (chara == 1)
     {
-        printf("Cobalt sees someone in a farm stand, with crates filled to the brim with farm-to-table treats\n");
+        printf("Cobalt sees someone in a farm stand, with crates filled to the brim with farm-to-table treats\n\n");
     }
     else if (chara == 2)
     {
-        printf("Magenta sees someone in a farm stand, with crates filled to the brim with farm-to-table treats\n");
+        printf("Magenta sees someone in a farm stand, with crates filled to the brim with farm-to-table treats\n\n");
     }
     else if (chara == 3)
     {
-        printf("Sunflower sees someone in a farm stand, with crates filled to the brim with farm-to-table treats\n");
+        printf("Sunflower sees someone in a farm stand, with crates filled to the brim with farm-to-table treats\n\n");
     }
     npc_m[4].interaction(p);
 
@@ -2772,11 +2775,11 @@ int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Rouge Pass.\n");
     printf("It's a long, wide path lined with trees.\nThe leaves resemble the beautiful colors of autumn.\n");
-    printf("To the East is Sienna Village, to the South is Purple Mountains Majesty, and to the West is Olive Vineyard.\n");
+    printf("To the East is Sienna Village, to the South is Purple Mountains Majesty, and to the West is Olive Vineyard.\n\n");
 
-    printf("You hear rustling in the leaves\n");
+    printf("You hear rustling in the leaves\n\n");
     _getch();
-    printf("An enemy jumps out of a red leaf pile!\n");
+    printf("An enemy jumps out of a red leaf pile!\n\n");
     combat(p, e);
     //e[7].interaction(p);
 
@@ -2824,11 +2827,11 @@ int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Sienna Village.\n");
     printf("Log buildings surround a small village square.\nPeople sit around a bonfire playing folk songs.\n");
-    printf("To the North is Rainbow Bazaar, to the East is Cream Factory, to the South is Fuschia Village, and to the West is Rouge Pass.\n");
+    printf("To the North is Rainbow Bazaar, to the East is Cream Factory, to the South is Fuschia Village, and to the West is Rouge Pass.\n\n");
 
-    printf("Someone by the fire turns and walks toward you\n");
+    printf("Someone by the fire turns and walks toward you\n\n");
     _getch();
-    printf("An enemy stands in your way!\n");
+    printf("An enemy stands in your way!\n\n");
     combat(p, e);
     //e.interaction(p);
 
@@ -2924,19 +2927,19 @@ int royalcastletown(int room, vector<Merchant> npc_m, Player p, int chara) //roo
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Royal Purple Castletown.\n");
     printf("It's a small town built from stone bricks.\nFamily-owned item shops line the street,next to pubs and apartments.\n");
-    printf("Someone in a tunic and boots motions for you to come over.\nHe says he has heard of your good deeds and wants to offer you a free item from his shop.\n");
+    printf("Someone in a tunic and boots motions for you to come over.\nHe says he has heard of your good deeds and wants to offer you a free item from his shop.\n\n");
 
     if (chara == 1)
     {
-        printf("Cobalt sees someone outside a pub, with a small shop settled into a small alcove\n");
+        printf("Cobalt sees someone outside a pub, with a small shop settled into a small alcove\n\n");
     }
     else if (chara == 2)
     {
-        printf("Magenta sees someone outside a pub, with a small shop settled into a small alcove\n");
+        printf("Magenta sees someone outside a pub, with a small shop settled into a small alcove\n\n");
     }
     else if (chara == 3)
     {
-        printf("Sunflower sees someone outside a pub, with a small shop settled into a small alcove\n");
+        printf("Sunflower sees someone outside a pub, with a small shop settled into a small alcove\n\n");
     }
     npc_m[5].interaction(p);
 
@@ -2992,11 +2995,11 @@ int fuschia(int room, string user, char savechoice, Player e, Player p) //room 2
     printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Fuschia Village.\n");
     printf("There are red tents spread throughout the pink grass.\nA rose-colored river flows through the center of the village.\n");
-    printf("To the North is Sienna Village, to the East is Rose Village, and to the West is Purple Mountains Majesty.\n");
+    printf("To the North is Sienna Village, to the East is Rose Village, and to the West is Purple Mountains Majesty.\n\n");
 
-    printf("You hear a tent flap opening\n");
+    printf("You hear a tent flap opening\n\n");
     _getch();
-    printf("You turn around and see an emeny!\n");
+    printf("You turn around and see an emeny!\n\n");
     combat(p, e);
     //e[9].interaction(p);
 
