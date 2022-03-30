@@ -41,10 +41,9 @@
                         edits to make:
                         - rolls can probably change to not p.roll = 0 +rand() % (10 - 0 + 1) to something like 0 + rand() % 10
                         - lots of formatting issues
-                        - fix the odd number issues with -8903482890357 and such
                         - fix post-enemy encounter code to be like it is in canary
                         - add what happens in combat if the player does not select a weapon or misc item
-                        - canary to sunset skips sunset and puts player in rust
+                        - shut game down after defeat
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -319,6 +318,13 @@
                         Had Dhanasri Prabhu test game
                         Edited funtion calls to remove unnecessary variables
                         Added p. to a ton of variables in combat and main()
+                        Pushed to GitHub
+
+                        Pulled from GitHub
+                        Tested code with Sunflower
+                        Edited formatting issues
+                        Fixed an issue with canary to sunset skipping sunset and going to rust
+                        Minor code changes
                         Pushed to GitHub
 */ 
 
@@ -2052,6 +2058,7 @@ int ultramarine(int room, int chara, bool& win) //room 1
 
     if (chara == 1) //cobalt
     {
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now in Ultramarine\n");
         win = true;
     }
@@ -2078,6 +2085,7 @@ int ultramarine(int room, int chara, bool& win) //room 1
     }
     else //magenta
     {
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now in Ultramarine.\n");
         printf("It's a shimmering sea town with limestone buildings protruding from the ocean.\n");
         printf("To the East is Canary Yellow Island.\nYou've reached a dead end.\n");
@@ -2099,6 +2107,7 @@ int ultramarine(int room, int chara, bool& win) //room 1
 int canary(int room, string user, char savechoice, Player e, Player p) //room 2
 {
         int choice;
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now on Canary Yellow Island\n");
         printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
         printf("To the West is Ultramarine and to the south is Sunset Observatory.\n");
@@ -2131,7 +2140,7 @@ int canary(int room, string user, char savechoice, Player e, Player p) //room 2
             }
             else if (choice == 2)
             {
-                room = 12;
+                room = 7;
             }
         }
         else if (p.hp <= 0)
@@ -2147,6 +2156,7 @@ int canary(int room, string user, char savechoice, Player e, Player p) //room 2
 int violetblue(int room, string user, char savechoice, Player e, Player p) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if encountered
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Violet Blue Town \n");
     printf("It's a sleepy town of stargazers and birdwatchers.\nThe sky is entirely lit up with stars.\n");
     printf("To the South is Violet District.\nYou've reached a dead end.\n");
@@ -2190,6 +2200,7 @@ int violetblue(int room, string user, char savechoice, Player e, Player p) //roo
 int westgolden(int room, vector<Merchant> npc_m, Player p, int chara) //room 4
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in West Goldenrod\n");
     printf("It's a small residential district of greater Goldenrod.\nThere isn't much to see here.\n");
     printf("To the East is Goldenrod and to the South is Silver Quarry.\n");
@@ -2255,11 +2266,13 @@ int goldenrod(int room, int chara, bool& win) //room 5
     }
     else if (chara == 3) //sunflower
     {
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now in Goldenrod\n");
         win = true;
     }
     else //cobalt
     {
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now in Goldenrod\n");
         printf("It's a huge and glorious city.\nThere's so much to see that it's almost overwhelming.\n");
         printf("To the West is West Goldenrod and to the South is Viridian Forest.\n");
@@ -2284,6 +2297,7 @@ int goldenrod(int room, int chara, bool& win) //room 5
 int maroon(int room, vector<Merchant> npc_m, Player p, int chara) //room 6
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Maroon Town\n");
     printf("It's a small, laid back town.\nThere are item kiosks here.\n");
 
@@ -2318,6 +2332,7 @@ int maroon(int room, vector<Merchant> npc_m, Player p, int chara) //room 6
 int sunset(int room) //room 7
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Sunset Observatory\n");
     printf("You ascend the spiral staircase to the top and look out of the glass walls.\n");
     printf("To the North is Canary Yellow Island and to the South is Rust Laboratory.\n");
@@ -2341,6 +2356,7 @@ int sunset(int room) //room 7
 int violet(int room, vector<Merchant> npc_m, Player p, int chara) //room 8
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Violet District\n");
     printf("It's a crowded neighborhood on the outskirts of Goldenrod\nEverywhere around you are people travelling to places.\n");
     printf("To the North is Violet Blue Town and to the South is Midnight Blue Town.\n");
@@ -2378,6 +2394,7 @@ int violet(int room, vector<Merchant> npc_m, Player p, int chara) //room 8
 int silver(int room, string user, char savechoice, Player e, Player p) //room 9
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Silver Quarry\n");
     printf("Shimmering, clear water flows throug small canyons and tunnels.\n");
     printf("To the North is West Goldenrod.\nYou've reached a dead end.\n");
@@ -2421,6 +2438,7 @@ int silver(int room, string user, char savechoice, Player e, Player p) //room 9
 int viridian(int room, string user, char savechoice, Player e, Player p) //room 10
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Viridian Forest\n");
     printf("The woods are thick and dim. Patches of sunlight shine through the canopy.\n");
     printf("To the North is Goldenrod and to the South is Carrot Meadow.\n");
@@ -2468,6 +2486,7 @@ int viridian(int room, string user, char savechoice, Player e, Player p) //room 
 int fluorescent(int room, string user, char savechoice, Player e, Player p) //room 11
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Fluorescent Marsh\n");
     printf("Colorful plants stick out of the bright blue mud.\nThere are a few paths of wet grass that look well-traversed.\n");
     printf("To the North is Maroon Town and to the South is Pumpkin Patch.\n");
@@ -2515,6 +2534,7 @@ int fluorescent(int room, string user, char savechoice, Player e, Player p) //ro
 int rust(int room, string user, char savechoice, Player e, Player p) //room 12
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Rust Laboratory\n");
     printf("It's an old laboratory full of scary machinery and sinister-looking blueprints.\n");
     printf("To the North is Sunset Observatory and to the East is Midnight Blue Town.\n");
@@ -2562,6 +2582,7 @@ int rust(int room, string user, char savechoice, Player e, Player p) //room 12
 int midnightblue(int room, string user, char savechoice, Player e, Player p) //room 13
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Midnight Blue Town\n");
     printf("It's a dodgy, dark town without any stars in the sky.\nIt's always night here.\n");
     printf("To the North is Violet Distrtict, to the East is Rainbow Bazaar, and to the West is Rust Laboratory.\n");
@@ -2613,6 +2634,7 @@ int midnightblue(int room, string user, char savechoice, Player e, Player p) //r
 int rainbow(int room, vector<Merchant> npc_m, Player p, int chara) //room 14
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Rainbow Bazaar.\n");
     printf("Dozens of colorful tents surround you, stocked with many items.\n");
 
@@ -2655,6 +2677,7 @@ int rainbow(int room, vector<Merchant> npc_m, Player p, int chara) //room 14
 int carrot(int room, vector<Merchant> npc_m, Player p, int chara) //room 15
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Carrot Meadow.\n");
     printf("There are a few farmers around the dirt field who are harvesting the thousands of carrots.\nThere's not much to see otherwise.\n");
     printf("To the North is Viridian Forest and to the West is Rainbow Bazaar.\n");
@@ -2692,6 +2715,7 @@ int carrot(int room, vector<Merchant> npc_m, Player p, int chara) //room 15
 int pumpkin(int room) //room 16
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Pumpkin Patch.\n");
     printf("It's a spooky field of seemingly normal-looking pumpkins.\nUpon closer look, some of them are carved jack o' lanterns with candles inside.\n");
     printf("To the North is Fluorescent Marsh, to the East is Olive Vineyard, and to the South is Royal Purple Castle.\n");
@@ -2721,6 +2745,7 @@ int pumpkin(int room) //room 16
 int olive(int room) //room 17
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Olive Vineyard.\n");
     printf("Olive trees line the perimiter of the vast grape vineyard.\n");
     printf("To the East is Rouge Pass and to the West is Pumpkin Patch.\n");
@@ -2744,6 +2769,7 @@ int olive(int room) //room 17
 int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Rouge Pass.\n");
     printf("It's a long, wide path lined with trees.\nThe leaves resemble the beautiful colors of autumn.\n");
     printf("To the East is Sienna Village, to the South is Purple Mountains Majesty, and to the West is Olive Vineyard.\n");
@@ -2795,6 +2821,7 @@ int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
 int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Sienna Village.\n");
     printf("Log buildings surround a small village square.\nPeople sit around a bonfire playing folk songs.\n");
     printf("To the North is Rainbow Bazaar, to the East is Cream Factory, to the South is Fuschia Village, and to the West is Rouge Pass.\n");
@@ -2850,6 +2877,7 @@ int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
 int cream(int room) //room 20
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Cream Factory.\n");
     printf("Steam clouds arise from the main facility.\nCows graze in a pasture as employees walk around gathering milk.\n");
     printf("To the West is Sienna Village.\nYou've reached a dead end.\n");
@@ -2869,6 +2897,7 @@ int cream(int room) //room 20
 int royalcastle(int room) //room 21
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Royal Purple Castle.\n");
     printf("A narrow dirt path passes the castle, which is not open to visitors.\nThe queen lives here.\n");
     printf("To the North is Pumpkin Patch and to the East is Royal Purple Castletown.\n");
@@ -2892,6 +2921,7 @@ int royalcastle(int room) //room 21
 int royalcastletown(int room, vector<Merchant> npc_m, Player p, int chara) //room 22
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Royal Purple Castletown.\n");
     printf("It's a small town built from stone bricks.\nFamily-owned item shops line the street,next to pubs and apartments.\n");
     printf("Someone in a tunic and boots motions for you to come over.\nHe says he has heard of your good deeds and wants to offer you a free item from his shop.\n");
@@ -2931,6 +2961,7 @@ int royalcastletown(int room, vector<Merchant> npc_m, Player p, int chara) //roo
 int purplemountains(int room) //room 23
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Purple Mountains Majesty.\n");
     printf("There is a snowy pass between two peeks, which looks like quite the climb.\nAt the top, you find a glorious view of the kingdom.\n");
     printf("To the North is Rouge Pass, to the East is Fuschia Village, and to the West is Royal Purple Castletown.\n");
@@ -2958,6 +2989,7 @@ int purplemountains(int room) //room 23
 int fuschia(int room, string user, char savechoice, Player e, Player p) //room 24
 {
     int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
     printf("You are now in Fuschia Village.\n");
     printf("There are red tents spread throughout the pink grass.\nA rose-colored river flows through the center of the village.\n");
     printf("To the North is Sienna Village, to the East is Rose Village, and to the West is Purple Mountains Majesty.\n");
@@ -3032,11 +3064,13 @@ int rose(int room, int chara, bool& win) //room 25
     }
     else if (chara == 2) //magenta
     {
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now in Rose Village\n");
         win = true;
     }
     else //sunflower
     {
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now in Rose Village\n");
         printf("It's a rose-colored lake with a few cabins lining the white sand beach.\n");
         printf("To the West is Fuschia Village.\nYou've reached a dead end.\n");
@@ -3199,6 +3233,7 @@ int main()
         printf("You must traverse the kingdom and help your selected character find their homeland\n");
         printf("On the way, you will encounter allies who will help you, and enemies who will block your path\n");
         printf("Good luck! (And remember to have fun)\n");
+        _getch();
 
         /*for (int i = 0; i < 10; i++)
         {
@@ -3504,7 +3539,7 @@ int main()
     bool start = true;
     do
     {
-        printf("\n\n\tScore: %i\n\n", score);
+        //printf("\n\n\tScore: %i\n\n", score);
         if (newgame == true)
         {
             if (p.chara == 1 && start)
