@@ -75,8 +75,8 @@ int Merchant::getHPHEALED()
 }
 void Merchant::healPlayer(Player& p)
 {
-	p.hpmin = 10;
-	p.hpmax = 20;
+	p.hpmin = 8;
+	p.hpmax = 15;
 
 	p.hphealed = p.hpmin + rand() % (p.hpmax - p.hpmin + 1);
 	p.hp = p.hp + p.hphealed;
@@ -93,7 +93,7 @@ void Merchant::interaction(Player& p)
 		printf("\nCobalt encountered a merchant!\n");
 		printf("The merchant spots her and smiles, waving Cobalt over to them\n");
 		printf("'You look weary from your travels, young one'\n'come, let me heal you and send you on your way with a treat\n");
-		p.hphealed = 10 + rand() % (30 - 10 + 1);
+		p.hphealed = hpmin + rand() % (hpmax - hpmin + 1);
 		p.hp = p.hp + p.hphealed;
 		if (p.hp > 30)
 		{
@@ -109,7 +109,7 @@ void Merchant::interaction(Player& p)
 		printf("\nMagenta encountered a merchant!\n");
 		printf("The merchant spots him and smiles, waving Magenta over to them\n");
 		printf("'You look weary from your travels, young one'\n'come, let me heal you and send you on your way with a treat\n");
-		p.hphealed = 10 + rand() % (30 - 10 + 1);
+		p.hphealed = hpmin + rand() % (hpmax - hpmin + 1);
 		p.hp = p.hp + p.hphealed;
 		if (p.hp > 30)
 		{
@@ -118,14 +118,14 @@ void Merchant::interaction(Player& p)
 		printf("The merchant healed Magenta by %i! Magenta now has %i hp\n", p.hphealed, p.hp);
 		printf("The merchant gave Magenta a treat for his lunchbox\n\n");
 		p.lunchbox++;
-		printf("'Safe travels!'\n");
+		printf("'Safe travels!'\n\n");
 	}
 	else if (p.chara == 3)
 	{
 		printf("\nSunflower encountered a merchant!\n");
 		printf("The merchant spots her and smiles, waving Sunflower over to them\n");
 		printf("'You look weary from your travels, young one'\n'come, let me heal you and send you on your way with a treat\n");
-		p.hphealed = 10 + rand() % (30 - 10 + 1);
+		p.hphealed = hpmin + rand() % (hpmax - hpmin + 1);
 		p.hp = p.hp + p.hphealed;
 		if (p.hp > 30)
 		{
@@ -134,6 +134,6 @@ void Merchant::interaction(Player& p)
 		printf("The merchant healed Sunflower by %i! Sunflower now has %i hp\n", p.hphealed, p.hp);
 		printf("The merchant gave Sunflower a treat for her lunchbox\n\n");
 		p.lunchbox++;
-		printf("'Safe travels!'\n");
+		printf("'Safe travels!'\n\n");
 	}
 }
