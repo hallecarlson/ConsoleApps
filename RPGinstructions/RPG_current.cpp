@@ -337,6 +337,19 @@
                         Fine tuned code
                         Tested each room
                         Pushed to GitHub
+
+    Date: 4/4/22        Done:
+                        Pulled from GitHub  
+                        Tweaked a few variables
+                        Added some code for the menu loop so user may not continue until a choice from every menu section is selected
+                        Encountered some errors
+                        Got help from Mr. Miyoshi
+                        Tested game
+                        Fixed formatting
+                        Got help from Mr. Miyoshi
+                        Fixed save data lines
+                        Encountered more save data errors regarding reading the data
+                        Pushed to GitHub
 */ 
 
 #include <iostream>
@@ -2077,6 +2090,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
 void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room, int score) //allows the user to save the game after enemy encounters
 {
     ofstream out("savestate.txt");
+    //cout << p.chara << ',' << user << ',' << item_weapon << ',' << item_misc << ',' << potions << ',' << lunchbox << ',' << room << ',' << score << '\n';
     out << p.chara << ',' << user << ',' << item_weapon << ',' << item_misc << ',' << potions << ',' << lunchbox << ',' << room << ',' << score << '\n';
     out.close();
 }
@@ -2155,7 +2169,7 @@ int canary(int room, string user, char savechoice, Player e, Player p) //room 2
         fseek(stdin, 0, SEEK_END);
         if (savechoice == 'y')
         {
-            void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room, int score);
+            savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
             printf("\n%s's data has been saved\n", user.c_str());
         }
 
@@ -2207,7 +2221,7 @@ int violetblue(int room, string user, char savechoice, Player e, Player p) //roo
     fseek(stdin, 0, SEEK_END);
     if (savechoice == 'y')
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
@@ -2451,7 +2465,7 @@ int silver(int room, string user, char savechoice, Player e, Player p) //room 9
     fseek(stdin, 0, SEEK_END);
     if (savechoice == 'y')
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
@@ -2496,7 +2510,7 @@ int viridian(int room, string user, char savechoice, Player e, Player p) //room 
     fseek(stdin, 0, SEEK_END);
     if (savechoice == 'y')
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
@@ -2545,7 +2559,7 @@ int fluorescent(int room, string user, char savechoice, Player e, Player p) //ro
     fseek(stdin, 0, SEEK_END);
     if (savechoice == 'y')
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
     if (p.hp > 0)
@@ -2593,7 +2607,7 @@ int rust(int room, string user, char savechoice, Player e, Player p) //room 12
     fseek(stdin, 0, SEEK_END);
     if (savechoice == 'y')
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
@@ -2642,7 +2656,7 @@ int midnightblue(int room, string user, char savechoice, Player e, Player p) //r
     fseek(stdin, 0, SEEK_END);
     if (savechoice == 'y')
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
@@ -2836,7 +2850,7 @@ int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
     fseek(stdin, 0, SEEK_END);
     if (savechoice == 'y')
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
@@ -2889,7 +2903,7 @@ int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
     fseek(stdin, 0, SEEK_END);
     if (savechoice == 'y')
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
@@ -3061,7 +3075,7 @@ int fuschia(int room, string user, char savechoice, Player e, Player p) //room 2
     fseek(stdin, 0, SEEK_END);
     if (savechoice == 'y')
     {
-        void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room);
+        savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
@@ -3149,12 +3163,12 @@ int rose(int room, int chara, bool& win) //room 25
 
 int main()
 {
-    Player p;
+    /*Player p;
     p.chara = 0;
     p.score = 0;
     Player e;
     
-    /* vector<Player> npc_e; //something with this needs to be fixed
+    vector<Player> npc_e; //something with this needs to be fixed
     for (int e = 0; e < 9; e++) 
     {
         Player temp_e;
@@ -3169,7 +3183,15 @@ int main()
 
     //npc_m[0].interaction(p);
 
-    string user;
+    Player p;
+    Player e;
+    int room;
+    int savechoice = 0;
+    bool win;
+    /*p.chara = 0;
+    p.score = 0;
+    Player e;
+    p.user = "";
     int menu_choice = 0;
     int item_type = 0;
     p.item_weapon = 0;
@@ -3182,7 +3204,7 @@ int main()
     int room = 0;
     int score = 0;
     int choice;
-    bool win = false;
+    bool win = false;*/
 
 
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -3226,7 +3248,7 @@ int main()
             getline(in, temp, ',');
             p.chara = stoi(temp);
             getline(in, temp, ',');
-            user = temp;
+            p.user = temp;
             getline(in, temp, ',');
             p.item_weapon = stoi(temp);
             getline(in, temp, ',');
@@ -3238,7 +3260,7 @@ int main()
             getline(in, temp, ',');
             room = stoi(temp);
             getline(in, temp, ',');
-            score = stoi(temp);
+            p.score = stoi(temp);
 
             if (p.chara == 1)
             {
@@ -3252,19 +3274,35 @@ int main()
             {
                 printf("Character: Sunflower\n");
             }
-            printf("User: %s\n", user.c_str());
-            printf("Score: %i\n", score);
+            printf("User: %s\n", p.user.c_str());
+            printf("Score: %i\n", p.score);
         }
     }
 
     while (newgame == true)
     {
-        score = 0;
+        p.chara = 0;
+        p.score = 0;
+        p.user = "";
+        int menu_choice = 0;
+        int item_type = 0;
+        p.item_weapon = 0;
+        p.item_misc = 0;
+        int items = 0;
+        p.potions = 0;
+        p.lunchbox = 0;
+
+        char savechoice = 'n';
+        int room = 0;
+        int score = 0;
+        int choice;
+        bool win = false;
+
         printf("Please enter your name\n>");        
-        cin >> user;
+        cin >> p.user;
         fseek(stdin, 0, SEEK_END);
 
-        printf("%s, it is recommended that you create a map as you play if you wish future playthroughs to be easier.\n", user.c_str());
+        printf("%s, it is recommended that you create a map as you play if you wish future playthroughs to be easier.\n", p.user.c_str());
         printf("If you wish to do so,the world in the game looks like the following:\n");
         printf(" _______ _______ _______ _______ _______\n");
         printf("|  start|      2|      3|      4|  start|\n");
@@ -3305,7 +3343,7 @@ int main()
             printf("Created by Halle Carlson\n");
             printf("------------------------------------------------------------------------------------------------------------------------\n");
 
-            printf("User: %s\n", user.c_str());
+            printf("User: %s\n", p.user.c_str());
             printf("Character: ");
             if (p.chara == 1)
             {
@@ -3321,7 +3359,7 @@ int main()
             }
             else
             {
-                printf("%s has not selected a character\n", user.c_str());
+                printf("%s has not selected a character\n", p.user.c_str());
             }
 
             printf("Items: %i\n", items);
@@ -3341,7 +3379,7 @@ int main()
             }
             else
             {
-                printf("%s has not selected a weapon\n", user.c_str());
+                printf("%s has not selected a weapon\n", p.user.c_str());
             }
 
             printf("Item: ");
@@ -3359,16 +3397,16 @@ int main()
             }
             else
             {
-                printf("%s has not selected an item\n", user.c_str());
+                printf("%s has not selected an item\n", p.user.c_str());
             }
             printf("Score: %i\n", score);
 
             printf("\nMenu\n");
             printf("----\n");
 
-            printf("1. Select %s's Character\n", user.c_str());
-            printf("2. Equip %s's character\n", user.c_str());
-            printf("3. Begin %s's game\n", user.c_str());
+            printf("1. Select %s's Character\n", p.user.c_str());
+            printf("2. Equip %s's character\n", p.user.c_str());
+            printf("3. Begin %s's game\n", p.user.c_str());
             printf(">");
             scanf_s("%i", &menu_choice);
             fseek(stdin, 0, SEEK_END);
@@ -3378,7 +3416,7 @@ int main()
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 if (p.chara == 1 || p.chara == 2 || p.chara == 3)
                 {
-                    printf("A character has already been selected, %s!\n", user.c_str());
+                    printf("A character has already been selected, %s!\n", p.user.c_str());
                 }
                 else if (p.chara != 1 || p.chara != 2 || p.chara != 3)
                 {
@@ -3452,11 +3490,21 @@ int main()
                     }
                 }
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", user.c_str());
+                printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", p.user.c_str());
 
                 printf(">");
                 scanf_s("%i", &menu_choice);
                 fseek(stdin, 0, SEEK_END);
+
+                if (menu_choice == 3)
+                {
+                    if (p.item_weapon == 0 || p.item_misc == 0 || p.chara == 0)
+                    {
+                        printf("\n%s has a blank selection. Please select the remaining menu item.\n", p.user.c_str());
+                        _getch();
+                        menu_choice = 0;
+                    }
+                }
             }
 
             if (menu_choice == 2) //equip character
@@ -3474,7 +3522,7 @@ int main()
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                     if (p.item_weapon == 1 || p.item_weapon == 2 || p.item_weapon == 3)
                     {
-                        printf("A weapon has already been selected, %s!\n", user.c_str());
+                        printf("A weapon has already been selected, %s!\n", p.user.c_str());
                     }
                     else if (p.item_weapon != 1 || p.item_weapon != 2 || p.item_weapon != 3)
                     {
@@ -3528,18 +3576,28 @@ int main()
                         }
                     }
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                    printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", user.c_str());
+                    printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", p.user.c_str());
 
                     printf(">");
                     scanf_s("%i", &menu_choice);
                     fseek(stdin, 0, SEEK_END);
+
+                    if (menu_choice == 3)
+                    {
+                        if (p.item_weapon == 0 || p.item_misc == 0 || p.chara == 0)
+                        {
+                            printf("\n%s has a blank selection. Please select the remaining menu item.\n", p.user.c_str());
+                            _getch();
+                            menu_choice = 0;
+                        }
+                    }
                 }
                 if (item_type == 2)
                 {
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                     if (p.item_misc == 1 || p.item_misc == 2 || p.item_misc == 3)
                     {
-                        printf("An item has already been selected, %s!\n", user.c_str());
+                        printf("An item has already been selected, %s!\n", p.user.c_str());
                     }
                     else if (p.item_misc != 1 || p.item_misc != 2 || p.item_misc != 3)
                     {
@@ -3580,11 +3638,30 @@ int main()
                         }
                     }
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
-                    printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", user.c_str());
+                    printf("Begin %s's game? // 3 for yes, any other key to return to the menu\n", p.user.c_str());
 
                     printf(">");
                     scanf_s("%i", &menu_choice);
                     fseek(stdin, 0, SEEK_END);
+
+                    if (menu_choice == 3)
+                    {
+                        if (p.item_weapon == 0 || p.item_misc == 0 || p.chara == 0)
+                        {
+                            printf("\n%s has a blank selection. Please select the remaining menu item.\n", p.user.c_str());
+                            _getch();
+                            menu_choice = 0;
+                        }
+                    }
+                }
+            }
+            if (menu_choice == 3)
+            {
+                if (p.item_weapon == 0 || p.item_misc == 0 || p.chara == 0)
+                {
+                    printf("\n%s has a blank selection. Please select the remaining menu item.\n", p.user.c_str());
+                    _getch();
+                    menu_choice = 0;
                 }
             }
 
@@ -3623,11 +3700,11 @@ int main()
         }
         else if (room == 2)
         {
-            room = canary(room, user, savechoice, e, p);
+            room = canary(room, p.user, savechoice, e, p);
         }
         else if (room == 3)
         {
-            room = violetblue(room, user, savechoice, e, p);
+            room = violetblue(room, p.user, savechoice, e, p);
         }
         else if (room == 4)
         {
@@ -3651,23 +3728,23 @@ int main()
         }
         else if (room == 9)
         {
-            room = silver(room, user, savechoice, e, p);
+            room = silver(room, p.user, savechoice, e, p);
         }
         else if (room == 10)
         {
-            room = viridian(room, user, savechoice, e, p);
+            room = viridian(room, p.user, savechoice, e, p);
         }
         else if (room == 11)
         {
-            room = fluorescent(room, user, savechoice, e, p);
+            room = fluorescent(room, p.user, savechoice, e, p);
         }
         else if (room == 12)
         {
-            room = rust(room, user, savechoice, e, p);
+            room = rust(room, p.user, savechoice, e, p);
         }
         if (room == 13)
         {
-            room = midnightblue(room, user, savechoice, e, p);
+            room = midnightblue(room, p.user, savechoice, e, p);
         }
         else if (room == 14)
         {
@@ -3687,11 +3764,11 @@ int main()
         }
         else if (room == 18)
         {
-            room = rouge(room, user, savechoice, e, p);
+            room = rouge(room, p.user, savechoice, e, p);
         }
         else if (room == 19)
         {
-            room = sienna(room, user, savechoice, e, p);
+            room = sienna(room, p.user, savechoice, e, p);
         }
         else if (room == 20)
         {
@@ -3711,7 +3788,7 @@ int main()
         }
         else if (room == 24)
         {
-            room = fuschia(room, user, savechoice, e, p);
+            room = fuschia(room, p.user, savechoice, e, p);
         }
         else if (room == 25)
         {
