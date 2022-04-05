@@ -76,6 +76,7 @@ int Merchant::getHPHEALED()
 }
 void Merchant::healPlayer(Player& p)
 {
+	srand((unsigned)time(NULL));
 	p.hpmin = 8;
 	p.hpmax = 15;
 

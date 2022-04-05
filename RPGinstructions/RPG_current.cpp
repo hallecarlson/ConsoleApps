@@ -39,6 +39,7 @@
                         - Score is always 1 after a battle
                         - reached home at rainbow bazaar
                         - player's first turn in combat is always skipped, same issue as 28 initial hp, same issues as merchant always healing by 0
+                        - problem for recovering data and reencountering enemies, and hp errors
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -346,6 +347,16 @@
                         Got help from Mr. Miyoshi
                         Fixed save data lines
                         Encountered more save data errors regarding reading the data
+                        Pushed to GitHub
+
+    Date: 4/5/22        Done:
+                        Encountered errors
+                        Got help from Mr. Miyoshi
+                        Fixed errors
+                        Got more help and fixed more errors
+                        Tested game a bunch
+                        Fixed even more errors
+                        Took notes on errors I did not Fix
                         Pushed to GitHub
 */ 
 
