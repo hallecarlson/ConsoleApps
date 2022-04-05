@@ -34,14 +34,11 @@
                         test
 
                         edits to make:
-                        - rolls can probably change to not p.roll = 0 +rand() % (10 - 0 + 1) to something like 0 + rand() % 10
-                        - lots of formatting issues
-                        - add what happens in combat if the player does not select a weapon or misc item
-                        - shut game down after defeat
                         - fix issue with initial hp always being 28
                         - add code to print score after a loss
-                        - fix code to create an infinite loop forcing shutdown after loss, tried this in canary and it didn't work
                         - Score is always 1 after a battle
+                        - reached home at rainbow bazaar
+                        - player's first turn in combat is always skipped, same issue as 28 initial hp, same issues as merchant always healing by 0
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -369,6 +366,8 @@ using namespace std;
 
 Player combat(Player p, Player e) //a fight sequence used in several rooms on the map
 {
+    srand((unsigned)time(NULL));
+    
     e.roll = 0;
     p.roll = 0;
 
@@ -2149,7 +2148,7 @@ int ultramarine(int room, int chara, bool& win) //room 1
     return room;
 }
 //room2         enemy encounter
-int canary(int room, string user, char savechoice, Player e, Player p) //room 2
+int canary(int room, string user, char savechoice, Player e, Player &p) //room 2
 {
         int choice;
         printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2161,7 +2160,7 @@ int canary(int room, string user, char savechoice, Player e, Player p) //room 2
         _getch();
         printf("An enemy jumps out!\n\n");
         //e[0].interaction(p);
-        combat(p, e);
+        p = combat(p, e);
         //add variable for if enemy has been encountered yet and include that in saved data
 
         printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2202,7 +2201,7 @@ int canary(int room, string user, char savechoice, Player e, Player p) //room 2
     return room;
 }
 //room3         enemy encounter
-int violetblue(int room, string user, char savechoice, Player e, Player p) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if encountered
+int violetblue(int room, string user, char savechoice, Player e, Player &p) //room 3 ENEMY ENCOUNTER IN PROGRESS; add bool for if encountered
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2212,8 +2211,8 @@ int violetblue(int room, string user, char savechoice, Player e, Player p) //roo
 
     printf("You hear something approach you from behind\n\n");
     _getch();
-    printf("You spin around and see an enemy!\n\n");
-    combat(p, e);
+    printf("You spin around and see an enemy!\n\n");    
+    p = combat(p, e);
     //e[1].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2446,7 +2445,7 @@ int violet(int room, vector<Merchant> npc_m, Player p, int chara) //room 8
     return room;
 }
 //room9         enemy encounter
-int silver(int room, string user, char savechoice, Player e, Player p) //room 9
+int silver(int room, string user, char savechoice, Player e, Player &p) //room 9
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2457,7 +2456,7 @@ int silver(int room, string user, char savechoice, Player e, Player p) //room 9
     printf("You hear something struggling to swim to you\n\n");
     _getch();
     printf("An enemy jumps out of the water!\nYou pity their poor swimming skills and decide to fight them\n\n");
-    combat(p, e);
+    p = combat(p, e);
     //e[2].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2491,7 +2490,7 @@ int silver(int room, string user, char savechoice, Player e, Player p) //room 9
     return room;
 }
 //room10        enemy encounter
-int viridian(int room, string user, char savechoice, Player e, Player p) //room 10
+int viridian(int room, string user, char savechoice, Player e, Player &p) //room 10
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2502,7 +2501,7 @@ int viridian(int room, string user, char savechoice, Player e, Player p) //room 
     printf("You hear something jump out of a tree\n\n");
     _getch();
     printf("An enemy lands in front of you!\n\n");
-    combat(p, e);
+    p = combat(p, e);
     //e[3].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2540,7 +2539,7 @@ int viridian(int room, string user, char savechoice, Player e, Player p) //room 
     return room;
 }
 //room11        enemy encounter
-int fluorescent(int room, string user, char savechoice, Player e, Player p) //room 11
+int fluorescent(int room, string user, char savechoice, Player e, Player &p) //room 11
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2551,7 +2550,7 @@ int fluorescent(int room, string user, char savechoice, Player e, Player p) //ro
     printf("You hear something sloshing through the deep mud\n\n");
     _getch();
     printf("An enemy slowly approaches!\n\n");
-    combat(p, e);
+    p = combat(p, e);
     //e[4].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2588,7 +2587,7 @@ int fluorescent(int room, string user, char savechoice, Player e, Player p) //ro
     return room;
 }
 //room12        enemy encounter
-int rust(int room, string user, char savechoice, Player e, Player p) //room 12
+int rust(int room, string user, char savechoice, Player e, Player &p) //room 12
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2599,7 +2598,7 @@ int rust(int room, string user, char savechoice, Player e, Player p) //room 12
     printf("You hear shoes against the old, metal floor\n\n");
     _getch();
     printf("An enemy loudly jumps in front of you!\n\n");
-    combat(p, e);
+    p = combat(p, e);
     //e[5].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2637,7 +2636,7 @@ int rust(int room, string user, char savechoice, Player e, Player p) //room 12
     return room;
 }
 //room13        enemy encounter
-int midnightblue(int room, string user, char savechoice, Player e, Player p) //room 13
+int midnightblue(int room, string user, char savechoice, Player e, Player &p) //room 13
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2648,7 +2647,7 @@ int midnightblue(int room, string user, char savechoice, Player e, Player p) //r
     printf("Out of the corner of your eye, you notice something in the shadows\n\n");
     _getch();
     printf("A lurking enemy tries to sneak up on you!\n\n");
-    combat(p, e);
+    p = combat(p, e);
     //e[6].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2831,7 +2830,7 @@ int olive(int room) //room 17
     return room;
 }
 //room18        enemy encounter
-int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
+int rouge(int room, string user, char savechoice, Player e, Player &p) //room 18
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2842,7 +2841,7 @@ int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
     printf("You hear rustling in the leaves\n\n");
     _getch();
     printf("An enemy jumps out of a red leaf pile!\n\n");
-    combat(p, e);
+    p = combat(p, e);
     //e[7].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -2884,7 +2883,7 @@ int rouge(int room, string user, char savechoice, Player e, Player p) //room 18
     return room;
 }
 //room19        enemy encounter
-int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
+int sienna(int room, string user, char savechoice, Player e, Player &p) //room 19
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2895,7 +2894,7 @@ int sienna(int room, string user, char savechoice, Player e, Player p) //room 19
     printf("Someone by the fire turns and walks toward you\n\n");
     _getch();
     printf("An enemy stands in your way!\n\n");
-    combat(p, e);
+    p = combat(p, e);
     //e.interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -3056,7 +3055,7 @@ int purplemountains(int room) //room 23
     return room;
 }
 //room24        enemy encounter
-int fuschia(int room, string user, char savechoice, Player e, Player p) //room 24
+int fuschia(int room, string user, char savechoice, Player e, Player &p) //room 24
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -3067,7 +3066,7 @@ int fuschia(int room, string user, char savechoice, Player e, Player p) //room 2
     printf("You hear a tent flap opening\n\n");
     _getch();
     printf("You turn around and see an emeny!\n\n");
-    combat(p, e);
+    p = combat(p, e);
     //e[9].interaction(p);
 
     printf("Save %s's data? y for yes, else for no\n>", user.c_str());
@@ -3163,6 +3162,7 @@ int rose(int room, int chara, bool& win) //room 25
 
 int main()
 {
+    srand((unsigned)time(NULL));
     /*Player p;
     p.chara = 0;
     p.score = 0;
@@ -3185,9 +3185,9 @@ int main()
 
     Player p;
     Player e;
-    int room;
+    int room = 0;
     int savechoice = 0;
-    bool win;
+    bool win = false;
     /*p.chara = 0;
     p.score = 0;
     Player e;
@@ -3221,17 +3221,17 @@ int main()
         scanf_s("%i", &savestateinput);
         fseek(stdin, 0, SEEK_END);
     } while(savestateinput != 1 && savestateinput != 2);
-    if (savestateinput = 1) //will begin a new game
+    if (savestateinput == 1) //will begin a new game
     {
         newgame = true;
     }
-    else if (savestateinput = 2) //will begin game from previous save data
+    else if (savestateinput == 2) //will begin game from previous save data
     {
         newgame = false;
     }
 
     string temp;
-    while (newgame == false) //file retrieval 
+    if (newgame == false) //file retrieval 
     {
         ifstream in;
         in.open("savestate.txt");

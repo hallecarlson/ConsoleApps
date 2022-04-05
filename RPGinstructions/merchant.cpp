@@ -1,5 +1,6 @@
 #include "merchant.h"
 #include "player.h"
+#include <time.h>
 
 Merchant::Merchant()
 {
@@ -87,7 +88,7 @@ void Merchant::healPlayer(Player& p)
 }
 void Merchant::interaction(Player& p)
 {	
-
+	srand((unsigned)time(NULL));
 	if (p.chara == 1)
 	{
 		printf("\nCobalt encountered a merchant!\n");
