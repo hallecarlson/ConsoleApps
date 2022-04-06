@@ -3,23 +3,23 @@
     Author:         Halle Carlson
     Project Name:   RPG
     File Name:      RPGcopy.cpp
-    Purpose:        
+    Purpose:
 
-    Pseudocode:     
-      
+    Pseudocode:
+
     Requirements:       Up-to-date  Comment section (Green text in beginning of file), Comments used throughout code
                         Done        Intro and clear instructions, easy to use interface
                         Done        Simple dungeon with 25 rooms minimum
                         Done        4 NPCs minimum
                         Done        NPC interactions effective and consistent (I/O, branching, looping, classes)
                         Done        Option mechanics effective (branching), game loops and other loops effective (looping)
-                        Done        Strings to hold appropriate data (addressing user by name, holding NPC responses, other 
+                        Done        Strings to hold appropriate data (addressing user by name, holding NPC responses, other
                                         canned output that may be used multiple times (strings)
-                        Done        Functions used appropriately 
+                        Done        Functions used appropriately
                         Done        Game works (beginning, middle, end), replayable with entertainment value, has error checking
                         Done        Uses structs or classes for player stats and other places as appropriate (struct/classes)
                         Done        Uses vectors as appropriate (NPCs saved to vectors at least)
-                        Done        Uses object-oriented programming (NPCs should transition from being structs to classes, 
+                        Done        Uses object-oriented programming (NPCs should transition from being structs to classes,
                                         classes should be used in some way if not for NPCs
                         Done        Use files for save states, use at checkpoints of at will, user may start new game or continue old game
                         Not done    Game thoroughly tested by at least 4 others who fill out 5-question questionnaire that I create
@@ -136,7 +136,7 @@
                         Copied code into new project
                         Added code for vectors for NPC enemies
                         Pushed to GitHub
-                        Added more code for merchant NPC vectors 
+                        Added more code for merchant NPC vectors
 
     Date: 2/16/22       Done:
                         Added code for combat in a struct
@@ -190,7 +190,7 @@
                         Fixed some text
                         Pushed to GitHub
 
-    Date: 3/16/22       Done:  
+    Date: 3/16/22       Done:
                         Added more code for combat
                         Finished some accuracy and spell actions
                         Fixed some text
@@ -206,7 +206,7 @@
                         Added comments for RPG requirements
                         Pushed to GitHub
 
-                        Got help from Mr. Miyoshi  
+                        Got help from Mr. Miyoshi
                         Added code in classes for NPC interactions
                         Pushed to GitHub
 
@@ -274,7 +274,7 @@
                         Added code for npc interactions
                         Pushed to GitHub
 
-    Date: 3/29/22       Done: 
+    Date: 3/29/22       Done:
                         Fixed many errors
                         Tweaked a bit of code
                         Got help from Mr. Miyoshi
@@ -282,7 +282,7 @@
                         Found errors and bugs
                         Made a list of things to fix
                         Edited code to make merchants actually heal the player, because I forgot to implement that
-                        Changed tome dialogue formatting 
+                        Changed tome dialogue formatting
                         Pushed to GitHub
 
                         Pulled from GitHub
@@ -293,7 +293,7 @@
                         Tweaked code to allow score so be written/read to/from files
                         Pushed to GitHub
 
-    Date: 3/30/22       Done:   
+    Date: 3/30/22       Done:
                         Pulled from GitHub
                         Added code and dialogue for battle defeats
                         Edited formatting issues in dialogue
@@ -323,7 +323,7 @@
                         Pushed to GitHub
 
     Date: 4/4/22        Done:
-                        Pulled from GitHub  
+                        Pulled from GitHub
                         Tweaked a few variables
                         Added some code for the menu loop so user may not continue until a choice from every menu section is selected
                         Encountered some errors
@@ -361,7 +361,10 @@
                         Had Dhanasri Prabhu test the game and she liked it
                         Deleted unecessary code
                         Pushed to GitHub
-*/ 
+
+                        Created Backup
+                        Pushed to GitHub
+*/
 
 #include <iostream>
 #include <stdio.h>
@@ -381,7 +384,7 @@ using namespace std;
 Player combat(Player p, Player e) //a fight sequence used in several rooms on the map
 {
     srand((unsigned)time(NULL));
-    
+
     e.roll = 0;
     p.roll = 0;
 
@@ -393,7 +396,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
 
     int food = 0;
     int foodmin = 1;
-    int foodmax = 5; 
+    int foodmax = 5;
     bool player_accuracy = false;
     bool enemy_accuracy = false;
     bool sleep = false;
@@ -401,7 +404,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
     e.hpmin = 15;
     e.hpmax = 20;
     e.hp = e.hpmin + rand() % (e.hpmax - e.hpmin + 1); //roll enemy hp
-    
+
     enemy_type = 1 + rand() % (3 - 1 + 1);
     if (enemy_type == 1)
     {
@@ -821,7 +824,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                 {
                                     printf("Magenta gained %i hp! Magenta now has %i hp\n", p.hphealed, p.hp);
                                 }
-                            }   
+                            }
                             else if (player_spell == 2)
                             {
                                 if (player_accuracy == false)
@@ -878,7 +881,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                     if (p.chara == 3)
                                     {
                                         printf("Sunflower's accuracy was raised by 2 stages\nAccuracy checks will now be more forgiving\n");
-                                    }                                   
+                                    }
                                 }
                                 else if (player_accuracy == true)
                                 {
@@ -893,7 +896,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                 if (enemy_accuracy == false)
                                 {
                                     enemy_accuracy = true;
-                                    printf("The %s's accuracy was lowered by 2 stages\nAccuracy checks will now be more challenging\n", enemy.c_str());                                  
+                                    printf("The %s's accuracy was lowered by 2 stages\nAccuracy checks will now be more challenging\n", enemy.c_str());
                                 }
                                 else if (enemy_accuracy == true)
                                 {
@@ -1029,7 +1032,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                 }
                 else if (player_turn == 4)
                 {
-                int item_battlechoice;
+                    int item_battlechoice;
                     if (p.item_misc == 1)
                     {
                         do
@@ -1404,7 +1407,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
                                         //_getch();
                                         p.score--;
-                                    }                                    
+                                    }
                                 }
                                 else if (e.roll < 2)
                                 {
@@ -2056,7 +2059,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
             }
         }
         _getch();
-    } 
+    }
 
     printf("\n\nThe battle ended\n");
     printf("Score: %i\n", p.score);
@@ -2064,7 +2067,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
     return p;
 }
 
-void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room, int &score, int hp) //allows the user to save the game after enemy encounters
+void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room, int& score, int hp) //allows the user to save the game after enemy encounters
 {
     ofstream out("savestate.txt");
     out << chara << ',' << user << ',' << item_weapon << ',' << item_misc << ',' << potions << ',' << lunchbox << ',' << room << ',' << score << ',' << hp << '\n';
@@ -2125,50 +2128,50 @@ int ultramarine(int room, int chara, bool& win) //room 1
     return room;
 }
 //room2         enemy encounter
-int canary(int room, string user, char savechoice, Player e, Player &p) //room 2
+int canary(int room, string user, char savechoice, Player e, Player& p) //room 2
 {
-        int choice;
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("You are now on Canary Yellow Island\n");
-        printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
-        printf("To the West is Ultramarine and to the south is Sunset Observatory.\n\n");
+    int choice;
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("You are now on Canary Yellow Island\n");
+    printf("You travelled by boat to reach a warm beach, with banana trees and canaries in the center.\n");
+    printf("To the West is Ultramarine and to the south is Sunset Observatory.\n\n");
 
-        printf("You hear rustling in the foliage\n\n");
-        _getch();
-        printf("An enemy jumps out!\n\n");
-        p = combat(p, e);
+    printf("You hear rustling in the foliage\n\n");
+    _getch();
+    printf("An enemy jumps out!\n\n");
+    p = combat(p, e);
 
-        printf("Save %s's data? y for yes, else for no\n>", user.c_str());
-        scanf_s("%c", &savechoice);
-        fseek(stdin, 0, SEEK_END);
-        if (savechoice == 'y')
-        {
-            savedata(p, p.user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score, p.hp);
-            printf("\n%s's data has been saved\n", user.c_str());
-        }
+    printf("Save %s's data? y for yes, else for no\n>", user.c_str());
+    scanf_s("%c", &savechoice);
+    fseek(stdin, 0, SEEK_END);
+    if (savechoice == 'y')
+    {
+        savedata(p, p.user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score, p.hp);
+        printf("\n%s's data has been saved\n", user.c_str());
+    }
 
-        if (p.hp <= 0)
-        {
-            p.hp = 1;
-        }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("\n1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 1;
-        }
-        else if (choice == 2)
-        {
-            room = 7;
-        }
+    if (p.hp <= 0)
+    {
+        p.hp = 1;
+    }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("\n1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 1;
+    }
+    else if (choice == 2)
+    {
+        room = 7;
+    }
 
     return room;
 }
 //room3         enemy encounter
-int violetblue(int room, string user, char savechoice, Player e, Player &p)
+int violetblue(int room, string user, char savechoice, Player e, Player& p)
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2178,7 +2181,7 @@ int violetblue(int room, string user, char savechoice, Player e, Player &p)
 
     printf("You hear something approach you from behind\n\n");
     _getch();
-    printf("You spin around and see an enemy!\n\n");    
+    printf("You spin around and see an enemy!\n\n");
     p = combat(p, e);
     //e[1].interaction(p);
 
@@ -2195,15 +2198,15 @@ int violetblue(int room, string user, char savechoice, Player e, Player &p)
     {
         p.hp = 1;
     }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("1. Go to Violet District.\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 8;
-        }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("1. Go to Violet District.\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 8;
+    }
 
     return room;
 }
@@ -2408,7 +2411,7 @@ int violet(int room, vector<Merchant> npc_m, Player p, int chara) //room 8
     return room;
 }
 //room9         enemy encounter
-int silver(int room, string user, char savechoice, Player e, Player &p) //room 9
+int silver(int room, string user, char savechoice, Player e, Player& p) //room 9
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2435,20 +2438,20 @@ int silver(int room, string user, char savechoice, Player e, Player &p) //room 9
     {
         p.hp = 1;
     }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("1. Go to West Goldenrod\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 4;
-        }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("1. Go to West Goldenrod\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 4;
+    }
 
     return room;
 }
 //room10        enemy encounter
-int viridian(int room, string user, char savechoice, Player e, Player &p) //room 10
+int viridian(int room, string user, char savechoice, Player e, Player& p) //room 10
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2475,24 +2478,24 @@ int viridian(int room, string user, char savechoice, Player e, Player &p) //room
     {
         p.hp = 1;
     }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("1. Go to Goldenrod\n2. Go to Carrot Meadow\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 5;
-        }
-        else if (choice == 2)
-        {
-            room = 15;
-        }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("1. Go to Goldenrod\n2. Go to Carrot Meadow\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 5;
+    }
+    else if (choice == 2)
+    {
+        room = 15;
+    }
 
     return room;
 }
 //room11        enemy encounter
-int fluorescent(int room, string user, char savechoice, Player e, Player &p) //room 11
+int fluorescent(int room, string user, char savechoice, Player e, Player& p) //room 11
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2514,29 +2517,29 @@ int fluorescent(int room, string user, char savechoice, Player e, Player &p) //r
         savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score, p.hp);
         printf("\n%s's data has been saved\n", user.c_str());
     }
-    
+
     if (p.hp <= 0)
     {
         p.hp = 1;
     }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("1. Go to Maroon Town\n2. Go to Pumpkin Patch\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 6;
-        }
-        else if (choice == 2)
-        {
-            room = 16;
-        }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("1. Go to Maroon Town\n2. Go to Pumpkin Patch\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 6;
+    }
+    else if (choice == 2)
+    {
+        room = 16;
+    }
 
     return room;
 }
 //room12        enemy encounter
-int rust(int room, string user, char savechoice, Player e, Player &p) //room 12
+int rust(int room, string user, char savechoice, Player e, Player& p) //room 12
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2563,24 +2566,24 @@ int rust(int room, string user, char savechoice, Player e, Player &p) //room 12
     {
         p.hp = 1;
     }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("1. Go to Sunset Observatory\n2. Go to Midnight Blue Town\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 7;
-        }
-        else if (choice == 2)
-        {
-            room = 13;
-        }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("1. Go to Sunset Observatory\n2. Go to Midnight Blue Town\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 7;
+    }
+    else if (choice == 2)
+    {
+        room = 13;
+    }
 
     return room;
 }
 //room13        enemy encounter
-int midnightblue(int room, string user, char savechoice, Player e, Player &p) //room 13
+int midnightblue(int room, string user, char savechoice, Player e, Player& p) //room 13
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2607,28 +2610,28 @@ int midnightblue(int room, string user, char savechoice, Player e, Player &p) //
     {
         p.hp = 1;
     }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to Rust Laboratory\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 8;
-        }
-        else if (choice == 2)
-        {
-            room = 14;
-        }
-        else if (choice == 3)
-        {
-            room = 12;
-        }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to Rust Laboratory\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 8;
+    }
+    else if (choice == 2)
+    {
+        room = 14;
+    }
+    else if (choice == 3)
+    {
+        room = 12;
+    }
 
     return room;
 }
 //room14        item
-int rainbow(int room, vector<Merchant> npc_m, Player &p, int chara) //room 14
+int rainbow(int room, vector<Merchant> npc_m, Player& p, int chara) //room 14
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2769,7 +2772,7 @@ int olive(int room) //room 17
     return room;
 }
 //room18        enemy encounter
-int rouge(int room, string user, char savechoice, Player e, Player &p) //room 18
+int rouge(int room, string user, char savechoice, Player e, Player& p) //room 18
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2796,28 +2799,28 @@ int rouge(int room, string user, char savechoice, Player e, Player &p) //room 18
     {
         p.hp = 1;
     }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("1. Go to Sienna Village\n2. Go to Purple Mountains Majesty\n3. Go to Olive Vineyard\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 19;
-        }
-        else if (choice == 2)
-        {
-            room = 23;
-        }
-        else if (choice == 3)
-        {
-            room = 17;
-        }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("1. Go to Sienna Village\n2. Go to Purple Mountains Majesty\n3. Go to Olive Vineyard\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 19;
+    }
+    else if (choice == 2)
+    {
+        room = 23;
+    }
+    else if (choice == 3)
+    {
+        room = 17;
+    }
 
     return room;
 }
 //room19        enemy encounter
-int sienna(int room, string user, char savechoice, Player e, Player &p) //room 19
+int sienna(int room, string user, char savechoice, Player e, Player& p) //room 19
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -2844,27 +2847,27 @@ int sienna(int room, string user, char savechoice, Player e, Player &p) //room 1
     {
         p.hp = 1;
     }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("1. Go to Rainbow Bazaar\n2. Go to Cream Factory\n3. Go to Fuschia Village\n4. Go to Rouge Pass\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 14;
-        }
-        else if (choice == 2)
-        {
-            room = 20;
-        }
-        else if (choice == 3)
-        {
-            room = 24;
-        }
-        else if (choice == 4)
-        {
-            room = 18;
-        }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("1. Go to Rainbow Bazaar\n2. Go to Cream Factory\n3. Go to Fuschia Village\n4. Go to Rouge Pass\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 14;
+    }
+    else if (choice == 2)
+    {
+        room = 20;
+    }
+    else if (choice == 3)
+    {
+        room = 24;
+    }
+    else if (choice == 4)
+    {
+        room = 18;
+    }
 
     return room;
 }
@@ -2984,7 +2987,7 @@ int purplemountains(int room) //room 23
     return room;
 }
 //room24        enemy encounter
-int fuschia(int room, string user, char savechoice, Player e, Player &p) //room 24
+int fuschia(int room, string user, char savechoice, Player e, Player& p) //room 24
 {
     int choice;
     printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -3011,23 +3014,23 @@ int fuschia(int room, string user, char savechoice, Player e, Player &p) //room 
     {
         p.hp = 1;
     }
-        printf("------------------------------------------------------------------------------------------------------------------------\n");
-        printf("1. Go to Sienna Village\n2. Go to Rose Village\n3. Go to Purple Mountains Majesty\n");
-        printf(">");
-        scanf_s("%i", &choice);
-        fseek(stdin, 0, SEEK_END);
-        if (choice == 1)
-        {
-            room = 19;
-        }
-        else if (choice == 2)
-        {
-            room = 25;
-        }
-        else if (choice == 3)
-        {
-            room = 23;
-        }
+    printf("------------------------------------------------------------------------------------------------------------------------\n");
+    printf("1. Go to Sienna Village\n2. Go to Rose Village\n3. Go to Purple Mountains Majesty\n");
+    printf(">");
+    scanf_s("%i", &choice);
+    fseek(stdin, 0, SEEK_END);
+    if (choice == 1)
+    {
+        room = 19;
+    }
+    else if (choice == 2)
+    {
+        room = 25;
+    }
+    else if (choice == 3)
+    {
+        room = 23;
+    }
 
     return room;
 }
@@ -3114,7 +3117,7 @@ int main()
         printf("Would you like to 1. begin a new game, or 2. continue from a previous save state?\n>");
         scanf_s("%i", &savestateinput);
         fseek(stdin, 0, SEEK_END);
-    } while(savestateinput != 1 && savestateinput != 2);
+    } while (savestateinput != 1 && savestateinput != 2);
     if (savestateinput == 1) //will begin a new game
     {
         newgame = true;
@@ -3195,7 +3198,7 @@ int main()
         int choice;
         bool win = false;
 
-        printf("Please enter your name\n>");        
+        printf("Please enter your name\n>");
         cin >> p.user;
         fseek(stdin, 0, SEEK_END);
 
