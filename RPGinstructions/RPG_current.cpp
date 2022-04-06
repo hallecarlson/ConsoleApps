@@ -25,21 +25,10 @@
                         Not done    Game thoroughly tested by at least 4 others who fill out 5-question questionnaire that I create
 
 
-    Notes:              implement save states, 
-                        fix death messages
-                        edit vectors to what they need to be
-                        change npc interactions to strings
-                        get game to set hp to 1, save encounter status to file, and shut down after death
-                        ask Mr. Miyoshi if enemy needs to be in a vector and how to do that if so
-                        test
-
-                        edits to make:
-                        - fix issue with initial hp always being 28
-                        - add code to print score after a loss
-                        - Score is always 1 after a battle
+    Notes:              edits to make:
                         - reached home at rainbow bazaar
-                        - player's first turn in combat is always skipped, same issue as 28 initial hp, same issues as merchant always healing by 0
-                        - problem for recovering data and reencountering enemies, and hp errors
+                        - note (i think it's fine to allow enemy encounters repeat because it could be a group of enemies in the area)
+                        - game does not let player redo battle when save state is recovered
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -357,6 +346,14 @@
                         Tested game a bunch
                         Fixed even more errors
                         Took notes on errors I did not Fix
+                        Pushed to GitHub
+
+                        Pulled from GitHub
+                        Tested code
+                        Made minor changes to code, mainly for redundancy
+                        Changed code that created infinite battle loops upon loss
+                        Tested code to check for more errors and made sure player can continue playing after a loss
+                        Took notes on errors
                         Pushed to GitHub
 */ 
 
@@ -1417,7 +1414,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }                                    
@@ -1450,7 +1447,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1490,7 +1487,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1523,7 +1520,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1563,7 +1560,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1596,7 +1593,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1639,7 +1636,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1672,7 +1669,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1712,7 +1709,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1745,7 +1742,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1785,7 +1782,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1818,7 +1815,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1861,7 +1858,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1894,7 +1891,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1934,7 +1931,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -1967,7 +1964,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -2007,7 +2004,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -2040,7 +2037,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                         printf("O      O   V    V   E         R     R\n");
                                         printf("O      O    V  V    E         R      R\n");
                                         printf("OOOOOOOO     V      EEEEEEEE  R      R\n");
-                                        _getch();
+                                        //_getch();
                                         p.score--;
                                         //printf("Score: %i\n", p.score);
                                     }
@@ -2183,30 +2180,22 @@ int canary(int room, string user, char savechoice, Player e, Player &p) //room 2
             printf("\n%s's data has been saved\n", user.c_str());
         }
 
-        if (p.hp > 0)
-        {
-            printf("------------------------------------------------------------------------------------------------------------------------\n");
-            printf("\n1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
-            printf(">");
-            scanf_s("%i", &choice);
-            fseek(stdin, 0, SEEK_END);
-            if (choice == 1)
-            {
-                room = 1;
-            }
-            else if (choice == 2)
-            {
-                room = 7;
-            }
-        }
-        else if (p.hp <= 0)
+        if (p.hp <= 0)
         {
             p.hp = 1;
-            while (p.hp == 1)
-            {
-                printf("%s, please close the game window\n", user.c_str());
-                //shut game down
-            }
+        }
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
+        printf("\n1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
+        printf(">");
+        scanf_s("%i", &choice);
+        fseek(stdin, 0, SEEK_END);
+        if (choice == 1)
+        {
+            room = 1;
+        }
+        else if (choice == 2)
+        {
+            room = 7;
         }
 
     return room;
@@ -2235,8 +2224,10 @@ int violetblue(int room, string user, char savechoice, Player e, Player &p) //ro
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    if (p.hp > 0)
+    if (p.hp <= 0)
     {
+        p.hp = 1;
+    }
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("1. Go to Violet District.\n");
         printf(">");
@@ -2246,13 +2237,6 @@ int violetblue(int room, string user, char savechoice, Player e, Player &p) //ro
         {
             room = 8;
         }
-    }
-    else if (p.hp <= 0)
-    {
-        p.hp = 1;
-        printf("%s, please close the game window\n", user.c_str());
-        //shut game down
-    }
 
     return room;
 }
@@ -2479,8 +2463,10 @@ int silver(int room, string user, char savechoice, Player e, Player &p) //room 9
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    if (p.hp > 0)
+    if (p.hp <= 0)
     {
+        p.hp = 1;
+    }
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("1. Go to West Goldenrod\n");
         printf(">");
@@ -2490,13 +2476,6 @@ int silver(int room, string user, char savechoice, Player e, Player &p) //room 9
         {
             room = 4;
         }
-    }
-    else if (p.hp <= 0)
-    {
-        p.hp = 1;
-        printf("%s, please close the game window\n", user.c_str());
-        //shut game down
-    }
 
     return room;
 }
@@ -2524,8 +2503,10 @@ int viridian(int room, string user, char savechoice, Player e, Player &p) //room
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    if (p.hp > 0)
+    if (p.hp <= 0)
     {
+        p.hp = 1;
+    }
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("1. Go to Goldenrod\n2. Go to Carrot Meadow\n");
         printf(">");
@@ -2539,13 +2520,6 @@ int viridian(int room, string user, char savechoice, Player e, Player &p) //room
         {
             room = 15;
         }
-    }
-    else if (p.hp <= 0)
-    {
-        p.hp = 1;
-        printf("%s, please close the game window\n", user.c_str());
-        //shut game down
-    }
 
     return room;
 }
@@ -2572,8 +2546,11 @@ int fluorescent(int room, string user, char savechoice, Player e, Player &p) //r
         savedata(p, user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score);
         printf("\n%s's data has been saved\n", user.c_str());
     }
-    if (p.hp > 0)
+    
+    if (p.hp <= 0)
     {
+        p.hp = 1;
+    }
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("1. Go to Maroon Town\n2. Go to Pumpkin Patch\n");
         printf(">");
@@ -2587,13 +2564,6 @@ int fluorescent(int room, string user, char savechoice, Player e, Player &p) //r
         {
             room = 16;
         }
-    }
-    else if (p.hp <= 0)
-    {
-        p.hp = 1;
-        printf("%s, please close the game window\n", user.c_str());
-        //shut game down
-    }
 
     return room;
 }
@@ -2621,8 +2591,10 @@ int rust(int room, string user, char savechoice, Player e, Player &p) //room 12
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    if (p.hp > 0)
+    if (p.hp <= 0)
     {
+        p.hp = 1;
+    }
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("1. Go to Sunset Observatory\n2. Go to Midnight Blue Town\n");
         printf(">");
@@ -2636,13 +2608,6 @@ int rust(int room, string user, char savechoice, Player e, Player &p) //room 12
         {
             room = 13;
         }
-    }
-    else if (p.hp <= 0)
-    {
-        p.hp = 1;
-        printf("%s, please close the game window\n", user.c_str());
-        //shut game down
-    }
 
     return room;
 }
@@ -2670,8 +2635,10 @@ int midnightblue(int room, string user, char savechoice, Player e, Player &p) //
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    if (p.hp > 0)
+    if (p.hp <= 0)
     {
+        p.hp = 1;
+    }
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("1. Go to Violet District\n2. Go to Rainbow Baazar\n3. Go to Rust Laboratory\n");
         printf(">");
@@ -2689,13 +2656,6 @@ int midnightblue(int room, string user, char savechoice, Player e, Player &p) //
         {
             room = 12;
         }
-    }
-    else if (p.hp <= 0)
-    {
-        printf("%s, please close the game window\n", user.c_str());
-        p.hp = 1;
-        //shut game down
-    }
 
     return room;
 }
@@ -2864,8 +2824,10 @@ int rouge(int room, string user, char savechoice, Player e, Player &p) //room 18
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    if (p.hp > 0)
+    if (p.hp <= 0)
     {
+        p.hp = 1;
+    }
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("1. Go to Sienna Village\n2. Go to Purple Mountains Majesty\n3. Go to Olive Vineyard\n");
         printf(">");
@@ -2883,13 +2845,6 @@ int rouge(int room, string user, char savechoice, Player e, Player &p) //room 18
         {
             room = 17;
         }
-    }
-    else if (p.hp <= 0)
-    {
-        p.hp = 1;
-        printf("%s, please close the game window\n", user.c_str());
-        //shut game down
-    }
 
     return room;
 }
@@ -2917,8 +2872,10 @@ int sienna(int room, string user, char savechoice, Player e, Player &p) //room 1
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    if (p.hp > 0)
+    if (p.hp <= 0)
     {
+        p.hp = 1;
+    }
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("1. Go to Rainbow Bazaar\n2. Go to Cream Factory\n3. Go to Fuschia Village\n4. Go to Rouge Pass\n");
         printf(">");
@@ -2940,13 +2897,6 @@ int sienna(int room, string user, char savechoice, Player e, Player &p) //room 1
         {
             room = 18;
         }
-    }
-    else if (p.hp <= 0)
-    {
-        p.hp = 1;
-        printf("%s, please close the game window\n", user.c_str());
-        //shut game down
-    }
 
     return room;
 }
@@ -3089,8 +3039,10 @@ int fuschia(int room, string user, char savechoice, Player e, Player &p) //room 
         printf("\n%s's data has been saved\n", user.c_str());
     }
 
-    if (p.hp > 0)
+    if (p.hp <= 0)
     {
+        p.hp = 1;
+    }
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("1. Go to Sienna Village\n2. Go to Rose Village\n3. Go to Purple Mountains Majesty\n");
         printf(">");
@@ -3108,13 +3060,6 @@ int fuschia(int room, string user, char savechoice, Player e, Player &p) //room 
         {
             room = 23;
         }
-    }
-    else if (p.hp <= 0)
-    {
-        p.hp = 1;
-        printf("%s, please close the game window\n", user.c_str());
-        //shut game down
-    }
 
     return room;
 }
