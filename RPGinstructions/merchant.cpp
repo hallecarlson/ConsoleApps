@@ -81,7 +81,7 @@ void Merchant::healPlayer(Player& p)
 
 	p.hphealed = p.hpmin + rand() % (p.hpmax - p.hpmin + 1);
 	p.hp = p.hp + p.hphealed;
-	if (p.hp > 30) 
+	if (p.hp > 30)  
 	{
 		p.hp = 30;
 	} 
