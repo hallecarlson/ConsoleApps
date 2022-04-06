@@ -361,6 +361,10 @@
                         Had Dhanasri Prabhu test the game and she liked it
                         Deleted unecessary code
                         Pushed to GitHub
+
+                        Created backup
+                        Removed unecessary comments
+                        Pushed to GitHub
 */ 
 
 #include <iostream>
