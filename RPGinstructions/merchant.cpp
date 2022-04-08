@@ -91,7 +91,7 @@ void Merchant::interaction(Player& p)
 		p.lunchbox++;
 		printf("'Safe travels!'\n\n");
 	}
-	else if (p.chara == 2)
+	else if (p.chara == 2) 
 	{
 		printf("\nMagenta encountered a merchant!\n");
 		printf("The merchant spots him and smiles, waving Magenta over to them\n");
