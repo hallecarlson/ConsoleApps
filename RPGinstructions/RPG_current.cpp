@@ -365,6 +365,9 @@
                         Created backup
                         Removed unecessary comments
                         Pushed to GitHub
+
+    Date: 4/7/22        Done:
+                        Continued to remove unecessary comments from all files
 */ 
 
 #include <iostream>
@@ -406,7 +409,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
     e.hpmax = 20;
     e.hp = e.hpmin + rand() % (e.hpmax - e.hpmin + 1); //roll enemy hp
     
-    enemy_type = 1 + rand() % (3 - 1 + 1);
+    enemy_type = 1 + rand() % (3 - 1 + 1); //this code determines what type of enemy the player will fight in each encounter
     if (enemy_type == 1)
     {
         enemy = "Grey Painter";
@@ -433,21 +436,21 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
         printf("Sunflower encountered a %s!", enemy.c_str());
     }
 
-    while (p.hp > 0 && e.hp > 0)
+    while (p.hp > 0 && e.hp > 0) //fight sequence loops that loops each turn that both the player and the enemy are alive
     {
-        if (p.hp > 0)
+        if (p.hp > 0) //player moves first
         {
-            p.roll = 0 + rand() % (10 - 0 + 1);
-            if (p.roll >= 2)
+            p.roll = 0 + rand() % (10 - 0 + 1); //first accuracy check to determine if player may attempt a battle action or has their turn skipped
+            if (p.roll >= 2) 
             {
-                do
+                do //battle action selection, which loops until the player inputs a valid action
                 {
                     printf("\nChoose a move\n1. weapon attack\t2. strike\t3. spell\t4. item\n>");
                     scanf_s("%i", &player_turn);
                     fseek(stdin, 0, SEEK_END);
                 } while (player_turn != 1 && player_turn != 2 && player_turn != 3 && player_turn != 4);
 
-                if (player_turn == 1)
+                if (player_turn == 1) //if player chooses to attack with their weapon; a second accuracy check is made with varying ranges determined by the weapon
                 {
                     if (p.chara == 1)
                     {
@@ -754,7 +757,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                         }
                     }
                 }
-                else if (player_turn == 2)
+                else if (player_turn == 2) //if player chooses to attack with their fists; no accuracy check is made as this attack always hits for a set amount of damage
                 {
                     if (p.chara == 1)
                     {
@@ -793,9 +796,9 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                         }
                     }
                 }
-                else if (player_turn == 3)
+                else if (player_turn == 3) //if player chooses to use a spell; sunflower can always do this and cobalt and magenta can do this if the player chose the spellbook item; sunflower can use two spells that the other characters cannot use, even if they have the spellbook
                 {
-                    if (p.item_misc == 2)
+                    if (p.item_misc == 2) //if cobalt or magenta has the spellbook the player may choose to either heal or increase their character's accuracy
                     {
                         if (p.chara == 1 || p.chara == 2)
                         {
@@ -936,7 +939,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                             }
                         }
                     }
-                    if (p.item_misc != 2)
+                    if (p.item_misc != 2) //cobalt and magenta can not use spells without the spellbook
                     {
                         if (p.chara == 3)
                         {
@@ -1031,10 +1034,10 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                         }
                     }
                 }
-                else if (player_turn == 4)
+                else if (player_turn == 4) //if player chooses to use an item; note: the player always has the lunchbox, and may always choose to use it, but it may be empty depending on if the player chose the full lunchbox in the game menu or has encountered any merchants
                 {
                 int item_battlechoice;
-                    if (p.item_misc == 1)
+                    if (p.item_misc == 1) //if player chose the potions in the game menu, they have the choice between using a potion or the lunchbox
                     {
                         do
                         {
@@ -1213,7 +1216,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                             }
                         }
                     }
-                    if (p.item_misc == 3 || p.item_misc == 2)
+                    if (p.item_misc == 3 || p.item_misc == 2) //if player chose an item other then the potions, then they may only use the lunchbox
                     {
                         if (p.lunchbox > 0)
                         {
@@ -1368,9 +1371,9 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
             }
         }
 
-        if (e.hp > 0)
+        if (e.hp > 0) //enemy moves second
         {
-            e.roll = 0 + rand() % (10 - 0 + 1);
+            e.roll = 0 + rand() % (10 - 0 + 1); //accuracy check made to determine if the anamy make make a battle action or have their turn skipped
             if (e.roll >= 2)
             {
                 if (sleep == false)
@@ -2024,7 +2027,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                         }
                     }
                 }
-                else if (sleep == true)
+                else if (sleep == true) //if enemy is asleep they must spend their turn making an accuracy check to try to wake up
                 {
                     e.roll = 0 + rand() % (10 - 0 + 1);
                     if (enemy_accuracy == false)
@@ -2063,7 +2066,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
     } 
 
     printf("\n\nThe battle ended\n");
-    printf("Score: %i\n", p.score);
+    printf("Score: %i\n", p.score); //player gains a point for winning and loses a point for being defeated
 
     return p;
 }
@@ -3569,7 +3572,6 @@ int main()
     bool start = true;
     do
     {
-        //printf("\n\n\tScore: %i\n\n", score);
         if (newgame == true)
         {
             if (p.chara == 1 && start)
@@ -3695,7 +3697,6 @@ int main()
     {
         printf("You reached home!\n");
         _getch();
-        //savedata(p, p.user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score, p.hp);
         printf("Final score: %i", p.score);
         _getch();
     }
