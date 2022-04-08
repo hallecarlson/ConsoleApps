@@ -66,7 +66,7 @@ int Merchant::getHPHEALED()
 {
 	return hphealed;
 }
-void Merchant::healPlayer(Player& p)
+void Merchant::healPlayer(Player& p) //calculates how much the merchant will heal the player
 { 
 	p.hpmin = 8;
 	p.hpmax = 15;

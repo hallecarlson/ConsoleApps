@@ -25,7 +25,7 @@
                         Not done    Game thoroughly tested by at least 4 others who fill out 5-question questionnaire that I create
 
 
-    Notes:              edits to make:
+    Notes:
 
     Maintenance Log:
     Date:   12/6/21     Done:
@@ -370,6 +370,9 @@
                         Continued to remove unecessary comments from all files
 
     Date: 4/8/22        Done:
+                        Pushed to GitHub
+                        Finished up adding comments
+                        Added ending texting for each character
                         Pushed to GitHub
 */ 
 
@@ -2081,7 +2084,6 @@ void savedata(Player p, string user, int chara, int item_weapon, int item_misc, 
     out.close();
 }
 
-//change rooms to shut game down after hp
 //room1
 int ultramarine(int room, int chara, bool& win) //room 1
 {
@@ -2091,6 +2093,9 @@ int ultramarine(int room, int chara, bool& win) //room 1
     {
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now in Ultramarine\n");
+        printf("It's a shimmering sea town with limestone buildings protruding from the ocean.\n");
+        printf("Cobalt walked along the docks, greeting all of her neighbors.\nShe walked to the very end of the dock, and sat, looking out at the ocean.\n");
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         win = true;
     }
     else if (chara == 3) //sunflower
@@ -2292,6 +2297,9 @@ int goldenrod(int room, int chara, bool& win) //room 5
         //savedata(p, p.user, p.chara, p.item_weapon, p.item_misc, p.potions, p.lunchbox, room, p.score, p.hp);
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now in Goldenrod\n");
+        printf("It's a huge and glorious city.\nThere's so much to see that it's almost overwhelming.\n");
+        printf("Sunflower ran along the city blocks, all the way to the park.\nShe sat and fed the birds and squirrels, feeling grateful that she made it all this way.\n");
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         win = true;
     }
     else //cobalt
@@ -3070,6 +3078,9 @@ int rose(int room, int chara, bool& win) //room 25
     {
         printf("------------------------------------------------------------------------------------------------------------------------\n");
         printf("You are now in Rose Village\n");
+        printf("It's a rose-colored lake with a few cabins lining the white sand beach.\n");
+        printf("Magenta danced around the warm beach, collecting seashells like he did every day, and building little castles for the crabs.\n");
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         win = true;
     }
     else //sunflower
@@ -3099,7 +3110,7 @@ int main()
     srand((unsigned)time(NULL));
 
     vector<Merchant> npc_m;
-    for (int m = 0; m < 6; m++) //merchants heal the player
+    for (int m = 0; m < 6; m++) //merchants heal the player in rooms marked "item" by comments
     {
         Merchant temp_m;
         npc_m.push_back(temp_m);
@@ -3180,13 +3191,13 @@ int main()
             {
                 printf("Character: Sunflower\n");
             }
-            printf("User: %s\n", p.user.c_str());
+            printf("User: %s\n", p.user.c_str()); //data from save file printed before game begins
             printf("Score: %i\n", p.score);
             printf("Hitpoints: %i\n", p.hp);
         }
     }
 
-    while (newgame == true)
+    while (newgame == true) //variables declared and set
     {
         p.chara = 0;
         p.score = 0;
@@ -3208,7 +3219,8 @@ int main()
         printf("Please enter your name\n>");        
         cin >> p.user;
         fseek(stdin, 0, SEEK_END);
-
+        
+        //intro
         printf("%s, it is recommended that you create a map as you play if you wish future playthroughs to be easier.\n", p.user.c_str());
         printf("If you wish to do so,the world in the game looks like the following:\n");
         printf(" _______ _______ _______ _______ _______\n");
@@ -3237,7 +3249,7 @@ int main()
         printf("Good luck! (And remember to have fun)\n");
         _getch();
 
-        do //menu loop
+        do //menu loop with error checking
         {
             system("cls");
             printf("------------------------------------------------------------------------------------------------------------------------\n");
@@ -3313,7 +3325,7 @@ int main()
             scanf_s("%i", &menu_choice);
             fseek(stdin, 0, SEEK_END);
 
-            if (menu_choice == 1) //select character
+            if (menu_choice == 1) //character select
             {
                 printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                 if (p.chara == 1 || p.chara == 2 || p.chara == 3)
@@ -3419,7 +3431,7 @@ int main()
                 scanf_s("%i", &item_type);
                 fseek(stdin, 0, SEEK_END);
 
-                if (item_type == 1)
+                if (item_type == 1) //weapon select
                 {
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                     if (p.item_weapon == 1 || p.item_weapon == 2 || p.item_weapon == 3)
@@ -3494,7 +3506,7 @@ int main()
                         }
                     }
                 }
-                if (item_type == 2)
+                if (item_type == 2) //misc item select
                 {
                     printf("\n------------------------------------------------------------------------------------------------------------------------\n\n");
                     if (p.item_misc == 1 || p.item_misc == 2 || p.item_misc == 3)
@@ -3546,7 +3558,7 @@ int main()
                     scanf_s("%i", &menu_choice);
                     fseek(stdin, 0, SEEK_END);
 
-                    if (menu_choice == 3)
+                    if (menu_choice == 3) 
                     {
                         if (p.item_weapon == 0 || p.item_misc == 0 || p.chara == 0)
                         {
@@ -3557,7 +3569,7 @@ int main()
                     }
                 }
             }
-            if (menu_choice == 3)
+            if (menu_choice == 3) //choice to begin game with error checking so that player MAY NOT begin game without a blank selection
             {
                 if (p.item_weapon == 0 || p.item_misc == 0 || p.chara == 0)
                 {
@@ -3572,7 +3584,7 @@ int main()
         break;
     }
 
-    bool start = true;
+    bool start = true; //game loop
     do
     {
         if (newgame == true)
