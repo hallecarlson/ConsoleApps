@@ -374,7 +374,7 @@
                         Finished up adding comments
                         Added ending texting for each character
                         Pushed to GitHub
-*/ 
+*/  
 
 #include <iostream>
 #include <stdio.h>
