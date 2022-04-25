@@ -374,6 +374,11 @@
                         Finished up adding comments
                         Added ending texting for each character
                         Pushed to GitHub
+
+    Date: 4/25/22       Done:
+                        Fixed errors that Dhanasri Prabhu pointed out in her questionnaire
+                        Tested game
+                        Pushed to GitHub
 */  
 
 #include <iostream>
@@ -1064,7 +1069,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                 {
                                     printf("\nMagenta used a potion!\nMagenta now has %i hp\n", p.hp);
                                 }
-                                if (p.chara == 1)
+                                if (p.chara == 3)
                                 {
                                     printf("\nSunflower used a potion!\nSunflower now has %i hp\n", p.hp);
                                 }
@@ -1105,7 +1110,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                     {
                                         printf("\nSunflower ate a sandwich and healed fully!\nSunflower now has %i hp\n", p.hp);
                                     }
-                                    food--;
+                                    p.lunchbox--;
                                 }
                                 if (food == 2) //fruitcup
                                 {
@@ -1120,17 +1125,17 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                     }
                                     if (p.chara == 1)
                                     {
-                                        printf("\nCobalt ate a fruitcup and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nCobalt ate a fruitcup and gained %i hp!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                     }
                                     if (p.chara == 2)
                                     {
-                                        printf("\nMagenta ate a fruitcup and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nMagenta ate a fruitcup and gained %i hp!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                     }
                                     if (p.chara == 3)
                                     {
-                                        printf("\nSunflower ate a fruitcup and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nSunflower ate a fruitcup and gained %i hp!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    food--;
+                                    p.lunchbox--;
                                 }
                                 if (food == 3) //soda
                                 {
@@ -1142,17 +1147,17 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                     }
                                     if (p.chara == 1)
                                     {
-                                        printf("\nCobalt drank a soda and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nCobalt drank a soda and gained %i hp!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                     }
                                     if (p.chara == 2)
                                     {
-                                        printf("\nMagenta drank a soda and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nMagenta drank a soda and gained %i hp!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                     }
                                     if (p.chara == 3)
                                     {
-                                        printf("\nSunflower drank a soda and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nSunflower drank a soda and gained %i hp!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    food--;
+                                    p.lunchbox--;
                                 }
                                 if (food == 4) //beef jerkey
                                 {
@@ -1167,17 +1172,17 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                     }
                                     if (p.chara == 1)
                                     {
-                                        printf("\nCobalt ate beef jerkey and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nCobalt ate beef jerkey and gained %i hp!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                     }
                                     if (p.chara == 2)
                                     {
-                                        printf("\nMagenta ate beef jerkey and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nMagenta ate beef jerkey and gained %i hp!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                     }
                                     if (p.chara == 3)
                                     {
-                                        printf("\nSunflower ate beef jerkey and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nSunflower ate beef jerkey and gained %i hp!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    food--;
+                                    p.lunchbox--;
                                 }
                                 if (food == 5) //cake slice
                                 {
@@ -1192,20 +1197,20 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                     }
                                     if (p.chara == 1)
                                     {
-                                        printf("\nCobalt ate a slice of cake and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nCobalt ate a slice of cake and gained %i hp!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                     }
                                     if (p.chara == 2)
                                     {
-                                        printf("\nMagenta ate a slice of cake and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nMagenta ate a slice of cake and gained %i hp!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                     }
                                     if (p.chara == 3)
                                     {
-                                        printf("\nSunflower ate a slice of cake and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                                        printf("\nSunflower ate a slice of cake and gained %i hp!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                     }
-                                    food--;
+                                    p.lunchbox--;
                                 }
                             }
-                            else if (food <= 0)
+                            else if (p.lunchbox <= 0)
                             {
                                 if (p.chara == 1)
                                 {
@@ -1242,7 +1247,7 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                 {
                                     printf("\nSunflower ate a sandwich and healed fully!\nSunflower now has %i hp\n", p.hp);
                                 }
-                                food--;
+                                p.lunchbox--;
                             }
                             if (food == 2) //fruitcup
                             {
@@ -1257,17 +1262,17 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                 }
                                 if (p.chara == 1)
                                 {
-                                    printf("\nCobalt ate a fruitcup and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nCobalt ate a fruitcup and gained %i hp!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                 }
                                 if (p.chara == 2)
                                 {
-                                    printf("\nMagenta ate a fruitcup and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nMagenta ate a fruitcup and gained %i hp!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                 }
                                 if (p.chara == 3)
                                 {
-                                    printf("\nSunflower ate a fruitcup and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nSunflower ate a fruitcup and gained %i hp!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                food--;
+                                p.lunchbox--;
                             }
                             if (food == 3) //soda
                             {
@@ -1279,17 +1284,17 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                 }
                                 if (p.chara == 1)
                                 {
-                                    printf("\nCobalt drank a soda and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nCobalt drank a soda and gained %i hp!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                 }
                                 if (p.chara == 2)
                                 {
-                                    printf("\nMagenta drank a soda and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nMagenta drank a soda and gained %i hp!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                 }
                                 if (p.chara == 3)
                                 {
-                                    printf("\nSunflower drank a soda and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nSunflower drank a soda and gained %i hp!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                food--;
+                                p.lunchbox--;
                             }
                             if (food == 4) //beef jerkey
                             {
@@ -1304,17 +1309,17 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                 }
                                 if (p.chara == 1)
                                 {
-                                    printf("\nCobalt ate beef jerkey and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nCobalt ate beef jerkey and gained %i hp!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                 }
                                 if (p.chara == 2)
                                 {
-                                    printf("\nMagenta ate beef jerkey and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nMagenta ate beef jerkey and gained %i hp!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                 }
                                 if (p.chara == 3)
                                 {
-                                    printf("\nSunflower ate beef jerkey and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nSunflower ate beef jerkey and gained %i hp!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                food--;
+                                p.lunchbox--;
                             }
                             if (food == 5) //cake slice
                             {
@@ -1329,20 +1334,20 @@ Player combat(Player p, Player e) //a fight sequence used in several rooms on th
                                 }
                                 if (p.chara == 1)
                                 {
-                                    printf("\nCobalt ate a slice of cake and gained %i!\nCobalt now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nCobalt ate a slice of cake and gained %i hp!\nCobalt now has %i hp\n", p.hphealed, p.hp);
                                 }
                                 if (p.chara == 2)
                                 {
-                                    printf("\nMagenta ate a slice of cake and gained %i!\nMagenta now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nMagenta ate a slice of cake and gained %i hp!\nMagenta now has %i hp\n", p.hphealed, p.hp);
                                 }
                                 if (p.chara == 3)
                                 {
-                                    printf("\nSunflower ate a slice of cake and gained %i!\nSunflower now has %i hp\n", p.hphealed, p.hp);
+                                    printf("\nSunflower ate a slice of cake and gained %i hp!\nSunflower now has %i hp\n", p.hphealed, p.hp);
                                 }
-                                food--;
+                                p.lunchbox--;
                             }
                         }
-                        else if (food <= 0)
+                        else if (p.lunchbox <= 0)
                         {
                             if (p.chara == 1)
                             {
