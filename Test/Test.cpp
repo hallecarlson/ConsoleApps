@@ -35,11 +35,12 @@ int main()
 	//VECTORS
 	//CT - Vectors Q1
 	vector<int> integers;
-	for (int i = 0; i < 100; i++)
+	for (int i = 1; i <= 100; i++)
 	{
 		integers.push_back(i);
 		printf("%i\t", integers.at(i));
 	}
+	//printf("\n");
 	//CT - Vectors Q2
 	vector<vector<int> > table;
 	for (int a = 1; a < 6; a++)
@@ -51,18 +52,18 @@ int main()
 		}
 		table.push_back(temp);
 	}
-	for (int a = 0; a < table.size(); a++)
+	for (int c = 0; c < table.size(); c++)
 	{
-		for (int b = 0; b < table.at(a).size(); b++)
+		for (int d = 0; d < table.at(c).size(); d++) 
 		{
-			printf("%i\t", table.at(a).at(b));
+			printf("%i\t", table.at(c).at(d));
 		}
 		printf("\n");
 	}
 
 	//FILE I/O
 	//CT - File I/O Q1 //UNFINISHED
-	ifstream in;
+	/*ifstream in;
 	ofstream out("outputnames.txt");
 	in.open("names.txt");
 	
@@ -99,9 +100,8 @@ int main()
 	out.close();
 	in.close();
 
-	_getch();
+	_getch();*/
 	return 0;
-	
 }
 
 
