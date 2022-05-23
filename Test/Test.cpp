@@ -4,6 +4,7 @@
 // 10/29/21:	coded ASCII art bat
 // 1/13/22:		practice code for a looping competency test
 // 1/17/22		practice code for string competency test
+// 5/22/22		practice code for vectors, file I/O, and classes competency tests
 using namespace std;
 #include <iostream>
 #include <conio.h>
@@ -11,37 +12,96 @@ using namespace std;
 #include <stdlib.h>
 #include <time.h>
 #include <string>
+#include <vector>
 
+#include "square.h"
 
-/*
-        printf("Save %s's data? y for yes, else for no\n>", user.c_str());
-        scanf_s("%c", &savechoice);
-        fseek(stdin, 0, SEEK_END);
-        if (savechoice == 'y')
-        {
-            void savedata(Player p, string user, int chara, int item_weapon, int item_misc, int potions, int lunchbox, int room, int score);
-            printf("\n%s's data has been saved\n", user.c_str());
-        }
+//CLASSES
+//CT - Classes Q1
+/*int main()
+{
+	square S;
+	S.setDimensions(7);
+	R.perimiter();
+	R.area();
+	printf("side length = %f\n", S.getS());
+	printf("perimiter = %f\narea = %f\n", S.perimiter(), S.area());
 
-        if (p.hp > 0)
-        {
-            printf("\n1. Go to Ultramarine\n2. Go to Sunset Observatory\n");
-            printf(">");
-            scanf_s("%i", &choice);
-            fseek(stdin, 0, SEEK_END);
-            if (choice == 1)
-            {
-                room = 1;
-            }
-            else if (choice == 2)
-            {
-                room = 12;
-            }
-        }
-        else if (p.hp <= 0)
-        {
-            p.hp = 1;
-            //shut game down
-        }
-*/
+	return 0;
+}*/
+
+int main()
+{
+	//VECTORS
+	//CT - Vectors Q1
+	vector<int> integers;
+	for (int i = 0; i < 100; i++)
+	{
+		integers.push_back(i);
+		printf("%i\t", integers.at(i));
+	}
+	//CT - Vectors Q2
+	vector<vector<int> > table;
+	for (int a = 1; a < 6; a++)
+	{
+		vector<int> temp;
+		for (int b = 1; b < 6; b++)
+		{
+			temp.push_back(a * b);
+		}
+		table.push_back(temp);
+	}
+	for (int a = 0; a < table.size(); a++)
+	{
+		for (int b = 0; b < table.at(a).size(); b++)
+		{
+			printf("%i\t", table.at(a).at(b));
+		}
+		printf("\n");
+	}
+
+	//FILE I/O
+	//CT - File I/O Q1 //UNFINISHED
+	ifstream in;
+	ofstream out("outputnames.txt");
+	in.open("names.txt");
+	
+	string temp;
+	string name;
+	int age;
+	int height;
+	int weight;
+	string phone;
+
+	if (!in.is_open())
+	{
+		printf("File not found...");
+		_getch();
+		return 0;
+	}
+
+	while (getline(in, temp, ','))
+	{
+		name = temp;
+		getline(in, temp, ',');
+		age = stoi(temp);
+		getline(in, temp, ',');
+		height = stoi(temp);
+		getline(in, temp, ',');
+		weight = stoi(temp);
+		getline(in, temp, ',');
+		phone = temp;
+
+		out << name << '\t' << age << '\t' << height << '\t' << weight << '\t' << phone << '\n';
+		cout << name << '\t' << age << '\t' << height << '\t' << weight << '\t' << phone << '\n';
+	}
+
+	out.close();
+	in.close();
+
+	_getch();
+	return 0;
+	
+}
+
 
