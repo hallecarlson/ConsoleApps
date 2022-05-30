@@ -5,6 +5,7 @@
 // 1/13/22:		practice code for a looping competency test
 // 1/17/22		practice code for string competency test
 // 5/22/22		practice code for vectors, file I/O, and classes competency tests
+// 5/30/22		wrote some practice code for file I/O competency test (can't run program on this laptop for some reason??)
 using namespace std;
 #include <iostream>
 #include <conio.h>
@@ -14,65 +15,53 @@ using namespace std;
 #include <string>
 #include <vector>
 
-#include "square.h"
-
-//CLASSES
-//CT - Classes Q1
-/*int main()
+//FILE I/O
+//CT - File I/O Q1
+void savenames(string name, int age, int height, int weight, string phone)
 {
-	square S;
-	S.setDimensions(7);
-	R.perimiter();
-	R.area();
-	printf("side length = %f\n", S.getS());
-	printf("perimiter = %f\narea = %f\n", S.perimiter(), S.area());
-
-	return 0;
-}*/
+	ofstream out("names.txt");
+	out << name << ',' << age << ',' << height << ',' << weight << ',' << phone << '\n';
+}
 
 int main()
-{
-	//VECTORS
-	//CT - Vectors Q1
-	vector<int> integers;
-	for (int i = 1; i <= 100; i++)
-	{
-		integers.push_back(i);
-		printf("%i\t", integers.at(i));
-	}
-	//printf("\n");
-	//CT - Vectors Q2
-	vector<vector<int> > table;
-	for (int a = 1; a < 6; a++)
-	{
-		vector<int> temp;
-		for (int b = 1; b < 6; b++)
-		{
-			temp.push_back(a * b);
-		}
-		table.push_back(temp);
-	}
-	for (int c = 0; c < table.size(); c++)
-	{
-		for (int d = 0; d < table.at(c).size(); d++) 
-		{
-			printf("%i\t", table.at(c).at(d));
-		}
-		printf("\n");
-	}
-
-	//FILE I/O
-	//CT - File I/O Q1 //UNFINISHED
-	/*ifstream in;
-	ofstream out("outputnames.txt");
-	in.open("names.txt");
-	
-	string temp;
+{	
 	string name;
 	int age;
 	int height;
 	int weight;
 	string phone;
+	string temp;
+
+	char choice = 'n';
+	do
+	{
+		printf("\nPlease input a name\n>");
+		cin >> name;
+		fseek(stdin, 0, SEEK_END);		
+		printf("\nPlease input an age\n>");
+		scanf_s("%i", &age);
+		fseek(stdin, 0, SEEK_END);		
+		printf("\nPlease input a height\n>");
+		scanf_s("%i", &age);
+		fseek(stdin, 0, SEEK_END);
+		printf("\nPlease input a weight\n>");
+		scanf_s("%i", &age);
+		fseek(stdin, 0, SEEK_END);
+		printf("\nPlease input a phone number\n>");
+		cin >> name;
+		fseek(stdin, 0, SEEK_END);
+
+		savenames(name, age, height, weight, phone);
+
+		printf("\nEnter more data?\n>");
+		scanf_s("%c", &choice);
+		fseek(stdin, 0, SEEK_END);
+	} while (choice == 'y');
+
+
+	ifstream in;
+	ofstream out("outputnames.txt");
+	in.open("names.txt");
 
 	if (!in.is_open())
 	{
@@ -93,14 +82,14 @@ int main()
 		getline(in, temp, ',');
 		phone = temp;
 
-		out << name << '\t' << age << '\t' << height << '\t' << weight << '\t' << phone << '\n';
-		cout << name << '\t' << age << '\t' << height << '\t' << weight << '\t' << phone << '\n';
+		out << name << ',' << age << ',' << height << ',' << weight << ',' << phone << '\n';
+		cout << name << ',' << age << ',' << height << ',' << weight << ',' << phone << '\n';
 	}
 
 	out.close();
 	in.close();
 
-	_getch();*/
+	_getch();
 	return 0;
 }
 
