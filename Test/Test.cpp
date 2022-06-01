@@ -1,11 +1,25 @@
-// Test.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/* Test.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ 
+CT File I/O steps
+a.
+- open a new file for writing (names.txt)
+- loop to get data from user - use appropriate data types
+- end loop by asking if user is done entering data
+- tell what type of delimiting i'm using (can be a comment on the test paper)
+- output data accordingly ^^^
+b.
+- write what data would look like in file (with \n or ,, no extra spaces)
+c.
+- write code to get data from file and output to screen
+- use loop that doesn't assume there are only 6 pieces of data
 
-// 10/29/21:	coded ASCII art bat
-// 1/13/22:		practice code for a looping competency test
-// 1/17/22		practice code for string competency test
-// 5/22/22		practice code for vectors, file I/O, and classes competency tests
-// 5/30/22		wrote some practice code for file I/O competency test (can't run program on this laptop for some reason??)
+10/29/21:	coded ASCII art bat
+1/13/22:	practice code for a looping competency test
+1/17/22		practice code for string competency test
+5/22/22		practice code for vectors, file I/O, and classes competency tests
+5/30/22		wrote some practice code for file I/O competency test (can't run program on this laptop for some reason??)
+5/31/22		listed steps to CT - File I/O
+*/
 using namespace std;
 #include <iostream>
 #include <conio.h>
